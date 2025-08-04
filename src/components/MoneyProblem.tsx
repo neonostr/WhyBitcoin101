@@ -1,6 +1,5 @@
 const MoneyProblem = () => {
-  return (
-    <section className="py-20 px-4 bg-gradient-to-b from-background to-muted/30">
+  return <section className="py-20 px-4 bg-gradient-to-b from-background to-muted/30">
       <div className="container mx-auto">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold mb-6 text-foreground">
@@ -58,18 +57,9 @@ const MoneyProblem = () => {
           </div>
 
           <div className="bg-card border border-border/50 rounded-2xl p-8 hover:shadow-lg transition-all duration-300">
-            <h3 className="text-2xl font-bold mb-6 text-foreground">
-              Political Money Manipulation
-            </h3>
-            <p className="text-lg text-muted-foreground leading-relaxed mb-6">
-              Making matters worse, politicians and central banks have unlimited access to the money printer. 
-              When overleveraged, greedy speculators make bad bets and face bankruptcy, they get bailed out with newly printed money. 
-              The costs? Passed on to everyone else through inflation.
-            </p>
-            <p className="text-lg text-muted-foreground leading-relaxed">
-              This system privatizes profits for the well-connected while socializing losses for ordinary people. 
-              It's a rigged game where those closest to the money printer win, and everyone else pays the price.
-            </p>
+            <h3 className="text-2xl font-bold mb-6 text-foreground">The Manipulation of Money</h3>
+            <p className="text-lg text-muted-foreground leading-relaxed mb-6">To make matters worse, politicians and central banks have unchecked access to the money supply. When reckless speculators make bad bets and face bankruptcy, they are bailed out with freshly printed money, passing the costs on to the general public through inflation.</p>
+            <p className="text-lg text-muted-foreground leading-relaxed">This system creates a rigged game, where those with connections to the money printer reap the benefits, while ordinary people bear the burden. The result is a perverse incentives structure that prioritizes profit over people, undermining the stability and fairness of our economic system.</p>
           </div>
 
           <div className="text-center">
@@ -86,8 +76,6 @@ const MoneyProblem = () => {
           </div>
         </div>
       </div>
-    </section>
-  );
+    </section>;
 };
-
 export default MoneyProblem;
