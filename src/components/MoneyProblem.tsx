@@ -50,10 +50,7 @@ const MoneyProblem = () => {
               Young families can't afford homes. People delay having children because they can't provide financial security. 
               Communities are displaced as housing becomes a speculative investment rather than a basic human need.
             </p>
-            <p className="text-lg text-muted-foreground leading-relaxed">
-              This isn't just an economic problem—it's tearing apart the social fabric of society, 
-              disrupting families and communities that form the foundation of human civilization.
-            </p>
+            <p className="text-lg text-muted-foreground leading-relaxed">This isn't just an economic problem - it's tearing apart the social fabric of society, disrupting families and communities that form the foundation of human civilization.</p>
           </div>
 
           <div className="bg-card border border-border/50 rounded-2xl p-8 hover:shadow-lg transition-all duration-300">
