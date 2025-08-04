@@ -1,5 +1,6 @@
 import Navigation from "@/components/Navigation";
 import Hero from "@/components/Hero";
+import MoneyProblem from "@/components/MoneyProblem";
 import Basics from "@/components/Basics";
 import WhyBitcoin from "@/components/WhyBitcoin";
 import Resources from "@/components/Resources";
@@ -11,6 +12,7 @@ const Index = () => {
     <div className="min-h-screen bg-background">
       <Navigation />
       <Hero />
+      <MoneyProblem />
       <Basics />
       <WhyBitcoin />
       <Resources />

@@ -1,0 +1,78 @@
+const MoneyProblem = () => {
+  return (
+    <section className="py-20 px-4 bg-gradient-to-b from-background to-muted/30">
+      <div className="container mx-auto">
+        <div className="text-center mb-16">
+          <h2 className="text-4xl md:text-5xl font-bold mb-6 text-foreground">
+            Why Bitcoin in the First Place?
+          </h2>
+          <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+            To understand Bitcoin, we first need to understand why our current money system is fundamentally broken.
+          </p>
+        </div>
+        
+        <div className="max-w-4xl mx-auto space-y-12">
+          <div className="bg-card border border-border/50 rounded-2xl p-8 hover:shadow-lg transition-all duration-300">
+            <h3 className="text-2xl font-bold mb-6 text-foreground">
+              Money Is Broken
+            </h3>
+            <p className="text-lg text-muted-foreground leading-relaxed mb-6">
+              Our money is so fundamentally broken that people can no longer use it as a store of value. 
+              Instead, society has been forced to turn to real estate, stocks, and other assets as savings vehicles—
+              roles that should naturally belong to money itself.
+            </p>
+            <p className="text-lg text-muted-foreground leading-relaxed">
+              This distortion has created massive problems: skyrocketing housing costs, inflated asset bubbles, 
+              and a world where basic necessities like homes have become unaffordable investments rather than places to live.
+            </p>
+          </div>
+
+          <div className="bg-card border border-border/50 rounded-2xl p-8 hover:shadow-lg transition-all duration-300">
+            <h3 className="text-2xl font-bold mb-6 text-foreground">
+              The Human Cost
+            </h3>
+            <p className="text-lg text-muted-foreground leading-relaxed mb-6">
+              When money fails at its basic function of storing value, entire generations suffer. 
+              Young families can't afford homes. People delay having children because they can't provide financial security. 
+              Communities are displaced as housing becomes a speculative investment rather than a basic human need.
+            </p>
+            <p className="text-lg text-muted-foreground leading-relaxed">
+              This isn't just an economic problem—it's tearing apart the social fabric of society, 
+              disrupting families and communities that form the foundation of human civilization.
+            </p>
+          </div>
+
+          <div className="bg-card border border-border/50 rounded-2xl p-8 hover:shadow-lg transition-all duration-300">
+            <h3 className="text-2xl font-bold mb-6 text-foreground">
+              Political Money Manipulation
+            </h3>
+            <p className="text-lg text-muted-foreground leading-relaxed mb-6">
+              Making matters worse, politicians and central banks have unlimited access to the money printer. 
+              When overleveraged, greedy speculators make bad bets and face bankruptcy, they get bailed out with newly printed money. 
+              The costs? Passed on to everyone else through inflation.
+            </p>
+            <p className="text-lg text-muted-foreground leading-relaxed">
+              This system privatizes profits for the well-connected while socializing losses for ordinary people. 
+              It's a rigged game where those closest to the money printer win, and everyone else pays the price.
+            </p>
+          </div>
+
+          <div className="text-center">
+            <div className="inline-block p-8 rounded-2xl bg-gradient-to-r from-bitcoin-orange/10 to-primary/10 border-2 border-bitcoin-orange/20">
+              <h3 className="text-2xl font-bold mb-4 text-foreground">
+                Bitcoin Was Born From This Crisis
+              </h3>
+              <p className="text-lg text-muted-foreground max-w-2xl leading-relaxed">
+                In 2008, as the financial system collapsed and banks got bailed out while ordinary people lost their homes, 
+                an anonymous creator released Bitcoin—a new form of money that no government or bank could control, 
+                inflate, or manipulate. A money system designed to serve people, not politicians.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export default MoneyProblem;
