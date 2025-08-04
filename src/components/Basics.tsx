@@ -1,8 +1,6 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-
 const Basics = () => {
-  return (
-    <section id="basics" className="py-20 px-4 bg-background">
+  return <section id="basics" className="py-20 px-4 bg-background">
       <div className="container mx-auto">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold mb-6 text-foreground">
@@ -24,9 +22,9 @@ const Basics = () => {
               </CardTitle>
             </CardHeader>
             <CardContent>
-              <p className="text-muted-foreground text-center leading-relaxed">
-                Bitcoin is a digital currency that operates without a central authority. It's like digital cash that you can send directly to anyone in the world.
-              </p>
+              <p className="text-muted-foreground text-center leading-relaxed">Bitcoin is money owned by the people that operates without a central authority. It's money that it's truly ours, can't be manipulated send directly to anyone in the world.
+
+            </p>
             </CardContent>
           </Card>
 
@@ -79,8 +77,6 @@ const Basics = () => {
           </Card>
         </div>
       </div>
-    </section>
-  );
+    </section>;
 };
-
 export default Basics;
