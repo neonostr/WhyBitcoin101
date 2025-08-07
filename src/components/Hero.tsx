@@ -8,7 +8,7 @@ const Hero = () => {
           </h1>
           <p className="text-xl md:text-2xl text-muted-foreground mb-8 max-w-2xl mx-auto leading-relaxed">Your journey into understanding the future of money starts here. Simple explanations, trusted resources, and expert guidance.</p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button size="lg" className="bg-primary hover:bg-primary/90 text-primary-foreground text-lg px-8 py-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300" onClick={() => document.getElementById('why-bitcoin')?.scrollIntoView({
+            <Button size="lg" className="bg-primary hover:bg-primary/90 text-primary-foreground text-lg px-8 py-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300" onClick={() => document.getElementById('money-problem')?.scrollIntoView({
             behavior: 'smooth'
           })}>
               Start Learning
