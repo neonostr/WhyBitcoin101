@@ -190,7 +190,7 @@ const Resources = () => {
             <h2 className="text-4xl md:text-5xl font-bold mb-6 text-foreground">
               Dive Deeper
             </h2>
-            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">These resources offer a path to a deeper understanding of money, society, and the economy.</p>
+            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">Ready to learn more? These carefully curated resources will help you to get started.</p>
           </div>
 
           {renderSection("Videos", "🎥", videos, true)}
