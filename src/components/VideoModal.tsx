@@ -8,15 +8,15 @@ interface VideoModalProps {
 }
 
 const VideoModal = ({ isOpen, onClose, title, videoUrl }: VideoModalProps) => {
-  // Convert YouTube URLs to embed format
+  // Convert YouTube URLs to embed format with autoplay
   const getEmbedUrl = (url: string) => {
     if (url.includes("youtube.com/watch?v=")) {
       const videoId = url.split("v=")[1]?.split("&")[0];
-      return `https://www.youtube.com/embed/${videoId}`;
+      return `https://www.youtube.com/embed/${videoId}?autoplay=1`;
     }
     if (url.includes("youtu.be/")) {
       const videoId = url.split("youtu.be/")[1]?.split("?")[0];
-      return `https://www.youtube.com/embed/${videoId}`;
+      return `https://www.youtube.com/embed/${videoId}?autoplay=1`;
     }
     return url; // Return as-is for other embed URLs
   };
