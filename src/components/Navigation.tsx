@@ -13,12 +13,6 @@ const Navigation = () => {
           
           <div className="hidden md:flex items-center space-x-6">
             <button 
-              onClick={() => scrollToSection('basics')}
-              className="text-foreground hover:text-primary transition-colors duration-200"
-            >
-              Basics
-            </button>
-            <button 
               onClick={() => scrollToSection('why-bitcoin')}
               className="text-foreground hover:text-primary transition-colors duration-200"
             >
