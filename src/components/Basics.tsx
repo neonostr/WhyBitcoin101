@@ -37,7 +37,7 @@ const Basics = () => {
               </CardTitle>
             </CardHeader>
             <CardContent>
-              <p className="text-muted-foreground text-center leading-relaxed">Bitcoin uses a digital record book, publicly available to everyone, that keeps track of all Bitcoin transactions. This record book, called a blockchain, is incredibly secure because it's copied and shared across many computers, making it very difficult to tamper with or change.</p>
+              <p className="text-muted-foreground text-center leading-relaxed">Bitcoin securely tracks every transaction using a public record book distributed across computers worldwide. A unique system keeps all copies perfectly synchronized, ensuring the record can't be altered and eliminating the need to trust a bank or other intermediary.</p>
             </CardContent>
           </Card>
 
