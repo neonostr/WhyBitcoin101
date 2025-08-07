@@ -41,7 +41,7 @@ const Resources = () => {
   // Articles & Essays
   const articles = [
     {
-      title: "21 Lessons,
+      title: "21 Lessons",
       author: "Gigi",
       description: "A persoal journey of discovering bitcoin",
       type: "Essay",
