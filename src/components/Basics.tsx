@@ -1,6 +1,9 @@
+
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+
 const Basics = () => {
-  return <section id="basics" className="py-20 px-4 bg-background">
+  return (
+    <section id="basics" className="py-20 px-4 bg-background">
       <div className="container mx-auto">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold mb-6 text-foreground">
@@ -22,8 +25,9 @@ const Basics = () => {
               </CardTitle>
             </CardHeader>
             <CardContent>
-              <p className="text-muted-foreground text-center leading-relaxed">Bitcoin is money owned by the people that operates without a central authority. It's money that is truly yours, can't be manipulated, and can be sent directly to anyone in the world
-            </p>
+              <div className="text-muted-foreground text-center leading-relaxed">
+                Bitcoin is money owned by the people that operates without a central authority. It's money that is truly yours, can't be manipulated, and can be sent directly to anyone in the world
+              </div>
             </CardContent>
           </Card>
 
@@ -37,7 +41,9 @@ const Basics = () => {
               </CardTitle>
             </CardHeader>
             <CardContent>
-              <p className="text-muted-foreground text-center leading-relaxed">Bitcoin securely records all transactions in a public record book distributed globally. A unique system ensures the record can't be altered, eliminating the need for banks or other intermediaries.</p>
+              <div className="text-muted-foreground text-center leading-relaxed">
+                Bitcoin securely records all transactions in a public record book distributed globally. A unique system ensures the record can't be altered, eliminating the need for banks or other intermediaries.
+              </div>
             </CardContent>
           </Card>
 
@@ -51,9 +57,9 @@ const Basics = () => {
               </CardTitle>
             </CardHeader>
             <CardContent>
-              <p className="text-muted-foreground text-center leading-relaxed">
+              <div className="text-muted-foreground text-center leading-relaxed">
                 Unlike traditional money, Bitcoin is decentralized, scarce (only 21 million will ever exist), and gives you complete control over your money.
-              </p>
+              </div>
             </CardContent>
           </Card>
 
@@ -67,13 +73,15 @@ const Basics = () => {
               </CardTitle>
             </CardHeader>
             <CardContent>
-              <p className="text-muted-foreground text-center leading-relaxed">
+              <div className="text-muted-foreground text-center leading-relaxed">
                 You can start by learning more, getting a wallet app, and buying your first small amount from a reputable exchange.
-              </p>
+              </div>
             </CardContent>
           </Card>
         </div>
       </div>
-    </section>;
+    </section>
+  );
 };
+
 export default Basics;
