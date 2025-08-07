@@ -59,18 +59,18 @@ const Resources = () => {
   // Books
   const books = [
     {
-      title: "The Bitcoin Standard",
+      title: "The Fiat Standard",
       author: "Saifedean Ammous",
-      description: "The definitive book on Bitcoin's economic properties and monetary history.",
+      description: "Understand the technology behind the current analog global monetary system.",
       type: "Essential Reading",
-      url: "https://example.com/bitcoin-standard"
+      url: "https://saifedean.com/tfs"
     },
     {
-      title: "Inventing Bitcoin",
-      author: "Yan Pritzker",
-      description: "A clear, technical introduction to how Bitcoin actually works.",
-      type: "Technical Guide",
-      url: "https://example.com/inventing-bitcoin"
+      title: "The Bitcoin Standard",
+      author: "Saifedean Ammous",
+      description: "A comprehensive and authoritative exploration of Bitcoin and its place in monetary history.",
+      type: "Essential Reading",
+      url: "https://saifedean.com/tbs"
     },
     {
       title: "The Bullish Case for Bitcoin",
