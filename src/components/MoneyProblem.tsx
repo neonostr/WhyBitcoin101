@@ -53,10 +53,13 @@ const MoneyProblem = () => {
               <h3 className="text-2xl font-bold mb-4 text-foreground">
                 Bitcoin Was Born From This Crisis
               </h3>
-              <p className="text-lg text-muted-foreground max-w-2xl leading-relaxed">
-                In 2008, as the financial system collapsed and banks got bailed out while ordinary people lost their homes, an anonymous creator released Bitcoin—a new form of money that no government or bank could control, inflate, or manipulate. A money system designed to serve people, not politicians.
-              </p>
             </div>
+          </div>
+          
+          <div className="text-center mt-6">
+            <p className="text-lg text-muted-foreground max-w-2xl mx-auto leading-relaxed">
+              In 2008, as the financial system collapsed and banks got bailed out while ordinary people lost their homes, an anonymous creator released Bitcoin—a new form of money that no government or bank could control, inflate, or manipulate. A money system designed to serve people, not politicians.
+            </p>
           </div>
         </div>
       </div>
