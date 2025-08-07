@@ -37,7 +37,9 @@ const Basics = () => {
               </CardTitle>
             </CardHeader>
             <CardContent>
-              <p className="text-muted-foreground text-center leading-relaxed">Bitcoin securely records all transactions in a public record book distributed globally. A unique system ensures the record can't be altered, eliminating the need for banks or other intermediaries.</p>
+              <p className="text-muted-foreground text-center leading-relaxed">
+                Bitcoin uses blockchain technology - a public ledger that records all transactions. Think of it as a transparent, tamper-proof record book.
+              </p>
             </CardContent>
           </Card>
 
@@ -52,7 +54,7 @@ const Basics = () => {
             </CardHeader>
             <CardContent>
               <p className="text-muted-foreground text-center leading-relaxed">
-                Unlike traditional money, Bitcoin is decentralized, scarce (only 21 million will ever exist), and gives you complete control over your money.
+                Built by the people, free from control, Bitcoin is the world’s most scarce asset. Limited to 21 million, it’s designed to be perfect money - a secure store of your time and energy.
               </p>
             </CardContent>
           </Card>
@@ -62,10 +64,14 @@ const Basics = () => {
               <div className="text-4xl mb-4 group-hover:scale-110 transition-transform duration-300">
                 🚀
               </div>
-              <CardTitle className="text-xl text-foreground group-hover:text-primary transition-colors duration-300">Bitcoin is for Everyone</CardTitle>
+              <CardTitle className="text-xl text-foreground group-hover:text-primary transition-colors duration-300">
+                Getting Started
+              </CardTitle>
             </CardHeader>
             <CardContent>
-              <p className="text-muted-foreground text-center leading-relaxed">Just as one U.S. Dollar equals 100 cents, one Bitcoin equals 100 million satoshis. This divisibility means you can get involved with Bitcoin starting with any amount – even $1.</p>
+              <p className="text-muted-foreground text-center leading-relaxed">
+                You can start by learning more, getting a wallet app, and buying your first small amount from a reputable exchange.
+              </p>
             </CardContent>
           </Card>
         </div>
