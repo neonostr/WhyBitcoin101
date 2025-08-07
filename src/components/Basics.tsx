@@ -25,9 +25,9 @@ const Basics = () => {
               </CardTitle>
             </CardHeader>
             <CardContent>
-              <div className="text-muted-foreground text-center leading-relaxed">
+              <p className="text-muted-foreground text-center leading-relaxed">
                 Bitcoin is money owned by the people that operates without a central authority. It's money that is truly yours, can't be manipulated, and can be sent directly to anyone in the world
-              </div>
+              </p>
             </CardContent>
           </Card>
 
@@ -41,9 +41,9 @@ const Basics = () => {
               </CardTitle>
             </CardHeader>
             <CardContent>
-              <div className="text-muted-foreground text-center leading-relaxed">
+              <p className="text-muted-foreground text-center leading-relaxed">
                 Bitcoin securely records all transactions in a public record book distributed globally. A unique system ensures the record can't be altered, eliminating the need for banks or other intermediaries.
-              </div>
+              </p>
             </CardContent>
           </Card>
 
@@ -57,9 +57,9 @@ const Basics = () => {
               </CardTitle>
             </CardHeader>
             <CardContent>
-              <div className="text-muted-foreground text-center leading-relaxed">
+              <p className="text-muted-foreground text-center leading-relaxed">
                 Unlike traditional money, Bitcoin is decentralized, scarce (only 21 million will ever exist), and gives you complete control over your money.
-              </div>
+              </p>
             </CardContent>
           </Card>
 
@@ -73,9 +73,9 @@ const Basics = () => {
               </CardTitle>
             </CardHeader>
             <CardContent>
-              <div className="text-muted-foreground text-center leading-relaxed">
+              <p className="text-muted-foreground text-center leading-relaxed">
                 You can start by learning more, getting a wallet app, and buying your first small amount from a reputable exchange.
-              </div>
+              </p>
             </CardContent>
           </Card>
         </div>
