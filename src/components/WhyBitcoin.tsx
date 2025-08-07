@@ -30,9 +30,7 @@ const WhyBitcoin = () => {
               <h3 className="text-2xl font-bold mb-4 text-foreground group-hover:text-primary transition-colors duration-300">
                 Quality Over Quantity
               </h3>
-              <p className="text-muted-foreground leading-relaxed mb-4">
-                Our educational resources are carefully curated—no affiliate links, no hidden agendas, just the best content we can find. We update this collection constantly because understanding Bitcoin means understanding the future of human coordination.
-              </p>
+              <p className="text-muted-foreground leading-relaxed mb-4">Our educational resources are carefully curated, no affiliate links, no hidden agendas, just the best content we can find. We update this collection constantly because understanding Bitcoin means understanding the future of human coordination.</p>
               <p className="text-muted-foreground leading-relaxed">
                 Every book, podcast, and article is selected purely for its quality and insight. This knowledge belongs to everyone.
               </p>
@@ -48,9 +46,7 @@ const WhyBitcoin = () => {
             <p className="text-lg text-muted-foreground max-w-3xl mb-6">
               Every great transformation starts with understanding. As more people grasp these principles, we move closer to a world where patient capital builds lasting value, where innovation serves humanity's long-term flourishing, and where financial sovereignty empowers individuals to think beyond survival.
             </p>
-            <p className="text-lg text-muted-foreground max-w-3xl mb-8">
-              This transition isn't just about money—it's about reclaiming our ability to build for the future, to invest in ideas that matter, and to create a legacy worth leaving.
-            </p>
+            <p className="text-lg text-muted-foreground max-w-3xl mb-8">This transition isn't just about money - it's about reclaiming our ability to build for the future, to invest in ideas that matter, and to create a legacy worth leaving.</p>
             <p className="text-sm text-muted-foreground/70">
               This is a volunteer effort. <a href="#donate" className="text-primary hover:underline">Support appreciated</a> but never required.
             </p>
