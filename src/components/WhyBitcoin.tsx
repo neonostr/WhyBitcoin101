@@ -4,10 +4,10 @@ const WhyBitcoin = () => {
       <div className="container mx-auto">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold mb-6 text-foreground">
-            What's Next?
+            Building Tomorrow Together
           </h2>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            Imagine a society built on low time preference—where long-term thinking guides our decisions and sound money enables sustainable prosperity for generations.
+          <p className="text-xl text-muted-foreground max-w-4xl mx-auto">
+            Imagine a world where sound money enables humanity to think beyond quarterly profits and election cycles. Where low time preference becomes the foundation for sustainable innovation, genuine prosperity, and decisions that benefit our children's children.
           </p>
         </div>
         
@@ -16,10 +16,13 @@ const WhyBitcoin = () => {
             <div className="absolute inset-0 bg-gradient-to-br from-primary to-bitcoin-orange opacity-0 group-hover:opacity-5 transition-opacity duration-300"></div>
             <div className="relative z-10">
               <h3 className="text-2xl font-bold mb-4 text-foreground group-hover:text-primary transition-colors duration-300">
-                Educational Resources
+                A Society Worth Building
               </h3>
+              <p className="text-muted-foreground leading-relaxed mb-4">
+                When money holds its value across time, people naturally start planning for decades, not months. Cities are built to last centuries. Companies invest in research that might take years to bear fruit. Education focuses on wisdom, not just skills for the next job cycle.
+              </p>
               <p className="text-muted-foreground leading-relaxed">
-                Explore our curated collection of educational content—always up to date with the best resources available. Quality-selected, no referral links, just pure learning.
+                This isn't utopian thinking—it's how humanity operated for most of history before inflationary money shortened our collective attention span.
               </p>
             </div>
           </div>
@@ -28,10 +31,13 @@ const WhyBitcoin = () => {
             <div className="absolute inset-0 bg-gradient-to-br from-bitcoin-orange to-accent opacity-0 group-hover:opacity-5 transition-opacity duration-300"></div>
             <div className="relative z-10">
               <h3 className="text-2xl font-bold mb-4 text-foreground group-hover:text-primary transition-colors duration-300">
-                A Better Future
+                Quality Over Quantity
               </h3>
+              <p className="text-muted-foreground leading-relaxed mb-4">
+                Our educational resources are carefully curated—no affiliate links, no hidden agendas, just the best content we can find. We update this collection constantly because understanding Bitcoin means understanding the future of human coordination.
+              </p>
               <p className="text-muted-foreground leading-relaxed">
-                When society operates on sound money principles, we naturally develop longer-term thinking, sustainable innovation, and genuine prosperity that spans generations.
+                Every book, podcast, and article is selected purely for its quality and insight. This knowledge belongs to everyone.
               </p>
             </div>
           </div>
@@ -40,17 +46,17 @@ const WhyBitcoin = () => {
         <div className="mt-16 text-center">
           <div className="inline-block p-8 rounded-2xl bg-gradient-to-r from-primary/10 to-bitcoin-orange/10 border border-primary/20">
             <h3 className="text-2xl font-bold mb-4 text-foreground">
-              Join the Mission
+              The Path Forward
             </h3>
-            <p className="text-lg text-muted-foreground max-w-2xl mb-6">
-              This is a voluntary project—we don't earn money here, just spreading knowledge. Feel free to explore our educational content and if you'd like to support our mission, donations are welcome.
+            <p className="text-lg text-muted-foreground max-w-3xl mb-6">
+              Every great transformation starts with understanding. As more people grasp these principles, we move closer to a world where patient capital builds lasting value, where innovation serves humanity's long-term flourishing, and where financial sovereignty empowers individuals to think beyond survival.
             </p>
-            <a 
-              href="#donate" 
-              className="inline-flex items-center justify-center px-6 py-3 rounded-lg bg-primary text-primary-foreground hover:bg-primary/90 transition-colors font-medium"
-            >
-              Support Our Mission
-            </a>
+            <p className="text-lg text-muted-foreground max-w-3xl mb-8">
+              This transition isn't just about money—it's about reclaiming our ability to build for the future, to invest in ideas that matter, and to create a legacy worth leaving.
+            </p>
+            <p className="text-sm text-muted-foreground/70">
+              This is a volunteer effort. <a href="#donate" className="text-primary hover:underline">Support appreciated</a> but never required.
+            </p>
           </div>
         </div>
       </div>
