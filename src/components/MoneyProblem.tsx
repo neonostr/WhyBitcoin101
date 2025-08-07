@@ -15,7 +15,9 @@ const MoneyProblem = () => {
             <h3 className="text-2xl font-bold mb-6 text-foreground">
               What Money Should Be
             </h3>
-            <p className="text-lg text-muted-foreground leading-relaxed mb-6">Money is fundamentally a tool to store human energy and time. When you work, you expend your life energy - your time, effort, and skills. Money should allow you to store this energy for future use, so you can later exchange it for things that improve your life: a car, a holiday trip, a home, or simply peace of mind.</p>
+            <p className="text-lg text-muted-foreground leading-relaxed mb-6">
+              Money is fundamentally a tool to store human energy and time. When you work, you expend your life energy—your time, effort, and skills. Money should allow you to store this energy for future use, so you can later exchange it for things that improve your life: a car, a holiday trip, a home, or simply peace of mind.
+            </p>
             <p className="text-lg text-muted-foreground leading-relaxed">
               Good money should reliably preserve the value of your work across time. If you work hard today and save money, that money should retain its purchasing power so you can access the same value months or years later when you need it.
             </p>
@@ -24,7 +26,9 @@ const MoneyProblem = () => {
             <h3 className="text-2xl font-bold mb-6 text-foreground">
               Money Is Broken
             </h3>
-            <p className="text-lg text-muted-foreground leading-relaxed mb-6">Our money is so fundamentally broken that people can no longer use it as a store of value. Instead, society has been forced to turn to real estate, stocks, and other assets as savings vehicles - roles that should naturally belong to money itself.</p>
+            <p className="text-lg text-muted-foreground leading-relaxed mb-6">
+              Our money is so fundamentally broken that people can no longer use it as a store of value. Instead, society has been forced to turn to real estate, stocks, and other assets as savings vehicles—roles that should naturally belong to money itself.
+            </p>
             <p className="text-lg text-muted-foreground leading-relaxed">
               This distortion has created massive problems: skyrocketing housing costs, inflated asset bubbles, and a world where basic necessities like homes have become unaffordable investments rather than places to live.
             </p>
@@ -54,7 +58,7 @@ const MoneyProblem = () => {
                 Bitcoin Was Born From This Crisis
               </h3>
               <p className="text-lg text-muted-foreground max-w-2xl leading-relaxed">
-                In 2008, as the financial system collapsed and banks got bailed out while ordinary people lost their homes, an anonymous creator released Bitcoin—a new form of money that no government or bank could control, inflate, or manipulate. A money system designed to serve people, not politicians.
+                In 2008, as the financial system collapsed and banks got bailed out while ordinary people lost their homes, an anonymous creator released Bitcoin - a new form of money that no government or bank could control, inflate, or manipulate. A money system designed to serve people, not politicians.
               </p>
             </div>
           </div>
