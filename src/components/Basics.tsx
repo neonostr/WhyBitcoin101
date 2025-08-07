@@ -65,7 +65,7 @@ const Basics = () => {
               <CardTitle className="text-xl text-foreground group-hover:text-primary transition-colors duration-300">Bitcoin is for Everyone</CardTitle>
             </CardHeader>
             <CardContent>
-              <p className="text-muted-foreground text-center leading-relaxed">Just as one U.S. Dollar equals 100 cents, one Bitcoin equals 100 million satoshis. This divisibility means you can get involved with Bitcoin starting with any amount – even $1.</p>
+              <p className="text-muted-foreground text-center leading-relaxed">Just as one U.S. Dollar equals 100 cents, one Bitcoin equals 100 million satoshis. This divisibility means you can get involved with Bitcoin starting with any amount - even $1.</p>
             </CardContent>
           </Card>
         </div>
