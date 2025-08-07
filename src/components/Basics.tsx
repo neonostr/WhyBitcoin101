@@ -37,9 +37,7 @@ const Basics = () => {
               </CardTitle>
             </CardHeader>
             <CardContent>
-              <p className="text-muted-foreground text-center leading-relaxed">
-                Bitcoin uses blockchain technology - a public ledger that records all transactions. Think of it as a transparent, tamper-proof record book.
-              </p>
+              <p className="text-muted-foreground text-center leading-relaxed">Bitcoin uses a digital record book, publicly available to everyone, that keeps track of all Bitcoin transactions. This record book, called a blockchain, is incredibly secure because it's copied and shared across many computers, making it very difficult to tamper with or change.</p>
             </CardContent>
           </Card>
 
