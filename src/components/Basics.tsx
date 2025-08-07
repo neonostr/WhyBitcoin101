@@ -37,7 +37,9 @@ const Basics = () => {
               </CardTitle>
             </CardHeader>
             <CardContent>
-              <p className="text-muted-foreground text-center leading-relaxed">Bitcoin securely records all transactions in a public record book distributed globally. A unique system ensures the record can't be altered, eliminating the need for banks or other intermediaries.</p>
+              <p className="text-muted-foreground text-center leading-relaxed">
+                Bitcoin uses blockchain technology - a public ledger that records all transactions. Think of it as a transparent, tamper-proof record book.
+              </p>
             </CardContent>
           </Card>
 
@@ -52,7 +54,7 @@ const Basics = () => {
             </CardHeader>
             <CardContent>
               <p className="text-muted-foreground text-center leading-relaxed">
-                Unlike traditional money, Bitcoin is decentralized, scarce (only 21 million will ever exist), and gives you complete control over your money.
+                Built by the people, free from control, Bitcoin is the world’s most scarce asset. Limited to 21 million, it’s designed to be perfect money - a secure store of your time and energy.
               </p>
             </CardContent>
           </Card>
