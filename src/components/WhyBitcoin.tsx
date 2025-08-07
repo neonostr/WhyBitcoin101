@@ -1,6 +1,5 @@
 const WhyBitcoin = () => {
-  return (
-    <section id="why-bitcoin" className="py-20 px-4 bg-gradient-to-b from-background to-secondary/20">
+  return <section id="why-bitcoin" className="py-20 px-4 bg-gradient-to-b from-background to-secondary/20">
       <div className="container mx-auto">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold mb-6 text-foreground">
@@ -21,9 +20,7 @@ const WhyBitcoin = () => {
               <p className="text-muted-foreground leading-relaxed mb-4">
                 When money holds its value across time, people naturally start planning for decades, not months. Cities are built to last centuries. Companies invest in research that might take years to bear fruit. Education focuses on wisdom, not just skills for the next job cycle.
               </p>
-              <p className="text-muted-foreground leading-relaxed">
-                This isn't utopian thinking—it's how humanity operated for most of history before inflationary money shortened our collective attention span.
-              </p>
+              <p className="text-muted-foreground leading-relaxed">This isn't utopian thinking - it's how humanity operated for most of history before inflationary money shortened our collective attention span.</p>
             </div>
           </div>
           
@@ -60,8 +57,6 @@ const WhyBitcoin = () => {
           </div>
         </div>
       </div>
-    </section>
-  );
+    </section>;
 };
-
 export default WhyBitcoin;
