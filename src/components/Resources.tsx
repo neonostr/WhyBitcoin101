@@ -13,16 +13,22 @@ const Resources = () => {
   // Video resources
   const videos = [
     {
-      title: "Bitcoin Explained Simply",
-      description: "A beginner-friendly explanation of what Bitcoin is and how it works.",
+      title: "Bitcoin Not Crypto",
+      description: "Bitcoin: Learn why nothing else compares.",
       type: "Beginner",
-      url: "https://www.youtube.com/watch?v=41JCpzvnn_0" // Example URL
+      url: "https://youtu.be/Q9athzFaFfc?t=83" 
     },
     {
-      title: "The Stories We Tell About Money",
-      description: "Andreas Antonopoulos on the nature of money and Bitcoin.",
-      type: "Philosophy",
-      url: "https://www.youtube.com/watch?v=ONvg9SbauMg" // Example URL
+      title: "Why do we need Bitcoin?",
+      description: "This is going to change the way you understand money forever.",
+      type: "Beginner",
+      url: "https://www.youtube.com/watch?v=Pef22g53zsg" 
+    },
+    {
+      title: "Am I Too Late To Bitcoin?",
+      description: "Find out if you are too late to buy Bitcoin",
+      type: "Beginner",
+      url: "https://www.youtubetrimmer.com/view/?v=5893JBg7r9k&start=773&end=1000&loop=0" 
     }
   ];
 
