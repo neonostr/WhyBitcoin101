@@ -29,6 +29,12 @@ const Resources = () => {
       description: "Find out if you are too late to buy Bitcoin",
       type: "Beginner",
       url: "https://www.youtubetrimmer.com/view/?v=5893JBg7r9k&start=773&end=1000&loop=0" 
+    },
+    {
+      title: "Should I Diversify?",
+      description: "Find out if you should diversify.",
+      type: "Beginner",
+      url: "https://www.youtube.com/watch?v=kunaljk_Psc" 
     }
   ];
 
