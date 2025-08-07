@@ -24,9 +24,7 @@ const MoneyProblem = () => {
             <h3 className="text-2xl font-bold mb-6 text-foreground">
               Money Is Broken
             </h3>
-            <p className="text-lg text-muted-foreground leading-relaxed mb-6">
-              Our money is so fundamentally broken that people can no longer use it as a store of value. Instead, society has been forced to turn to real estate, stocks, and other assets as savings vehicles—roles that should naturally belong to money itself.
-            </p>
+            <p className="text-lg text-muted-foreground leading-relaxed mb-6">Our money is so fundamentally broken that people can no longer use it as a store of value. Instead, society has been forced to turn to real estate, stocks, and other assets as savings vehicles - roles that should naturally belong to money itself.</p>
             <p className="text-lg text-muted-foreground leading-relaxed">
               This distortion has created massive problems: skyrocketing housing costs, inflated asset bubbles, and a world where basic necessities like homes have become unaffordable investments rather than places to live.
             </p>
