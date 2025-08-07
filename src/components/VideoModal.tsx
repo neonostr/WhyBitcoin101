@@ -8,17 +8,30 @@ interface VideoModalProps {
 }
 
 const VideoModal = ({ isOpen, onClose, title, videoUrl }: VideoModalProps) => {
-  // Convert YouTube URLs to embed format with autoplay
+  // Convert YouTube URLs to embed format with autoplay and timestamp
   const getEmbedUrl = (url: string) => {
+    let embedUrl = "";
+    let timestamp = "";
+    
+    // Extract timestamp if present
+    if (url.includes("t=")) {
+      const timeMatch = url.match(/[?&]t=(\d+)/);
+      if (timeMatch) {
+        timestamp = `&start=${timeMatch[1]}`;
+      }
+    }
+    
     if (url.includes("youtube.com/watch?v=")) {
       const videoId = url.split("v=")[1]?.split("&")[0];
-      return `https://www.youtube.com/embed/${videoId}?autoplay=1`;
-    }
-    if (url.includes("youtu.be/")) {
+      embedUrl = `https://www.youtube.com/embed/${videoId}?autoplay=1${timestamp}`;
+    } else if (url.includes("youtu.be/")) {
       const videoId = url.split("youtu.be/")[1]?.split("?")[0];
-      return `https://www.youtube.com/embed/${videoId}?autoplay=1`;
+      embedUrl = `https://www.youtube.com/embed/${videoId}?autoplay=1${timestamp}`;
+    } else {
+      embedUrl = url; // Return as-is for other embed URLs
     }
-    return url; // Return as-is for other embed URLs
+    
+    return embedUrl;
   };
 
   return (
