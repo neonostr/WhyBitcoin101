@@ -52,7 +52,7 @@ const Basics = () => {
             </CardHeader>
             <CardContent>
               <p className="text-muted-foreground text-center leading-relaxed">
-                Unlike traditional money, Bitcoin is decentralized, scarce (only 21 million will ever exist), and gives you complete control over your money.
+                Built by the people, free from control, Bitcoin is the world’s most scarce asset. Limited to 21 million, it’s designed to be perfect money - a secure store of your time and energy.
               </p>
             </CardContent>
           </Card>
