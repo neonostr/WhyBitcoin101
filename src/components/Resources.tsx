@@ -2,201 +2,169 @@ import { useState } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import VideoModal from "./VideoModal";
-
 const Resources = () => {
-  const [videoModal, setVideoModal] = useState<{ isOpen: boolean; title: string; url: string }>({
+  const [videoModal, setVideoModal] = useState<{
+    isOpen: boolean;
+    title: string;
+    url: string;
+  }>({
     isOpen: false,
     title: "",
     url: ""
   });
 
   // Video resources
-  const videos = [
-    {
-      title: "Bitcoin Not Crypto",
-      description: "Bitcoin: Learn why nothing else compares.",
-      type: "Beginner",
-      url: "https://youtu.be/Q9athzFaFfc?t=83" 
-    },
-    {
-      title: "Why do we need Bitcoin?",
-      description: "This is going to change the way you understand money forever.",
-      type: "Beginner",
-      url: "https://www.youtube.com/watch?v=Pef22g53zsg" 
-    },
-    {
-      title: "Am I Too Late To Bitcoin?",
-      description: "Find out if you are too late to buy Bitcoin",
-      type: "Beginner",
-      url: "https://www.youtubetrimmer.com/view/?v=5893JBg7r9k&start=773&end=1000&loop=0" 
-    },
-    {
-      title: "Should I Diversify?",
-      description: "Find out if you should diversify.",
-      type: "Beginner",
-      url: "https://www.youtube.com/watch?v=kunaljk_Psc" 
-    }
-  ];
+  const videos = [{
+    title: "Bitcoin Not Crypto",
+    description: "Bitcoin: Learn why nothing else compares.",
+    type: "Beginner",
+    url: "https://youtu.be/Q9athzFaFfc?t=83"
+  }, {
+    title: "Why do we need Bitcoin?",
+    description: "This is going to change the way you understand money forever.",
+    type: "Beginner",
+    url: "https://www.youtube.com/watch?v=Pef22g53zsg"
+  }, {
+    title: "Am I Too Late To Bitcoin?",
+    description: "Find out if you are too late to buy Bitcoin",
+    type: "Beginner",
+    url: "https://www.youtubetrimmer.com/view/?v=5893JBg7r9k&start=773&end=1000&loop=0"
+  }, {
+    title: "Should I Diversify?",
+    description: "Find out if you should diversify.",
+    type: "Beginner",
+    url: "https://www.youtube.com/watch?v=kunaljk_Psc"
+  }];
 
   // Articles & Essays
-  const articles = [
-    {
-      title: "The Bitcoin Standard (Essay)",
-      author: "Saifedean Ammous",
-      description: "Core principles of sound money and Bitcoin's role.",
-      type: "Economics",
-      url: "https://example.com/bitcoin-standard-essay"
-    },
-    {
-      title: "Why Bitcoin Matters",
-      author: "Marc Andreessen",
-      description: "A venture capitalist's perspective on Bitcoin's importance.",
-      type: "Technology",
-      url: "https://example.com/why-bitcoin-matters"
-    }
-  ];
+  const articles = [{
+    title: "The Bitcoin Standard (Essay)",
+    author: "Saifedean Ammous",
+    description: "Core principles of sound money and Bitcoin's role.",
+    type: "Economics",
+    url: "https://example.com/bitcoin-standard-essay"
+  }, {
+    title: "Why Bitcoin Matters",
+    author: "Marc Andreessen",
+    description: "A venture capitalist's perspective on Bitcoin's importance.",
+    type: "Technology",
+    url: "https://example.com/why-bitcoin-matters"
+  }];
 
   // Books
-  const books = [
-    {
-      title: "The Fiat Standard",
-      author: "Saifedean Ammous",
-      description: "Understand the technology behind the current analog global monetary system.",
-      type: "Essential Reading",
-      url: "https://saifedean.com/tfs"
-    },
-    {
-      title: "The Bitcoin Standard",
-      author: "Saifedean Ammous",
-      description: "A comprehensive and authoritative exploration of Bitcoin and its place in monetary history.",
-      type: "Essential Reading",
-      url: "https://saifedean.com/tbs"
-    },
-    {
-      title: "The Bullish Case for Bitcoin",
-      author: "Vijay Boyapati",
-      description: "A compelling argument for Bitcoin as a store of value.",
-      type: "Investment Perspective",
-      url: "https://example.com/bullish-case"
-    }
-  ];
+  const books = [{
+    title: "The Fiat Standard",
+    author: "Saifedean Ammous",
+    description: "Understand the technology behind the current analog global monetary system.",
+    type: "Essential Reading",
+    url: "https://saifedean.com/tfs"
+  }, {
+    title: "The Bitcoin Standard",
+    author: "Saifedean Ammous",
+    description: "A comprehensive and authoritative exploration of Bitcoin and its place in monetary history.",
+    type: "Essential Reading",
+    url: "https://saifedean.com/tbs"
+  }, {
+    title: "The Bullish Case for Bitcoin",
+    author: "Vijay Boyapati",
+    description: "A compelling argument for Bitcoin as a store of value.",
+    type: "Investment Perspective",
+    url: "https://example.com/bullish-case"
+  }];
 
   // Podcasts
-  const podcasts = [
-    {
-      title: "What Bitcoin Did",
-      host: "Peter McCormack",
-      description: "Interviews with Bitcoin experts and industry leaders.",
-      type: "Interview",
-      url: "https://example.com/what-bitcoin-did"
-    },
-    {
-      title: "The Bitcoin Podcast",
-      host: "Various Hosts",
-      description: "Deep dives into Bitcoin technology and economics.",
-      type: "Technical",
-      url: "https://example.com/bitcoin-podcast"
-    }
-  ];
+  const podcasts = [{
+    title: "What Bitcoin Did",
+    host: "Peter McCormack",
+    description: "Interviews with Bitcoin experts and industry leaders.",
+    type: "Interview",
+    url: "https://example.com/what-bitcoin-did"
+  }, {
+    title: "The Bitcoin Podcast",
+    host: "Various Hosts",
+    description: "Deep dives into Bitcoin technology and economics.",
+    type: "Technical",
+    url: "https://example.com/bitcoin-podcast"
+  }];
 
   // Mobile Wallets
-  const mobileWallets = [
-    {
-      title: "Blue Wallet",
-      description: "User-friendly Bitcoin wallet with Lightning support.",
-      type: "Lightning",
-      url: "https://bluewallet.io"
-    },
-    {
-      title: "Phoenix",
-      description: "Self-custodial Lightning wallet by ACINQ.",
-      type: "Lightning",
-      url: "https://phoenix.acinq.co"
-    }
-  ];
+  const mobileWallets = [{
+    title: "Blue Wallet",
+    description: "User-friendly Bitcoin wallet with Lightning support.",
+    type: "Lightning",
+    url: "https://bluewallet.io"
+  }, {
+    title: "Phoenix",
+    description: "Self-custodial Lightning wallet by ACINQ.",
+    type: "Lightning",
+    url: "https://phoenix.acinq.co"
+  }];
 
   // Hardware Wallets
-  const hardwareWallets = [
-    {
-      title: "Coldcard",
-      description: "Bitcoin-only hardware wallet focused on security.",
-      type: "Bitcoin-only",
-      url: "https://coldcard.com"
-    },
-    {
-      title: "Trezor",
-      description: "Pioneer in hardware wallet technology.",
-      type: "Multi-coin",
-      url: "https://trezor.io"
-    }
-  ];
+  const hardwareWallets = [{
+    title: "Coldcard",
+    description: "Bitcoin-only hardware wallet focused on security.",
+    type: "Bitcoin-only",
+    url: "https://coldcard.com"
+  }, {
+    title: "Trezor",
+    description: "Pioneer in hardware wallet technology.",
+    type: "Multi-coin",
+    url: "https://trezor.io"
+  }];
 
   // Exchanges
-  const exchanges = [
-    {
-      title: "Swan Bitcoin",
-      description: "Bitcoin-only exchange focused on dollar-cost averaging.",
-      type: "Bitcoin-only",
-      url: "https://swanbitcoin.com"
-    },
-    {
-      title: "River",
-      description: "Professional Bitcoin exchange with educational resources.",
-      type: "Bitcoin-only",
-      url: "https://river.com"
-    }
-  ];
+  const exchanges = [{
+    title: "Swan Bitcoin",
+    description: "Bitcoin-only exchange focused on dollar-cost averaging.",
+    type: "Bitcoin-only",
+    url: "https://swanbitcoin.com"
+  }, {
+    title: "River",
+    description: "Professional Bitcoin exchange with educational resources.",
+    type: "Bitcoin-only",
+    url: "https://river.com"
+  }];
 
   // Living On Bitcoin
-  const livingOnBitcoin = [
-    {
-      title: "Bitcoin Beach",
-      description: "How El Salvador's Bitcoin Beach became a circular economy.",
-      type: "Case Study",
-      url: "https://example.com/bitcoin-beach"
-    },
-    {
-      title: "Bitcoin Accepted Here Map",
-      description: "Find businesses that accept Bitcoin near you.",
-      type: "Directory",
-      url: "https://coinmap.org"
-    }
-  ];
+  const livingOnBitcoin = [{
+    title: "Bitcoin Beach",
+    description: "How El Salvador's Bitcoin Beach became a circular economy.",
+    type: "Case Study",
+    url: "https://example.com/bitcoin-beach"
+  }, {
+    title: "Bitcoin Accepted Here Map",
+    description: "Find businesses that accept Bitcoin near you.",
+    type: "Directory",
+    url: "https://coinmap.org"
+  }];
 
   // Fun Stuff
-  const funStuff = [
-    {
-      title: "Bitcoin Pizza Day",
-      description: "The story of the first Bitcoin transaction for physical goods.",
-      type: "History",
-      url: "https://example.com/pizza-day"
-    },
-    {
-      title: "Bitcoin Memes",
-      description: "The best Bitcoin memes and culture.",
-      type: "Culture",
-      url: "https://example.com/bitcoin-memes"
-    }
-  ];
-
+  const funStuff = [{
+    title: "Bitcoin Pizza Day",
+    description: "The story of the first Bitcoin transaction for physical goods.",
+    type: "History",
+    url: "https://example.com/pizza-day"
+  }, {
+    title: "Bitcoin Memes",
+    description: "The best Bitcoin memes and culture.",
+    type: "Culture",
+    url: "https://example.com/bitcoin-memes"
+  }];
   const handleVideoClick = (title: string, url: string) => {
-    setVideoModal({ isOpen: true, title, url });
+    setVideoModal({
+      isOpen: true,
+      title,
+      url
+    });
   };
-
   const handleLinkClick = (url: string) => {
     window.open(url, '_blank');
   };
-
-  const renderSection = (title: string, emoji: string, items: any[], isVideo = false) => (
-    <div className="mb-16">
+  const renderSection = (title: string, emoji: string, items: any[], isVideo = false) => <div className="mb-16">
       <h3 className="text-3xl font-bold text-center mb-10 text-foreground">{emoji} {title}</h3>
       <div className="grid md:grid-cols-3 gap-6">
-        {items.map((item, index) => (
-          <Card 
-            key={index} 
-            className="group hover:shadow-[var(--card-hover)] transition-all duration-300 cursor-pointer"
-            onClick={() => isVideo ? handleVideoClick(item.title, item.url) : handleLinkClick(item.url)}
-          >
+        {items.map((item, index) => <Card key={index} className="group hover:shadow-[var(--card-hover)] transition-all duration-300 cursor-pointer" onClick={() => isVideo ? handleVideoClick(item.title, item.url) : handleLinkClick(item.url)}>
             <CardHeader>
               <div className="flex justify-between items-start mb-2">
                 <CardTitle className="text-lg group-hover:text-primary transition-colors duration-300">
@@ -206,33 +174,23 @@ const Resources = () => {
                   {item.type}
                 </span>
               </div>
-              {item.author && (
-                <p className="text-sm text-muted-foreground">by {item.author}</p>
-              )}
-              {item.host && (
-                <p className="text-sm text-muted-foreground">Hosted by {item.host}</p>
-              )}
+              {item.author && <p className="text-sm text-muted-foreground">by {item.author}</p>}
+              {item.host && <p className="text-sm text-muted-foreground">Hosted by {item.host}</p>}
             </CardHeader>
             <CardContent>
               <p className="text-muted-foreground">{item.description}</p>
             </CardContent>
-          </Card>
-        ))}
+          </Card>)}
       </div>
-    </div>
-  );
-
-  return (
-    <>
+    </div>;
+  return <>
       <section id="resources" className="py-20 px-4 bg-background">
         <div className="container mx-auto">
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-bold mb-6 text-foreground">
               Dive Deeper
             </h2>
-            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              Ready to learn more? These carefully curated resources will take you from curious beginner to informed enthusiast.
-            </p>
+            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">These resources offer a path to a deeper understanding of money, society, and the economy.</p>
           </div>
 
           {renderSection("Videos", "🎥", videos, true)}
@@ -251,10 +209,9 @@ const Resources = () => {
               <p className="text-muted-foreground mb-6 max-w-md">
                 Take your time exploring these resources. Bitcoin is a marathon, not a sprint.
               </p>
-              <Button 
-                className="bg-primary hover:bg-primary/90 text-primary-foreground"
-                onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
-              >
+              <Button className="bg-primary hover:bg-primary/90 text-primary-foreground" onClick={() => document.getElementById('contact')?.scrollIntoView({
+              behavior: 'smooth'
+            })}>
                 Have Questions? Get in Touch
               </Button>
             </div>
@@ -262,14 +219,11 @@ const Resources = () => {
         </div>
       </section>
 
-      <VideoModal
-        isOpen={videoModal.isOpen}
-        onClose={() => setVideoModal({ isOpen: false, title: "", url: "" })}
-        title={videoModal.title}
-        videoUrl={videoModal.url}
-      />
-    </>
-  );
+      <VideoModal isOpen={videoModal.isOpen} onClose={() => setVideoModal({
+      isOpen: false,
+      title: "",
+      url: ""
+    })} title={videoModal.title} videoUrl={videoModal.url} />
+    </>;
 };
-
 export default Resources;
