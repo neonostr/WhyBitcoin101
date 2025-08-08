@@ -35,7 +35,17 @@ const Resources = () => {
       description: "Find out if you should diversify.",
       type: "Beginner",
       url: "https://www.youtube.com/watch?v=kunaljk_Psc" 
+    },
+    {
+      title: "The Federal Reserve",
+      description: "Private Central Bank. Not Federal. No Reserves.",
+      type: "Beginner",
+      url: "    https://cascdr-chads-stay-winning.nyc3.digitaloceanspaces.com/jamie-pro/226249/uploads/1754431069365-4w6Uyc1zns7g_0vF.mp4
+" 
     }
+
+
+
   ];
 
   // Articles & Essays
