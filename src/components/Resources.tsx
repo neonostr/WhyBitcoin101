@@ -189,7 +189,7 @@ const Resources = () => {
   },
     {
     title: "Opportunity Costs",
-    description: "Convert prices to Bitcoin as you browse the web.Opportunity Cost automatically displays fiat prices in BTC or sats, helping you think in a Bitcoin standard.",
+    description: "Convert prices to Bitcoin as you browse the web. Opportunity Cost automatically displays fiat prices in BTC or sats, helping you think in a Bitcoin standard.",
     type: "Tool",
     url: "https://www.opportunitycost.app"
   },
