@@ -52,7 +52,7 @@ const Resources = () => {
     {
       title: "21 Lessons",
       author: "Gigi",
-      description: "A persoal journey of discovering bitcoin",
+      description: "A personal journey of discovering bitcoin",
       type: "Essay",
       url: "https://21lessons.com"
     },
@@ -112,32 +112,47 @@ const Resources = () => {
   const mobileWallets = [
     {
       title: "Muun Wallet",
-      description: "User-friendly Bitcoin wallet with Lightning support.",
+      description: "A wallet app that lets you send and receive bitcoin and lightning payments with low fees and high security.",
       type: "iOS/Android",
       url: "https://muun.com/"
     },
     {
-      title: "Phoenix",
-      description: "Self-custodial Lightning wallet by ACINQ.",
-      type: "Lightning",
-      url: "https://phoenix.acinq.co"
+      title: "Blue Wallet",
+      description: "Bitcoin wallet and Lightning wallet for iOS and Android focus on security and UX.",
+      type: "iOS/Android",
+      url: "https://bluewallet.io"
+    },
+        {
+      title: "Nunchuck Wallet",
+      description: "Nunchuk is a Bitcoin wallet that offers state-of-the-art security, inheritance planning, and privacy. All in one package.",
+      type: "iOS/Android",
+      url: "https://nunchuk.io"
     }
+
+
   ];
 
   // Hardware Wallets
   const hardwareWallets = [
     {
       title: "Coldcard",
-      description: "Bitcoin-only hardware wallet focused on security.",
-      type: "Bitcoin-only",
+      description: "COLDCARD is a hardware wallet that stores your Bitcoin seed words in dual secure elements and avoids being connected to a computer. It supports PSBT, NFC, QR scanner, trick PIN and other features for maximum security and usability.",
+      type: "Wallet",
       url: "https://coldcard.com"
     },
     {
-      title: "Trezor",
-      description: "Pioneer in hardware wallet technology.",
-      type: "Multi-coin",
-      url: "https://trezor.io"
+      title: "Foundation",
+      description: "Self custody is finally attainable. Secure your Bitcoin with an unprecedented combination of elegance and ease of use.",
+      type: "Wallet",
+      url: "https://foundation.xyz"
+    },
+    {
+      title: "Bitkey",
+      description: "A bitcoin wallet to own your private keys. Bitkey includes an app, hardware wallet, and recovery tools in case you lose your phone, or hardware, or both.",
+      type: "Wallet",
+      url: "https://bitkey.world"
     }
+    
   ];
 
   // Exchanges
@@ -157,7 +172,7 @@ const Resources = () => {
     {
       title: "Bitcoin Well",
       description: "Buy Bitcoin directly into your wallet",
-      type: "CA",
+      type: "CANADA",
       url: "https://bitcoinwell.com/buy-bitcoin"
     },
     {
@@ -171,33 +186,48 @@ const Resources = () => {
   // Living On Bitcoin
   const livingOnBitcoin = [
     {
-      title: "Bitcoin Beach",
-      description: "How El Salvador's Bitcoin Beach became a circular economy.",
-      type: "Case Study",
-      url: "https://example.com/bitcoin-beach"
+      title: "BTC Map",
+      description: "Find businesses that accept Bitcoin near you.",
+      type: "Map",
+      url: "https://btcmap.org/"
     },
     {
-      title: "Bitcoin Accepted Here Map",
-      description: "Find businesses that accept Bitcoin near you.",
+      title: "Bitcoin Directory",
+      description: "Find online shop and local businesses that accept Bitcoin",
       type: "Directory",
-      url: "https://coinmap.org"
+      url: "https://bitcoinlistings.org/"
+    },
+    {
+      title: "Bitrefill",
+      description: "Bitrefill is a website that allows you to buy gift cards, phone refills, eSIMs, and gaming products with Bitcoin",
+      type: "Gift Cards",
+      url: "https://www.bitrefill.com"
     }
+
+
   ];
 
   // Fun Stuff
   const funStuff = [
     {
-      title: "Bitcoin Pizza Day",
-      description: "The story of the first Bitcoin transaction for physical goods.",
-      type: "History",
-      url: "https://example.com/pizza-day"
+      title: "Lightning Cats",
+      description: "Do you want to feed cats using the Bitcoin Lightning Network? Here you can do it! Visit us and experience it for yourself!",
+      type: "Cats",
+      url: "https://lightningcats.io/"
     },
     {
-      title: "Bitcoin Memes",
-      description: "The best Bitcoin memes and culture.",
-      type: "Culture",
-      url: "https://example.com/bitcoin-memes"
+      title: "Lightning Goats",
+      description: "The Lightning Goats bitcoin-powered interactive goat feeder is open for business. Send treats using the QR code, zap the herd on Nostr, or send sats to lightning:herd@lightning-goats.com.",
+      type: "Goats",
+      url: "https://lightning-goats.com/"
+    },
+    {
+      title: "Lightning Goats",
+      description: "The Lightning Goats bitcoin-powered interactive goat feeder is open for business. Send treats using the QR code, zap the herd on Nostr, or send sats to lightning:herd@lightning-goats.com.",
+      type: "Goats",
+      url: "https://lightning-goats.com/"
     }
+    
   ];
 
   const handleVideoClick = (title: string, url: string) => {
