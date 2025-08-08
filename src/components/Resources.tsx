@@ -41,8 +41,13 @@ const Resources = () => {
       description: "Private Central Bank. Not Federal. No Reserves.",
       type: "Central Banking",
       url: "https://cascdr-chads-stay-winning.nyc3.digitaloceanspaces.com/jamie-pro/226249/uploads/1754431069365-4w6Uyc1zns7g_0vF.mp4"
+    },
+    {
+      title: "Inflation",
+      description: "How inflation affects society.",
+      type: "Inflation",
+      url: "https://www.youtubetrimmer.com/view/?v=qfeMas1zU6Q&start=2327&end=2512&loop=0"
     }
-
 
 
   ];
@@ -62,7 +67,15 @@ const Resources = () => {
       description: "Some of the best essays about Bitcoin.",
       type: "Blog",
       url: "http://dergigi.com"
+    },
+    {
+      title: "Bitcoin, Freedom and Sovereignty",
+      author: "Aleksandar Svetski",
+      description: "An article on why moving into Bitcoin is not just an economic imperative, but a moral duty.",
+      type: "Article",
+      url: "https://svetski.medium.com/fiat-fascism-and-communism-d185e66733b"
     }
+
   ];
 
   // Books
