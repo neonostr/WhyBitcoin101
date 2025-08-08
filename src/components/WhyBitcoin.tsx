@@ -1,5 +1,12 @@
+import { useState } from "react";
+import DonationModal from "./DonationModal";
+
 const WhyBitcoin = () => {
-  return <section id="why-bitcoin" className="py-20 px-4 bg-gradient-to-b from-background to-secondary/20">
+  const [donationModalOpen, setDonationModalOpen] = useState(false);
+
+  return (
+    <>
+      <section id="why-bitcoin" className="py-20 px-4 bg-gradient-to-b from-background to-secondary/20">
       <div className="container mx-auto">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold mb-6 text-foreground">
@@ -48,11 +55,18 @@ const WhyBitcoin = () => {
             </p>
             <p className="text-lg text-muted-foreground max-w-3xl mb-8">This transition isn't just about money - it's about reclaiming our ability to build for the future, to invest in ideas that matter, and to create a legacy worth leaving.</p>
             <p className="text-sm text-muted-foreground/70">
-              This is a volunteer effort. <a href="#donate" className="text-primary hover:underline">Support appreciated</a> but never required.
+              This is a volunteer effort. <button onClick={() => setDonationModalOpen(true)} className="text-primary hover:underline">Support appreciated</button> but never required.
             </p>
           </div>
         </div>
       </div>
-    </section>;
+    </section>
+
+    <DonationModal 
+      isOpen={donationModalOpen} 
+      onClose={() => setDonationModalOpen(false)} 
+    />
+    </>
+  );
 };
 export default WhyBitcoin;
