@@ -202,7 +202,14 @@ const Resources = () => {
       description: "Bitrefill is a website that allows you to buy gift cards, phone refills, eSIMs, and gaming products with Bitcoin",
       type: "Gift Cards",
       url: "https://www.bitrefill.com"
+    },
+    {
+      title: "Travala",
+      description: "Book over 3 Million travel products around the world with Bitcoin. Find and book Hotels, Flights, Tours and Activities.",
+      type: "Travel",
+      url: "https://www.travala.com"
     }
+
 
 
   ];
