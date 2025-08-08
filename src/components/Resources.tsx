@@ -82,11 +82,11 @@ const Resources = () => {
       url: "https://saifedean.com/tbs"
     },
     {
-      title: "The Bullish Case for Bitcoin",
-      author: "Vijay Boyapati",
-      description: "A compelling argument for Bitcoin as a store of value.",
-      type: "Investment Perspective",
-      url: "https://example.com/bullish-case"
+      title: "Broken Money",
+      author: "Lyn Alden",
+      description: "Broken Money explores the history of money through the lens of technology. Politics can affect things temporarily and locally, but technology is what drives things forward globally and permanently.",
+      type: "Essential Reading",
+      url: "https://thesaifhouse.com/bmsample"
     }
   ];
 
