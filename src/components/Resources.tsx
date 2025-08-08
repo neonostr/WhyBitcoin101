@@ -168,22 +168,38 @@ const Resources = () => {
     description: "Find businesses that accept Bitcoin near you.",
     type: "Map",
     url: "https://btcmap.org/"
-  }, {
+  }, 
+  {
     title: "Bitcoin Directory",
     description: "Find online shop and local businesses that accept Bitcoin",
     type: "Directory",
     url: "https://bitcoinlistings.org/"
-  }, {
+  },
+  {
+    title: "Bitcoin Directory",
+    description: "A comprehensive directory of stores/apps/services that accept Bitcoin.",
+    type: "Directory",
+    url: "https://lightningnetworkstores.com/"
+  },                           
+  {
     title: "Bitrefill",
     description: "Bitrefill is a website that allows you to buy gift cards, phone refills, eSIMs, and gaming products with Bitcoin",
     type: "Gift Cards",
     url: "https://www.bitrefill.com"
-  }, {
+  },
+    {
+    title: "Opportunity Costs",
+    description: "Convert prices to Bitcoin as you browse the web.Opportunity Cost automatically displays fiat prices in BTC or sats, helping you think in a Bitcoin standard.",
+    type: "Tool",
+    url: "https://www.opportunitycost.app"
+  },
+  {
     title: "Travala",
     description: "Book over 3 Million travel products around the world with Bitcoin. Find and book Hotels, Flights, Tours and Activities.",
     type: "Travel",
     url: "https://www.travala.com"
-  }];
+  }
+      ];
 
   // Fun Stuff
   const funStuff = [{
