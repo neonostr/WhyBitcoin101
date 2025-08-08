@@ -197,10 +197,10 @@ const Resources = () => {
     type: "Goats",
     url: "https://lightning-goats.com/"
   }, {
-    title: "Lightning Goats",
-    description: "The Lightning Goats bitcoin-powered interactive goat feeder is open for business. Send treats using the QR code, zap the herd on Nostr, or send sats to lightning:herd@lightning-goats.com.",
-    type: "Goats",
-    url: "https://lightning-goats.com/"
+    title: "Lightning Sheep",
+    description: "Yes, you can also feed sheep with bitcoin ;-)",
+    type: "Sheep",
+    url: "https://www.twitch.tv/tanglesheep"
   }];
   const handleVideoClick = (title: string, url: string) => {
     setVideoModal({
