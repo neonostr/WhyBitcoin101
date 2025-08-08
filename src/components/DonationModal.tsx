@@ -84,7 +84,17 @@ const DonationModal = ({
           </div>}
       </div>
     </div>;
-  return <Dialog open={isOpen} onOpenChange={onClose}>
+  const handleClose = () => {
+    // Reset QR codes when modal closes
+    setQrCodes({
+      lightning: null,
+      onchain: null
+    });
+    setCopiedField(null);
+    onClose();
+  };
+
+  return <Dialog open={isOpen} onOpenChange={handleClose}>
       <DialogContent className="max-w-2xl max-h-[90vh] overflow-y-auto">
         <DialogHeader>
           <DialogTitle className="text-2xl font-bold text-center text-foreground">
