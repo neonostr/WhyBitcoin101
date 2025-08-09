@@ -157,7 +157,7 @@ const Resources = () => {
     url: "https://bitcoinwell.com/buy-bitcoin"
   }, {
     title: "HodlHodl",
-    description: "True peer-to-peer Bitcoin trading without intermediaries or KYC surveillance. Trade directly with other Bitcoiners worldwide using multisig escrow protection - the way Satoshi intended Bitcoin to be exchanged.",
+    description: "Global peer-to-peer Bitcoin marketplace. Trade directly with other users using multisig escrow without identity verification requirements.",
     type: "Worldwide",
     url: "https://hodlhodl.com"
   }];
