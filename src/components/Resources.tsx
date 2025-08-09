@@ -203,19 +203,19 @@ const Resources = () => {
 
   // Fun Stuff
   const funStuff = [{
-    title: "Lightning Cats",
-    description: "Do you want to feed cats using the Bitcoin Lightning Network? Here you can do it! Visit us and experience it for yourself!",
-    type: "Cats",
+    title: "Feed Real Cats with Lightning",
+    description: "Experience the magic of instant micropayments by feeding rescue cats in real-time using Bitcoin's Lightning Network. Watch them enjoy their treats as your sats arrive instantly!",
+    type: "Interactive",
     url: "https://lightningcats.io/"
   }, {
-    title: "Lightning Goats",
-    description: "The Lightning Goats bitcoin-powered interactive goat feeder is open for business. Send treats using the QR code, zap the herd on Nostr, or send sats to lightning:herd@lightning-goats.com.",
-    type: "Goats",
+    title: "Lightning-Powered Goat Farm",
+    description: "Send Bitcoin Lightning payments to feed an adorable herd of goats in real-time. Watch live streams, interact on Nostr, and see the future of peer-to-peer value transfer in action.",
+    type: "Live Stream",
     url: "https://lightning-goats.com/"
   }, {
-    title: "Lightning Sheep",
-    description: "Yes, you can also feed sheep with bitcoin ;-)",
-    type: "Sheep",
+    title: "Sheep Feeding via Sats",
+    description: "Join the live Twitch stream and use Lightning micropayments to feed friendly sheep. A delightful demonstration of how Bitcoin enables instant, borderless transactions for any purpose.",
+    type: "Twitch Stream",
     url: "https://www.twitch.tv/tanglesheep"
   }];
   const handleVideoClick = (title: string, url: string) => {
