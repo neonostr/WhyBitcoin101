@@ -123,19 +123,19 @@ const Resources = () => {
 
   // Hardware Wallets
   const hardwareWallets = [{
-    title: "Coldcard",
-    description: "COLDCARD is a hardware wallet that stores your Bitcoin seed words in dual secure elements and avoids being connected to a computer. It supports PSBT, NFC, QR scanner, trick PIN and other features for maximum security and usability.",
-    type: "Wallet",
+    title: "Coldcard - Fort Knox Security",
+    description: "The ultimate air-gapped Bitcoin security device. Features dual secure elements, NFC, QR scanning, and trick PINs. Never connects to computers, ensuring your Bitcoin stays completely offline and secure.",
+    type: "Ultra Secure",
     url: "https://coldcard.com"
   }, {
-    title: "Foundation",
-    description: "Self custody is finally attainable. Secure your Bitcoin with an unprecedented combination of elegance and ease of use.",
-    type: "Wallet",
+    title: "Foundation Passport - Elegant Security",
+    description: "Beautiful hardware security meets Bitcoin-only focus. Open-source design with camera-based airgapped transactions and an intuitive interface that makes self-custody accessible to everyone.",
+    type: "Premium Design",
     url: "https://foundation.xyz"
   }, {
-    title: "Bitkey",
-    description: "A bitcoin wallet to own your private keys. Bitkey includes an app, hardware wallet, and recovery tools in case you lose your phone, or hardware, or both.",
-    type: "Wallet",
+    title: "Bitkey - Complete Security System",
+    description: "More than just a hardware wallet - it's a complete Bitcoin security ecosystem. Includes mobile app, hardware device, and recovery services to protect against losing your phone, hardware, or both.",
+    type: "Full System",
     url: "https://bitkey.world"
   }];
 
