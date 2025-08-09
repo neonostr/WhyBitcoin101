@@ -165,37 +165,37 @@ const Resources = () => {
   // Living On Bitcoin
   const livingOnBitcoin = [{
     title: "BTC Map",
-    description: "Find businesses that accept Bitcoin near you.",
+    description: "Discover the growing Bitcoin economy around you. Interactive global map revealing thousands of Bitcoin-accepting businesses from coffee shops to car dealerships - proving Bitcoin is already money.",
     type: "Map",
     url: "https://btcmap.org/"
   }, 
   {
-    title: "Bitcoin Directory",
-    description: "Find online shop and local businesses that accept Bitcoin",
+    title: "Bitcoin Listings Directory",
+    description: "Your gateway to the Bitcoin economy. Comprehensive database of online shops and local businesses ready to accept your Bitcoin - from everyday essentials to luxury goods.",
     type: "Directory",
     url: "https://bitcoinlistings.org/"
   },
   {
-    title: "Bitcoin Directory",
-    description: "A comprehensive directory of stores/apps/services that accept Bitcoin.",
+    title: "Lightning Network Stores",
+    description: "Experience instant Bitcoin payments in action. Curated collection of stores, apps, and services accepting Lightning payments - showcasing the future of fast, cheap Bitcoin transactions.",
     type: "Directory",
     url: "https://lightningnetworkstores.com/"
   },                           
   {
     title: "Bitrefill",
-    description: "Bitrefill is a website that allows you to buy gift cards, phone refills, eSIMs, and gaming products with Bitcoin",
+    description: "Turn your Bitcoin into everything you need. Revolutionary platform for buying gift cards, mobile top-ups, eSIMs, and gaming credits with Bitcoin - bridging crypto to everyday purchases.",
     type: "Gift Cards",
     url: "https://www.bitrefill.com"
   },
     {
-    title: "Opportunity Costs",
-    description: "Convert prices to Bitcoin as you browse the web. Opportunity Cost automatically displays fiat prices in BTC or sats, helping you think in a Bitcoin standard.",
+    title: "Opportunity Cost",
+    description: "See the true cost of fiat spending. Genius browser extension that displays prices in Bitcoin, helping you understand opportunity costs and naturally develop a Bitcoin mindset for every purchase.",
     type: "Tool",
     url: "https://www.opportunitycost.app"
   },
   {
     title: "Travala",
-    description: "Book over 3 Million travel products around the world with Bitcoin. Find and book Hotels, Flights, Tours and Activities.",
+    description: "Explore the world on a Bitcoin standard. Book over 3 million hotels, flights, tours, and activities worldwide using Bitcoin - proving you can live entirely on sound money while traveling anywhere.",
     type: "Travel",
     url: "https://www.travala.com"
   }
