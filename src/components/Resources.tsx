@@ -142,12 +142,12 @@ const Resources = () => {
   // Exchanges
   const exchanges = [{
     title: "River",
-    description: "Bitcoin-only exchange with automatic DCA, zero-fee ACH transfers, and direct wallet deposits. Clean interface without altcoin distractions.",
+    description: "Bitcoin specialist with automatic DCA, zero-fee ACH transfers, and direct wallet deposits. Clean interface focused purely on Bitcoin.",
     type: "USA",
     url: "https://river.com/buy-bitcoin"
   }, {
     title: "Bittr",
-    description: "European Bitcoin exchange that sends directly to your wallet. Low fees, fast processing, and Bitcoin-only focus.",
+    description: "European Bitcoin exchange that sends directly to your wallet. Low fees, fast processing, and streamlined Bitcoin purchasing.",
     type: "CH/EU",
     url: "https://getbittr.com/"
   }, {
@@ -157,7 +157,7 @@ const Resources = () => {
     url: "https://bitcoinwell.com/buy-bitcoin"
   }, {
     title: "HodlHodl",
-    description: "Global peer-to-peer Bitcoin marketplace. Trade directly with other users using multisig escrow without mandatory identity verification.",
+    description: "Global peer-to-peer Bitcoin marketplace. Trade directly with other users using multisig escrow without identity verification requirements.",
     type: "Worldwide",
     url: "https://hodlhodl.com"
   }];
