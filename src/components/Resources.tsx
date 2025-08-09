@@ -21,7 +21,7 @@ const Resources = () => {
     url: "https://youtu.be/Q9athzFaFfc?t=83"
   }, {
     title: "Why do we need Bitcoin?",
-    description: "This is going to change the way you understand money forever.",
+    description: "This is going to change the way you understand money forever. Uncover how our current money system affects society, enabling inflation and wealth disparity.",
     type: "Beginner",
     url: "https://www.youtube.com/watch?v=Pef22g53zsg"
   }, {
