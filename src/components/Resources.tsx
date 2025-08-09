@@ -71,19 +71,19 @@ const Resources = () => {
   const books = [{
     title: "The Fiat Standard",
     author: "Saifedean Ammous",
-    description: "Understand the technology behind the current analog global monetary system.",
+    description: "Devastating exposé of how fiat money enslaves humanity through endless inflation, perpetual debt, and centralized control. Discover the dark mechanics behind government currencies and why they're designed to transfer wealth from savers to spenders.",
     type: "Essential Reading",
     url: "https://saifedean.com/tfs"
   }, {
     title: "The Bitcoin Standard",
     author: "Saifedean Ammous",
-    description: "A comprehensive and authoritative exploration of Bitcoin and its place in monetary history.",
+    description: "The definitive guide to understanding Bitcoin as the hardest money ever created. Trace the evolution of money from shells to gold to Bitcoin, and discover why sound money is the foundation of human prosperity and freedom.",
     type: "Essential Reading",
     url: "https://saifedean.com/tbs"
   }, {
     title: "Broken Money",
     author: "Lyn Alden",
-    description: "Broken Money explores the history of money through the lens of technology. Politics can affect things temporarily and locally, but technology is what drives things forward globally and permanently.",
+    description: "Masterful analysis of how technological innovation drives monetary evolution throughout history. Understand why our current financial system is fundamentally broken and how Bitcoin represents the inevitable next step in money's technological evolution.",
     type: "Essential Reading",
     url: "https://thesaifhouse.com/bmsample"
   }];
