@@ -105,19 +105,19 @@ const Resources = () => {
 
   // Mobile Wallets
   const mobileWallets = [{
-    title: "Muun Wallet",
-    description: "A wallet app that lets you send and receive bitcoin and lightning payments with low fees and high security.",
-    type: "iOS/Android",
+    title: "Muun - Lightning Made Simple",
+    description: "The perfect first Bitcoin wallet. Seamlessly handles both on-chain and Lightning transactions with automatic fee optimization and bulletproof security - no technical knowledge required.",
+    type: "Beginner Friendly",
     url: "https://muun.com/"
   }, {
-    title: "Blue Wallet",
-    description: "Bitcoin wallet and Lightning wallet for iOS and Android focus on security and UX.",
-    type: "iOS/Android",
+    title: "Blue Wallet - Power User's Choice",
+    description: "Advanced Bitcoin and Lightning wallet with exceptional UX. Features watch-only wallets, multisig support, and Tor integration for privacy-conscious users who want full control.",
+    type: "Advanced Features",
     url: "https://bluewallet.io"
   }, {
-    title: "Nunchuck Wallet",
-    description: "Nunchuk is a Bitcoin wallet that offers state-of-the-art security, inheritance planning, and privacy. All in one package.",
-    type: "iOS/Android",
+    title: "Nunchuk - Enterprise Security",
+    description: "Professional-grade Bitcoin wallet with multisig, inheritance planning, and collaborative custody. Perfect for serious Bitcoin holders who need advanced security and estate planning features.",
+    type: "Multisig & Inheritance",
     url: "https://nunchuk.io"
   }];
 
