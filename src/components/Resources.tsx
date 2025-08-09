@@ -41,7 +41,7 @@ const Resources = () => {
     url: "https://cascdr-chads-stay-winning.nyc3.digitaloceanspaces.com/jamie-pro/226249/uploads/1754431069365-4w6Uyc1zns7g_0vF.mp4"
   }, {
     title: "Inflation - The Silent Wealth Thief",
-    description: "Discover how the hidden tax of inflation quietly erodes your purchasing power while enriching those closest to the money printer. Essential viewing for understanding modern monetary manipulation.",
+    description: "Powerful examination of how inflation systematically transfers wealth from savers to debtors, creating the very inequality politicians claim to fight.",
     type: "Wake-Up Call",
     url: "https://www.youtubetrimmer.com/view/?v=qfeMas1zU6Q&start=2327&end=2512&loop=0"
   }];
