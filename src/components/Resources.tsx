@@ -95,13 +95,23 @@ const Resources = () => {
     description: "Interviews with Bitcoin experts and industry leaders.",
     type: "Interview",
     url: "https://example.com/what-bitcoin-did"
-  }, {
+  }, 
+  {
     title: "The Bitcoin Podcast",
     host: "Various Hosts",
     description: "Deep dives into Bitcoin technology and economics.",
     type: "Technical",
     url: "https://example.com/bitcoin-podcast"
-  }];
+  },
+  {
+    title: "The Jack Mallers Show",
+    host: "Jack Mallers",
+    description: "Weekly updates of the biggest stories in Bitcoin, macroeconomics, financial markets, and the future of money.",
+    type: "Weekly Macro Updates",
+    url: "https://creators.spotify.com/pod/profile/thejackmallersshow/"
+  }
+                                      
+];
 
   // Mobile Wallets
   const mobileWallets = [{
