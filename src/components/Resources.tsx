@@ -15,34 +15,34 @@ const Resources = () => {
 
   // Video resources
   const videos = [{
-    title: "Bitcoin Not Crypto",
-    description: "Understand the true value of BTC. Discover Bitcoin's unique history, why it was created, and what problems Bitcoin solves.",
-    type: "Beginner",
+    title: "Bitcoin vs Crypto - Know the Difference",
+    description: "Discover why Bitcoin stands alone. Learn its revolutionary origin story, the problems it uniquely solves, and why it's fundamentally different from all other cryptocurrencies.",
+    type: "Essential",
     url: "https://youtu.be/Q9athzFaFfc?t=83"
   }, {
-    title: "Why do we need Bitcoin?",
-    description: "Uncover how our current money system affects society, enabling inflation and wealth disparity.",
-    type: "Beginner",
+    title: "The Broken Money System Exposed",
+    description: "Eye-opening exploration of how our current monetary system creates inequality, enables endless money printing, and why society desperately needs a better alternative.",
+    type: "Eye-Opening",
     url: "https://www.youtube.com/watch?v=Pef22g53zsg"
   }, {
-    title: "Am I Too Late To Bitcoin?",
-    description: "Find out if you are too late to buy Bitcoin.",
-    type: "Beginner",
+    title: "Bitcoin Timing - Early or Late?",
+    description: "Worried you missed the boat? This perspective-shifting analysis reveals why we're still in Bitcoin's early adoption phase and what that means for new buyers.",
+    type: "Perspective",
     url: "https://www.youtubetrimmer.com/view/?v=5893JBg7r9k&start=773&end=1000&loop=0"
   }, {
-    title: "Should I Diversify?",
-    description: "Find out if you should diversify.",
-    type: "Beginner",
+    title: "Bitcoin vs Diversification Myth",
+    description: "Challenge conventional investment wisdom. Learn why concentrating in Bitcoin might be the smartest 'diversification' strategy for the digital age.",
+    type: "Strategy",
     url: "https://www.youtube.com/watch?v=kunaljk_Psc"
   }, {
-    title: "The Federal Reserve",
-    description: "A Private Central Bank. Not Federal. No Reserves.",
-    type: "Central Banking",
+    title: "Federal Reserve - The Greatest Lie",
+    description: "Shocking truth about America's central bank: it's neither federal nor has reserves. Understand the private institution that controls your money's value.",
+    type: "Truth Bomb",
     url: "https://cascdr-chads-stay-winning.nyc3.digitaloceanspaces.com/jamie-pro/226249/uploads/1754431069365-4w6Uyc1zns7g_0vF.mp4"
   }, {
-    title: "Inflation",
-    description: "How inflation affects society.",
-    type: "Inflation",
+    title: "Inflation - The Silent Wealth Thief",
+    description: "Powerful examination of how inflation systematically transfers wealth from savers to debtors, creating the very inequality politicians claim to fight.",
+    type: "Wake-Up Call",
     url: "https://www.youtubetrimmer.com/view/?v=qfeMas1zU6Q&start=2327&end=2512&loop=0"
   }];
 
