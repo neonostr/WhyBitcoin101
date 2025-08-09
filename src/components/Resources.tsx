@@ -62,7 +62,7 @@ const Resources = () => {
   }, {
     title: "Bitcoin, Freedom and Sovereignty",
     author: "Aleksandar Svetski",
-    description: "Compelling argument that Bitcoin adoption isn't just financially smart—it's a moral imperative. Discover why choosing Bitcoin is choosing freedom, sovereignty, and a better future for humanity.",
+    description: "Compelling argument that Bitcoin adoption isn't just financially smart - it's a moral imperative. Discover why choosing Bitcoin is choosing freedom, sovereignty, and a better future for humanity.",
     type: "Article",
     url: "https://svetski.medium.com/fiat-fascism-and-communism-d185e66733b"
   }];
