@@ -142,22 +142,22 @@ const Resources = () => {
   // Exchanges
   const exchanges = [{
     title: "River",
-    description: "River is the most trusted place in the U.S. to buy Bitcoin.",
+    description: "America's premier Bitcoin-only financial institution. Built by former Google engineers with institutional-grade security, River offers the cleanest Bitcoin buying experience with automatic DCA, zero-fee ACH transfers, and educational resources that respect your intelligence.",
     type: "USA",
     url: "https://river.com/buy-bitcoin"
   }, {
     title: "Bittr",
-    description: "Buy Bitcoin directly into your wallet",
+    description: "European Bitcoin excellence without the crypto casino. No shitcoins, no distractions - just Bitcoin purchased directly into your own wallet with Swiss precision and regulatory compliance across Europe.",
     type: "CH/EU",
     url: "https://getbittr.com/"
   }, {
     title: "Bitcoin Well",
-    description: "Buy Bitcoin directly into your wallet",
+    description: "Canada's Bitcoin-only sanctuary. Escape the traditional banking system with instant purchases, Lightning Network support, and true self-custody - all while supporting a company that shares your Bitcoin-only values.",
     type: "CANADA",
     url: "https://bitcoinwell.com/buy-bitcoin"
   }, {
     title: "HodlHodl",
-    description: "Buy Bitcoin via P2P directly into your wallet",
+    description: "True peer-to-peer Bitcoin trading without intermediaries or KYC surveillance. Trade directly with other Bitcoiners worldwide using multisig escrow protection - the way Satoshi intended Bitcoin to be exchanged.",
     type: "Worldwide",
     url: "https://hodlhodl.com"
   }];
