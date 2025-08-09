@@ -50,19 +50,19 @@ const Resources = () => {
   const articles = [{
     title: "21 Lessons",
     author: "Gigi",
-    description: "A personal journey of discovering bitcoin",
+    description: "A transformative journey down the Bitcoin rabbit hole. Follow Gigi's profound realizations about money, time, and human nature through 21 life-changing lessons that will reshape how you see the world.",
     type: "Essay",
     url: "https://21lessons.com"
   }, {
     title: "Deep Dive Bitcoin & Society",
     author: "Gigi",
-    description: "Some of the best essays about Bitcoin.",
+    description: "Essential collection of thought-provoking essays exploring Bitcoin's profound impact on society, philosophy, and human freedom. Deep insights that connect Bitcoin to the fabric of civilization itself.",
     type: "Blog",
     url: "http://dergigi.com"
   }, {
     title: "Bitcoin, Freedom and Sovereignty",
     author: "Aleksandar Svetski",
-    description: "An article on why moving into Bitcoin is not just an economic imperative, but a moral duty.",
+    description: "Compelling argument that Bitcoin adoption isn't just financially smart—it's a moral imperative. Discover why choosing Bitcoin is choosing freedom, sovereignty, and a better future for humanity.",
     type: "Article",
     url: "https://svetski.medium.com/fiat-fascism-and-communism-d185e66733b"
   }];
