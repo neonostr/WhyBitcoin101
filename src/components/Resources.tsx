@@ -142,22 +142,22 @@ const Resources = () => {
   // Exchanges
   const exchanges = [{
     title: "River",
-    description: "America's premier Bitcoin-only financial institution. Built by former Google engineers with institutional-grade security, River offers the cleanest Bitcoin buying experience with automatic DCA, zero-fee ACH transfers, and educational resources that respect your intelligence.",
+    description: "Bitcoin-only exchange trusted by institutions and individuals. Offers automatic DCA, zero-fee ACH transfers, and direct wallet deposits with strong security practices.",
     type: "USA",
     url: "https://river.com/buy-bitcoin"
   }, {
     title: "Bittr",
-    description: "European Bitcoin excellence without the crypto casino. No shitcoins, no distractions - just Bitcoin purchased directly into your own wallet with Swiss precision and regulatory compliance across Europe.",
+    description: "European Bitcoin exchange focused on simplicity and compliance. Buy Bitcoin directly into your wallet with competitive fees and regulatory clarity.",
     type: "CH/EU",
     url: "https://getbittr.com/"
   }, {
     title: "Bitcoin Well",
-    description: "Canada's Bitcoin-only sanctuary. Escape the traditional banking system with instant purchases, Lightning Network support, and true self-custody - all while supporting a company that shares your Bitcoin-only values.",
+    description: "Canadian Bitcoin exchange with Lightning Network support. Purchase Bitcoin with fast processing and direct wallet delivery.",
     type: "CANADA",
     url: "https://bitcoinwell.com/buy-bitcoin"
   }, {
     title: "HodlHodl",
-    description: "True peer-to-peer Bitcoin trading without intermediaries or KYC surveillance. Trade directly with other Bitcoiners worldwide using multisig escrow protection - the way Satoshi intended Bitcoin to be exchanged.",
+    description: "Global peer-to-peer Bitcoin marketplace. Trade directly with other users using multisig escrow without mandatory KYC requirements.",
     type: "Worldwide",
     url: "https://hodlhodl.com"
   }];
