@@ -33,7 +33,6 @@ const Contact = () => {
                     <li>• Getting started with your first Bitcoin purchase</li>
                     <li>• Choosing the right wallet for your needs</li>
                     <li>• Understanding Bitcoin's technology and economics</li>
-                    <li>• Discussing Bitcoin's role in your financial strategy</li>
                   </ul>
                 </div>
                 
