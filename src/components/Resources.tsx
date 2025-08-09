@@ -16,7 +16,7 @@ const Resources = () => {
   // Video resources
   const videos = [{
     title: "Bitcoin Not Crypto",
-    description: "Learn why nothing else compares.",
+    description: "Understand the true value of BTC. Discover Bitcoin's unique history, why it was created, and what problems Bitcoin solves.",
     type: "Beginner",
     url: "https://youtu.be/Q9athzFaFfc?t=83"
   }, {
