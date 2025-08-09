@@ -16,7 +16,7 @@ const Resources = () => {
   // Video resources
   const videos = [{
     title: "Bitcoin Not Crypto",
-    description: "Bitcoin: Learn why nothing else compares.",
+    description: "Learn why nothing else compares.",
     type: "Beginner",
     url: "https://youtu.be/Q9athzFaFfc?t=83"
   }, {
@@ -26,7 +26,7 @@ const Resources = () => {
     url: "https://www.youtube.com/watch?v=Pef22g53zsg"
   }, {
     title: "Am I Too Late To Bitcoin?",
-    description: "Find out if you are too late to buy Bitcoin",
+    description: "Find out if you are too late to buy Bitcoin.",
     type: "Beginner",
     url: "https://www.youtubetrimmer.com/view/?v=5893JBg7r9k&start=773&end=1000&loop=0"
   }, {
@@ -36,7 +36,7 @@ const Resources = () => {
     url: "https://www.youtube.com/watch?v=kunaljk_Psc"
   }, {
     title: "The Federal Reserve",
-    description: "Private Central Bank. Not Federal. No Reserves.",
+    description: "A Private Central Bank. Not Federal. No Reserves.",
     type: "Central Banking",
     url: "https://cascdr-chads-stay-winning.nyc3.digitaloceanspaces.com/jamie-pro/226249/uploads/1754431069365-4w6Uyc1zns7g_0vF.mp4"
   }, {
