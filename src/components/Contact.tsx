@@ -18,7 +18,16 @@ const Contact = () => {
               </CardHeader>
               <CardContent>
                 <p className="text-muted-foreground leading-relaxed">
-                  Search for Bitcoin meetups in your area on Meetup.com. These regular gatherings are perfect for meeting like-minded people, asking questions, and learning from experienced bitcoiners in person.
+                  Search for Bitcoin meetups in your area on{" "}
+                  <a 
+                    href="https://meetup.com" 
+                    target="_blank" 
+                    rel="noopener noreferrer" 
+                    className="text-primary hover:text-primary/80 underline font-medium"
+                  >
+                    Meetup.com
+                  </a>
+                  . These regular gatherings are perfect for meeting like-minded people, asking questions, and learning from experienced bitcoiners in person.
                 </p>
               </CardContent>
             </Card>
