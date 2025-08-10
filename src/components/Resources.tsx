@@ -171,7 +171,13 @@ const Resources = () => {
     description: "Add text here",
     type: "UK",
     url: "https://www.coincorner.com"
-  }, 
+  },
+    {
+    title: "Bitaroo",
+    description: "Add text here",
+    type: "Australia",
+    url: "https://www.bitaroo.com.au"
+  },
                                        
   {
     title: "HodlHodl",
