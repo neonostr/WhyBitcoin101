@@ -1,9 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-
 const Contact = () => {
-  return (
-    <section id="contact" className="py-20 px-4 bg-gradient-to-br from-primary/5 to-bitcoin-orange/5">
+  return <section id="contact" className="py-20 px-4 bg-gradient-to-br from-primary/5 to-bitcoin-orange/5">
       <div className="container mx-auto">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold mb-6 text-foreground">
@@ -37,11 +35,7 @@ const Contact = () => {
                 </div>
                 
                 <div className="space-y-3">
-                  <Button 
-                    size="lg" 
-                    className="w-full bg-primary hover:bg-primary/90 text-primary-foreground"
-                    onClick={() => window.open('mailto:contact@example.com?subject=Bitcoin Questions', '_blank')}
-                  >
+                  <Button size="lg" className="w-full bg-primary hover:bg-primary/90 text-primary-foreground" onClick={() => window.open('mailto:contact@example.com?subject=Bitcoin Questions', '_blank')}>
                     Send Me an Email
                   </Button>
                   
@@ -55,13 +49,9 @@ const Contact = () => {
         </div>
         
         <div className="mt-16 text-center">
-          <p className="text-muted-foreground">
-            Remember: Take your time, do your own research, and never invest more than you can afford to lose.
-          </p>
+          <p className="text-muted-foreground">Remember: Take your time, stay curious, and always do your own research to make informed decisions.</p>
         </div>
       </div>
-    </section>
-  );
+    </section>;
 };
-
 export default Contact;
