@@ -1,27 +1,80 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
-import { Copy, ExternalLink } from "lucide-react";
+import { Textarea } from "@/components/ui/textarea";
+import { Send } from "lucide-react";
 import { useState } from "react";
 import { useToast } from "@/hooks/use-toast";
+import { finalizeEvent, generateSecretKey, getPublicKey } from "nostr-tools/pure";
+import { SimplePool } from "nostr-tools/pool";
 
 const NostrQuestionModal = () => {
   const [open, setOpen] = useState(false);
+  const [question, setQuestion] = useState("");
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const { toast } = useToast();
 
-  const hashtags = "#bitcoinbasics #bitcoinknowledgehub";
+  const relays = [
+    "wss://relay.damus.io",
+    "wss://nos.lol",
+    "wss://relay.snort.social"
+  ];
 
-  const copyHashtags = () => {
-    navigator.clipboard.writeText(hashtags);
-    toast({
-      title: "Copied!",
-      description: "Hashtags copied to clipboard",
-    });
-  };
+  const submitQuestion = async () => {
+    if (!question.trim()) {
+      toast({
+        title: "Error",
+        description: "Please enter a question",
+        variant: "destructive"
+      });
+      return;
+    }
 
-  const openNostr = () => {
-    window.open("https://www.asknostr.io", "_blank");
-    setOpen(false);
+    setIsSubmitting(true);
+    
+    try {
+      // Generate a temporary key pair for this question
+      const privateKey = generateSecretKey();
+      const publicKey = getPublicKey(privateKey);
+      
+      // Create the note event
+      const event = {
+        kind: 1,
+        created_at: Math.floor(Date.now() / 1000),
+        tags: [["t", "bitcoinbasics"], ["t", "bitcoinknowledgehub"]],
+        content: `${question}\n\n#bitcoinbasics #bitcoinknowledgehub`,
+        pubkey: publicKey,
+      };
+
+      // Sign the event
+      const signedEvent = finalizeEvent(event, privateKey);
+      
+      // Publish to relays
+      const pool = new SimplePool();
+      const relayPromises = pool.publish(relays, signedEvent);
+      
+      // Wait for at least one relay to confirm
+      await Promise.race(relayPromises);
+      
+      toast({
+        title: "Question posted!",
+        description: "Your question has been posted to the Bitcoin community on Nostr. You can check for responses on any Nostr client by searching for the hashtags.",
+      });
+
+      setQuestion("");
+      setOpen(false);
+      pool.close(relays);
+      
+    } catch (error) {
+      console.error("Error posting to Nostr:", error);
+      toast({
+        title: "Error",
+        description: "Failed to post question. Please try again.",
+        variant: "destructive"
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -37,37 +90,28 @@ const NostrQuestionModal = () => {
         </DialogHeader>
         <div className="space-y-4">
           <p className="text-sm text-muted-foreground">
-            When you click "Ask Question", it will open a website where you can ask your question and receive answers from us or other users. Please be mindful of what you share, as this is a public platform.
+            Ask your Bitcoin question and get answers from the community on Nostr. Your question will be posted anonymously.
           </p>
-          <p className="text-sm text-muted-foreground">
-            Responses can be almost instant or take a few days, depending on who's online.
-          </p>
-          <div className="bg-muted p-4 rounded-lg">
-            <p className="text-sm font-medium mb-2">Make sure to include these hashtags:</p>
-            <div className="flex items-center gap-2">
-              <code className="bg-background px-2 py-1 rounded text-sm flex-1">
-                {hashtags}
-              </code>
-              <Button
-                size="sm"
-                variant="outline"
-                onClick={copyHashtags}
-                className="shrink-0"
-              >
-                <Copy className="h-4 w-4" />
-                Copy
-              </Button>
-            </div>
-          </div>
+          
+          <Textarea
+            placeholder="What's your Bitcoin question?"
+            value={question}
+            onChange={(e) => setQuestion(e.target.value)}
+            className="min-h-[100px]"
+            maxLength={280}
+          />
+          
           <p className="text-xs text-muted-foreground">
-            No account needed • No personal data required • Decentralized network
+            No account needed • Anonymous posting • Decentralized network
           </p>
+          
           <Button 
-            onClick={openNostr} 
+            onClick={submitQuestion}
+            disabled={isSubmitting || !question.trim()}
             className="w-full bg-primary text-primary-foreground hover:bg-primary/90"
           >
-            <ExternalLink className="h-4 w-4 mr-2" />
-            Ask Question
+            <Send className="h-4 w-4 mr-2" />
+            {isSubmitting ? "Posting..." : "Post Question"}
           </Button>
         </div>
       </DialogContent>
