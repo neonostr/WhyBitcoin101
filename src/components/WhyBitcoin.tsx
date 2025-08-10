@@ -1,11 +1,8 @@
 import { useState } from "react";
 import DonationModal from "./DonationModal";
-
 const WhyBitcoin = () => {
   const [donationModalOpen, setDonationModalOpen] = useState(false);
-
-  return (
-    <>
+  return <>
       <section id="why-bitcoin" className="py-20 px-4 bg-gradient-to-b from-background to-secondary/20">
       <div className="container mx-auto">
         <div className="text-center mb-16">
@@ -38,9 +35,7 @@ const WhyBitcoin = () => {
                 Quality Over Quantity
               </h3>
               <p className="text-muted-foreground leading-relaxed mb-4">Our educational resources are carefully curated, no affiliate links, no hidden agendas, just the best content we can find. We update this collection constantly because understanding Bitcoin means understanding the future of human coordination.</p>
-              <p className="text-muted-foreground leading-relaxed">
-                Every book, podcast, and article is selected purely for its quality and insight. This knowledge belongs to everyone.
-              </p>
+              <p className="text-muted-foreground leading-relaxed">Every book, video, podcast, and article is selected purely for its quality and insight. This knowledge belongs to everyone.</p>
             </div>
           </div>
         </div>
@@ -62,11 +57,7 @@ const WhyBitcoin = () => {
       </div>
     </section>
 
-    <DonationModal 
-      isOpen={donationModalOpen} 
-      onClose={() => setDonationModalOpen(false)} 
-    />
-    </>
-  );
+    <DonationModal isOpen={donationModalOpen} onClose={() => setDonationModalOpen(false)} />
+    </>;
 };
 export default WhyBitcoin;
