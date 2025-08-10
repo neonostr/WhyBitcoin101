@@ -1,4 +1,4 @@
-import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
+import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 
 interface VideoModalProps {
   isOpen: boolean;
@@ -23,10 +23,10 @@ const VideoModal = ({ isOpen, onClose, title, videoUrl }: VideoModalProps) => {
     
     if (url.includes("youtube.com/watch?v=")) {
       const videoId = url.split("v=")[1]?.split("&")[0];
-      embedUrl = `https://www.youtube.com/embed/${videoId}?autoplay=1${timestamp}`;
+      embedUrl = `https://www.youtube.com/embed/${videoId}?${timestamp}`;
     } else if (url.includes("youtu.be/")) {
       const videoId = url.split("youtu.be/")[1]?.split("?")[0];
-      embedUrl = `https://www.youtube.com/embed/${videoId}?autoplay=1${timestamp}`;
+      embedUrl = `https://www.youtube.com/embed/${videoId}?${timestamp}`;
     } else {
       embedUrl = url; // Return as-is for other embed URLs
     }
@@ -39,6 +39,9 @@ const VideoModal = ({ isOpen, onClose, title, videoUrl }: VideoModalProps) => {
       <DialogContent className="max-w-4xl w-full">
         <DialogHeader>
           <DialogTitle>{title}</DialogTitle>
+          <DialogDescription>
+            Click the play button to start the video
+          </DialogDescription>
         </DialogHeader>
         <div className="aspect-video w-full">
           <iframe
