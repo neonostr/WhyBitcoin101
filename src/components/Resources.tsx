@@ -226,6 +226,24 @@ const Resources = () => {
   }
       ];
 
+  // Educational Entertainment
+  const educationalEntertainment = [{
+    title: "Isa 21 Days - Surviving on Bitcoin",
+    description: "Watch Isabella survive 3 weeks on a remote island with nothing but Bitcoin. Every meal, ride, and job must be paid with BTC she earns herself. An incredible real-world test of Bitcoin's utility.",
+    type: "Documentary Series",
+    url: "https://www.youtube.com/watch?v=OE98XhB1uM4&list=PLpoMYLIrh9fO8xnIXBsRPk6H83G5rI5W6"
+  }, {
+    title: "BTC Isla - Living Bitcoin Stories",
+    description: "Inspiring content about living on Bitcoin in real-world scenarios. Educational adventures that show how Bitcoin works in practice across different cultures and environments.",
+    type: "YouTube Channel",
+    url: "https://www.youtube.com/@btcisla"
+  }, {
+    title: "Joey Nakamoto - Bitcoin Adventures",
+    description: "Entertaining and educational Bitcoin content that makes learning about sound money fun and engaging. Perfect blend of entertainment and Bitcoin education.",
+    type: "YouTube Channel", 
+    url: "https://www.youtube.com/@JoeNakamoto"
+  }];
+
   // Fun Stuff
   const funStuff = [{
     title: "Feed Real Cats with Lightning",
@@ -293,6 +311,7 @@ const Resources = () => {
           {renderSection("Hardware Wallets", "🔒", hardwareWallets)}
           {renderSection("Exchanges", "💱", exchanges)}
           {renderSection("Living On Bitcoin", "🌍", livingOnBitcoin)}
+          {renderSection("Educational Entertainment", "🍿", educationalEntertainment)}
           {renderSection("Fun Stuff", "🎉", funStuff)}
 
           <div className="text-center">
