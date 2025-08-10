@@ -15,19 +15,16 @@ const MoneyProblem = () => {
             <h3 className="text-2xl font-bold mb-6 text-foreground">
               What Money Should Be
             </h3>
-            <p className="text-lg text-muted-foreground leading-relaxed mb-6">Money is fundamentally a tool to store human energy and time. When you work, you expend your life energy - your time, effort, and skills. Money should allow you to store this energy for future use, so you can later exchange it for things that improve your life: a car, a holiday trip, a home, or simply peace of mind.</p>
-            <p className="text-lg text-muted-foreground leading-relaxed">
-              Good money should reliably preserve the value of your work across time. If you work hard today and save money, that money should retain its purchasing power so you can access the same value months or years later when you need it.
-            </p>
+            <p className="text-lg text-muted-foreground leading-relaxed mb-6">Money is fundamentally stored energy. Every time you work or take a financial risk, you exchange your time, effort, and focus for a number in your bank account - a representation of the energy you've invested. Money should allow you to store this energy for future use, so you can later exchange it for things that improve your life: a car, a holiday trip, a home, or simply peace of mind.</p>
+            <p className="text-lg text-muted-foreground leading-relaxed">Good money should reliably preserve the value of your work across time. If you work hard today and save money, that money should at least retain its purchasing power so you can access the same value months or years later when you need it.</p>
           </div>
           <div className="bg-card border border-border/50 rounded-2xl p-8 hover:shadow-lg transition-all duration-300">
             <h3 className="text-2xl font-bold mb-6 text-foreground">
               Money Is Broken
             </h3>
-            <p className="text-lg text-muted-foreground leading-relaxed mb-6">Our money is so fundamentally broken that people can no longer use it as a store of value. Instead, society has been forced to turn to real estate, stocks, and other assets as savings vehicles - roles that should naturally belong to money itself.</p>
-            <p className="text-lg text-muted-foreground leading-relaxed">
-              This distortion has created massive problems: skyrocketing housing costs, inflated asset bubbles, and a world where basic necessities like homes have become unaffordable investments rather than places to live.
-            </p>
+            <p className="text-lg text-muted-foreground leading-relaxed mb-6">Governments and central banks can print currency at will, diluting the value of your hard-earned energy and effectively stealing lifetime from you. As a result, people can no longer rely on it as a dependable store of value. Instead, society has been compelled to seek refuge in real estate, stocks, and other assets as vehicles for savings - roles that rightfully belong to money itself.</p>
+            <p className="text-lg text-muted-foreground leading-relaxed">This distortion has created massive problems: skyrocketing housing costs, inflated asset bubbles, and a world where basic necessities like homes have become unaffordable investments rather than places to live.
+          </p>
           </div>
 
           <div className="bg-card border border-border/50 rounded-2xl p-8 hover:shadow-lg transition-all duration-300">
@@ -42,7 +39,7 @@ const MoneyProblem = () => {
 
           <div className="bg-card border border-border/50 rounded-2xl p-8 hover:shadow-lg transition-all duration-300">
             <h3 className="text-2xl font-bold mb-6 text-foreground">The Manipulation of Money</h3>
-            <p className="text-lg text-muted-foreground leading-relaxed mb-6">To make matters worse, politicians and central banks have unchecked access to the money supply. When reckless speculators make bad bets and face bankruptcy, they are bailed out with freshly printed money, passing the costs on to the general public through inflation.</p>
+            <p className="text-lg text-muted-foreground leading-relaxed mb-6">To make matters worse, because politicians and central banks have unchecked access to the money supply. When reckless speculators make bad bets and face bankruptcy, they are bailed out with freshly printed money, passing the costs on to the general public through inflation.</p>
             <p className="text-lg text-muted-foreground leading-relaxed">This system creates a rigged game, where those with connections to the money printer reap the benefits, while ordinary people bear the burden. The result is a perverse incentives structure that prioritizes profit over people, undermining the stability and fairness of our economic system.</p>
           </div>
 
