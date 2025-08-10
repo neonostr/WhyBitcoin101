@@ -26,10 +26,6 @@ const FAQ = () => {
       question: "Is Bitcoin bad for the environment?",
       answer: "Bitcoin mining increasingly uses renewable energy. The network's energy use secures a global financial system and drives renewable energy innovation."
     },
-    {
-      question: "Will Bitcoin replace traditional money?",
-      answer: "Bitcoin complements traditional money rather than replacing it entirely. It's useful for savings, international transfers, and as a hedge against inflation."
-    }
   ];
 
   return (
