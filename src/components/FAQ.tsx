@@ -6,6 +6,7 @@ import { Send, Copy, CheckCircle } from "lucide-react";
 import { useState } from "react";
 import { useToast } from "@/hooks/use-toast";
 import { finalizeEvent, generateSecretKey, getPublicKey } from "nostr-tools/pure";
+import { nip19 } from "nostr-tools";
 import { SimplePool } from "nostr-tools/pool";
 
 const NostrQuestionModal = () => {
@@ -59,9 +60,9 @@ const NostrQuestionModal = () => {
       // Wait for at least one relay to confirm
       await Promise.race(relayPromises);
       
-      // Create follow-up link with private key
-      const privateKeyHex = Array.from(privateKey, byte => byte.toString(16).padStart(2, '0')).join('');
-      const followUpUrl = `${window.location.origin}/${privateKeyHex}`;
+      // Create follow-up link with private key in nsec format
+      const nsecPrivateKey = nip19.nsecEncode(privateKey);
+      const followUpUrl = `${window.location.origin}/question/${nsecPrivateKey}`;
       
       setPostedQuestion(question);
       setFollowUpLink(followUpUrl);
