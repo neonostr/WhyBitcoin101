@@ -165,7 +165,15 @@ const Resources = () => {
     description: "Canadian Bitcoin exchange with Lightning Network support and instant wallet delivery. Simple buying process with competitive rates.",
     type: "CANADA",
     url: "https://bitcoinwell.com/buy-bitcoin"
-  }, {
+  }, 
+  {
+    title: "Coincorner",
+    description: "Add text here",
+    type: "UK",
+    url: "https://www.coincorner.com"
+  }, 
+                                       
+  {
     title: "HodlHodl",
     description: "Global peer-to-peer Bitcoin marketplace. Trade directly with other users using multisig escrow without identity verification requirements.",
     type: "Worldwide",
