@@ -168,13 +168,13 @@ const Resources = () => {
   }, 
   {
     title: "Coincorner",
-    description: "Add text here",
+    description: "UK's leading Bitcoin exchange with Lightning Network integration and DCA options. FCA-registered with instant SEPA transfers and direct wallet delivery for European Bitcoin buyers.",
     type: "UK",
     url: "https://www.coincorner.com"
   },
     {
     title: "Bitaroo",
-    description: "Add text here",
+    description: "Australia's premium Bitcoin exchange with competitive spreads and instant OSKO payments. Professional trading platform with advanced order types and direct wallet withdrawals.",
     type: "Australia",
     url: "https://www.bitaroo.com.au"
   },
