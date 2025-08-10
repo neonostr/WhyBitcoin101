@@ -5,44 +5,42 @@ const Contact = () => {
       <div className="container mx-auto">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold mb-6 text-foreground">
-            Connect with Fellow Bitcoiners
+            Ready to Learn More?
           </h2>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-            The best way to learn Bitcoin? Talk to people who live and breathe it. 
-            Find your local Bitcoin community or dive into the global conversation online.
+            After exploring the resources, if you still have questions or want personalized guidance, 
+            I'm here to help you on your Bitcoin journey.
           </p>
         </div>
         
         <div className="max-w-2xl mx-auto">
           <Card className="border-primary/20 shadow-[var(--card-hover)]">
             <CardHeader className="text-center">
-              <CardTitle className="text-2xl text-foreground">Get in the Game</CardTitle>
+              <CardTitle className="text-2xl text-foreground">Let's Connect</CardTitle>
             </CardHeader>
             <CardContent className="text-center space-y-6">
               <p className="text-muted-foreground leading-relaxed">
-                Bitcoin Twitter is wild, local meetups are gold, and the rabbit hole goes deep. 
-                Jump in wherever feels right and start building connections.
+                Bitcoin can seem overwhelming at first, but it doesn't have to be. Whether you're wondering about 
+                getting started, have technical questions, or want to discuss the bigger picture, I'm here to help.
               </p>
               
               <div className="space-y-4">
                 <div className="p-4 rounded-lg bg-muted/50">
-                  <h4 className="font-semibold text-foreground mb-2">Where to Start:</h4>
+                  <h4 className="font-semibold text-foreground mb-2">What I Can Help With:</h4>
                   <ul className="text-sm text-muted-foreground space-y-1 text-left">
-                    <li>• Search "Bitcoin meetup" on Meetup.com for local groups</li>
-                    <li>• Follow Bitcoin influencers on Twitter/X for daily insights</li>
-                    <li>• Join r/Bitcoin and other Bitcoin subreddits</li>
-                    <li>• Check out Bitcoin conferences happening near you</li>
-                    <li>• Try Nostr - it's like Twitter but for Bitcoiners</li>
+                    <li>• Getting started with your first Bitcoin purchase</li>
+                    <li>• Choosing the right wallet for your needs</li>
+                    <li>• Understanding Bitcoin's technology and economics</li>
                   </ul>
                 </div>
                 
                 <div className="space-y-3">
-                  <Button size="lg" className="w-full bg-primary hover:bg-primary/90 text-primary-foreground" onClick={() => window.open('https://primal.net', '_blank')}>
-                    Explore Bitcoin Social
+                  <Button size="lg" className="w-full bg-primary hover:bg-primary/90 text-primary-foreground" onClick={() => window.open('mailto:contact@example.com?subject=Bitcoin Questions', '_blank')}>
+                    Send Me an Email
                   </Button>
                   
                   <p className="text-sm text-muted-foreground">
-                    Primal makes it easy to join the Bitcoin conversation on Nostr
+                    Or reach out through your preferred platform - I'm always happy to chat about Bitcoin!
                   </p>
                 </div>
               </div>
@@ -51,7 +49,7 @@ const Contact = () => {
         </div>
         
         <div className="mt-16 text-center">
-          <p className="text-muted-foreground">Pro tip: Everyone started somewhere. Ask questions, share what you learn, and enjoy the journey down the rabbit hole.</p>
+          <p className="text-muted-foreground">Remember: Take your time, stay curious, and always do your own research to make informed decisions.</p>
         </div>
       </div>
     </section>;
