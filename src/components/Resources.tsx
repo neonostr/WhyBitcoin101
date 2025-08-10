@@ -93,21 +93,21 @@ const Resources = () => {
       {
     title: "Bitcoin Audible",
     host: "Guy Swann",
-    description: "Essential Bitcoin education through curated readings and expert analysis. Guy Swann transforms complex Bitcoin content into digestible audio format, making deep Bitcoin knowledge accessible during your commute or workout.",
+    description: "Essential Bitcoin education through curated readings and expert analysis. Guy Swann transforms complex Bitcoin content into digestible audio format, making deep Bitcoin knowledge accessible to everyone.",
     type: "Educational Deep Dives",
     url: "https://bitcoinaudible.com/"
       },
     {
     title: "What Bitcoin Did",
     host: "Danny Knowles",
-    description: "Cutting-edge conversations with Bitcoin's most influential voices. Danny Knowles conducts in-depth interviews with developers, economists, and thought leaders shaping Bitcoin's future - essential listening for serious Bitcoiners.",
+    description: "Cutting-edge conversations with Bitcoin's most influential voices. Danny Knowles conducts in-depth interviews with developers, economists, and thought leaders shaping Bitcoin's future.",
     type: "Expert Interviews",
     url: "https://www.whatbitcoindid.com/episodes"
   },
   {
     title: "The Jack Mallers Show",
     host: "Jack Mallers",
-    description: "High-energy Bitcoin and macro analysis from the CEO of Strike. Jack Mallers delivers passionate breakdowns of Bitcoin's role in global economics, monetary policy impacts, and the inevitable transition to a Bitcoin standard with infectious enthusiasm.",
+    description: "Bitcoin and macro analysis. Jack Mallers delivers passionate breakdowns of Bitcoin's role in global economics, monetary policy impacts, and the inevitable transition to a Bitcoin standard.",
     type: "Weekly Macro Updates",
     url: "https://creators.spotify.com/pod/profile/thejackmallersshow/"
   }
@@ -169,13 +169,13 @@ const Resources = () => {
   }, 
   {
     title: "Coincorner",
-    description: "UK's leading Bitcoin exchange with Lightning Network integration and DCA options. FCA-registered with instant SEPA transfers and direct wallet delivery for European Bitcoin buyers.",
+    description: "UK's leading Bitcoin exchange with Lightning Network integration and DCA options. FCA-registered with instant SEPA transfers and direct wallet delivery.",
     type: "UK",
     url: "https://www.coincorner.com"
   },
     {
     title: "Bitaroo",
-    description: "Australia's premium Bitcoin exchange with competitive spreads and instant OSKO payments. Professional trading platform with advanced order types and direct wallet withdrawals.",
+    description: "Australia's premium Bitcoin exchange with competitive spreads and instant OSKO payments and direct wallet withdrawals.",
     type: "Australia",
     url: "https://www.bitaroo.com.au"
   },
