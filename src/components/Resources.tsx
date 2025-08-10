@@ -38,7 +38,7 @@ const Resources = () => {
     title: "Federal Reserve - The Greatest Lie",
     description: "Shocking truth about America's central bank: it's neither federal nor has reserves. Understand the private institution that controls your money's value.",
     type: "Truth Bomb",
-    url: "https://cascdr-chads-stay-winning.nyc3.digitaloceanspaces.com/jamie-pro/226249/uploads/1754431069365-4w6Uyc1zns7g_0vF.mp4"
+    url: "https://v.nostr.build/tIA2DN77tAW2qNgT.mp4"
   }, {
     title: "Inflation - The Silent Wealth Thief",
     description: "Analysis of how inflation destroys the social fabric by eroding savings, widening inequality, and breaking the fundamental promise that hard work leads to prosperity. Watch society's foundation crumble under monetary debasement.",
