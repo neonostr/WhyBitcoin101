@@ -33,11 +33,11 @@ const NostrQuestionModal = () => {
       </DialogTrigger>
       <DialogContent className="max-w-md">
         <DialogHeader>
-          <DialogTitle>Ask on Nostr</DialogTitle>
+          <DialogTitle>Ask Bitcoin Community</DialogTitle>
         </DialogHeader>
         <div className="space-y-4">
           <p className="text-sm text-muted-foreground">
-            When you click "Ask Question", you'll post a public note to a social network where we or other people will answer you. Since this is a public network, be mindful of what you share.
+            When you click "Ask Question", you'll post a public to a social network where we or other people will answer you. Since this is a public network, be mindful of what you share.
           </p>
           <p className="text-sm text-muted-foreground">
             Responses can be almost instant or take a few days, depending on who's online.
@@ -67,7 +67,7 @@ const NostrQuestionModal = () => {
             className="w-full bg-primary text-primary-foreground hover:bg-primary/90"
           >
             <ExternalLink className="h-4 w-4 mr-2" />
-            Ask Question on Nostr
+            Ask Question
           </Button>
         </div>
       </DialogContent>
