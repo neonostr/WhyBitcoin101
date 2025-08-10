@@ -1,4 +1,79 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
+import { Copy, ExternalLink } from "lucide-react";
+import { useState } from "react";
+import { useToast } from "@/hooks/use-toast";
+
+const NostrQuestionModal = () => {
+  const [open, setOpen] = useState(false);
+  const { toast } = useToast();
+
+  const hashtags = "#bitcoinbasics #bitcoinknowledgehub";
+
+  const copyHashtags = () => {
+    navigator.clipboard.writeText(hashtags);
+    toast({
+      title: "Copied!",
+      description: "Hashtags copied to clipboard",
+    });
+  };
+
+  const openNostr = () => {
+    window.open("https://nostr.band", "_blank");
+    setOpen(false);
+  };
+
+  return (
+    <Dialog open={open} onOpenChange={setOpen}>
+      <DialogTrigger asChild>
+        <Button className="bg-primary text-primary-foreground hover:bg-primary/90">
+          Ask the Community
+        </Button>
+      </DialogTrigger>
+      <DialogContent className="max-w-md">
+        <DialogHeader>
+          <DialogTitle>Ask on Nostr</DialogTitle>
+        </DialogHeader>
+        <div className="space-y-4">
+          <p className="text-sm text-muted-foreground">
+            When you click "Ask Question", you'll post a public note to the Nostr network where I or other Bitcoin experts will answer you.
+          </p>
+          <p className="text-sm text-muted-foreground">
+            Responses can be almost instant or take a few days, depending on who's online.
+          </p>
+          <div className="bg-muted p-4 rounded-lg">
+            <p className="text-sm font-medium mb-2">Make sure to include these hashtags:</p>
+            <div className="flex items-center gap-2">
+              <code className="bg-background px-2 py-1 rounded text-sm flex-1">
+                {hashtags}
+              </code>
+              <Button
+                size="sm"
+                variant="outline"
+                onClick={copyHashtags}
+                className="shrink-0"
+              >
+                <Copy className="h-4 w-4" />
+                Copy
+              </Button>
+            </div>
+          </div>
+          <p className="text-xs text-muted-foreground">
+            No account needed • No personal data required • Decentralized network
+          </p>
+          <Button 
+            onClick={openNostr} 
+            className="w-full bg-primary text-primary-foreground hover:bg-primary/90"
+          >
+            <ExternalLink className="h-4 w-4 mr-2" />
+            Ask Question on Nostr
+          </Button>
+        </div>
+      </DialogContent>
+    </Dialog>
+  );
+};
 
 const FAQ = () => {
   const faqs = [
@@ -66,8 +141,9 @@ const FAQ = () => {
           <div className="inline-block p-8 rounded-2xl bg-card border border-border">
             <h3 className="text-2xl font-bold mb-4 text-foreground">Still Have Questions?</h3>
             <p className="text-muted-foreground mb-6 max-w-md">
-              Don't see your question here? Feel free to reach out - I'm here to help you understand Bitcoin better.
+              Don't see your question here? Ask the Bitcoin community on Nostr and get answers from experts worldwide.
             </p>
+            <NostrQuestionModal />
           </div>
         </div>
       </div>
