@@ -4,13 +4,8 @@ const Contact = () => {
   return <section id="contact" className="py-20 px-4 bg-gradient-to-br from-primary/5 to-bitcoin-orange/5">
       <div className="container mx-auto">
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold mb-6 text-foreground">
-            Ready to Learn More?
-          </h2>
-          <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-            After exploring the resources, if you still have questions or want personalized guidance, 
-            I'm here to help you on your Bitcoin journey.
-          </p>
+          <h2 className="text-4xl md:text-5xl font-bold mb-6 text-foreground">Connect & Learn Together </h2>
+          <p className="text-xl text-muted-foreground max-w-2xl mx-auto">Bitcoin is best learned through community. Connect with local bitcoiners, attend meetups, and join the global conversation.</p>
         </div>
         
         <div className="max-w-2xl mx-auto">
