@@ -9,7 +9,7 @@ const Navigation = () => {
     <nav className="fixed top-0 w-full bg-background/95 backdrop-blur-sm border-b border-border z-50">
       <div className="container mx-auto px-4 py-4">
         <div className="flex items-center justify-between">
-          <div className="font-bold text-2xl text-primary">₿ Why Bitcoin 101</div>
+          <div className="font-bold text-2xl text-primary">₿ Bitcoin Basics</div>
           
           <div className="hidden md:flex items-center space-x-6">
             <button 
