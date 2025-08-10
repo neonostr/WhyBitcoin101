@@ -5,42 +5,44 @@ const Contact = () => {
       <div className="container mx-auto">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold mb-6 text-foreground">
-            Ready to Learn More?
+            Join the Bitcoin Community
           </h2>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-            After exploring the resources, if you still have questions or want personalized guidance, 
-            I'm here to help you on your Bitcoin journey.
+            Bitcoin is more than just money - it's a global community of people working toward a better financial future. 
+            Connect with fellow Bitcoiners to learn, share experiences, and build lasting relationships.
           </p>
         </div>
         
         <div className="max-w-2xl mx-auto">
           <Card className="border-primary/20 shadow-[var(--card-hover)]">
             <CardHeader className="text-center">
-              <CardTitle className="text-2xl text-foreground">Let's Connect</CardTitle>
+              <CardTitle className="text-2xl text-foreground">Connect & Learn Together</CardTitle>
             </CardHeader>
             <CardContent className="text-center space-y-6">
               <p className="text-muted-foreground leading-relaxed">
-                Bitcoin can seem overwhelming at first, but it doesn't have to be. Whether you're wondering about 
-                getting started, have technical questions, or want to discuss the bigger picture, I'm here to help.
+                The Bitcoin community is welcoming and eager to help newcomers. Whether you prefer meeting in person 
+                or joining online discussions, there are countless ways to connect and accelerate your learning.
               </p>
               
               <div className="space-y-4">
                 <div className="p-4 rounded-lg bg-muted/50">
-                  <h4 className="font-semibold text-foreground mb-2">What I Can Help With:</h4>
+                  <h4 className="font-semibold text-foreground mb-2">Ways to Connect:</h4>
                   <ul className="text-sm text-muted-foreground space-y-1 text-left">
-                    <li>• Getting started with your first Bitcoin purchase</li>
-                    <li>• Choosing the right wallet for your needs</li>
-                    <li>• Understanding Bitcoin's technology and economics</li>
+                    <li>• Find local Bitcoin meetups on Meetup.com</li>
+                    <li>• Join Twitter/X Bitcoin conversations and follow thought leaders</li>
+                    <li>• Participate in Bitcoin Reddit communities and forums</li>
+                    <li>• Attend Bitcoin conferences and events in your area</li>
+                    <li>• Connect with Bitcoiners on Nostr - the decentralized social network</li>
                   </ul>
                 </div>
                 
                 <div className="space-y-3">
-                  <Button size="lg" className="w-full bg-primary hover:bg-primary/90 text-primary-foreground" onClick={() => window.open('mailto:contact@example.com?subject=Bitcoin Questions', '_blank')}>
-                    Send Me an Email
+                  <Button size="lg" className="w-full bg-primary hover:bg-primary/90 text-primary-foreground" onClick={() => window.open('https://primal.net', '_blank')}>
+                    Join the Community
                   </Button>
                   
                   <p className="text-sm text-muted-foreground">
-                    Or reach out through your preferred platform - I'm always happy to chat about Bitcoin!
+                    Start with Primal - a user-friendly gateway to the global Bitcoin community on Nostr
                   </p>
                 </div>
               </div>
@@ -49,7 +51,7 @@ const Contact = () => {
         </div>
         
         <div className="mt-16 text-center">
-          <p className="text-muted-foreground">Remember: Take your time, stay curious, and always do your own research to make informed decisions.</p>
+          <p className="text-muted-foreground">Remember: The Bitcoin community values learning, sharing knowledge, and helping others. Don't hesitate to ask questions - everyone was new once!</p>
         </div>
       </div>
     </section>;
