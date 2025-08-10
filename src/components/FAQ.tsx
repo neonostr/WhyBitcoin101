@@ -208,6 +208,8 @@ const FAQ = () => {
     },
   ];
 
+  // Force rebuild to clear cache
+
   return (
     <section id="faq" className="py-20 px-4 bg-gradient-to-b from-background to-muted/20">
       <div className="container mx-auto">
