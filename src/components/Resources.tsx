@@ -93,17 +93,17 @@ const Resources = () => {
       {
     title: "Bitcoin Audible",
     host: "Guy Swann",
-    description: "Add description.",
-    type: "Add Text",
+    description: "Essential Bitcoin education through curated readings and expert analysis. Guy Swann transforms complex Bitcoin content into digestible audio format, making deep Bitcoin knowledge accessible during your commute or workout.",
+    type: "Educational Deep Dives",
     url: "https://bitcoinaudible.com/"
       },
     {
     title: "What Bitcoin Did",
     host: "Danny Knowles",
-    description: "Interviews with Bitcoin experts and industry leaders.",
-    type: "Interviews",
+    description: "Cutting-edge conversations with Bitcoin's most influential voices. Danny Knowles conducts in-depth interviews with developers, economists, and thought leaders shaping Bitcoin's future - essential listening for serious Bitcoiners.",
+    type: "Expert Interviews",
     url: "https://www.whatbitcoindid.com/episodes"
-  }, 
+  },
   {
     title: "The Jack Mallers Show",
     host: "Jack Mallers",
