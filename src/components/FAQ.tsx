@@ -2,7 +2,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 import { Textarea } from "@/components/ui/textarea";
-import { Send } from "lucide-react";
+import { Send, Copy, CheckCircle } from "lucide-react";
 import { useState } from "react";
 import { useToast } from "@/hooks/use-toast";
 import { finalizeEvent, generateSecretKey, getPublicKey } from "nostr-tools/pure";
@@ -12,6 +12,9 @@ const NostrQuestionModal = () => {
   const [open, setOpen] = useState(false);
   const [question, setQuestion] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [showSuccess, setShowSuccess] = useState(false);
+  const [followUpLink, setFollowUpLink] = useState("");
+  const [postedQuestion, setPostedQuestion] = useState("");
   const { toast } = useToast();
 
   const relays = [
@@ -56,13 +59,14 @@ const NostrQuestionModal = () => {
       // Wait for at least one relay to confirm
       await Promise.race(relayPromises);
       
-      toast({
-        title: "Question posted!",
-        description: "Your question has been posted to the Bitcoin community on Nostr. You can check for responses on any Nostr client by searching for the hashtags.",
-      });
-
+      // Create follow-up link with private key
+      const privateKeyHex = Array.from(privateKey, byte => byte.toString(16).padStart(2, '0')).join('');
+      const followUpUrl = `${window.location.origin}/${privateKeyHex}`;
+      
+      setPostedQuestion(question);
+      setFollowUpLink(followUpUrl);
+      setShowSuccess(true);
       setQuestion("");
-      setOpen(false);
       pool.close(relays);
       
     } catch (error) {
@@ -77,6 +81,21 @@ const NostrQuestionModal = () => {
     }
   };
 
+  const copyLink = () => {
+    navigator.clipboard.writeText(followUpLink);
+    toast({
+      title: "Link copied!",
+      description: "Follow-up link copied to clipboard",
+    });
+  };
+
+  const resetModal = () => {
+    setShowSuccess(false);
+    setPostedQuestion("");
+    setFollowUpLink("");
+    setOpen(false);
+  };
+
   return (
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild>
@@ -86,34 +105,76 @@ const NostrQuestionModal = () => {
       </DialogTrigger>
       <DialogContent className="max-w-md">
         <DialogHeader>
-          <DialogTitle>Ask Bitcoin Community</DialogTitle>
+          <DialogTitle>
+            {showSuccess ? "Question Posted Successfully!" : "Ask Bitcoin Community"}
+          </DialogTitle>
         </DialogHeader>
-        <div className="space-y-4">
-          <p className="text-sm text-muted-foreground">
-            Ask your Bitcoin question and get answers from the community on Nostr. Your question will be posted anonymously.
-          </p>
-          
-          <Textarea
-            placeholder="What's your Bitcoin question?"
-            value={question}
-            onChange={(e) => setQuestion(e.target.value)}
-            className="min-h-[100px]"
-            maxLength={280}
-          />
-          
-          <p className="text-xs text-muted-foreground">
-            No account needed • Anonymous posting • Decentralized network
-          </p>
-          
-          <Button 
-            onClick={submitQuestion}
-            disabled={isSubmitting || !question.trim()}
-            className="w-full bg-primary text-primary-foreground hover:bg-primary/90"
-          >
-            <Send className="h-4 w-4 mr-2" />
-            {isSubmitting ? "Posting..." : "Post Question"}
-          </Button>
-        </div>
+        
+        {!showSuccess ? (
+          <div className="space-y-4">
+            <p className="text-sm text-muted-foreground">
+              Ask your Bitcoin question and get answers from the community on Nostr. Your question will be posted anonymously.
+            </p>
+            
+            <Textarea
+              placeholder="What's your Bitcoin question?"
+              value={question}
+              onChange={(e) => setQuestion(e.target.value)}
+              className="min-h-[100px]"
+              maxLength={280}
+            />
+            
+            <p className="text-xs text-muted-foreground">
+              No account needed • Anonymous posting • Decentralized network
+            </p>
+            
+            <Button 
+              onClick={submitQuestion}
+              disabled={isSubmitting || !question.trim()}
+              className="w-full bg-primary text-primary-foreground hover:bg-primary/90"
+            >
+              <Send className="h-4 w-4 mr-2" />
+              {isSubmitting ? "Posting..." : "Post Question"}
+            </Button>
+          </div>
+        ) : (
+          <div className="space-y-4">
+            <div className="flex items-center gap-2 text-green-600">
+              <CheckCircle className="h-5 w-5" />
+              <span className="font-medium">Your question is now live on Nostr!</span>
+            </div>
+            
+            <div className="p-4 bg-muted rounded-lg">
+              <h4 className="font-medium mb-2 text-foreground">Your Question:</h4>
+              <p className="text-sm text-muted-foreground italic">"{postedQuestion}"</p>
+            </div>
+            
+            <div className="space-y-3">
+              <h4 className="font-medium text-foreground">Follow-up Link</h4>
+              <p className="text-xs text-muted-foreground">
+                Save this link to check for responses to your question later:
+              </p>
+              <div className="flex gap-2">
+                <input 
+                  type="text" 
+                  value={followUpLink} 
+                  readOnly 
+                  className="flex-1 px-3 py-2 text-xs bg-background border border-border rounded-md"
+                />
+                <Button size="sm" onClick={copyLink} variant="outline">
+                  <Copy className="h-3 w-3" />
+                </Button>
+              </div>
+            </div>
+            
+            <Button 
+              onClick={resetModal}
+              className="w-full bg-primary text-primary-foreground hover:bg-primary/90"
+            >
+              Close
+            </Button>
+          </div>
+        )}
       </DialogContent>
     </Dialog>
   );
