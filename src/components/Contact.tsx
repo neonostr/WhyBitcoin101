@@ -1,13 +1,11 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-
 const Contact = () => {
-  return (
-    <section id="contact" className="py-20 px-4 bg-gradient-to-br from-primary/5 to-bitcoin-orange/5">
+  return <section id="contact" className="py-20 px-4 bg-gradient-to-br from-primary/5 to-bitcoin-orange/5">
       <div className="container mx-auto">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold mb-6 text-foreground">Join the Bitcoin Community</h2>
-          <p className="text-xl text-muted-foreground max-w-2xl mx-auto">Bitcoin is best learned through community. Connect with fellow bitcoiners, share experiences, and grow together.</p>
+          <p className="text-xl text-muted-foreground max-w-2xl mx-auto">Bitcoin is best learned through community. Connect with other people, share experiences, and grow together.</p>
         </div>
         
         <div className="max-w-4xl mx-auto">
@@ -19,12 +17,7 @@ const Contact = () => {
               <CardContent>
                 <p className="text-muted-foreground leading-relaxed">
                   Search for Bitcoin meetups in your area on{" "}
-                  <a 
-                    href="https://meetup.com" 
-                    target="_blank" 
-                    rel="noopener noreferrer" 
-                    className="text-muted-foreground hover:text-foreground underline decoration-1 underline-offset-2 transition-colors"
-                  >
+                  <a href="https://meetup.com" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-foreground underline decoration-1 underline-offset-2 transition-colors">
                     Meetup.com
                   </a>
                   . These regular gatherings are perfect for meeting like-minded people, asking questions, and learning from experienced bitcoiners in person.
@@ -73,11 +66,7 @@ const Contact = () => {
                 <p className="text-muted-foreground mb-6">
                   Join the global Bitcoin conversation and connect with passionate bitcoiners from around the world.
                 </p>
-                <Button 
-                  size="lg" 
-                  className="w-full bg-primary hover:bg-primary/90 text-primary-foreground" 
-                  onClick={() => window.open('https://primal.net', '_blank')}
-                >
+                <Button size="lg" className="w-full bg-primary hover:bg-primary/90 text-primary-foreground" onClick={() => window.open('https://primal.net', '_blank')}>
                   Join The Online Bitcoin Community
                 </Button>
               </CardContent>
@@ -89,8 +78,6 @@ const Contact = () => {
           <p className="text-muted-foreground">Remember: Take your time, stay curious, and always do your own research to make informed decisions.</p>
         </div>
       </div>
-    </section>
-  );
+    </section>;
 };
-
 export default Contact;
