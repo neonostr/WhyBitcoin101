@@ -23,10 +23,10 @@ const VideoModal = ({ isOpen, onClose, title, videoUrl }: VideoModalProps) => {
     
     if (url.includes("youtube.com/watch?v=")) {
       const videoId = url.split("v=")[1]?.split("&")[0];
-      embedUrl = `https://www.youtube.com/embed/${videoId}?${timestamp}`;
+      embedUrl = `https://www.youtube.com/embed/${videoId}?autoplay=1${timestamp}`;
     } else if (url.includes("youtu.be/")) {
       const videoId = url.split("youtu.be/")[1]?.split("?")[0];
-      embedUrl = `https://www.youtube.com/embed/${videoId}?${timestamp}`;
+      embedUrl = `https://www.youtube.com/embed/${videoId}?autoplay=1${timestamp}`;
     } else {
       embedUrl = url; // Return as-is for other embed URLs
     }
