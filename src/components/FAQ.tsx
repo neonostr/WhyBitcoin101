@@ -8,7 +8,7 @@ const FAQ = () => {
     },
     {
       question: "How much Bitcoin should I buy?",
-      answer: "Only invest what you can afford to lose. Many people start with a small amount to learn how it works before investing more."
+      answer: "Invest as much as you feel comfortable with. It makes no sense to go all-in without understanding Bitcoin. Start with an amount that feels good for you, then continue learning - as your understanding grows, you'll know when and how much more to invest."
     },
     {
       question: "Can Bitcoin be shut down?",
