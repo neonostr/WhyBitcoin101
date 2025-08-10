@@ -16,10 +16,17 @@ interface NostrEvent {
   tags: string[][];
 }
 
+interface UserProfile {
+  name?: string;
+  about?: string;
+  picture?: string;
+}
+
 const QuestionFollow = () => {
   const { nsec } = useParams<{ nsec: string }>();
   const [originalQuestion, setOriginalQuestion] = useState<NostrEvent | null>(null);
   const [replies, setReplies] = useState<NostrEvent[]>([]);
+  const [userProfiles, setUserProfiles] = useState<Record<string, UserProfile>>({});
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
@@ -67,6 +74,30 @@ const QuestionFollow = () => {
 
           const replyEvents = await pool.querySync(relays, replyFilter);
           setReplies(replyEvents);
+
+          // Fetch user profiles for all unique pubkeys
+          const allPubkeys = [publicKey, ...replyEvents.map(r => r.pubkey)];
+          const uniquePubkeys = [...new Set(allPubkeys)];
+          
+          const profileFilter = {
+            kinds: [0],
+            authors: uniquePubkeys,
+          };
+
+          const profileEvents = await pool.querySync(relays, profileFilter);
+          
+          // Process profiles
+          const profiles: Record<string, UserProfile> = {};
+          profileEvents.forEach(event => {
+            try {
+              const profile = JSON.parse(event.content);
+              profiles[event.pubkey] = profile;
+            } catch (e) {
+              console.warn("Failed to parse profile:", e);
+            }
+          });
+          
+          setUserProfiles(profiles);
         } else {
           setError("Question not found or not yet propagated to relays");
         }
@@ -95,6 +126,65 @@ const QuestionFollow = () => {
 
   const truncateKey = (key: string) => {
     return `${key.slice(0, 8)}...${key.slice(-8)}`;
+  };
+
+  const getUserDisplayName = (pubkey: string) => {
+    const profile = userProfiles[pubkey];
+    return profile?.name || truncateKey(pubkey);
+  };
+
+  const renderMedia = (content: string) => {
+    const urlRegex = /(https?:\/\/[^\s]+)/g;
+    const urls = content.match(urlRegex) || [];
+    
+    return urls.map((url, index) => {
+      if (url.match(/\.(jpg|jpeg|png|gif|webp)$/i)) {
+        return (
+          <img 
+            key={index}
+            src={url} 
+            alt="Shared image" 
+            className="max-w-full h-auto rounded-lg mt-2 max-h-96 object-contain"
+            loading="lazy"
+          />
+        );
+      }
+      if (url.match(/\.(mp4|webm|ogg)$/i)) {
+        return (
+          <video 
+            key={index}
+            src={url} 
+            controls 
+            className="max-w-full h-auto rounded-lg mt-2 max-h-96"
+          />
+        );
+      }
+      if (url.includes('gif') || url.match(/\.gif$/i)) {
+        return (
+          <img 
+            key={index}
+            src={url} 
+            alt="GIF" 
+            className="max-w-full h-auto rounded-lg mt-2 max-h-96 object-contain"
+            loading="lazy"
+          />
+        );
+      }
+      return null;
+    });
+  };
+
+  const formatContent = (content: string) => {
+    // Remove URLs that will be rendered as media
+    const urlRegex = /(https?:\/\/[^\s]+)/g;
+    const textContent = content.replace(urlRegex, (url) => {
+      if (url.match(/\.(jpg|jpeg|png|gif|webp|mp4|webm|ogg)$/i)) {
+        return '';
+      }
+      return url;
+    }).trim();
+    
+    return textContent;
   };
 
   if (loading) {
@@ -162,7 +252,7 @@ const QuestionFollow = () => {
               </div>
               <div className="flex items-center gap-1">
                 <User className="h-4 w-4" />
-                {truncateKey(originalQuestion.pubkey)}
+                {getUserDisplayName(originalQuestion.pubkey)}
               </div>
             </div>
           </CardContent>
@@ -196,8 +286,8 @@ const QuestionFollow = () => {
                   <div className="flex items-center justify-between">
                     <div className="flex items-center gap-2">
                       <User className="h-4 w-4 text-muted-foreground" />
-                      <span className="text-sm text-muted-foreground">
-                        {truncateKey(reply.pubkey)}
+                      <span className="text-sm font-medium text-foreground">
+                        {getUserDisplayName(reply.pubkey)}
                       </span>
                     </div>
                     <span className="text-sm text-muted-foreground">
@@ -206,9 +296,21 @@ const QuestionFollow = () => {
                   </div>
                 </CardHeader>
                 <CardContent>
-                  <p className="text-foreground leading-relaxed whitespace-pre-wrap">
-                    {reply.content}
-                  </p>
+                  <div className="space-y-2">
+                    <p className="text-foreground leading-relaxed whitespace-pre-wrap">
+                      {formatContent(reply.content)}
+                    </p>
+                    {renderMedia(reply.content)}
+                  </div>
+                  <div className="flex items-center gap-4 mt-4 pt-3 border-t border-border">
+                    <Button variant="ghost" size="sm" className="text-muted-foreground hover:text-primary">
+                      <MessageCircle className="h-4 w-4 mr-1" />
+                      Reply
+                    </Button>
+                    <Button variant="ghost" size="sm" className="text-muted-foreground hover:text-red-500">
+                      ❤️ Like
+                    </Button>
+                  </div>
                 </CardContent>
               </Card>
             ))

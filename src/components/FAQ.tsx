@@ -24,6 +24,17 @@ const NostrQuestionModal = () => {
     "wss://relay.snort.social"
   ];
 
+  const generateRandomUsername = () => {
+    const adjectives = ["Curious", "Learning", "New", "Eager", "Smart", "Bitcoin", "Crypto", "Digital", "Future", "Wise"];
+    const nouns = ["Student", "Explorer", "Learner", "Seeker", "Beginner", "Enthusiast", "User", "Person", "Individual", "Member"];
+    const numbers = Math.floor(Math.random() * 999) + 1;
+    
+    const adjective = adjectives[Math.floor(Math.random() * adjectives.length)];
+    const noun = nouns[Math.floor(Math.random() * nouns.length)];
+    
+    return `${adjective}${noun}${numbers}`;
+  };
+
   const submitQuestion = async () => {
     if (!question.trim()) {
       toast({
@@ -41,6 +52,27 @@ const NostrQuestionModal = () => {
       const privateKey = generateSecretKey();
       const publicKey = getPublicKey(privateKey);
       
+      const pool = new SimplePool();
+      
+      // Create user profile first
+      const username = generateRandomUsername();
+      const profileEvent = {
+        kind: 0,
+        created_at: Math.floor(Date.now() / 1000),
+        tags: [],
+        content: JSON.stringify({
+          name: username,
+          about: "Created by bitcoinknowledgehub.com so this person can get help from the bitcoin community. Thanks for helping!",
+          picture: "",
+        }),
+        pubkey: publicKey,
+      };
+
+      const signedProfileEvent = finalizeEvent(profileEvent, privateKey);
+      
+      // Publish profile
+      await Promise.race(pool.publish(relays, signedProfileEvent));
+      
       // Create the note event
       const event = {
         kind: 1,
@@ -54,7 +86,6 @@ const NostrQuestionModal = () => {
       const signedEvent = finalizeEvent(event, privateKey);
       
       // Publish to relays
-      const pool = new SimplePool();
       const relayPromises = pool.publish(relays, signedEvent);
       
       // Wait for at least one relay to confirm
