@@ -89,25 +89,30 @@ const Resources = () => {
   }];
 
   // Podcasts
-  const podcasts = [{
+  const podcasts = [
+      {
     title: "Bitcoin Audible",
     host: "Guy Swann",
     description: "Essential Bitcoin education through curated readings and expert analysis. Guy Swann transforms complex Bitcoin content into digestible audio format, making deep Bitcoin knowledge accessible to everyone.",
     type: "Educational Deep Dives",
     url: "https://bitcoinaudible.com/"
-  }, {
+      },
+    {
     title: "What Bitcoin Did",
     host: "Danny Knowles",
     description: "Cutting-edge conversations with Bitcoin's most influential voices. Danny Knowles conducts in-depth interviews with developers, economists, and thought leaders shaping Bitcoin's future.",
     type: "Expert Interviews",
     url: "https://www.whatbitcoindid.com/episodes"
-  }, {
+  },
+  {
     title: "The Jack Mallers Show",
     host: "Jack Mallers",
     description: "Bitcoin and macro analysis. Jack Mallers delivers passionate breakdowns of Bitcoin's role in global economics, monetary policy impacts, and the inevitable transition to a Bitcoin standard.",
     type: "Weekly Macro Updates",
     url: "https://creators.spotify.com/pod/profile/thejackmallersshow/"
-  }];
+  }
+                                      
+];
 
   // Mobile Wallets
   const mobileWallets = [{
@@ -161,17 +166,21 @@ const Resources = () => {
     description: "Canadian Bitcoin exchange with Lightning Network support and instant wallet delivery. Simple buying process with competitive rates.",
     type: "CANADA",
     url: "https://bitcoinwell.com/buy-bitcoin"
-  }, {
+  }, 
+  {
     title: "Coincorner",
     description: "UK's leading Bitcoin exchange with Lightning Network integration and DCA options. FCA-registered with instant SEPA transfers and direct wallet delivery.",
     type: "UK",
     url: "https://www.coincorner.com"
-  }, {
+  },
+    {
     title: "Bitaroo",
     description: "Australia's premium Bitcoin exchange with competitive spreads and instant OSKO payments and direct wallet withdrawals.",
     type: "Australia",
     url: "https://www.bitaroo.com.au"
-  }, {
+  },
+                                       
+  {
     title: "HodlHodl",
     description: "Global peer-to-peer Bitcoin marketplace. Trade directly with other users using multisig escrow without identity verification requirements.",
     type: "Worldwide",
@@ -184,32 +193,38 @@ const Resources = () => {
     description: "Discover the growing Bitcoin economy around you. Interactive global map revealing thousands of Bitcoin-accepting businesses from coffee shops to car dealerships - proving Bitcoin is already money.",
     type: "Map",
     url: "https://btcmap.org/"
-  }, {
+  }, 
+  {
     title: "Bitcoin Listings Directory",
     description: "Your gateway to the Bitcoin economy. Comprehensive database of online shops and local businesses ready to accept your Bitcoin - from everyday essentials to luxury goods.",
     type: "Directory",
     url: "https://bitcoinlistings.org/"
-  }, {
+  },
+  {
     title: "Lightning Network Stores",
     description: "Experience instant Bitcoin payments in action. Curated collection of stores, apps, and services accepting Lightning payments - showcasing the future of fast, cheap Bitcoin transactions.",
     type: "Directory",
     url: "https://lightningnetworkstores.com/"
-  }, {
+  },                           
+  {
     title: "Bitrefill",
     description: "Turn your Bitcoin into everything you need. Revolutionary platform for buying gift cards, mobile top-ups, eSIMs, and gaming credits with Bitcoin - bridging crypto to everyday purchases.",
     type: "Gift Cards",
     url: "https://www.bitrefill.com"
-  }, {
+  },
+    {
     title: "Opportunity Cost",
     description: "See the true cost of fiat spending. Genius browser extension that displays prices in Bitcoin, helping you understand opportunity costs and naturally develop a Bitcoin mindset for every purchase.",
     type: "Tool",
     url: "https://www.opportunitycost.app"
-  }, {
+  },
+  {
     title: "Travala",
     description: "Explore the world on a Bitcoin standard. Book over 3 million hotels, flights, tours, and activities worldwide using Bitcoin - proving you can live entirely on sound money while traveling anywhere.",
     type: "Travel",
     url: "https://www.travala.com"
-  }];
+  }
+      ];
 
   // Educational Entertainment
   const educationalEntertainment = [{
@@ -225,7 +240,7 @@ const Resources = () => {
   }, {
     title: "Joey Nakamoto - Bitcoin Adventures",
     description: "Entertaining and educational Bitcoin content that makes learning about sound money fun and engaging. Perfect blend of entertainment and Bitcoin education.",
-    type: "YouTube Channel",
+    type: "YouTube Channel", 
     url: "https://www.youtube.com/@JoeNakamoto"
   }];
 
@@ -302,10 +317,14 @@ const Resources = () => {
           <div className="text-center">
             <div className="inline-block p-8 rounded-2xl bg-gradient-to-r from-primary/5 to-bitcoin-orange/5 border border-primary/10">
               <h3 className="text-2xl font-bold mb-4 text-foreground">Start Your Journey</h3>
-              <p className="text-muted-foreground mb-6 max-w-md">Take your time exploring these resources. Bitcoin is a marathon, not a sprint.  If you still have questions afterward, check the common questions below.</p>
+              <p className="text-muted-foreground mb-6 max-w-md">
+                Take your time exploring these resources. Bitcoin is a marathon, not a sprint.
+              </p>
               <Button className="bg-primary hover:bg-primary/90 text-primary-foreground" onClick={() => document.getElementById('faq')?.scrollIntoView({
               behavior: 'smooth'
-            })}> Common Questions</Button>
+            })}>
+                Common Questions
+              </Button>
             </div>
           </div>
         </div>
