@@ -37,7 +37,7 @@ const NostrQuestionModal = () => {
         </DialogHeader>
         <div className="space-y-4">
           <p className="text-sm text-muted-foreground">
-            When you click "Ask Question", you'll post a public note to the Nostr network where I or other Bitcoin enthusiasts will answer you. Since this is a public network, be mindful of what you share.
+            When you click "Ask Question", you'll post a public note to a social network where we or other people will answer you. Since this is a public network, be mindful of what you share.
           </p>
           <p className="text-sm text-muted-foreground">
             Responses can be almost instant or take a few days, depending on who's online.
