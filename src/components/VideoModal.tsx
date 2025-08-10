@@ -1,4 +1,4 @@
-import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from "@/components/ui/dialog";
+import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 
 interface VideoModalProps {
   isOpen: boolean;
@@ -39,9 +39,6 @@ const VideoModal = ({ isOpen, onClose, title, videoUrl }: VideoModalProps) => {
       <DialogContent className="max-w-4xl w-full">
         <DialogHeader>
           <DialogTitle>{title}</DialogTitle>
-          <DialogDescription>
-            Click the play button to start the video
-          </DialogDescription>
         </DialogHeader>
         <div className="aspect-video w-full">
           <iframe
