@@ -107,7 +107,7 @@ const Resources = () => {
   {
     title: "The Jack Mallers Show",
     host: "Jack Mallers",
-    description: "Weekly updates of the biggest stories in Bitcoin, macroeconomics, financial markets, and the future of money.",
+    description: "High-energy Bitcoin and macro analysis from the CEO of Strike. Jack Mallers delivers passionate breakdowns of Bitcoin's role in global economics, monetary policy impacts, and the inevitable transition to a Bitcoin standard with infectious enthusiasm.",
     type: "Weekly Macro Updates",
     url: "https://creators.spotify.com/pod/profile/thejackmallersshow/"
   }
