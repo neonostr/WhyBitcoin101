@@ -113,7 +113,7 @@ const NostrQuestionModal = () => {
         {!showSuccess ? (
           <div className="space-y-4">
             <p className="text-sm text-muted-foreground">
-              Ask your Bitcoin question and get answers from the community on Nostr. Your question will be posted anonymously.
+              Ask your Bitcoin related question and get an answer from us or the broader community. Your question will be publicly visible, but you'll remain anonymous.
             </p>
             
             <Textarea
