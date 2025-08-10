@@ -4,7 +4,7 @@ const Basics = () => {
       <div className="container mx-auto">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold mb-6 text-foreground">
-            Bitcoin Basics
+            Why Bitcoin 101
           </h2>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
             Understanding Bitcoin doesn't have to be complicated. Let's start with the fundamentals.
