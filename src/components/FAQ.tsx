@@ -20,7 +20,7 @@ const NostrQuestionModal = () => {
   };
 
   const openNostr = () => {
-    window.open("https://nostr.band", "_blank");
+    window.open("https://www.asknostr.io", "_blank");
     setOpen(false);
   };
 
