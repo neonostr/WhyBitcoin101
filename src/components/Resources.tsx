@@ -31,7 +31,7 @@ const Resources = () => {
     url: "https://www.youtubetrimmer.com/view/?v=5893JBg7r9k&start=773&end=1000&loop=0"
   }, {
     title: "Bitcoin vs Diversification Myth",
-    description: "Challenge conventional investment wisdom. Learn why concentrating in Bitcoin might be the smartest "diversification" strategy for the digital age.",
+    description: "Challenge conventional investment wisdom. Learn why concentrating in Bitcoin might be the smartest 'diversification' strategy for the digital age.",
     type: "Strategy",
     url: "https://www.youtube.com/watch?v=kunaljk_Psc"
   }, {
