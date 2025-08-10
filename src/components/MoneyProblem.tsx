@@ -15,9 +15,9 @@ const MoneyProblem = () => {
             <h3 className="text-2xl font-bold mb-6 text-foreground">
               What Money Should Be
             </h3>
-            <p className="text-lg text-muted-foreground leading-relaxed mb-6">Money is fundamentally a tool to store human energy and time. When you work, you expend your life energy - your time, effort, and skills. Money should allow you to store this energy for future use, so you can later exchange it for things that improve your life: a car, a holiday trip, a home, or simply peace of mind.</p>
+            <p className="text-lg text-muted-foreground leading-relaxed mb-6">At its core, money is a way to store the value of your work - your time, effort, and expertise. Every hour you spend working represents precious life energy that you can never get back. Money should serve as a reliable container for this energy, allowing you to preserve today's efforts and exchange them for what you need tomorrow.</p>
             <p className="text-lg text-muted-foreground leading-relaxed">
-              Good money should reliably preserve the value of your work across time. If you work hard today and save money, that money should retain its purchasing power so you can access the same value months or years later when you need it.
+              True money maintains its purchasing power over time. When you save responsibly today, those savings should buy you the same value years from now - whether that's a home, education, or simply financial security for your family.
             </p>
           </div>
           <div className="bg-card border border-border/50 rounded-2xl p-8 hover:shadow-lg transition-all duration-300">
