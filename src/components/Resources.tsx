@@ -301,10 +301,10 @@ const Resources = () => {
               <p className="text-muted-foreground mb-6 max-w-md">
                 Take your time exploring these resources. Bitcoin is a marathon, not a sprint.
               </p>
-              <Button className="bg-primary hover:bg-primary/90 text-primary-foreground" onClick={() => document.getElementById('contact')?.scrollIntoView({
+              <Button className="bg-primary hover:bg-primary/90 text-primary-foreground" onClick={() => document.getElementById('faq')?.scrollIntoView({
               behavior: 'smooth'
             })}>
-                Have Questions? Get in Touch
+                Common Questions
               </Button>
             </div>
           </div>
