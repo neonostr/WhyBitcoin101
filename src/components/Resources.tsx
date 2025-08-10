@@ -89,20 +89,21 @@ const Resources = () => {
   }];
 
   // Podcasts
-  const podcasts = [{
+  const podcasts = [
+      {
+    title: "Bitcoin Audible",
+    host: "Guy Swann",
+    description: "Add description.",
+    type: "Add Text",
+    url: "https://bitcoinaudible.com/"
+      },
+    {
     title: "What Bitcoin Did",
-    host: "Peter McCormack",
+    host: "Danny Knowles",
     description: "Interviews with Bitcoin experts and industry leaders.",
-    type: "Interview",
-    url: "https://example.com/what-bitcoin-did"
+    type: "Interviews",
+    url: "https://www.whatbitcoindid.com/episodes"
   }, 
-  {
-    title: "The Bitcoin Podcast",
-    host: "Various Hosts",
-    description: "Deep dives into Bitcoin technology and economics.",
-    type: "Technical",
-    url: "https://example.com/bitcoin-podcast"
-  },
   {
     title: "The Jack Mallers Show",
     host: "Jack Mallers",
