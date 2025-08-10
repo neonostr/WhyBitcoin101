@@ -141,7 +141,7 @@ const FAQ = () => {
           <div className="inline-block p-8 rounded-2xl bg-card border border-border">
             <h3 className="text-2xl font-bold mb-4 text-foreground">Still Have Questions?</h3>
             <p className="text-muted-foreground mb-6 max-w-md">
-              Don't see your question here? Ask the Bitcoin community on Nostr and get answers from experts worldwide.
+              Don't see your question here? Ask the Bitcoin community and get help from others who know about Bitcoin.
             </p>
             <NostrQuestionModal />
           </div>
