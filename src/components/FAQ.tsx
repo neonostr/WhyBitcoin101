@@ -181,30 +181,30 @@ const NostrQuestionModal = () => {
 };
 
 const FAQ = () => {
-  const communityTips = [
+  const faqs = [
     {
-      question: "Find Local Bitcoin Meetups",
-      answer: "Search for Bitcoin meetups in your area on Meetup.com. These regular gatherings are perfect for meeting like-minded people, asking questions, and learning from experienced bitcoiners in person."
+      question: "Is Bitcoin safe to use?",
+      answer: "Bitcoin's blockchain is extremely secure and has never been hacked. However, you need to keep your Bitcoin wallet safe, just like you would with cash or credit cards."
     },
     {
-      question: "Join Online Bitcoin Communities",
-      answer: "Connect with thousands of bitcoiners worldwide through platforms like Nostr, Bitcoin Twitter, and specialized forums. The Bitcoin community is known for being welcoming and educational."
+      question: "How much Bitcoin should I buy?",
+      answer: "Invest as much as you feel comfortable with. It makes no sense to go all-in without understanding Bitcoin. Start with an amount that feels good for you, then continue learning - as your understanding grows, you'll know when and how much more to invest."
     },
     {
-      question: "Attend Bitcoin Conferences",
-      answer: "Bitcoin conferences happen globally throughout the year. These events feature expert speakers, networking opportunities, and the latest developments in the Bitcoin space."
+      question: "Can Bitcoin keep going up forever?",
+      answer: "Bitcoin has no theoretical ceiling because humans will never stop inventing, improving, and creating value. With Bitcoin's fixed supply of 21 million coins and humanity's endless capacity for innovation, your purchasing power can increase indefinitely. As we develop better technology, more efficient systems, and new solutions, there's more value to capture - and Bitcoin's scarcity ensures your savings benefit from all of human progress."
     },
     {
-      question: "Start a Local Study Group",
-      answer: "If there's no Bitcoin meetup in your area, consider starting one! Many successful Bitcoin communities began with just a few curious people meeting regularly to learn together."
+      question: "Can Bitcoin be shut down?",
+      answer: "Bitcoin is decentralized across thousands of computers worldwide. There's no central authority that can shut it down, making it very resilient."
     },
     {
-      question: "Follow Bitcoin Educators",
-      answer: "Learn from respected Bitcoin educators and content creators who regularly share insights, updates, and educational content about Bitcoin's technology and economics."
+      question: "How do I store Bitcoin safely?",
+      answer: "For small amounts, a reputable mobile wallet is fine. For larger amounts, consider a hardware wallet for maximum security."
     },
     {
-      question: "Engage in Meaningful Discussions",
-      answer: "Don't be afraid to ask questions and share your learning journey. The Bitcoin community values genuine curiosity and is eager to help newcomers understand this revolutionary technology."
+      question: "Is Bitcoin bad for the environment?",
+      answer: "Bitcoin mining increasingly uses renewable energy. The network's energy use secures a global financial system and drives renewable energy innovation."
     },
   ];
 
@@ -213,28 +213,28 @@ const FAQ = () => {
       <div className="container mx-auto">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold mb-6 text-foreground">
-            Connect & Learn Together
+            Common Questions
           </h2>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-            Bitcoin is best learned through community. Connect with local bitcoiners, attend meetups, and join the global conversation.
+            Here are answers to the questions most people have when they're first learning about Bitcoin.
           </p>
         </div>
         
         <div className="max-w-4xl mx-auto">
           <div className="grid md:grid-cols-2 gap-6">
-            {communityTips.map((tip, index) => (
+            {faqs.map((faq, index) => (
               <Card 
                 key={index} 
                 className="group hover:shadow-[var(--card-hover)] transition-all duration-300 border-border/50 hover:border-primary/20"
               >
                 <CardHeader>
                   <CardTitle className="text-lg text-foreground group-hover:text-primary transition-colors duration-300">
-                    {tip.question}
+                    {faq.question}
                   </CardTitle>
                 </CardHeader>
                 <CardContent>
                   <p className="text-muted-foreground leading-relaxed">
-                    {tip.answer}
+                    {faq.answer}
                   </p>
                 </CardContent>
               </Card>
@@ -244,19 +244,11 @@ const FAQ = () => {
         
         <div className="mt-16 text-center">
           <div className="inline-block p-8 rounded-2xl bg-card border border-border">
-            <h3 className="text-2xl font-bold mb-4 text-foreground">Join the Global Bitcoin Community</h3>
+            <h3 className="text-2xl font-bold mb-4 text-foreground">Still Have Questions?</h3>
             <p className="text-muted-foreground mb-6 max-w-md">
-              Connect with thousands of bitcoiners worldwide, ask questions, share insights, and stay updated on the latest Bitcoin developments.
+              Don't see your question here? Ask the Bitcoin community and get help from others who know about Bitcoin.
             </p>
-            <div className="flex flex-col sm:flex-row gap-3 justify-center">
-              <Button 
-                onClick={() => window.open('https://primal.net', '_blank')}
-                className="bg-primary text-primary-foreground hover:bg-primary/90"
-              >
-                Join Community
-              </Button>
-              <NostrQuestionModal />
-            </div>
+            <NostrQuestionModal />
           </div>
         </div>
       </div>
