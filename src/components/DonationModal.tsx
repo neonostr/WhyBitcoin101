@@ -93,13 +93,10 @@ const DonationModal = ({
     setCopiedField(null);
     onClose();
   };
-
   return <Dialog open={isOpen} onOpenChange={handleClose}>
       <DialogContent className="max-w-2xl max-h-[90vh] overflow-y-auto">
         <DialogHeader>
-          <DialogTitle className="text-2xl font-bold text-center text-foreground">
-            Support Bitcoin Basics
-          </DialogTitle>
+          <DialogTitle className="text-2xl font-bold text-center text-foreground">Support Education</DialogTitle>
         </DialogHeader>
 
         <div className="space-y-6">
