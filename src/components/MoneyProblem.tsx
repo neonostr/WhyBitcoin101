@@ -53,18 +53,6 @@ const MoneyProblem = () => {
               </p>
             </div>
           </div>
-
-          <div className="bg-card border border-border/50 rounded-2xl p-8 hover:shadow-lg transition-all duration-300">
-            <h3 className="text-2xl font-bold mb-6 text-foreground">
-              How Bitcoin Fixes Money
-            </h3>
-            <p className="text-lg text-muted-foreground leading-relaxed mb-6">
-              Good money should reliably preserve and enhance the value of your work across time. With Bitcoin's fixed supply of 21 million coins, your savings capture the gains from ongoing human progress. As humanity keeps improving, inventing, and producing more goods and services, your Bitcoin becomes worth more over time.
-            </p>
-            <p className="text-lg text-muted-foreground leading-relaxed">
-              Unlike traditional currency that loses value through inflation, Bitcoin's mathematical scarcity means that if you work hard today and save in Bitcoin, your money retains and ideally increases its purchasing power, allowing you to access even greater value months or years later when you need it. This is how money should work.
-            </p>
-          </div>
         </div>
       </div>
     </section>;
