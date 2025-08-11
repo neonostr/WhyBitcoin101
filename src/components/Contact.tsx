@@ -64,48 +64,66 @@ const Contact = () => {
       </div>
     </section>
 
-   <section className="py-20 px-4 bg-background">
-  <div className="container mx-auto">
-    <div className="text-center mb-12">
-      <h2 className="text-4xl md:text-5xl font-bold mb-6 text-foreground">
-        From Bitcoin to a Freer World
-      </h2>
-      <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-        The shift has already begun — not in boardrooms or behind closed doors, 
-        but in the hands of everyday people. Around the world, individuals are 
-        claiming the right to own their time, their work, and their privacy. 
-        Together, we’re building systems that remain in the hands of the many, 
-        never the few. This is more than money. It’s a grassroots movement for 
-        self‑sovereignty and a fairer future.
-      </p>
-    </div>
+    <section className="py-24 px-4 bg-gradient-to-br from-background via-primary/5 to-secondary/10 relative overflow-hidden">
+      {/* Background decoration */}
+      <div className="absolute inset-0 bg-gradient-to-r from-transparent via-primary/5 to-transparent"></div>
+      
+      <div className="container mx-auto relative z-10">
+        <div className="text-center mb-16">
+          <h2 className="text-5xl md:text-6xl lg:text-7xl font-bold mb-8 text-foreground leading-tight">
+            From Bitcoin to a 
+            <span className="bg-gradient-to-r from-primary to-bitcoin-orange bg-clip-text text-transparent"> Freer World</span>
+          </h2>
+          <p className="text-xl md:text-2xl text-muted-foreground max-w-4xl mx-auto leading-relaxed">
+            The shift has already begun — not in boardrooms or behind closed doors, 
+            but in the hands of everyday people. Around the world, individuals are 
+            claiming the right to own their time, their work, and their privacy. 
+            Together, we're building systems that remain in the hands of the many, 
+            never the few. This is more than money. It's a grassroots movement for 
+            self‑sovereignty and a fairer future.
+          </p>
+        </div>
 
-    {/* Redesigned CTA Block */}
-    <div className="bg-gradient-to-r from-primary/10 via-primary/5 to-primary/10 rounded-2xl p-10 text-center max-w-3xl mx-auto shadow-lg">
-      <h3 className="text-3xl font-bold text-foreground mb-4">
-        Where Change Begins
-      </h3>
-      <p className="text-lg text-muted-foreground mb-8">
-        Join a community that values independence, transparency, and innovation. 
-        Together, we’re not just imagining a freer world — we’re making it real, 
-        step by step, connection by connection.
-      </p>
-      <Button
-        className="bg-primary text-primary-foreground hover:bg-primary/90"
-        onClick={() => window.open('https://primal.net', '_blank')}
-      >
-        ✨ Be Part of It
-      </Button>
-    </div>
+        {/* Enhanced CTA Block */}
+        <div className="relative max-w-4xl mx-auto">
+          {/* Glow effect */}
+          <div className="absolute -inset-4 bg-gradient-to-r from-primary/20 via-bitcoin-orange/20 to-primary/20 rounded-3xl blur-xl"></div>
+          
+          <div className="relative bg-gradient-to-br from-card/90 to-card/70 backdrop-blur-sm border border-border/50 rounded-3xl p-12 text-center shadow-2xl">
+            <h3 className="text-4xl md:text-5xl font-bold text-foreground mb-6 tracking-tight">
+              Where Change Begins
+            </h3>
+            <p className="text-xl md:text-2xl text-muted-foreground mb-12 max-w-2xl mx-auto leading-relaxed">
+              Join a community that values independence, transparency, and innovation. 
+              Together, we're not just imagining a freer world — we're making it real, 
+              step by step, connection by connection.
+            </p>
+            
+            <Button
+              size="lg"
+              className="bg-gradient-to-r from-primary to-bitcoin-orange text-primary-foreground hover:from-primary/90 hover:to-bitcoin-orange/90 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 text-lg px-12 py-6 rounded-xl font-semibold"
+              onClick={() => window.open('https://primal.net', '_blank')}
+            >
+              ✨ Be Part of It
+            </Button>
+            
+            {/* Decorative elements */}
+            <div className="flex justify-center items-center gap-8 mt-12 opacity-60">
+              <div className="h-px bg-gradient-to-r from-transparent via-border to-transparent flex-1"></div>
+              <div className="text-sm text-muted-foreground font-medium">Join thousands worldwide</div>
+              <div className="h-px bg-gradient-to-r from-transparent via-border to-transparent flex-1"></div>
+            </div>
+          </div>
+        </div>
 
-    <div className="mt-16 text-center">
-      <p className="text-muted-foreground">
-        Remember: Take your time, stay curious, and always do your own research 
-        to make informed decisions.
-      </p>
-    </div>
-  </div>
-</section>
+        <div className="mt-20 text-center">
+          <p className="text-lg text-muted-foreground/80 max-w-2xl mx-auto">
+            Remember: Take your time, stay curious, and always do your own research 
+            to make informed decisions.
+          </p>
+        </div>
+      </div>
+    </section>
   </>;
 };
 
