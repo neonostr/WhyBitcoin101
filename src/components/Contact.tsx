@@ -66,6 +66,11 @@ const Contact = () => {
 
     <section className="py-20 px-4 bg-background">
       <div className="container mx-auto">
+        <div className="text-center mb-16">
+          <h2 className="text-4xl md:text-5xl font-bold mb-6 text-foreground">Join the Bitcoin Community</h2>
+          <p className="text-xl text-muted-foreground max-w-2xl mx-auto">Connect with thousands of like-minded individuals who share your passion for Bitcoin. Your journey is just beginning.</p>
+        </div>
+        
         <div className="text-center">
           <Card className="border-primary/20 shadow-[var(--card-hover)] max-w-2xl mx-auto">
             <CardContent className="p-8">
