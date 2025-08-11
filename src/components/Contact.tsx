@@ -80,24 +80,26 @@ const Contact = () => {
       </p>
     </div>
 
-    {/* Redesigned CTA Block - section-friendly, not a card */}
-    <div className="bg-gradient-to-r from-primary/5 via-primary/10 to-primary/5 rounded-2xl p-10 text-center max-w-3xl mx-auto shadow-[var(--card-hover)] border border-primary/20">
-      <h3 className="text-3xl font-bold text-foreground mb-4">
-        People Building the Future
-      </h3>
-      <p className="text-lg text-muted-foreground mb-8 leading-relaxed">
-        Join a community that values independence, transparency, and innovation. 
-        Together, we’re not just imagining a freer world — we’re making it real, 
-        step by step, connection by connection.
-      </p>
-      <Button
-        size="lg"
-        className="rounded-full text-lg w-full sm:w-auto"
-        onClick={() => window.open('https://primal.net', '_blank')}
-      >
-        ✨ Be Part of It
-      </Button>
-    </div>
+    {/* Redesigned CTA Block */}
+   <Card className="border-primary/20 shadow-[var(--card-hover)] max-w-3xl mx-auto text-center">
+  <CardHeader>
+    <CardTitle className="text-3xl font-bold text-foreground">
+      People Building the Future
+    </CardTitle>
+  </CardHeader>
+  <CardContent>
+    <p className="text-lg text-muted-foreground mb-8 leading-relaxed">
+      Join a community that values independence, transparency, and innovation.
+      Together, we’re not just imagining a freer world — we’re making it real,
+      step by step, connection by connection.
+    </p>
+    <Button
+      size="lg"
+      className="w-full md:w-auto"
+      onClick={() => window.open('https://primal.net', '_blank')}
+    >
+      ✨ Be Part of It
+    </Button>
   </CardContent>
 </Card>
   </>;
