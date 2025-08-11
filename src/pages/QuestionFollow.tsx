@@ -215,7 +215,8 @@ const QuestionFollow = () => {
         kind: 1,
         content: replyText.trim(),
         tags: [
-          ["e", replyToEventId, "", "reply"],
+          ["e", replyToEventId],
+          ["e", originalQuestion?.id || "", "", "root"],
           ["p", originalQuestion?.pubkey || ""]
         ],
         created_at: Math.floor(Date.now() / 1000),
@@ -223,17 +224,15 @@ const QuestionFollow = () => {
 
       const pool = new SimplePool();
       
-      // Publish to relays with proper promise handling
-      const publishPromises = relays.map(async (relay) => {
+      // Publish to relays
+      for (const relay of relays) {
         try {
-          return await pool.publish([relay], replyEvent);
+          await pool.publish([relay], replyEvent);
         } catch (e) {
-          console.warn(`Failed to publish to ${relay}:`, e);
-          return null;
+          // Continue to next relay if one fails
         }
-      });
+      }
       
-      await Promise.allSettled(publishPromises);
       pool.close(relays);
 
       // Add reply to local state immediately
@@ -283,27 +282,26 @@ const QuestionFollow = () => {
 
       const likeEvent = finalizeEvent({
         kind: 7,
-        content: "❤️",
+        content: "+",
         tags: [
           ["e", eventId],
-          ["p", targetReply?.pubkey || ""]
+          ["p", targetReply?.pubkey || ""],
+          ["k", "1"]
         ],
         created_at: Math.floor(Date.now() / 1000),
       }, privateKey as Uint8Array);
 
       const pool = new SimplePool();
       
-      // Publish to relays with proper promise handling
-      const publishPromises = relays.map(async (relay) => {
+      // Publish to relays
+      for (const relay of relays) {
         try {
-          return await pool.publish([relay], likeEvent);
+          await pool.publish([relay], likeEvent);
         } catch (e) {
-          console.warn(`Failed to publish to ${relay}:`, e);
-          return null;
+          // Continue to next relay if one fails
         }
-      });
+      }
       
-      await Promise.allSettled(publishPromises);
       pool.close(relays);
 
       toast({
