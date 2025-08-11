@@ -62,7 +62,7 @@ const NostrQuestionModal = () => {
         tags: [],
         content: JSON.stringify({
           name: username,
-          about: "Created by whybitcoin101.com so this person can get help from the bitcoin community. Thanks for helping 🙏\n\nIf you want to help actively orange pill others, check out @npub1umxzqd3zsnxfg7uxtwc0cc5dksjcj46c4dpmn32yaj5sluc66lxskzn2e5 for further guidance.",
+          about: "Created by whybitcoin101.com so this person can get help from the bitcoin community. Thanks for helping 🙏\n\n\nIf you want to help actively orange pill others, check out @npub1umxzqd3zsnxfg7uxtwc0cc5dksjcj46c4dpmn32yaj5sluc66lxskzn2e5 for further guidance.",
           picture: "https://i.nostr.build/2U0f2VceVxNxy3LV.jpg",
         }),
         pubkey: publicKey,
