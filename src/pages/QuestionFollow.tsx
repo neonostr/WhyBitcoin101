@@ -3,10 +3,12 @@ import { useEffect, useState } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
+import { Textarea } from "@/components/ui/textarea";
 import { SimplePool } from "nostr-tools/pool";
 import { nip19 } from "nostr-tools";
-import { getPublicKey } from "nostr-tools/pure";
-import { ArrowLeft, MessageCircle, Calendar, User } from "lucide-react";
+import { getPublicKey, finalizeEvent } from "nostr-tools/pure";
+import { ArrowLeft, MessageCircle, Calendar, User, Send, Heart } from "lucide-react";
+import { useToast } from "@/hooks/use-toast";
 
 interface NostrEvent {
   id: string;
@@ -29,6 +31,11 @@ const QuestionFollow = () => {
   const [userProfiles, setUserProfiles] = useState<Record<string, UserProfile>>({});
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const [replyingTo, setReplyingTo] = useState<string | null>(null);
+  const [replyText, setReplyText] = useState("");
+  const [submittingReply, setSubmittingReply] = useState(false);
+  const [likingPost, setLikingPost] = useState<string | null>(null);
+  const { toast } = useToast();
 
   const relays = [
     "wss://relay.damus.io",
@@ -187,6 +194,91 @@ const QuestionFollow = () => {
     return textContent;
   };
 
+  const handleReply = async (replyToEventId: string) => {
+    if (!nsec || !replyText.trim()) return;
+
+    setSubmittingReply(true);
+    try {
+      const { data: privateKey } = nip19.decode(nsec);
+      const publicKey = getPublicKey(privateKey as Uint8Array);
+
+      const replyEvent = finalizeEvent({
+        kind: 1,
+        content: replyText.trim(),
+        tags: [
+          ["e", replyToEventId, "", "reply"],
+          ["p", originalQuestion?.pubkey || ""]
+        ],
+        created_at: Math.floor(Date.now() / 1000),
+      }, privateKey as Uint8Array);
+
+      const pool = new SimplePool();
+      await pool.publish(relays, replyEvent);
+      pool.close(relays);
+
+      toast({
+        title: "Reply posted!",
+        description: "Your reply has been published to the network.",
+      });
+
+      setReplyText("");
+      setReplyingTo(null);
+      
+      // Refresh replies after a short delay
+      setTimeout(() => {
+        window.location.reload();
+      }, 2000);
+
+    } catch (error) {
+      console.error("Error posting reply:", error);
+      toast({
+        title: "Failed to post reply",
+        description: "Please try again later.",
+        variant: "destructive",
+      });
+    } finally {
+      setSubmittingReply(false);
+    }
+  };
+
+  const handleLike = async (eventId: string) => {
+    if (!nsec) return;
+
+    setLikingPost(eventId);
+    try {
+      const { data: privateKey } = nip19.decode(nsec);
+
+      const likeEvent = finalizeEvent({
+        kind: 7,
+        content: "❤️",
+        tags: [
+          ["e", eventId],
+          ["p", replies.find(r => r.id === eventId)?.pubkey || ""]
+        ],
+        created_at: Math.floor(Date.now() / 1000),
+      }, privateKey as Uint8Array);
+
+      const pool = new SimplePool();
+      await pool.publish(relays, likeEvent);
+      pool.close(relays);
+
+      toast({
+        title: "Liked!",
+        description: "Your reaction has been published.",
+      });
+
+    } catch (error) {
+      console.error("Error liking post:", error);
+      toast({
+        title: "Failed to like post",
+        description: "Please try again later.",
+        variant: "destructive",
+      });
+    } finally {
+      setLikingPost(null);
+    }
+  };
+
   if (loading) {
     return (
       <div className="min-h-screen bg-background flex items-center justify-center">
@@ -303,14 +395,58 @@ const QuestionFollow = () => {
                     {renderMedia(reply.content)}
                   </div>
                   <div className="flex items-center gap-4 mt-4 pt-3 border-t border-border">
-                    <Button variant="ghost" size="sm" className="text-muted-foreground hover:text-primary">
+                    <Button 
+                      variant="ghost" 
+                      size="sm" 
+                      className="text-muted-foreground hover:text-primary"
+                      onClick={() => setReplyingTo(replyingTo === reply.id ? null : reply.id)}
+                    >
                       <MessageCircle className="h-4 w-4 mr-1" />
                       Reply
                     </Button>
-                    <Button variant="ghost" size="sm" className="text-muted-foreground hover:text-red-500">
-                      ❤️ Like
+                    <Button 
+                      variant="ghost" 
+                      size="sm" 
+                      className="text-muted-foreground hover:text-red-500"
+                      onClick={() => handleLike(reply.id)}
+                      disabled={likingPost === reply.id}
+                    >
+                      <Heart className={`h-4 w-4 mr-1 ${likingPost === reply.id ? 'animate-pulse' : ''}`} />
+                      {likingPost === reply.id ? 'Liking...' : 'Like'}
                     </Button>
                   </div>
+                  
+                  {/* Reply Input */}
+                  {replyingTo === reply.id && (
+                    <div className="mt-4 space-y-3 border-t border-border pt-4">
+                      <Textarea
+                        placeholder="Write your reply..."
+                        value={replyText}
+                        onChange={(e) => setReplyText(e.target.value)}
+                        className="min-h-[100px]"
+                      />
+                      <div className="flex gap-2 justify-end">
+                        <Button
+                          variant="ghost"
+                          size="sm"
+                          onClick={() => {
+                            setReplyingTo(null);
+                            setReplyText("");
+                          }}
+                        >
+                          Cancel
+                        </Button>
+                        <Button
+                          size="sm"
+                          onClick={() => handleReply(reply.id)}
+                          disabled={!replyText.trim() || submittingReply}
+                        >
+                          <Send className="h-4 w-4 mr-1" />
+                          {submittingReply ? 'Posting...' : 'Post Reply'}
+                        </Button>
+                      </div>
+                    </div>
+                  )}
                 </CardContent>
               </Card>
             ))
