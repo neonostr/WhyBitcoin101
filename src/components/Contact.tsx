@@ -113,32 +113,36 @@ const Contact = () => {
               future.
             </p>
           </div>
+{/* New CTA Block - Restructured */}
+<div className="bg-gradient-to-br from-bitcoin-orange/20 to-orange-100 rounded-2xl p-10 md:p-12 text-center max-w-4xl mx-auto shadow-lg">
+  <div className="space-y-6">
+    <p className="text-xl md:text-2xl font-medium text-foreground leading-snug">
+      Be part of a global movement for independence, transparency, and innovation.
+    </p>
+    
+    <p className="text-base md:text-lg text-muted-foreground leading-relaxed max-w-2xl mx-auto">
+      Together, we’re not just imagining a freer world — we’re making it real,
+      step by step, connection by connection. Your voice, skills, and presence matter.
+    </p>
 
-          {/* CTA Block */}
-          <div className="bg-bitcoin-orange/10 rounded-xl p-8 md:p-10 text-center max-w-3xl mx-auto shadow-md">
-            <h3 className="text-2xl md:text-3xl font-bold text-foreground mb-4">
-              People Building the Future
-            </h3>
-            <p className="text-base md:text-lg text-muted-foreground mb-8 leading-relaxed">
-              Join a community that values independence, transparency, and
-              innovation. Together, we’re not just imagining a freer world —
-              we’re making it real, step by step, connection by connection.
-            </p>
-            <Button
-              size="lg"
-              className="bg-bitcoin-orange hover:bg-bitcoin-orange/90 text-white font-medium rounded-full px-6 py-3 transition-colors"
-              onClick={() => window.open("https://primal.net", "_blank")}
-            >
-              ✨ Be Part of It
-            </Button>
-          </div>
+    <div className="flex justify-center">
+      <Button
+        size="lg"
+        className="bg-bitcoin-orange hover:bg-bitcoin-orange/90 text-white font-medium rounded-full px-8 py-4 text-lg transition-transform transform hover:scale-105"
+        onClick={() => window.open("https://primal.net", "_blank")}
+      >
+        ✨ Be Part of It
+      </Button>
+    </div>
+  </div>
+</div>
 
-          <div className="mt-16 text-center">
-            <p className="text-muted-foreground">
-              Remember: Take your time, stay curious, and always do your own
-              research to make informed decisions.
-            </p>
-          </div>
+<div className="mt-12 text-center">
+  <p className="text-muted-foreground text-sm">
+    Remember: Take your time, stay curious, and always do your own
+    research to make informed decisions.
+  </p>
+</div>
         </div>
       </section>
     </>
