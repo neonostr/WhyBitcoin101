@@ -62,13 +62,9 @@ const Contact = () => {
           <div className="text-center">
             <Card className="border-primary/20 shadow-[var(--card-hover)] max-w-2xl mx-auto">
               <CardContent className="p-8">
-                <h3 className="text-2xl font-bold text-foreground mb-4">Ready to Connect?</h3>
-                <p className="text-muted-foreground mb-6">
-                  Join the global Bitcoin conversation and connect with passionate bitcoiners from around the world.
-                </p>
-                <Button size="lg" className="w-full bg-primary hover:bg-primary/90 text-primary-foreground" onClick={() => window.open('https://primal.net', '_blank')}>
-                  Join The Online Bitcoin Community
-                </Button>
+                <h3 className="text-2xl font-bold text-foreground mb-4">Find Your People</h3>
+                <p className="text-muted-foreground mb-6">Bitcoin is more than just technology – it's a growing community of people from all walks of life. Whether you're just starting to learn or you’re a seasoned bitcoiner, finding others to share ideas with can make all the difference.</p>
+                <Button size="lg" className="w-full bg-primary hover:bg-primary/90 text-primary-foreground" onClick={() => window.open('https://primal.net', '_blank')}>Take Me There</Button>
               </CardContent>
             </Card>
           </div>
