@@ -68,7 +68,7 @@ const Contact = () => {
       <div className="container mx-auto">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold mb-6 text-foreground">From Bitcoin to a Freer World</h2>
-          <p className="text-xl text-muted-foreground max-w-2xl mx-auto">The shift has already begun - people everywhere are reclaiming their independence and re-imagining how society works. This is more than finance. It’s a movement.</p>
+          <p className="text-xl text-muted-foreground max-w-2xl mx-auto">The shift has already begun — not in boardrooms or behind closed doors, but in the hands of everyday people. Around the world, individuals are claiming the right to own their time, their work, and their privacy. Together, we’re building systems that remain in the hands of the many, never the few. This is more than money. It’s a grassroots movement for self‑sovereignty and a fairer future.</p>
         </div>
         
         <div className="text-center">
