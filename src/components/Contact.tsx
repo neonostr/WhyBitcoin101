@@ -74,9 +74,9 @@ const Contact = () => {
         <div className="text-center">
           <Card className="border-primary/20 shadow-[var(--card-hover)] max-w-2xl mx-auto">
             <CardContent className="p-8">
-              <h3 className="text-2xl font-bold text-foreground mb-4">Where Ideas Meet Action</h3>
-              <p className="text-muted-foreground mb-6">Meet others who value open systems, privacy, innovation, and creativity. Together, we're not just talking about change - we’re building it, one connection at a time.</p>
-              <Button size="lg" className="w-full bg-primary hover:bg-primary/90 text-primary-foreground" onClick={() => window.open('https://primal.net', '_blank')}>✨ Be Part of It</Button>
+              <h3 className="text-2xl font-bold text-foreground mb-4">People Building the Future</h3>
+              <p className="text-muted-foreground mb-6">Join a community that values independence, transparency, and innovation. Together, we’re not just imagining a freer world - we’re making it real, step by step, connection by connection.</p>
+              <Button size="lg" className="w-full bg-primary hover:bg-primary/90 text-primary-foreground" onClick={() => window.open('https://primal.net', '_blank')}> Be Part of It</Button>
             </CardContent>
           </Card>
         </div>
