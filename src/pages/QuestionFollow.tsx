@@ -45,8 +45,7 @@ const QuestionFollow = () => {
     "wss://relay.damus.io",
     "wss://nos.lol",
     "wss://relay.nostr.band",
-    "wss://relay.primal.net",
-    "wss://nostr.wine"
+    "wss://relay.primal.net"
   ];
 
   // Phrases to filter out from replies
@@ -94,29 +93,55 @@ const QuestionFollow = () => {
           const question = questionEvents[0];
           setOriginalQuestion(question);
 
-          // Look for replies to this question (events that mention this event)
-          const replyFilter = {
+          // Get all reply event IDs that we need to search for
+          let allReplyEventIds = [question.id];
+          let allReplies: NostrEvent[] = [];
+
+          // First, get direct replies to the original question
+          const directReplyFilter = {
             kinds: [1],
             "#e": [question.id],
-            limit: 50
+            limit: 100
           };
 
-          const replyEvents = await pool.querySync(relays, replyFilter);
+          const directReplies = await pool.querySync(relays, directReplyFilter);
+          allReplies = [...directReplies];
           
+          // Add direct reply IDs to search for nested replies
+          allReplyEventIds = [...allReplyEventIds, ...directReplies.map(r => r.id)];
+
+          // Now get replies to replies (nested/threaded replies)
+          if (directReplies.length > 0) {
+            const nestedReplyFilter = {
+              kinds: [1],
+              "#e": directReplies.map(r => r.id),
+              limit: 200
+            };
+
+            const nestedReplies = await pool.querySync(relays, nestedReplyFilter);
+            
+            // Add nested replies that aren't already in our list
+            nestedReplies.forEach(nestedReply => {
+              if (!allReplies.find(r => r.id === nestedReply.id)) {
+                allReplies.push(nestedReply);
+              }
+            });
+          }
+
           // Filter out replies containing hidden phrases and sort by timestamp
-          const filteredReplies = replyEvents
+          const filteredReplies = allReplies
             .filter(reply => {
               return !hiddenPhrases.some(phrase => reply.content.includes(phrase));
             })
             .sort((a, b) => a.created_at - b.created_at); // Sort oldest first
           
-          console.log("Total replies found:", replyEvents.length);
+          console.log("Total replies found (including nested):", allReplies.length);
           console.log("Filtered replies:", filteredReplies.length);
           
           setReplies(filteredReplies);
 
           // Fetch user profiles for all unique pubkeys
-          const allPubkeys = [publicKey, ...replyEvents.map(r => r.pubkey)];
+          const allPubkeys = [publicKey, ...allReplies.map(r => r.pubkey)];
           const uniquePubkeys = [...new Set(allPubkeys)];
           
           const profileFilter = {
@@ -177,7 +202,24 @@ const QuestionFollow = () => {
     const urls = content.match(urlRegex) || [];
     
     return urls.map((url, index) => {
-      if (url.match(/\.(jpg|jpeg|png|gif|webp)$/i)) {
+      // Enhanced GIF detection - check for .gif extension OR gif in URL OR common GIF hosting patterns
+      if (url.match(/\.gif(\?|$)/i) || 
+          url.includes('gif') || 
+          url.includes('giphy.com') || 
+          url.includes('tenor.com') ||
+          url.includes('imgur.com/') && url.includes('gif')) {
+        return (
+          <img 
+            key={index}
+            src={url} 
+            alt="GIF" 
+            className="max-w-full h-auto rounded-lg mt-2 max-h-96 object-contain"
+            loading="lazy"
+          />
+        );
+      }
+      // Regular images
+      if (url.match(/\.(jpg|jpeg|png|webp)(\?|$)/i)) {
         return (
           <img 
             key={index}
@@ -188,24 +230,14 @@ const QuestionFollow = () => {
           />
         );
       }
-      if (url.match(/\.(mp4|webm|ogg)$/i)) {
+      // Videos
+      if (url.match(/\.(mp4|webm|ogg)(\?|$)/i)) {
         return (
           <video 
             key={index}
             src={url} 
             controls 
             className="max-w-full h-auto rounded-lg mt-2 max-h-96"
-          />
-        );
-      }
-      if (url.includes('gif') || url.match(/\.gif$/i)) {
-        return (
-          <img 
-            key={index}
-            src={url} 
-            alt="GIF" 
-            className="max-w-full h-auto rounded-lg mt-2 max-h-96 object-contain"
-            loading="lazy"
           />
         );
       }
@@ -217,13 +249,37 @@ const QuestionFollow = () => {
     // Remove URLs that will be rendered as media
     const urlRegex = /(https?:\/\/[^\s]+)/g;
     const textContent = content.replace(urlRegex, (url) => {
-      if (url.match(/\.(jpg|jpeg|png|gif|webp|mp4|webm|ogg)$/i)) {
+      // Enhanced media URL detection
+      if (url.match(/\.(jpg|jpeg|png|gif|webp|mp4|webm|ogg)(\?|$)/i) ||
+          url.includes('gif') || 
+          url.includes('giphy.com') || 
+          url.includes('tenor.com')) {
         return '';
       }
       return url;
     }).trim();
     
     return textContent;
+  };
+
+  // Helper function to get what this reply is replying to
+  const getReplyContext = (reply: NostrEvent) => {
+    const eTags = reply.tags.filter(tag => tag[0] === 'e');
+    if (eTags.length === 0) return null;
+    
+    // Find if this is replying to the original question or another reply
+    const replyToId = eTags[eTags.length - 1][1]; // Last e tag is usually the direct reply target
+    
+    if (replyToId === originalQuestion?.id) {
+      return { type: 'question', target: originalQuestion };
+    }
+    
+    const parentReply = replies.find(r => r.id === replyToId);
+    if (parentReply) {
+      return { type: 'reply', target: parentReply };
+    }
+    
+    return null;
   };
 
   const handleReply = async (replyToEventId: string) => {
@@ -427,84 +483,93 @@ const QuestionFollow = () => {
               </CardContent>
             </Card>
           ) : (
-            replies.map((reply) => (
-              <Card key={reply.id}>
-                <CardHeader>
-                  <div className="flex items-center justify-between">
-                    <div className="flex items-center gap-2">
-                      <User className="h-4 w-4 text-muted-foreground" />
-                      <span className="text-sm font-medium text-foreground">
-                        {getUserDisplayName(reply.pubkey)}
+            replies.map((reply) => {
+              const replyContext = getReplyContext(reply);
+              
+              return (
+                <Card key={reply.id} className={replyContext?.type === 'reply' ? 'ml-8 border-l-4 border-l-blue-200' : ''}>
+                  <CardHeader>
+                    <div className="flex items-center justify-between">
+                      <div className="flex items-center gap-2">
+                        <User className="h-4 w-4 text-muted-foreground" />
+                        <span className="text-sm font-medium text-foreground">
+                          {getUserDisplayName(reply.pubkey)}
+                        </span>
+                        {replyContext?.type === 'reply' && (
+                          <span className="text-xs text-muted-foreground">
+                            replying to {getUserDisplayName(replyContext.target.pubkey)}
+                          </span>
+                        )}
+                      </div>
+                      <span className="text-sm text-muted-foreground">
+                        {formatDate(reply.created_at)}
                       </span>
                     </div>
-                    <span className="text-sm text-muted-foreground">
-                      {formatDate(reply.created_at)}
-                    </span>
-                  </div>
-                </CardHeader>
-                <CardContent>
-                  <div className="space-y-2">
-                    <p className="text-foreground leading-relaxed whitespace-pre-wrap">
-                      {formatContent(reply.content)}
-                    </p>
-                    {renderMedia(reply.content)}
-                  </div>
-                  <div className="flex items-center gap-4 mt-4 pt-3 border-t border-border">
-                    <Button 
-                      variant="ghost" 
-                      size="sm" 
-                      className="text-muted-foreground hover:text-primary"
-                      onClick={() => setReplyingTo(replyingTo === reply.id ? null : reply.id)}
-                    >
-                      <MessageCircle className="h-4 w-4 mr-1" />
-                      Reply
-                    </Button>
-                    <Button 
-                      variant="ghost" 
-                      size="sm" 
-                      className="text-muted-foreground hover:text-red-500"
-                      onClick={() => handleLike(reply.id)}
-                      disabled={likingPost === reply.id}
-                    >
-                      <Heart className={`h-4 w-4 mr-1 ${likingPost === reply.id ? 'animate-pulse' : ''}`} />
-                      {likingPost === reply.id ? 'Liking...' : 'Like'}
-                    </Button>
-                  </div>
-                  
-                  {/* Reply Input */}
-                  {replyingTo === reply.id && (
-                    <div className="mt-4 space-y-3 border-t border-border pt-4">
-                      <Textarea
-                        placeholder="Write your reply..."
-                        value={replyText}
-                        onChange={(e) => setReplyText(e.target.value)}
-                        className="min-h-[100px]"
-                      />
-                      <div className="flex gap-2 justify-end">
-                        <Button
-                          variant="ghost"
-                          size="sm"
-                          onClick={() => {
-                            setReplyingTo(null);
-                            setReplyText("");
-                          }}
-                        >
-                          Cancel
-                        </Button>
-                        <Button
-                          size="sm"
-                          onClick={() => handleReply(reply.id)}
-                          disabled={!replyText.trim() || submittingReply}
-                        >
-                          <Send className="h-4 w-4 mr-1" />
-                          {submittingReply ? 'Posting...' : 'Post Reply'}
-                        </Button>
-                      </div>
+                  </CardHeader>
+                  <CardContent>
+                    <div className="space-y-2">
+                      <p className="text-foreground leading-relaxed whitespace-pre-wrap">
+                        {formatContent(reply.content)}
+                      </p>
+                      {renderMedia(reply.content)}
                     </div>
-                  )}
-                </CardContent>
-              </Card>
-            ))
+                    <div className="flex items-center gap-4 mt-4 pt-3 border-t border-border">
+                      <Button 
+                        variant="ghost" 
+                        size="sm" 
+                        className="text-muted-foreground hover:text-primary"
+                        onClick={() => setReplyingTo(replyingTo === reply.id ? null : reply.id)}
+                      >
+                        <MessageCircle className="h-4 w-4 mr-1" />
+                        Reply
+                      </Button>
+                      <Button 
+                        variant="ghost" 
+                        size="sm" 
+                        className="text-muted-foreground hover:text-red-500"
+                        onClick={() => handleLike(reply.id)}
+                        disabled={likingPost === reply.id}
+                      >
+                        <Heart className={`h-4 w-4 mr-1 ${likingPost === reply.id ? 'animate-pulse' : ''}`} />
+                        {likingPost === reply.id ? 'Liking...' : 'Like'}
+                      </Button>
+                    </div>
+                    
+                    {/* Reply Input */}
+                    {replyingTo === reply.id && (
+                      <div className="mt-4 space-y-3 border-t border-border pt-4">
+                        <Textarea
+                          placeholder="Write your reply..."
+                          value={replyText}
+                          onChange={(e) => setReplyText(e.target.value)}
+                          className="min-h-[100px]"
+                        />
+                        <div className="flex gap-2 justify-end">
+                          <Button
+                            variant="ghost"
+                            size="sm"
+                            onClick={() => {
+                              setReplyingTo(null);
+                              setReplyText("");
+                            }}
+                          >
+                            Cancel
+                          </Button>
+                          <Button
+                            size="sm"
+                            onClick={() => handleReply(reply.id)}
+                            disabled={!replyText.trim() || submittingReply}
+                          >
+                            <Send className="h-4 w-4 mr-1" />
+                            {submittingReply ? 'Posting...' : 'Post Reply'}
+                          </Button>
+                        </div>
+                      </div>
+                    )}
+                  </CardContent>
+                </Card>
+              );
+            })
           )}
         </div>
 
