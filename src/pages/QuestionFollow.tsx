@@ -351,7 +351,7 @@ const QuestionFollow = () => {
           </Link>
           <h1 className="text-3xl font-bold text-foreground">Your Bitcoin Question</h1>
           <p className="text-muted-foreground mt-2">
-            Track responses to your question on the decentralized Nostr network
+            Track responses to your question
           </p>
         </div>
 
