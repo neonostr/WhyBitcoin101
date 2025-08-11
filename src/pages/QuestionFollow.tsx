@@ -224,13 +224,7 @@ const QuestionFollow = () => {
       const pool = new SimplePool();
       
       // Publish to relays
-      for (const relay of relays) {
-        try {
-          await pool.publish([relay], replyEvent);
-        } catch (e) {
-          // Continue to next relay if one fails
-        }
-      }
+      await pool.publish(relays, replyEvent);
       
       pool.close(relays);
 
@@ -292,13 +286,7 @@ const QuestionFollow = () => {
       const pool = new SimplePool();
       
       // Publish to relays
-      for (const relay of relays) {
-        try {
-          await pool.publish([relay], likeEvent);
-        } catch (e) {
-          // Continue to next relay if one fails
-        }
-      }
+      await pool.publish(relays, likeEvent);
       
       pool.close(relays);
 
