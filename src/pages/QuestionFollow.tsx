@@ -43,6 +43,9 @@ const QuestionFollow = () => {
     "wss://relay.snort.social"
   ];
 
+  // Phrases to filter out from replies
+  const hiddenPhrases = ["https://rizful.com"];
+
   useEffect(() => {
     const fetchQuestionAndReplies = async () => {
       if (!nsec) {
@@ -80,7 +83,13 @@ const QuestionFollow = () => {
           };
 
           const replyEvents = await pool.querySync(relays, replyFilter);
-          setReplies(replyEvents);
+          
+          // Filter out replies containing hidden phrases
+          const filteredReplies = replyEvents.filter(reply => {
+            return !hiddenPhrases.some(phrase => reply.content.includes(phrase));
+          });
+          
+          setReplies(filteredReplies);
 
           // Fetch user profiles for all unique pubkeys
           const allPubkeys = [publicKey, ...replyEvents.map(r => r.pubkey)];
