@@ -335,7 +335,7 @@ const QuestionFollow = () => {
     processedContent = processedContent.replace(nostrMentionRegex, (match, npub) => {
       try {
         const { data: pubkey } = nip19.decode(npub);
-        const username = getUserDisplayName(pubkey as string);
+        const username = getUserDisplayName(pubkey as unknown as string);
         return `@${username}`;
       } catch (e) {
         return match; // Keep original if decode fails

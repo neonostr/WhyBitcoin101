@@ -1,15 +1,17 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+
 const Contact = () => {
-  return <section id="contact" className="py-20 px-4 bg-gradient-to-br from-primary/5 to-bitcoin-orange/5">
+  return <>
+    <section id="contact" className="py-20 px-4 bg-gradient-to-br from-primary/5 to-bitcoin-orange/5">
       <div className="container mx-auto">
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold mb-6 text-foreground">Connect &amp; Learn Together</h2>
+          <h2 className="text-4xl md:text-5xl font-bold mb-6 text-foreground">Connect & Learn Together</h2>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">Bitcoin is best learned through community. Connect with local bitcoiners, attend meetups, and join the global conversation.</p>
         </div>
         
         <div className="max-w-4xl mx-auto">
-          <div className="grid md:grid-cols-2 gap-8 mb-12">
+          <div className="grid md:grid-cols-2 gap-8">
             <Card className="border-primary/20 shadow-[var(--card-hover)]">
               <CardHeader>
                 <CardTitle className="text-xl text-foreground">Find Local Bitcoin Meetups</CardTitle>
@@ -58,22 +60,28 @@ const Contact = () => {
               </CardContent>
             </Card>
           </div>
+        </div>
+      </div>
+    </section>
 
-          <div className="text-center">
-            <Card className="border-primary/20 shadow-[var(--card-hover)] max-w-2xl mx-auto">
-              <CardContent className="p-8">
-                <h3 className="text-2xl font-bold text-foreground mb-4">Find Your People</h3>
-                <p className="text-muted-foreground mb-6">Bitcoin is more than just technology – it's a growing community of people from all walks of life. Whether you're just starting to learn or you’re a seasoned bitcoiner, finding others to share ideas with can make all the difference.</p>
-                <Button size="lg" className="w-full bg-primary hover:bg-primary/90 text-primary-foreground" onClick={() => window.open('https://primal.net', '_blank')}>Take Me There</Button>
-              </CardContent>
-            </Card>
-          </div>
+    <section className="py-20 px-4 bg-background">
+      <div className="container mx-auto">
+        <div className="text-center">
+          <Card className="border-primary/20 shadow-[var(--card-hover)] max-w-2xl mx-auto">
+            <CardContent className="p-8">
+              <h3 className="text-2xl font-bold text-foreground mb-4">Find Your People</h3>
+              <p className="text-muted-foreground mb-6">Bitcoin is more than just technology – it's a growing community of people from all walks of life. Whether you're just starting to learn or you're a seasoned bitcoiner, finding others to share ideas with can make all the difference.</p>
+              <Button size="lg" className="w-full bg-primary hover:bg-primary/90 text-primary-foreground" onClick={() => window.open('https://primal.net', '_blank')}>Take Me There</Button>
+            </CardContent>
+          </Card>
         </div>
         
         <div className="mt-16 text-center">
           <p className="text-muted-foreground">Remember: Take your time, stay curious, and always do your own research to make informed decisions.</p>
         </div>
       </div>
-    </section>;
+    </section>
+  </>;
 };
+
 export default Contact;
