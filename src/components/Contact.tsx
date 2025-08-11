@@ -121,7 +121,7 @@ const Contact = () => {
             </h3>
             <p className="text-base md:text-lg text-muted-foreground mb-8 leading-relaxed">
               Join a community that values independence, transparency, and
-              innovation. Together, we're not just imagining a freer world —
+              innovation. Together, we're not just imagining a freer world -
               we're making it real, step by step, connection by connection.
             </p>
             <Button
