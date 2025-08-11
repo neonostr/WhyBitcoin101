@@ -81,27 +81,32 @@ const Contact = () => {
     </div>
 
     {/* Redesigned CTA Block */}
-   <Card className="border-primary/20 shadow-[var(--card-hover)] max-w-3xl mx-auto text-center">
-  <CardHeader>
-    <CardTitle className="text-3xl font-bold text-foreground">
-      People Building the Future
-    </CardTitle>
-  </CardHeader>
-  <CardContent>
-    <p className="text-lg text-muted-foreground mb-8 leading-relaxed">
-      Join a community that values independence, transparency, and innovation.
-      Together, we’re not just imagining a freer world — we’re making it real,
-      step by step, connection by connection.
-    </p>
-    <Button
-      size="lg"
-      className="w-full md:w-auto"
-      onClick={() => window.open('https://primal.net', '_blank')}
-    >
-      ✨ Be Part of It
-    </Button>
-  </CardContent>
-</Card>
+    <div className="bg-gradient-to-r from-primary/10 via-primary/5 to-primary/10 rounded-2xl p-10 text-center max-w-3xl mx-auto shadow-lg">
+      <h3 className="text-3xl font-bold text-foreground mb-4">
+        People Building the Future
+      </h3>
+      <p className="text-lg text-muted-foreground mb-8">
+        Join a community that values independence, transparency, and innovation. 
+        Together, we’re not just imagining a freer world — we’re making it real, 
+        step by step, connection by connection.
+      </p>
+      <Button
+        size="lg"
+        className="px-8 py-4 bg-primary hover:bg-primary/90 text-primary-foreground text-lg rounded-full"
+        onClick={() => window.open('https://primal.net', '_blank')}
+      >
+        ✨ Be Part of It
+      </Button>
+    </div>
+
+    <div className="mt-16 text-center">
+      <p className="text-muted-foreground">
+        Remember: Take your time, stay curious, and always do your own research 
+        to make informed decisions.
+      </p>
+    </div>
+  </div>
+</section>
   </>;
 };
 
