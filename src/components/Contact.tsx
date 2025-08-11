@@ -80,18 +80,18 @@ const Contact = () => {
               <Card className="border-primary/20 shadow-[var(--card-hover)]">
                 <CardHeader>
                   <CardTitle className="text-xl text-foreground">
-                   Join a Plebwalk
+                   Join a BitcoinWalk
                   </CardTitle>
                 </CardHeader>
                 <CardContent>
                   <p className="text-muted-foreground leading-relaxed">
                     <a
-                      href="https://meetup.com"
+                      href="https://bitcoinwalk.org"
                       target="_blank"
                       rel="noopener noreferrer"
                       className="text-muted-foreground hover:text-foreground underline decoration-1 underline-offset-2 transition-colors"
                     >
-                    The Plebwalk</a> is a community walk where people meet, chat, and learn about Bitcoin while enjoying the outdoors. It’s a friendly way to connect, get moving, and share ideas — no experience needed.
+                    The BitcoinWalk</a> is a community walk where people meet, chat, and learn about Bitcoin while enjoying the outdoors. It’s a friendly way to connect, get moving, and share ideas — no experience needed.
                   </p>
                 </CardContent>
               </Card>
