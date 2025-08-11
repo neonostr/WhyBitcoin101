@@ -97,36 +97,36 @@ const Contact = () => {
       </section>
 
       {/* Second Section — From Bitcoin to a Freer World */}
-      <section className="py-20 px-4 bg-background">
+      <section className="py-20 px-4 bg-gradient-to-br from-background to-primary/5">
         <div className="container mx-auto">
-          <div className="text-center mb-12">
+          <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-bold mb-6 text-foreground">
               From Bitcoin to a Freer World
             </h2>
-            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+            <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
               The shift has already begun — not in boardrooms or behind closed
               doors, but in the hands of everyday people. Around the world,
               individuals are claiming the right to own their time, their work,
-              and their privacy. Together, we’re building systems that remain in
+              and their privacy. Together, we're building systems that remain in
               the hands of the many, never the few. This is more than money.
-              It’s a grassroots movement for self‑sovereignty and a fairer
+              It's a grassroots movement for self‑sovereignty and a fairer
               future.
             </p>
           </div>
 
           {/* CTA Block */}
-          <div className="bg-bitcoin-orange/10 rounded-xl p-8 md:p-10 text-center max-w-3xl mx-auto shadow-md">
+          <div className="bg-gradient-to-br from-bitcoin-orange/10 to-primary/10 rounded-xl p-8 md:p-10 text-center max-w-3xl mx-auto border border-primary/10 shadow-lg">
             <h3 className="text-2xl md:text-3xl font-bold text-foreground mb-4">
               People Building the Future
             </h3>
             <p className="text-base md:text-lg text-muted-foreground mb-8 leading-relaxed">
               Join a community that values independence, transparency, and
-              innovation. Together, we’re not just imagining a freer world —
-              we’re making it real, step by step, connection by connection.
+              innovation. Together, we're not just imagining a freer world —
+              we're making it real, step by step, connection by connection.
             </p>
             <Button
               size="lg"
-              className="bg-bitcoin-orange hover:bg-bitcoin-orange/90 text-white font-medium rounded-full px-6 py-3 transition-colors"
+              className="bg-bitcoin-orange hover:bg-bitcoin-orange/90 text-white font-medium rounded-xl px-8 py-4 shadow-lg hover:shadow-xl transition-all duration-300"
               onClick={() => window.open("https://primal.net", "_blank")}
             >
               ✨ Be Part of It
