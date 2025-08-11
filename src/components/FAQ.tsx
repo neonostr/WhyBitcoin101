@@ -21,7 +21,9 @@ const NostrQuestionModal = () => {
   const relays = [
     "wss://relay.damus.io",
     "wss://nos.lol",
-    "wss://relay.snort.social"
+    "wss://relay.primal.net",
+    "wss://relay.nostr.band",
+    "wss://relay.primal.net"    
   ];
 
   const generateRandomUsername = () => {
