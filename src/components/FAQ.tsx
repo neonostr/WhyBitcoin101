@@ -62,8 +62,8 @@ const NostrQuestionModal = () => {
         tags: [],
         content: JSON.stringify({
           name: username,
-          about: "Created by bitcoinknowledgehub.com so this person can get help from the bitcoin community. Thanks for helping!",
-          picture: "",
+          about: "Created by whybitcoin101.com so this person can get help from the bitcoin community. Thanks for helping!",
+          picture: "https://i.nostr.build/2U0f2VceVxNxy3LV.jpg",
         }),
         pubkey: publicKey,
       };
