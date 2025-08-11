@@ -80,14 +80,12 @@ const Contact = () => {
               <Card className="border-primary/20 shadow-[var(--card-hover)]">
                 <CardHeader>
                   <CardTitle className="text-xl text-foreground">
-                    Join Online Communities
+                   Join the Plebwalk
                   </CardTitle>
                 </CardHeader>
                 <CardContent>
                   <p className="text-muted-foreground leading-relaxed">
-                    Connect with thousands of bitcoiners worldwide. The Bitcoin
-                    community is known for being welcoming and educational -
-                    perfect for beginners and experts alike.
+                    Walk, talk, and meet new people while discovering what Bitcoin is all about. A relaxed way to connect and enjoy your city together.
                   </p>
                 </CardContent>
               </Card>
