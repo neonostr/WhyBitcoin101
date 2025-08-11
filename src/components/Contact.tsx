@@ -6,56 +6,56 @@ const Contact = () => {
     <section id="contact" className="py-20 px-4 bg-gradient-to-br from-primary/5 to-bitcoin-orange/5">
       <div className="container mx-auto">
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold mb-6 text-foreground">Join the Revolution</h2>
-          <p className="text-xl text-muted-foreground max-w-2xl mx-auto">Don't go down the Bitcoin rabbit hole alone. Connect with thousands of passionate bitcoiners who are changing the world.</p>
+          <h2 className="text-4xl md:text-5xl font-bold mb-6 text-foreground">Connect & Learn Together</h2>
+          <p className="text-xl text-muted-foreground max-w-2xl mx-auto">Bitcoin is best learned through community. Connect with local bitcoiners, attend meetups, and join the global conversation.</p>
         </div>
         
         <div className="max-w-4xl mx-auto">
-          <div className="grid md:grid-cols-2 gap-8 animate-fade-in">
-            <Card className="border-primary/20 shadow-[var(--card-hover)] hover-scale group">
+          <div className="grid md:grid-cols-2 gap-8">
+            <Card className="border-primary/20 shadow-[var(--card-hover)]">
               <CardHeader>
-                <CardTitle className="text-xl text-foreground group-hover:text-primary transition-colors">🤝 Find Local Bitcoin Meetups</CardTitle>
+                <CardTitle className="text-xl text-foreground">Find Local Bitcoin Meetups</CardTitle>
               </CardHeader>
               <CardContent>
                 <p className="text-muted-foreground leading-relaxed">
-                  Meet real bitcoiners in your city! Search for meetups on{" "}
-                  <a href="https://meetup.com" target="_blank" rel="noopener noreferrer" className="story-link text-primary font-semibold">
+                  Search for Bitcoin meetups in your area on{" "}
+                  <a href="https://meetup.com" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-foreground underline decoration-1 underline-offset-2 transition-colors">
                     Meetup.com
                   </a>
-                  {" "}and discover a community of people who get it. Free pizza, great conversations, and lifelong connections guaranteed.
+                  . These regular gatherings are perfect for meeting like-minded people, asking questions, and learning from experienced bitcoiners in person.
                 </p>
               </CardContent>
             </Card>
 
-            <Card className="border-primary/20 shadow-[var(--card-hover)] hover-scale group">
+            <Card className="border-primary/20 shadow-[var(--card-hover)]">
               <CardHeader>
-                <CardTitle className="text-xl text-foreground group-hover:text-primary transition-colors">🚀 Start Your Own Group</CardTitle>
+                <CardTitle className="text-xl text-foreground">Start a Local Study Group</CardTitle>
               </CardHeader>
               <CardContent>
                 <p className="text-muted-foreground leading-relaxed">
-                  No Bitcoin community nearby? Be the change! Start with just 2-3 curious friends. Some of today's biggest Bitcoin communities started in someone's living room. Your city could be next.
+                  If there's no Bitcoin meetup in your area, consider starting one! Many successful Bitcoin communities began with just a few curious people meeting regularly to learn together.
                 </p>
               </CardContent>
             </Card>
 
-            <Card className="border-primary/20 shadow-[var(--card-hover)] hover-scale group">
+            <Card className="border-primary/20 shadow-[var(--card-hover)]">
               <CardHeader>
-                <CardTitle className="text-xl text-foreground group-hover:text-primary transition-colors">🎯 Experience Bitcoin Conferences</CardTitle>
+                <CardTitle className="text-xl text-foreground">Attend Bitcoin Conferences</CardTitle>
               </CardHeader>
               <CardContent>
                 <p className="text-muted-foreground leading-relaxed">
-                  Ready to level up? Bitcoin conferences are where legends are made. Network with industry leaders, discover cutting-edge projects, and return home inspired to orange-pill everyone you know.
+                  Bitcoin conferences happen globally throughout the year. These events feature expert speakers, networking opportunities, and the latest developments in the Bitcoin space.
                 </p>
               </CardContent>
             </Card>
 
-            <Card className="border-primary/20 shadow-[var(--card-hover)] hover-scale group">
+            <Card className="border-primary/20 shadow-[var(--card-hover)]">
               <CardHeader>
-                <CardTitle className="text-xl text-foreground group-hover:text-primary transition-colors">💬 Join the Global Conversation</CardTitle>
+                <CardTitle className="text-xl text-foreground">Join Online Communities</CardTitle>
               </CardHeader>
               <CardContent>
                 <p className="text-muted-foreground leading-relaxed">
-                  24/7 discussions, breaking news, and the best Bitcoin memes. Connect instantly with 100k+ bitcoiners worldwide who never sleep and always deliver the hottest takes.
+                  Connect with thousands of bitcoiners worldwide. The Bitcoin community is known for being welcoming and educational - perfect for beginners and experts alike.
                 </p>
               </CardContent>
             </Card>
@@ -64,34 +64,20 @@ const Contact = () => {
       </div>
     </section>
 
-    <section className="py-20 px-4 bg-background relative overflow-hidden">
-      <div className="absolute inset-0 bg-gradient-to-r from-primary/5 via-transparent to-bitcoin-orange/5"></div>
-      <div className="container mx-auto relative">
-        <div className="text-center animate-fade-in">
-          <Card className="border-primary/20 shadow-[var(--card-hover)] max-w-2xl mx-auto hover-scale bg-gradient-to-br from-card to-card/80 backdrop-blur-sm">
-            <CardContent className="p-8 relative">
-              <div className="absolute top-4 right-4 pulse">
-                <span className="text-2xl">🔥</span>
-              </div>
-              <h3 className="text-3xl font-bold text-foreground mb-4 bg-gradient-to-r from-primary to-bitcoin-orange bg-clip-text text-transparent">Your Tribe Awaits</h3>
-              <p className="text-muted-foreground mb-6 text-lg leading-relaxed">
-                Join <span className="text-primary font-bold">50,000+</span> bitcoiners on the fastest-growing Bitcoin social network. 
-                Real conversations. Real people. Real alpha. <span className="text-bitcoin-orange font-semibold">No corporate overlords.</span>
-              </p>
-              <Button 
-                size="lg" 
-                className="w-full bg-gradient-to-r from-primary to-bitcoin-orange hover:from-primary/90 hover:to-bitcoin-orange/90 text-white font-bold py-4 px-8 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105" 
-                onClick={() => window.open('https://primal.net', '_blank')}
-              >
-                🚀 Join the Movement Now
-              </Button>
-              <p className="text-sm text-muted-foreground mt-4 opacity-75">Free forever. No KYC. Pure Bitcoin.</p>
+    <section className="py-20 px-4 bg-background">
+      <div className="container mx-auto">
+        <div className="text-center">
+          <Card className="border-primary/20 shadow-[var(--card-hover)] max-w-2xl mx-auto">
+            <CardContent className="p-8">
+              <h3 className="text-2xl font-bold text-foreground mb-4">Find Your People</h3>
+              <p className="text-muted-foreground mb-6">Bitcoin is more than just technology – it's a growing community of people from all walks of life. Whether you're just starting to learn or you're a seasoned bitcoiner, finding others to share ideas with can make all the difference.</p>
+              <Button size="lg" className="w-full bg-primary hover:bg-primary/90 text-primary-foreground" onClick={() => window.open('https://primal.net', '_blank')}>Take Me There</Button>
             </CardContent>
           </Card>
         </div>
         
-        <div className="mt-16 text-center animate-fade-in">
-          <p className="text-muted-foreground italic">Remember: We're early, but we're not alone. 🧡</p>
+        <div className="mt-16 text-center">
+          <p className="text-muted-foreground">Remember: Take your time, stay curious, and always do your own research to make informed decisions.</p>
         </div>
       </div>
     </section>
