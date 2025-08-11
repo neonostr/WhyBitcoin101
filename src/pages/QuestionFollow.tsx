@@ -223,15 +223,17 @@ const QuestionFollow = () => {
 
       const pool = new SimplePool();
       
-      // Publish to relays
-      for (const relay of relays) {
+      // Publish to relays with proper promise handling
+      const publishPromises = relays.map(async (relay) => {
         try {
-          await pool.publish([relay], replyEvent);
+          return await pool.publish([relay], replyEvent);
         } catch (e) {
-          // Continue to next relay if one fails
+          console.warn(`Failed to publish to ${relay}:`, e);
+          return null;
         }
-      }
+      });
       
+      await Promise.allSettled(publishPromises);
       pool.close(relays);
 
       // Add reply to local state immediately
@@ -291,15 +293,17 @@ const QuestionFollow = () => {
 
       const pool = new SimplePool();
       
-      // Publish to relays
-      for (const relay of relays) {
+      // Publish to relays with proper promise handling
+      const publishPromises = relays.map(async (relay) => {
         try {
-          await pool.publish([relay], likeEvent);
+          return await pool.publish([relay], likeEvent);
         } catch (e) {
-          // Continue to next relay if one fails
+          console.warn(`Failed to publish to ${relay}:`, e);
+          return null;
         }
-      }
+      });
       
+      await Promise.allSettled(publishPromises);
       pool.close(relays);
 
       toast({
