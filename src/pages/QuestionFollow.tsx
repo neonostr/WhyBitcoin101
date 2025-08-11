@@ -197,14 +197,10 @@ const QuestionFollow = () => {
   const handleReply = async (replyToEventId: string) => {
     if (!nsec || !replyText.trim()) return;
 
-    console.log("Starting reply process...", { nsec: nsec?.substring(0, 10) + "...", replyToEventId });
-    
     setSubmittingReply(true);
     try {
       const { data: privateKey } = nip19.decode(nsec);
       const publicKey = getPublicKey(privateKey as Uint8Array);
-      
-      console.log("Keys extracted:", { publicKey: publicKey.substring(0, 10) + "..." });
 
       const replyEvent = finalizeEvent({
         kind: 1,
@@ -216,28 +212,20 @@ const QuestionFollow = () => {
         created_at: Math.floor(Date.now() / 1000),
       }, privateKey as Uint8Array);
 
-      console.log("Reply event created:", { id: replyEvent.id, content: replyEvent.content });
-
       const pool = new SimplePool();
       
-      // Publish to each relay individually and track results
-      const publishResults = [];
+      // Publish to relays
       for (const relay of relays) {
         try {
-          console.log("Publishing to relay:", relay);
-          const result = await pool.publish([relay], replyEvent);
-          publishResults.push({ relay, success: true, result });
-          console.log("Published successfully to", relay);
-        } catch (error) {
-          console.error("Failed to publish to", relay, error);
-          publishResults.push({ relay, success: false, error });
+          await pool.publish([relay], replyEvent);
+        } catch (e) {
+          // Continue to next relay if one fails
         }
       }
       
       pool.close(relays);
-      console.log("Publish results:", publishResults);
 
-      // Add the new reply to local state immediately
+      // Add reply to local state immediately
       const newReply = {
         id: replyEvent.id,
         content: replyEvent.content,
@@ -246,9 +234,8 @@ const QuestionFollow = () => {
         tags: replyEvent.tags
       };
       setReplies(prev => [...prev, newReply]);
-      console.log("Added reply to local state");
 
-      // Also add to user profiles if not present
+      // Add user profile if not present
       if (!userProfiles[publicKey]) {
         setUserProfiles(prev => ({
           ...prev,
@@ -265,10 +252,9 @@ const QuestionFollow = () => {
       setReplyingTo(null);
 
     } catch (error) {
-      console.error("Error posting reply:", error);
       toast({
         title: "Failed to post reply",
-        description: `Error: ${error.message}`,
+        description: "Please try again later.",
         variant: "destructive",
       });
     } finally {
@@ -278,8 +264,6 @@ const QuestionFollow = () => {
 
   const handleLike = async (eventId: string) => {
     if (!nsec) return;
-
-    console.log("Starting like process...", { nsec: nsec?.substring(0, 10) + "...", eventId });
 
     setLikingPost(eventId);
     try {
@@ -296,26 +280,18 @@ const QuestionFollow = () => {
         created_at: Math.floor(Date.now() / 1000),
       }, privateKey as Uint8Array);
 
-      console.log("Like event created:", { id: likeEvent.id });
-
       const pool = new SimplePool();
       
-      // Publish to each relay individually and track results
-      const publishResults = [];
+      // Publish to relays
       for (const relay of relays) {
         try {
-          console.log("Publishing like to relay:", relay);
-          const result = await pool.publish([relay], likeEvent);
-          publishResults.push({ relay, success: true, result });
-          console.log("Like published successfully to", relay);
-        } catch (error) {
-          console.error("Failed to publish like to", relay, error);
-          publishResults.push({ relay, success: false, error });
+          await pool.publish([relay], likeEvent);
+        } catch (e) {
+          // Continue to next relay if one fails
         }
       }
       
       pool.close(relays);
-      console.log("Like publish results:", publishResults);
 
       toast({
         title: "Liked!",
@@ -323,10 +299,9 @@ const QuestionFollow = () => {
       });
 
     } catch (error) {
-      console.error("Error liking post:", error);
       toast({
         title: "Failed to like post",
-        description: `Error: ${error.message}`,
+        description: "Please try again later.",
         variant: "destructive",
       });
     } finally {
