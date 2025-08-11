@@ -117,7 +117,7 @@ const Contact = () => {
           {/* CTA Block */}
           <div className="bg-gradient-to-br from-bitcoin-orange/10 to-primary/10 rounded-xl p-8 md:p-10 text-center max-w-3xl mx-auto border border-primary/10 shadow-lg">
             <h3 className="text-2xl md:text-3xl font-bold text-foreground mb-4">
-              Where Change Begins
+              People Building the Future
             </h3>
             <p className="text-base md:text-lg text-muted-foreground mb-8 leading-relaxed">
               Join a community that values independence, transparency, and
