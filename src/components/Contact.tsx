@@ -83,7 +83,7 @@ const Contact = () => {
     {/* Redesigned CTA Block */}
     <div className="bg-gradient-to-r from-primary/10 via-primary/5 to-primary/10 rounded-2xl p-10 text-center max-w-3xl mx-auto shadow-lg">
       <h3 className="text-3xl font-bold text-foreground mb-4">
-        People Building the Future
+        Where Change Begins
       </h3>
       <p className="text-lg text-muted-foreground mb-8">
         Join a community that values independence, transparency, and innovation. 
@@ -91,8 +91,7 @@ const Contact = () => {
         step by step, connection by connection.
       </p>
       <Button
-        size="lg"
-        className="px-8 py-4 bg-primary hover:bg-primary/90 text-primary-foreground text-lg rounded-full"
+        className="bg-primary text-primary-foreground hover:bg-primary/90"
         onClick={() => window.open('https://primal.net', '_blank')}
       >
         ✨ Be Part of It
