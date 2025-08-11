@@ -64,28 +64,49 @@ const Contact = () => {
       </div>
     </section>
 
-    <section className="py-20 px-4 bg-background">
-      <div className="container mx-auto">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold mb-6 text-foreground">From Bitcoin to a Freer World</h2>
-          <p className="text-xl text-muted-foreground max-w-2xl mx-auto">The shift has already begun — not in boardrooms or behind closed doors, but in the hands of everyday people. Around the world, individuals are claiming the right to own their time, their work, and their privacy. Together, we’re building systems that remain in the hands of the many, never the few. This is more than money. It’s a grassroots movement for self‑sovereignty and a fairer future.</p>
-        </div>
-        
-        <div className="text-center">
-          <Card className="border-primary/20 shadow-[var(--card-hover)] max-w-2xl mx-auto">
-            <CardContent className="p-8">
-              <h3 className="text-2xl font-bold text-foreground mb-4">People Building the Future</h3>
-              <p className="text-muted-foreground mb-6">Join a community that values independence, transparency, and innovation. Together, we’re not just imagining a freer world - we’re making it real, step by step, connection by connection.</p>
-              <Button size="lg" className="w-full bg-primary hover:bg-primary/90 text-primary-foreground" onClick={() => window.open('https://primal.net', '_blank')}> Be Part of It</Button>
-            </CardContent>
-          </Card>
-        </div>
-        
-        <div className="mt-16 text-center">
-          <p className="text-muted-foreground">Remember: Take your time, stay curious, and always do your own research to make informed decisions.</p>
-        </div>
-      </div>
-    </section>
+   <section className="py-20 px-4 bg-background">
+  <div className="container mx-auto">
+    <div className="text-center mb-12">
+      <h2 className="text-4xl md:text-5xl font-bold mb-6 text-foreground">
+        From Bitcoin to a Freer World
+      </h2>
+      <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+        The shift has already begun — not in boardrooms or behind closed doors, 
+        but in the hands of everyday people. Around the world, individuals are 
+        claiming the right to own their time, their work, and their privacy. 
+        Together, we’re building systems that remain in the hands of the many, 
+        never the few. This is more than money. It’s a grassroots movement for 
+        self‑sovereignty and a fairer future.
+      </p>
+    </div>
+
+    {/* Redesigned CTA Block */}
+    <div className="bg-gradient-to-r from-primary/10 via-primary/5 to-primary/10 rounded-2xl p-10 text-center max-w-3xl mx-auto shadow-lg">
+      <h3 className="text-3xl font-bold text-foreground mb-4">
+        People Building the Future
+      </h3>
+      <p className="text-lg text-muted-foreground mb-8">
+        Join a community that values independence, transparency, and innovation. 
+        Together, we’re not just imagining a freer world — we’re making it real, 
+        step by step, connection by connection.
+      </p>
+      <Button
+        size="lg"
+        className="px-8 py-4 bg-primary hover:bg-primary/90 text-primary-foreground text-lg rounded-full"
+        onClick={() => window.open('https://primal.net', '_blank')}
+      >
+        ✨ Be Part of It
+      </Button>
+    </div>
+
+    <div className="mt-16 text-center">
+      <p className="text-muted-foreground">
+        Remember: Take your time, stay curious, and always do your own research 
+        to make informed decisions.
+      </p>
+    </div>
+  </div>
+</section>
   </>;
 };
 
