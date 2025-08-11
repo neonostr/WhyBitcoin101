@@ -48,8 +48,7 @@ const QuestionFollow = () => {
     "wss://relay.damus.io",
     "wss://nos.lol",
     "wss://relay.nostr.band",
-    "wss://relay.primal.net",
-    "wss://nostr.wine"
+    "wss://relay.primal.net"
   ];
 
   // Phrases to filter out from replies
