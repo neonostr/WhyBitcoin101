@@ -77,8 +77,13 @@ const NostrQuestionModal = () => {
       const event = {
         kind: 1,
         created_at: Math.floor(Date.now() / 1000),
-        tags: [["t", "bitcoinbasics"], ["t", "bitcoinknowledgehub"]],
-        content: `${question}\n\n#bitcoinbasics #bitcoinknowledgehub`,
+        tags: [
+          ["t", "asknostr"],
+          ["t", "bitcoinbasics"], 
+          ["t", "bitcoinknowledgehub"],
+          ["client", "BitcoinBasics"]
+        ],
+        content: `${question}\n\n#bitcoinbasics #bitcoinknowledgehub\n\n#asknostr`,
         pubkey: publicKey,
       };
 
