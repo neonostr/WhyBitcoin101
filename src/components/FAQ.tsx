@@ -83,7 +83,7 @@ const NostrQuestionModal = () => {
           ["t", "bitcoinknowledgehub"],
           ["client", "BitcoinBasics"]
         ],
-        content: `${question} #bitcoinbasics #bitcoinknowledgehub`,
+        content: question,
         pubkey: publicKey,
       };
 
