@@ -78,7 +78,7 @@ const NostrQuestionModal = () => {
         kind: 1,
         created_at: Math.floor(Date.now() / 1000),
         tags: [
-          ["t", "asknostr"],
+          ["t", "teststr"],
           ["t", "bitcoinbasics"], 
           ["t", "bitcoinknowledgehub"],
           ["client", "BitcoinBasics"]
