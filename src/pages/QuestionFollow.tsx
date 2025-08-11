@@ -164,58 +164,97 @@ const QuestionFollow = () => {
     return profile?.name || truncateKey(pubkey);
   };
 
-  const renderMedia = (content: string) => {
+  const renderContent = (content: string) => {
+    // Split content by URLs to handle text and media separately
     const urlRegex = /(https?:\/\/[^\s]+)/g;
-    const urls = content.match(urlRegex) || [];
+    const parts = content.split(urlRegex);
     
-    return urls.map((url, index) => {
-      if (url.match(/\.(jpg|jpeg|png|gif|webp)$/i)) {
+    return parts.map((part, index) => {
+      // Check if this part is a URL
+      if (part.match(urlRegex)) {
+        // Handle images
+        if (part.match(/\.(jpg|jpeg|png|gif|webp)$/i)) {
+          return (
+            <img 
+              key={index}
+              src={part} 
+              alt="Shared image" 
+              className="max-w-full h-auto rounded-lg my-2 max-h-96 object-contain block"
+              loading="lazy"
+            />
+          );
+        }
+        // Handle videos
+        if (part.match(/\.(mp4|webm|ogg)$/i)) {
+          return (
+            <video 
+              key={index}
+              src={part} 
+              controls 
+              className="max-w-full h-auto rounded-lg my-2 max-h-96 block"
+            />
+          );
+        }
+        // Handle GIFs (including URLs with 'gif' in them)
+        if (part.includes('gif') || part.match(/\.gif$/i)) {
+          return (
+            <img 
+              key={index}
+              src={part} 
+              alt="GIF" 
+              className="max-w-full h-auto rounded-lg my-2 max-h-96 object-contain block"
+              loading="lazy"
+            />
+          );
+        }
+        // Handle other URLs as clickable links
         return (
-          <img 
+          <a 
             key={index}
-            src={url} 
-            alt="Shared image" 
-            className="max-w-full h-auto rounded-lg mt-2 max-h-96 object-contain"
-            loading="lazy"
-          />
+            href={part} 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="text-blue-500 hover:text-blue-700 underline break-all"
+          >
+            {part}
+          </a>
+        );
+      } else {
+        // Handle text content with mentions and hashtags
+        return (
+          <span key={index} className="whitespace-pre-wrap">
+            {part.split(/(\#\w+|@\w+|nostr:\w+)/g).map((textPart, textIndex) => {
+              // Handle hashtags
+              if (textPart.match(/^\#\w+/)) {
+                return (
+                  <span key={textIndex} className="text-blue-500 font-medium">
+                    {textPart}
+                  </span>
+                );
+              }
+              // Handle mentions
+              if (textPart.match(/^@\w+/)) {
+                return (
+                  <span key={textIndex} className="text-purple-500 font-medium">
+                    {textPart}
+                  </span>
+                );
+              }
+              // Handle nostr: URIs
+              if (textPart.match(/^nostr:\w+/)) {
+                return (
+                  <span key={textIndex} className="text-orange-500 font-medium">
+                    {textPart}
+                  </span>
+                );
+              }
+              // Regular text
+              return textPart;
+            })}
+          </span>
         );
       }
-      if (url.match(/\.(mp4|webm|ogg)$/i)) {
-        return (
-          <video 
-            key={index}
-            src={url} 
-            controls 
-            className="max-w-full h-auto rounded-lg mt-2 max-h-96"
-          />
-        );
-      }
-      if (url.includes('gif') || url.match(/\.gif$/i)) {
-        return (
-          <img 
-            key={index}
-            src={url} 
-            alt="GIF" 
-            className="max-w-full h-auto rounded-lg mt-2 max-h-96 object-contain"
-            loading="lazy"
-          />
-        );
-      }
-      return null;
     });
-  };
-
-  const formatContent = (content: string) => {
-    // Remove URLs that will be rendered as media
-    const urlRegex = /(https?:\/\/[^\s]+)/g;
-    const textContent = content.replace(urlRegex, (url) => {
-      if (url.match(/\.(jpg|jpeg|png|gif|webp|mp4|webm|ogg)$/i)) {
-        return '';
-      }
-      return url;
-    }).trim();
-    
-    return textContent;
   };
 
   const handleReply = async (replyToEventId: string) => {
@@ -378,9 +417,9 @@ const QuestionFollow = () => {
             </div>
           </CardHeader>
           <CardContent>
-            <p className="text-foreground mb-4 leading-relaxed">
-              {originalQuestion.content.replace(/\n\n#bitcoinbasics #bitcoinknowledgehub$/, "")}
-            </p>
+            <div className="text-foreground mb-4 leading-relaxed">
+              {renderContent(originalQuestion.content.replace(/\n\n#bitcoinbasics #bitcoinknowledgehub$/, ""))}
+            </div>
             <div className="flex items-center gap-4 text-sm text-muted-foreground">
               <div className="flex items-center gap-1">
                 <Calendar className="h-4 w-4" />
@@ -432,11 +471,8 @@ const QuestionFollow = () => {
                   </div>
                 </CardHeader>
                 <CardContent>
-                  <div className="space-y-2">
-                    <p className="text-foreground leading-relaxed whitespace-pre-wrap">
-                      {formatContent(reply.content)}
-                    </p>
-                    {renderMedia(reply.content)}
+                  <div className="text-foreground leading-relaxed">
+                    {renderContent(reply.content)}
                   </div>
                   <div className="flex items-center gap-4 mt-4 pt-3 border-t border-border">
                     <Button 
