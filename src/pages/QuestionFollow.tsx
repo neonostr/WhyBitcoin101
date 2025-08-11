@@ -40,10 +40,13 @@ const QuestionFollow = () => {
   // Single pool instance for the entire component
   const poolRef = useRef<SimplePool | null>(null);
 
+  // Better, more reliable relays
   const relays = [
     "wss://relay.damus.io",
     "wss://nos.lol",
-    "wss://relay.snort.social"
+    "wss://relay.nostr.band",
+    "wss://relay.primal.net",
+    "wss://nostr.wine"
   ];
 
   // Phrases to filter out from replies
@@ -95,15 +98,20 @@ const QuestionFollow = () => {
           const replyFilter = {
             kinds: [1],
             "#e": [question.id],
-            limit: 20
+            limit: 50
           };
 
           const replyEvents = await pool.querySync(relays, replyFilter);
           
-          // Filter out replies containing hidden phrases
-          const filteredReplies = replyEvents.filter(reply => {
-            return !hiddenPhrases.some(phrase => reply.content.includes(phrase));
-          });
+          // Filter out replies containing hidden phrases and sort by timestamp
+          const filteredReplies = replyEvents
+            .filter(reply => {
+              return !hiddenPhrases.some(phrase => reply.content.includes(phrase));
+            })
+            .sort((a, b) => a.created_at - b.created_at); // Sort oldest first
+          
+          console.log("Total replies found:", replyEvents.length);
+          console.log("Filtered replies:", filteredReplies.length);
           
           setReplies(filteredReplies);
 
@@ -164,97 +172,58 @@ const QuestionFollow = () => {
     return profile?.name || truncateKey(pubkey);
   };
 
-  const renderContent = (content: string) => {
-    // Split content by URLs to handle text and media separately
+  const renderMedia = (content: string) => {
     const urlRegex = /(https?:\/\/[^\s]+)/g;
-    const parts = content.split(urlRegex);
+    const urls = content.match(urlRegex) || [];
     
-    return parts.map((part, index) => {
-      // Check if this part is a URL
-      if (part.match(urlRegex)) {
-        // Handle images
-        if (part.match(/\.(jpg|jpeg|png|gif|webp)$/i)) {
-          return (
-            <img 
-              key={index}
-              src={part} 
-              alt="Shared image" 
-              className="max-w-full h-auto rounded-lg my-2 max-h-96 object-contain block"
-              loading="lazy"
-            />
-          );
-        }
-        // Handle videos
-        if (part.match(/\.(mp4|webm|ogg)$/i)) {
-          return (
-            <video 
-              key={index}
-              src={part} 
-              controls 
-              className="max-w-full h-auto rounded-lg my-2 max-h-96 block"
-            />
-          );
-        }
-        // Handle GIFs (including URLs with 'gif' in them)
-        if (part.includes('gif') || part.match(/\.gif$/i)) {
-          return (
-            <img 
-              key={index}
-              src={part} 
-              alt="GIF" 
-              className="max-w-full h-auto rounded-lg my-2 max-h-96 object-contain block"
-              loading="lazy"
-            />
-          );
-        }
-        // Handle other URLs as clickable links
+    return urls.map((url, index) => {
+      if (url.match(/\.(jpg|jpeg|png|gif|webp)$/i)) {
         return (
-          <a 
+          <img 
             key={index}
-            href={part} 
-            target="_blank" 
-            rel="noopener noreferrer"
-            className="text-blue-500 hover:text-blue-700 underline break-all"
-          >
-            {part}
-          </a>
-        );
-      } else {
-        // Handle text content with mentions and hashtags
-        return (
-          <span key={index} className="whitespace-pre-wrap">
-            {part.split(/(\#\w+|@\w+|nostr:\w+)/g).map((textPart, textIndex) => {
-              // Handle hashtags
-              if (textPart.match(/^\#\w+/)) {
-                return (
-                  <span key={textIndex} className="text-blue-500 font-medium">
-                    {textPart}
-                  </span>
-                );
-              }
-              // Handle mentions
-              if (textPart.match(/^@\w+/)) {
-                return (
-                  <span key={textIndex} className="text-purple-500 font-medium">
-                    {textPart}
-                  </span>
-                );
-              }
-              // Handle nostr: URIs
-              if (textPart.match(/^nostr:\w+/)) {
-                return (
-                  <span key={textIndex} className="text-orange-500 font-medium">
-                    {textPart}
-                  </span>
-                );
-              }
-              // Regular text
-              return textPart;
-            })}
-          </span>
+            src={url} 
+            alt="Shared image" 
+            className="max-w-full h-auto rounded-lg mt-2 max-h-96 object-contain"
+            loading="lazy"
+          />
         );
       }
+      if (url.match(/\.(mp4|webm|ogg)$/i)) {
+        return (
+          <video 
+            key={index}
+            src={url} 
+            controls 
+            className="max-w-full h-auto rounded-lg mt-2 max-h-96"
+          />
+        );
+      }
+      if (url.includes('gif') || url.match(/\.gif$/i)) {
+        return (
+          <img 
+            key={index}
+            src={url} 
+            alt="GIF" 
+            className="max-w-full h-auto rounded-lg mt-2 max-h-96 object-contain"
+            loading="lazy"
+          />
+        );
+      }
+      return null;
     });
+  };
+
+  const formatContent = (content: string) => {
+    // Remove URLs that will be rendered as media
+    const urlRegex = /(https?:\/\/[^\s]+)/g;
+    const textContent = content.replace(urlRegex, (url) => {
+      if (url.match(/\.(jpg|jpeg|png|gif|webp|mp4|webm|ogg)$/i)) {
+        return '';
+      }
+      return url;
+    }).trim();
+    
+    return textContent;
   };
 
   const handleReply = async (replyToEventId: string) => {
@@ -290,7 +259,7 @@ const QuestionFollow = () => {
         pubkey: replyEvent.pubkey,
         tags: replyEvent.tags
       };
-      setReplies(prev => [...prev, newReply]);
+      setReplies(prev => [...prev, newReply].sort((a, b) => a.created_at - b.created_at));
 
       // Add user profile if not present
       if (!userProfiles[publicKey]) {
@@ -417,10 +386,13 @@ const QuestionFollow = () => {
             </div>
           </CardHeader>
           <CardContent>
-            <div className="text-foreground mb-4 leading-relaxed">
-              {renderContent(originalQuestion.content.replace(/\n\n#bitcoinbasics #bitcoinknowledgehub$/, ""))}
+            <div className="space-y-2">
+              <p className="text-foreground leading-relaxed whitespace-pre-wrap">
+                {formatContent(originalQuestion.content.replace(/\n\n#bitcoinbasics #bitcoinknowledgehub$/, ""))}
+              </p>
+              {renderMedia(originalQuestion.content)}
             </div>
-            <div className="flex items-center gap-4 text-sm text-muted-foreground">
+            <div className="flex items-center gap-4 text-sm text-muted-foreground mt-4">
               <div className="flex items-center gap-1">
                 <Calendar className="h-4 w-4" />
                 {formatDate(originalQuestion.created_at)}
@@ -471,8 +443,11 @@ const QuestionFollow = () => {
                   </div>
                 </CardHeader>
                 <CardContent>
-                  <div className="text-foreground leading-relaxed">
-                    {renderContent(reply.content)}
+                  <div className="space-y-2">
+                    <p className="text-foreground leading-relaxed whitespace-pre-wrap">
+                      {formatContent(reply.content)}
+                    </p>
+                    {renderMedia(reply.content)}
                   </div>
                   <div className="flex items-center gap-4 mt-4 pt-3 border-t border-border">
                     <Button 
