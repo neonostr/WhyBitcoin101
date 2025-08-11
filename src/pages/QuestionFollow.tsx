@@ -223,15 +223,15 @@ const QuestionFollow = () => {
 
       const pool = new SimplePool();
       
-      // Publish to relays
-      for (const relay of relays) {
-        try {
-          await pool.publish([relay], replyEvent);
-        } catch (e) {
-          // Continue to next relay if one fails
-        }
-      }
+      // Try each relay individually
+      const promises = relays.map(relay => 
+        pool.publish([relay], replyEvent).catch(e => console.log(`Failed to publish to ${relay}:`, e))
+      );
       
+      await Promise.allSettled(promises);
+      
+      // Wait 2 seconds before closing to let the messages send
+      await new Promise(resolve => setTimeout(resolve, 2000));
       pool.close(relays);
 
       // Add reply to local state immediately
@@ -261,6 +261,7 @@ const QuestionFollow = () => {
       setReplyingTo(null);
 
     } catch (error) {
+      console.error("Reply error:", error);
       toast({
         title: "Failed to post reply",
         description: "Please try again later.",
@@ -291,15 +292,15 @@ const QuestionFollow = () => {
 
       const pool = new SimplePool();
       
-      // Publish to relays
-      for (const relay of relays) {
-        try {
-          await pool.publish([relay], likeEvent);
-        } catch (e) {
-          // Continue to next relay if one fails
-        }
-      }
+      // Try each relay individually
+      const promises = relays.map(relay => 
+        pool.publish([relay], likeEvent).catch(e => console.log(`Failed to publish to ${relay}:`, e))
+      );
       
+      await Promise.allSettled(promises);
+      
+      // Wait 2 seconds before closing to let the messages send
+      await new Promise(resolve => setTimeout(resolve, 2000));
       pool.close(relays);
 
       toast({
@@ -308,6 +309,7 @@ const QuestionFollow = () => {
       });
 
     } catch (error) {
+      console.error("Like error:", error);
       toast({
         title: "Failed to like post",
         description: "Please try again later.",
