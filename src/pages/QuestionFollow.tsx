@@ -67,6 +67,40 @@ const QuestionFollow = () => {
     };
   }, []);
 
+  // Recursive function to fetch all nested replies
+  const fetchAllReplies = async (pool: any, eventIds: string[], allReplies: NostrEvent[] = [], maxDepth = 10, currentDepth = 0): Promise<NostrEvent[]> => {
+    if (currentDepth >= maxDepth || eventIds.length === 0) {
+      return allReplies;
+    }
+
+    console.log(`Fetching replies at depth ${currentDepth} for ${eventIds.length} events`);
+
+    const replyFilter = {
+      kinds: [1],
+      "#e": eventIds,
+      limit: 500
+    };
+
+    const newReplies = await pool.querySync(relays, replyFilter);
+    
+    // Filter out duplicates and add to our collection
+    const uniqueNewReplies = newReplies.filter(newReply => 
+      !allReplies.find(existing => existing.id === newReply.id)
+    );
+    
+    const updatedReplies = [...allReplies, ...uniqueNewReplies];
+    
+    console.log(`Found ${uniqueNewReplies.length} new replies at depth ${currentDepth}`);
+    
+    // If we found new replies, recursively search for replies to those
+    if (uniqueNewReplies.length > 0) {
+      const newEventIds = uniqueNewReplies.map(r => r.id);
+      return await fetchAllReplies(pool, newEventIds, updatedReplies, maxDepth, currentDepth + 1);
+    }
+    
+    return updatedReplies;
+  };
+
   const fetchQuestionAndReplies = async () => {
     if (!nsec || !poolRef.current) {
       setError("Invalid follow-up link");
@@ -95,47 +129,16 @@ const QuestionFollow = () => {
         const question = questionEvents[0];
         setOriginalQuestion(question);
 
-        // Get all reply event IDs that we need to search for
-        let allReplyEventIds = [question.id];
-        let allReplies: NostrEvent[] = [];
-
-        // First, get direct replies to the original question
-        const directReplyFilter = {
-          kinds: [1],
-          "#e": [question.id],
-          limit: 100
-        };
-
-        const directReplies = await pool.querySync(relays, directReplyFilter);
-        allReplies = [...directReplies];
-        
-        // Add direct reply IDs to search for nested replies
-        allReplyEventIds = [...allReplyEventIds, ...directReplies.map(r => r.id)];
-
-        // Now get replies to replies (nested/threaded replies)
-        if (directReplies.length > 0) {
-          const nestedReplyFilter = {
-            kinds: [1],
-            "#e": directReplies.map(r => r.id),
-            limit: 200
-          };
-
-          const nestedReplies = await pool.querySync(relays, nestedReplyFilter);
-          
-          // Add nested replies that aren't already in our list
-          nestedReplies.forEach(nestedReply => {
-            if (!allReplies.find(r => r.id === nestedReply.id)) {
-              allReplies.push(nestedReply);
-            }
-          });
-        }
+        // Recursively fetch ALL replies at any depth
+        console.log("Starting recursive reply fetch...");
+        const allReplies = await fetchAllReplies(pool, [question.id]);
 
         // Get likes for all events (question + all replies)
         const allEventIds = [question.id, ...allReplies.map(r => r.id)];
         const likeFilter = {
           kinds: [7],
           "#e": allEventIds,
-          limit: 500
+          limit: 1000
         };
 
         const likeEvents = await pool.querySync(relays, likeFilter);
@@ -157,7 +160,7 @@ const QuestionFollow = () => {
           })
           .sort((a, b) => a.created_at - b.created_at); // Sort oldest first
         
-        console.log("Total replies found (including nested):", allReplies.length);
+        console.log("Total replies found (all depths):", allReplies.length);
         console.log("Filtered replies:", filteredReplies.length);
         console.log("Like counts:", likeCounts);
         
@@ -312,24 +315,25 @@ const QuestionFollow = () => {
     return textContent;
   };
 
-  // Helper function to get what this reply is replying to
+  // Helper function to get what this reply is replying to and calculate nesting depth
   const getReplyContext = (reply: NostrEvent) => {
     const eTags = reply.tags.filter(tag => tag[0] === 'e');
-    if (eTags.length === 0) return null;
+    if (eTags.length === 0) return { type: 'question', target: originalQuestion, depth: 0 };
     
     // Find if this is replying to the original question or another reply
     const replyToId = eTags[eTags.length - 1][1]; // Last e tag is usually the direct reply target
     
     if (replyToId === originalQuestion?.id) {
-      return { type: 'question', target: originalQuestion };
+      return { type: 'question', target: originalQuestion, depth: 0 };
     }
     
     const parentReply = replies.find(r => r.id === replyToId);
     if (parentReply) {
-      return { type: 'reply', target: parentReply };
+      const parentContext = getReplyContext(parentReply);
+      return { type: 'reply', target: parentReply, depth: parentContext.depth + 1 };
     }
     
-    return null;
+    return { type: 'question', target: originalQuestion, depth: 0 };
   };
 
   const handleReply = async (replyToEventId: string) => {
@@ -559,9 +563,14 @@ const QuestionFollow = () => {
           ) : (
             replies.map((reply) => {
               const replyContext = getReplyContext(reply);
+              const indentLevel = Math.min(replyContext.depth, 5); // Cap at 5 levels to prevent excessive indentation
               
               return (
-                <Card key={reply.id} className={replyContext?.type === 'reply' ? 'ml-8 border-l-4 border-l-muted-foreground/30' : ''}>
+                <Card 
+                  key={reply.id} 
+                  className={`${indentLevel > 0 ? `ml-${indentLevel * 8} border-l-4 border-l-muted-foreground/30` : ''}`}
+                  style={indentLevel > 0 ? { marginLeft: `${indentLevel * 2}rem` } : {}}
+                >
                   <CardHeader>
                     <div className="flex items-center justify-between">
                       <div className="flex items-center gap-2">
@@ -573,6 +582,11 @@ const QuestionFollow = () => {
                           <span className="text-xs text-muted-foreground">
                             replying to {getUserDisplayName(replyContext.target.pubkey)}
                           </span>
+                        )}
+                        {indentLevel > 0 && (
+                          <Badge variant="outline" className="text-xs">
+                            Level {indentLevel + 1}
+                          </Badge>
                         )}
                       </div>
                       <span className="text-sm text-muted-foreground">
