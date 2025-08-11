@@ -7,7 +7,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { SimplePool } from "nostr-tools/pool";
 import { nip19 } from "nostr-tools";
 import { getPublicKey, finalizeEvent } from "nostr-tools/pure";
-import { ArrowLeft, MessageCircle, Calendar, User, Send, Heart } from "lucide-react";
+import { ArrowLeft, MessageCircle, Calendar, User, Send, Heart, RefreshCw } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 
 interface NostrEvent {
@@ -28,6 +28,7 @@ const QuestionFollow = () => {
   const { nsec } = useParams<{ nsec: string }>();
   const [originalQuestion, setOriginalQuestion] = useState<NostrEvent | null>(null);
   const [replies, setReplies] = useState<NostrEvent[]>([]);
+  const [likes, setLikes] = useState<Record<string, number>>({});
   const [userProfiles, setUserProfiles] = useState<Record<string, UserProfile>>({});
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -35,17 +36,20 @@ const QuestionFollow = () => {
   const [replyText, setReplyText] = useState("");
   const [submittingReply, setSubmittingReply] = useState(false);
   const [likingPost, setLikingPost] = useState<string | null>(null);
+  const [refreshing, setRefreshing] = useState(false);
   const { toast } = useToast();
   
   // Single pool instance for the entire component
   const poolRef = useRef<SimplePool | null>(null);
+  const lastRefreshRef = useRef<number>(0);
 
   // Better, more reliable relays
   const relays = [
     "wss://relay.damus.io",
     "wss://nos.lol",
     "wss://relay.nostr.band",
-    "wss://relay.primal.net"
+    "wss://relay.primal.net",
+    "wss://nostr.wine"
   ];
 
   // Phrases to filter out from replies
@@ -64,119 +68,166 @@ const QuestionFollow = () => {
     };
   }, []);
 
-  useEffect(() => {
-    const fetchQuestionAndReplies = async () => {
-      if (!nsec || !poolRef.current) {
-        setError("Invalid follow-up link");
-        setLoading(false);
-        return;
-      }
+  const fetchQuestionAndReplies = async () => {
+    if (!nsec || !poolRef.current) {
+      setError("Invalid follow-up link");
+      setLoading(false);
+      return;
+    }
 
-      try {
-        // Decode the nsec private key to get the public key
-        const { data: privateKey } = nip19.decode(nsec);
-        const publicKey = getPublicKey(privateKey as Uint8Array);
+    try {
+      // Decode the nsec private key to get the public key
+      const { data: privateKey } = nip19.decode(nsec);
+      const publicKey = getPublicKey(privateKey as Uint8Array);
 
-        const pool = poolRef.current;
-        
-        // Find the original question by this pubkey with bitcoinbasics tag
-        const questionFilter = {
+      const pool = poolRef.current;
+      
+      // Find the original question by this pubkey with bitcoinbasics tag
+      const questionFilter = {
+        kinds: [1],
+        authors: [publicKey],
+        "#t": ["bitcoinbasics"],
+        limit: 1
+      };
+
+      const questionEvents = await pool.querySync(relays, questionFilter);
+      
+      if (questionEvents.length > 0) {
+        const question = questionEvents[0];
+        setOriginalQuestion(question);
+
+        // Get all reply event IDs that we need to search for
+        let allReplyEventIds = [question.id];
+        let allReplies: NostrEvent[] = [];
+
+        // First, get direct replies to the original question
+        const directReplyFilter = {
           kinds: [1],
-          authors: [publicKey],
-          "#t": ["bitcoinbasics"],
-          limit: 1
+          "#e": [question.id],
+          limit: 100
         };
 
-        const questionEvents = await pool.querySync(relays, questionFilter);
+        const directReplies = await pool.querySync(relays, directReplyFilter);
+        allReplies = [...directReplies];
         
-        if (questionEvents.length > 0) {
-          const question = questionEvents[0];
-          setOriginalQuestion(question);
+        // Add direct reply IDs to search for nested replies
+        allReplyEventIds = [...allReplyEventIds, ...directReplies.map(r => r.id)];
 
-          // Get all reply event IDs that we need to search for
-          let allReplyEventIds = [question.id];
-          let allReplies: NostrEvent[] = [];
-
-          // First, get direct replies to the original question
-          const directReplyFilter = {
+        // Now get replies to replies (nested/threaded replies)
+        if (directReplies.length > 0) {
+          const nestedReplyFilter = {
             kinds: [1],
-            "#e": [question.id],
-            limit: 100
+            "#e": directReplies.map(r => r.id),
+            limit: 200
           };
 
-          const directReplies = await pool.querySync(relays, directReplyFilter);
-          allReplies = [...directReplies];
+          const nestedReplies = await pool.querySync(relays, nestedReplyFilter);
           
-          // Add direct reply IDs to search for nested replies
-          allReplyEventIds = [...allReplyEventIds, ...directReplies.map(r => r.id)];
-
-          // Now get replies to replies (nested/threaded replies)
-          if (directReplies.length > 0) {
-            const nestedReplyFilter = {
-              kinds: [1],
-              "#e": directReplies.map(r => r.id),
-              limit: 200
-            };
-
-            const nestedReplies = await pool.querySync(relays, nestedReplyFilter);
-            
-            // Add nested replies that aren't already in our list
-            nestedReplies.forEach(nestedReply => {
-              if (!allReplies.find(r => r.id === nestedReply.id)) {
-                allReplies.push(nestedReply);
-              }
-            });
-          }
-
-          // Filter out replies containing hidden phrases and sort by timestamp
-          const filteredReplies = allReplies
-            .filter(reply => {
-              return !hiddenPhrases.some(phrase => reply.content.includes(phrase));
-            })
-            .sort((a, b) => a.created_at - b.created_at); // Sort oldest first
-          
-          console.log("Total replies found (including nested):", allReplies.length);
-          console.log("Filtered replies:", filteredReplies.length);
-          
-          setReplies(filteredReplies);
-
-          // Fetch user profiles for all unique pubkeys
-          const allPubkeys = [publicKey, ...allReplies.map(r => r.pubkey)];
-          const uniquePubkeys = [...new Set(allPubkeys)];
-          
-          const profileFilter = {
-            kinds: [0],
-            authors: uniquePubkeys,
-          };
-
-          const profileEvents = await pool.querySync(relays, profileFilter);
-          
-          // Process profiles
-          const profiles: Record<string, UserProfile> = {};
-          profileEvents.forEach(event => {
-            try {
-              const profile = JSON.parse(event.content);
-              profiles[event.pubkey] = profile;
-            } catch (e) {
-              console.warn("Failed to parse profile:", e);
+          // Add nested replies that aren't already in our list
+          nestedReplies.forEach(nestedReply => {
+            if (!allReplies.find(r => r.id === nestedReply.id)) {
+              allReplies.push(nestedReply);
             }
           });
-          
-          setUserProfiles(profiles);
-        } else {
-          setError("Question not found or not yet propagated to relays");
         }
 
-      } catch (err) {
-        console.error("Error fetching question:", err);
-        setError("Failed to load question and replies");
-      } finally {
-        setLoading(false);
-      }
-    };
+        // Get likes for all events (question + all replies)
+        const allEventIds = [question.id, ...allReplies.map(r => r.id)];
+        const likeFilter = {
+          kinds: [7],
+          "#e": allEventIds,
+          limit: 500
+        };
 
+        const likeEvents = await pool.querySync(relays, likeFilter);
+        
+        // Count likes per event
+        const likeCounts: Record<string, number> = {};
+        likeEvents.forEach(like => {
+          const eventId = like.tags.find(tag => tag[0] === 'e')?.[1];
+          if (eventId) {
+            likeCounts[eventId] = (likeCounts[eventId] || 0) + 1;
+          }
+        });
+        setLikes(likeCounts);
+
+        // Filter out replies containing hidden phrases and sort by timestamp
+        const filteredReplies = allReplies
+          .filter(reply => {
+            return !hiddenPhrases.some(phrase => reply.content.includes(phrase));
+          })
+          .sort((a, b) => a.created_at - b.created_at); // Sort oldest first
+        
+        console.log("Total replies found (including nested):", allReplies.length);
+        console.log("Filtered replies:", filteredReplies.length);
+        console.log("Like counts:", likeCounts);
+        
+        setReplies(filteredReplies);
+
+        // Fetch user profiles for all unique pubkeys
+        const allPubkeys = [publicKey, ...allReplies.map(r => r.pubkey)];
+        const uniquePubkeys = [...new Set(allPubkeys)];
+        
+        const profileFilter = {
+          kinds: [0],
+          authors: uniquePubkeys,
+        };
+
+        const profileEvents = await pool.querySync(relays, profileFilter);
+        
+        // Process profiles
+        const profiles: Record<string, UserProfile> = {};
+        profileEvents.forEach(event => {
+          try {
+            const profile = JSON.parse(event.content);
+            profiles[event.pubkey] = profile;
+          } catch (e) {
+            console.warn("Failed to parse profile:", e);
+          }
+        });
+        
+        setUserProfiles(profiles);
+      } else {
+        setError("Question not found or not yet propagated to relays");
+      }
+
+    } catch (err) {
+      console.error("Error fetching question:", err);
+      setError("Failed to load question and replies");
+    } finally {
+      setLoading(false);
+      setRefreshing(false);
+    }
+  };
+
+  useEffect(() => {
     fetchQuestionAndReplies();
   }, [nsec]);
+
+  const handleRefresh = async () => {
+    const now = Date.now();
+    const timeSinceLastRefresh = now - lastRefreshRef.current;
+    
+    // Rate limit: only allow refresh every 60 seconds
+    if (timeSinceLastRefresh < 60000) {
+      return; // Silently ignore if too soon
+    }
+    
+    lastRefreshRef.current = now;
+    setRefreshing(true);
+    
+    toast({
+      title: "Refreshing...",
+      description: "Checking for new replies and updates.",
+    });
+    
+    await fetchQuestionAndReplies();
+    
+    toast({
+      title: "Refreshed!",
+      description: "Content has been updated.",
+    });
+  };
 
   const formatDate = (timestamp: number) => {
     return new Date(timestamp * 1000).toLocaleDateString("en-US", {
@@ -370,6 +421,12 @@ const QuestionFollow = () => {
         console.log("Publish error:", e);
       }
 
+      // Optimistically update like count
+      setLikes(prev => ({
+        ...prev,
+        [eventId]: (prev[eventId] || 0) + 1
+      }));
+
       toast({
         title: "Liked!",
         description: "Your reaction has been published.",
@@ -420,13 +477,25 @@ const QuestionFollow = () => {
   return (
     <div className="min-h-screen bg-background">
       <div className="container mx-auto px-4 py-8 max-w-4xl">
-        <div className="mb-8">
+        <div className="mb-8 relative">
           <Link to="/">
             <Button variant="ghost" className="mb-4">
               <ArrowLeft className="h-4 w-4 mr-2" />
               Back to Home
             </Button>
           </Link>
+          
+          {/* Refresh Button */}
+          <Button
+            onClick={handleRefresh}
+            disabled={refreshing}
+            className="absolute top-0 right-0 bg-orange-500 hover:bg-orange-600 text-white"
+            size="sm"
+          >
+            <RefreshCw className={`h-4 w-4 mr-2 ${refreshing ? 'animate-spin' : ''}`} />
+            Refresh
+          </Button>
+          
           <h1 className="text-3xl font-bold text-foreground">Your Bitcoin Question</h1>
           <p className="text-muted-foreground mt-2">
             Track responses to your question
@@ -457,6 +526,12 @@ const QuestionFollow = () => {
                 <User className="h-4 w-4" />
                 {getUserDisplayName(originalQuestion.pubkey)}
               </div>
+              {likes[originalQuestion.id] && (
+                <div className="flex items-center gap-1">
+                  <Heart className="h-4 w-4 text-red-500" />
+                  <span>{likes[originalQuestion.id]}</span>
+                </div>
+              )}
             </div>
           </CardContent>
         </Card>
@@ -487,7 +562,7 @@ const QuestionFollow = () => {
               const replyContext = getReplyContext(reply);
               
               return (
-                <Card key={reply.id} className={replyContext?.type === 'reply' ? 'ml-8 border-l-4 border-l-blue-200' : ''}>
+                <Card key={reply.id} className={replyContext?.type === 'reply' ? 'ml-8 border-l-4 border-l-muted-foreground/30' : ''}>
                   <CardHeader>
                     <div className="flex items-center justify-between">
                       <div className="flex items-center gap-2">
@@ -532,6 +607,7 @@ const QuestionFollow = () => {
                       >
                         <Heart className={`h-4 w-4 mr-1 ${likingPost === reply.id ? 'animate-pulse' : ''}`} />
                         {likingPost === reply.id ? 'Liking...' : 'Like'}
+                        {likes[reply.id] && <span className="ml-1">({likes[reply.id]})</span>}
                       </Button>
                     </div>
                     
@@ -577,7 +653,7 @@ const QuestionFollow = () => {
         <div className="mt-8 p-4 bg-muted/50 rounded-lg border">
           <p className="text-sm text-muted-foreground text-center">
             💡 Responses can be almost instant or take a few days, depending on who's online. 
-            Refresh this page periodically to check for replies.
+            Use the refresh button above to check for new replies.
           </p>
         </div>
       </div>
