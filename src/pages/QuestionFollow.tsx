@@ -213,8 +213,22 @@ const QuestionFollow = () => {
       }, privateKey as Uint8Array);
 
       const pool = new SimplePool();
-      await pool.publish(relays, replyEvent);
+      
+      // Publish to all relays with better error handling
+      const publishPromises = relays.map(relay => pool.publish([relay], replyEvent));
+      await Promise.allSettled(publishPromises);
+      
       pool.close(relays);
+
+      // Add the new reply to local state immediately
+      const newReply = {
+        id: replyEvent.id,
+        content: replyEvent.content,
+        created_at: replyEvent.created_at,
+        pubkey: replyEvent.pubkey,
+        tags: replyEvent.tags
+      };
+      setReplies(prev => [...prev, newReply]);
 
       toast({
         title: "Reply posted!",
@@ -223,11 +237,6 @@ const QuestionFollow = () => {
 
       setReplyText("");
       setReplyingTo(null);
-      
-      // Refresh replies after a short delay
-      setTimeout(() => {
-        window.location.reload();
-      }, 2000);
 
     } catch (error) {
       console.error("Error posting reply:", error);
@@ -247,19 +256,24 @@ const QuestionFollow = () => {
     setLikingPost(eventId);
     try {
       const { data: privateKey } = nip19.decode(nsec);
+      const targetReply = replies.find(r => r.id === eventId) || originalQuestion;
 
       const likeEvent = finalizeEvent({
         kind: 7,
         content: "❤️",
         tags: [
           ["e", eventId],
-          ["p", replies.find(r => r.id === eventId)?.pubkey || ""]
+          ["p", targetReply?.pubkey || ""]
         ],
         created_at: Math.floor(Date.now() / 1000),
       }, privateKey as Uint8Array);
 
       const pool = new SimplePool();
-      await pool.publish(relays, likeEvent);
+      
+      // Publish to all relays with better error handling
+      const publishPromises = relays.map(relay => pool.publish([relay], likeEvent));
+      await Promise.allSettled(publishPromises);
+      
       pool.close(relays);
 
       toast({
