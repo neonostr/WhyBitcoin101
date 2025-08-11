@@ -94,7 +94,7 @@ const Contact = () => {
         className="bg-primary text-primary-foreground hover:bg-primary/90"
         onClick={() => window.open('https://primal.net', '_blank')}
       >
-        Be Part of It
+        ✨ Be Part of It
       </Button>
     </div>
 
