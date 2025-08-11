@@ -215,8 +215,7 @@ const QuestionFollow = () => {
         kind: 1,
         content: replyText.trim(),
         tags: [
-          ["e", replyToEventId],
-          ["e", originalQuestion?.id || "", "", "root"],
+          ["e", replyToEventId, "", "reply"],
           ["p", originalQuestion?.pubkey || ""]
         ],
         created_at: Math.floor(Date.now() / 1000),
@@ -282,11 +281,10 @@ const QuestionFollow = () => {
 
       const likeEvent = finalizeEvent({
         kind: 7,
-        content: "+",
+        content: "❤️",
         tags: [
           ["e", eventId],
-          ["p", targetReply?.pubkey || ""],
-          ["k", "1"]
+          ["p", targetReply?.pubkey || ""]
         ],
         created_at: Math.floor(Date.now() / 1000),
       }, privateKey as Uint8Array);
