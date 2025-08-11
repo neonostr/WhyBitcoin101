@@ -48,7 +48,8 @@ const QuestionFollow = () => {
     "wss://relay.damus.io",
     "wss://nos.lol",
     "wss://relay.nostr.band",
-    "wss://relay.primal.net"
+    "wss://relay.primal.net",
+    "wss://nostr.wine"
   ];
 
   // Phrases to filter out from replies
@@ -250,11 +251,37 @@ const QuestionFollow = () => {
     return profile?.name || truncateKey(pubkey);
   };
 
+  // Helper function to extract YouTube video ID from URL
+  const getYouTubeVideoId = (url: string) => {
+    const regex = /(?:youtube\.com\/(?:[^\/]+\/.+\/|(?:v|e(?:mbed)?)\/|.*[?&]v=)|youtu\.be\/)([^"&?\/\s]{11})/;
+    const match = url.match(regex);
+    return match ? match[1] : null;
+  };
+
   const renderMedia = (content: string) => {
     const urlRegex = /(https?:\/\/[^\s]+)/g;
     const urls = content.match(urlRegex) || [];
     
     return urls.map((url, index) => {
+      // YouTube videos
+      const youtubeId = getYouTubeVideoId(url);
+      if (youtubeId) {
+        return (
+          <div key={index} className="mt-2">
+            <iframe
+              width="100%"
+              height="315"
+              src={`https://www.youtube.com/embed/${youtubeId}`}
+              title="YouTube video"
+              frameBorder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowFullScreen
+              className="rounded-lg max-w-full"
+            />
+          </div>
+        );
+      }
+      
       // Enhanced GIF detection - check for .gif extension OR gif in URL OR common GIF hosting patterns
       if (url.match(/\.gif(\?|$)/i) || 
           url.includes('gif') || 
@@ -298,21 +325,57 @@ const QuestionFollow = () => {
     });
   };
 
-  const formatContent = (content: string) => {
+  // Helper function to resolve mentions from p tags
+  const resolveMentions = (content: string, event: NostrEvent) => {
+    const pTags = event.tags.filter(tag => tag[0] === 'p');
+    let processedContent = content;
+    
+    // Replace nostr:npub mentions with @username
+    const nostrMentionRegex = /nostr:(npub1[a-z0-9]{58})/g;
+    processedContent = processedContent.replace(nostrMentionRegex, (match, npub) => {
+      try {
+        const { data: pubkey } = nip19.decode(npub);
+        const username = getUserDisplayName(pubkey as string);
+        return `@${username}`;
+      } catch (e) {
+        return match; // Keep original if decode fails
+      }
+    });
+    
+    // Replace #[index] mentions with @username
+    const indexMentionRegex = /#\[(\d+)\]/g;
+    processedContent = processedContent.replace(indexMentionRegex, (match, indexStr) => {
+      const index = parseInt(indexStr);
+      if (index < pTags.length) {
+        const pubkey = pTags[index][1];
+        const username = getUserDisplayName(pubkey);
+        return `@${username}`;
+      }
+      return match; // Keep original if index is out of bounds
+    });
+    
+    return processedContent;
+  };
+
+  const formatContent = (content: string, event: NostrEvent) => {
+    // First resolve mentions
+    let processedContent = resolveMentions(content, event);
+    
     // Remove URLs that will be rendered as media
     const urlRegex = /(https?:\/\/[^\s]+)/g;
-    const textContent = content.replace(urlRegex, (url) => {
-      // Enhanced media URL detection
+    processedContent = processedContent.replace(urlRegex, (url) => {
+      // Enhanced media URL detection including YouTube
       if (url.match(/\.(jpg|jpeg|png|gif|webp|mp4|webm|ogg)(\?|$)/i) ||
           url.includes('gif') || 
           url.includes('giphy.com') || 
-          url.includes('tenor.com')) {
+          url.includes('tenor.com') ||
+          getYouTubeVideoId(url)) {
         return '';
       }
       return url;
     }).trim();
     
-    return textContent;
+    return processedContent;
   };
 
   // Helper function to get what this reply is replying to and calculate nesting depth
@@ -516,7 +579,7 @@ const QuestionFollow = () => {
           <CardContent>
             <div className="space-y-2">
               <p className="text-foreground leading-relaxed whitespace-pre-wrap">
-                {formatContent(originalQuestion.content.replace(/\n\n#bitcoinbasics #bitcoinknowledgehub$/, ""))}
+                {formatContent(originalQuestion.content.replace(/\n\n#bitcoinbasics #bitcoinknowledgehub$/, ""), originalQuestion)}
               </p>
               {renderMedia(originalQuestion.content)}
             </div>
@@ -568,7 +631,7 @@ const QuestionFollow = () => {
               return (
                 <Card 
                   key={reply.id} 
-                  className={`${indentLevel > 0 ? `ml-${indentLevel * 8} border-l-4 border-l-muted-foreground/30` : ''}`}
+                  className={`${indentLevel > 0 ? `border-l-4 border-l-muted-foreground/30` : ''}`}
                   style={indentLevel > 0 ? { marginLeft: `${indentLevel * 2}rem` } : {}}
                 >
                   <CardHeader>
@@ -597,7 +660,7 @@ const QuestionFollow = () => {
                   <CardContent>
                     <div className="space-y-2">
                       <p className="text-foreground leading-relaxed whitespace-pre-wrap">
-                        {formatContent(reply.content)}
+                        {formatContent(reply.content, reply)}
                       </p>
                       {renderMedia(reply.content)}
                     </div>
