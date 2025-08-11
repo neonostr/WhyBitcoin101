@@ -67,16 +67,16 @@ const Contact = () => {
     <section className="py-20 px-4 bg-background">
       <div className="container mx-auto">
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold mb-6 text-foreground">Join the Bitcoin Community</h2>
-          <p className="text-xl text-muted-foreground max-w-2xl mx-auto">Connect with thousands of like-minded individuals who share your passion for Bitcoin. Your journey is just beginning.</p>
+          <h2 className="text-4xl md:text-5xl font-bold mb-6 text-foreground">From Bitcoin to a Freer World</h2>
+          <p className="text-xl text-muted-foreground max-w-2xl mx-auto">The shift has already begun - people everywhere are reclaiming their independence and re-imagining how society works. This is more than finance. It’s a movement.</p>
         </div>
         
         <div className="text-center">
           <Card className="border-primary/20 shadow-[var(--card-hover)] max-w-2xl mx-auto">
             <CardContent className="p-8">
-              <h3 className="text-2xl font-bold text-foreground mb-4">Find Your People</h3>
-              <p className="text-muted-foreground mb-6">Bitcoin is more than just technology – it's a growing community of people from all walks of life. Whether you're just starting to learn or you're a seasoned bitcoiner, finding others to share ideas with can make all the difference.</p>
-              <Button size="lg" className="w-full bg-primary hover:bg-primary/90 text-primary-foreground" onClick={() => window.open('https://primal.net', '_blank')}>Take Me There</Button>
+              <h3 className="text-2xl font-bold text-foreground mb-4">Where Ideas Meet Action</h3>
+              <p className="text-muted-foreground mb-6">Meet others who value open systems, privacy, innovation, and creativity. Together, we're not just talking about change - we’re building it, one connection at a time.</p>
+              <Button size="lg" className="w-full bg-primary hover:bg-primary/90 text-primary-foreground" onClick={() => window.open('https://primal.net', '_blank')}>✨ Be Part of It</Button>
             </CardContent>
           </Card>
         </div>
