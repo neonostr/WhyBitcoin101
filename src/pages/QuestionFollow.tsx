@@ -396,7 +396,7 @@ const QuestionFollow = () => {
                   <MessageCircle className="h-12 w-12 text-muted-foreground mx-auto mb-4" />
                   <h3 className="text-lg font-medium text-foreground mb-2">No replies yet</h3>
                   <p className="text-muted-foreground">
-                    Your question is live on Nostr. Check back later for responses from the community.
+                    Your question is live. Check back later for responses from the community.
                   </p>
                 </div>
               </CardContent>
@@ -486,8 +486,8 @@ const QuestionFollow = () => {
         {/* Refresh Note */}
         <div className="mt-8 p-4 bg-muted/50 rounded-lg border">
           <p className="text-sm text-muted-foreground text-center">
-            💡 Responses may take time to appear as they propagate across the decentralized network. 
-            Refresh this page periodically to check for new replies.
+            💡 Responses can be almost instant or take a few days, depending on who's online. 
+            Refresh this page periodically to check for replies.
           </p>
         </div>
       </div>
