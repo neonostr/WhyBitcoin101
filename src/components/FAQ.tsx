@@ -27,7 +27,7 @@ const NostrQuestionModal = () => {
   ];
 
   const generateRandomUsername = () => {
-    const adjectives = ["Curious", "Learning", "New", "Eager", "Smart", "Bitcoin", "Crypto", "Digital", "Future", "Wise"];
+    const adjectives = ["Curious", "Learning", "New", "Eager", "Smart", "Bitcoin", "Hope", "Future", "Wise"];
     const nouns = ["Student", "Explorer", "Learner", "Seeker", "Beginner", "Enthusiast", "User", "Person", "Individual", "Member"];
     const numbers = Math.floor(Math.random() * 999) + 1;
     
