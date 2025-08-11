@@ -1,5 +1,5 @@
 import { useParams, Link } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -36,6 +36,9 @@ const QuestionFollow = () => {
   const [submittingReply, setSubmittingReply] = useState(false);
   const [likingPost, setLikingPost] = useState<string | null>(null);
   const { toast } = useToast();
+  
+  // Single pool instance for the entire component
+  const poolRef = useRef<SimplePool | null>(null);
 
   const relays = [
     "wss://relay.damus.io",
@@ -46,9 +49,22 @@ const QuestionFollow = () => {
   // Phrases to filter out from replies
   const hiddenPhrases = ["https://rizful.com"];
 
+  // Initialize pool once
+  useEffect(() => {
+    poolRef.current = new SimplePool();
+    
+    // Cleanup on unmount
+    return () => {
+      if (poolRef.current) {
+        poolRef.current.close(relays);
+        poolRef.current = null;
+      }
+    };
+  }, []);
+
   useEffect(() => {
     const fetchQuestionAndReplies = async () => {
-      if (!nsec) {
+      if (!nsec || !poolRef.current) {
         setError("Invalid follow-up link");
         setLoading(false);
         return;
@@ -59,7 +75,7 @@ const QuestionFollow = () => {
         const { data: privateKey } = nip19.decode(nsec);
         const publicKey = getPublicKey(privateKey as Uint8Array);
 
-        const pool = new SimplePool();
+        const pool = poolRef.current;
         
         // Find the original question by this pubkey with bitcoinbasics tag
         const questionFilter = {
@@ -118,7 +134,6 @@ const QuestionFollow = () => {
           setError("Question not found or not yet propagated to relays");
         }
 
-        pool.close(relays);
       } catch (err) {
         console.error("Error fetching question:", err);
         setError("Failed to load question and replies");
@@ -204,7 +219,7 @@ const QuestionFollow = () => {
   };
 
   const handleReply = async (replyToEventId: string) => {
-    if (!nsec || !replyText.trim()) return;
+    if (!nsec || !replyText.trim() || !poolRef.current) return;
 
     setSubmittingReply(true);
     try {
@@ -221,17 +236,12 @@ const QuestionFollow = () => {
         created_at: Math.floor(Date.now() / 1000),
       }, privateKey as Uint8Array);
 
-      const pool = new SimplePool();
-      
-      // Simple publish without error handling
+      // Use the existing pool
       try {
-        await pool.publish(relays, replyEvent);
+        await poolRef.current.publish(relays, replyEvent);
       } catch (e) {
         console.log("Publish error:", e);
       }
-      
-      // Wait a bit then close
-      setTimeout(() => pool.close(relays), 3000);
 
       // Add reply to local state immediately
       const newReply = {
@@ -272,7 +282,7 @@ const QuestionFollow = () => {
   };
 
   const handleLike = async (eventId: string) => {
-    if (!nsec) return;
+    if (!nsec || !poolRef.current) return;
 
     setLikingPost(eventId);
     try {
@@ -289,17 +299,12 @@ const QuestionFollow = () => {
         created_at: Math.floor(Date.now() / 1000),
       }, privateKey as Uint8Array);
 
-      const pool = new SimplePool();
-      
-      // Simple publish without error handling
+      // Use the existing pool
       try {
-        await pool.publish(relays, likeEvent);
+        await poolRef.current.publish(relays, likeEvent);
       } catch (e) {
         console.log("Publish error:", e);
       }
-      
-      // Wait a bit then close
-      setTimeout(() => pool.close(relays), 3000);
 
       toast({
         title: "Liked!",
