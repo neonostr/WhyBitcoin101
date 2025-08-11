@@ -3,9 +3,7 @@ const Basics = () => {
   return <section id="basics" className="py-20 px-4 bg-background">
       <div className="container mx-auto">
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold mb-6 text-foreground">
-            Why Bitcoin 101
-          </h2>
+          <h2 className="text-4xl md:text-5xl font-bold mb-6 text-foreground">Bitcoin Basics</h2>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
             Understanding Bitcoin doesn't have to be complicated. Let's start with the fundamentals.
           </p>
