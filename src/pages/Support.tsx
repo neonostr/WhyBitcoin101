@@ -37,7 +37,7 @@ const Support = () => {
               <p className="text-sm text-muted-foreground italic border-t border-border pt-3">
                 Landed here first?{" "}
                 <Link to="/" target="_blank" rel="noopener noreferrer" className="font-medium text-primary hover:underline">
-                  Visit our educational front
+                  Visit the educational front
                 </Link>{" "}
                 to see how we share Bitcoin with the world.
               </p>
