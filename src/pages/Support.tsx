@@ -217,7 +217,7 @@ const Support = () => {
           <Card className="border-primary/20">
             <CardHeader>
               <CardTitle className="flex items-center gap-2 text-foreground">
-                <Heart className="h-5 w-5 text-red-500 fill-current" />
+                <Heart className="h-5 w-5" />
                 Support with Sats
               </CardTitle>
             </CardHeader>
