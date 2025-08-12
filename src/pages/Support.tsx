@@ -16,10 +16,13 @@ const Support = () => {
             <ArrowLeft className="h-4 w-4" />
             Back to WhyBitcoin101
           </Link>
-          <div className="max-w-6xl mx-auto">
-            <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-4">
-              How You Can Help
-            </h1>
+    <div className="max-w-6xl mx-auto">
+  <h1
+    id="how-you-can-help"
+    className="text-4xl md:text-5xl font-bold text-foreground mb-4"
+  >
+    How You Can Help
+  </h1>
             <p className="text-xl text-muted-foreground max-w-3xl mb-6">
               For bitcoiners who want to support Bitcoin education and help newcomers
               understand why Bitcoin matters.
@@ -252,13 +255,18 @@ const Support = () => {
                   Whether you design, share, donate, or simply guide one person to Bitcoin, <strong>you are part of this mission</strong>.
                 </p>
                 <div className="flex justify-center">
-                  <Button
-                    variant="default"
-                    onClick={() => window.location.href = "#get-involved"}
-                    className="px-6"
-                  >
-                    Get Involved Today
-                  </Button>
+      <Button
+  variant="default"
+  onClick={() => {
+    const section = document.getElementById("how-you-can-help");
+    if (section) {
+      section.scrollIntoView({ behavior: "smooth" });
+    }
+  }}
+  className="px-6"
+>
+  Get Involved Today
+</Button>
                 </div>
               </CardContent>
             </Card>
