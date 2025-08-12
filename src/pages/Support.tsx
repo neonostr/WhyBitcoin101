@@ -48,33 +48,31 @@ const Support = () => {
               </p>
             </div>
 
-            {/* Join Nostr Statement */}
-            <div className="bg-white rounded-lg p-8 shadow-md border border-border">
-              <p className="text-2xl font-semibold text-foreground mb-4">
-                Join Nostr
-              </p>
-              <p className="text-muted-foreground leading-relaxed mb-4">
-                To build a free and open future, we must coordinate on
-                <strong> permissionless, censorship‑resistant rails</strong>.
-              </p>
-              <p className="text-muted-foreground leading-relaxed mb-4">
-                Nostr is open‑source, decentralized, and beyond the control of any single
-                party — no one can manipulate, delete, or silence our work together.
-              </p>
-              <p className="text-muted-foreground leading-relaxed mb-6">
-                By joining us on Nostr, you help ensure that the important discussions
-                and coordination for orange‑pilling the world happen in a place where
-                they can’t be taken down.
-              </p>
-              <Button
-                variant="outline"
-                onClick={() =>
-                  window.open("https://primal.net/p/npub1whybitcoin101edu", "_blank")
-                }
-                className="w-full"
-              >
-                Join Nostr
-              </Button>
+   {/* Join Nostr Statement */}
+<div className="bg-white rounded-lg p-8 shadow-md border border-border">
+  <p className="text-2xl font-semibold text-foreground mb-4">
+    Why Bitcoiners Are Moving to Nostr
+  </p>
+  <p className="text-muted-foreground leading-relaxed mb-4">
+    If we want a free and open future, we need to coordinate where no one can shut us down. 
+    That place is <strong>Nostr</strong> — an open, decentralized network you control with your own keys.
+  </p>
+  <p className="text-muted-foreground leading-relaxed mb-4">
+    No algorithms hiding your posts. No corporations deciding who can speak. Just people connecting, building, 
+    and sharing — directly.
+  </p>
+  <p className="text-muted-foreground leading-relaxed mb-6">
+    Get on Nostr and you’ll be plugged into Bitcoin discussions, projects, and action that can’t be erased.
+  </p>
+  <Button
+    variant="outline"
+    onClick={() =>
+      window.open("https://primal.net/p/npub1whybitcoin101edu", "_blank")
+    }
+    className="w-full"
+  >
+    Get on Nostr
+  </Button>
             </div>
           </div>
         </div>
