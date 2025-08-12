@@ -10,8 +10,8 @@ const Support = () => {
   const [donationModalOpen, setDonationModalOpen] = useState(false);
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-background to-primary/5">
-      <div className="container mx-auto px-4 py-8">
+    <div className="min-h-screen bg-gradient-to-br from-background to-primary/5 safe-area-inset">
+      <div className="container mx-auto px-4 py-8 max-w-6xl">
         {/* Header */}
         <div className="mb-8">
           <Link
@@ -35,7 +35,7 @@ const Support = () => {
           </div>
 
           {/* Mission + Nostr Statement side-by-side */}
-          <div className="grid md:grid-cols-2 gap-6 max-w-6xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 w-full">
             {/* Mission Statement */}
             <div className="bg-white rounded-lg p-8 shadow-md border border-border flex flex-col h-full">
               <div>
@@ -99,7 +99,7 @@ const Support = () => {
         </div>
 
         {/* Support Cards */}
-        <div className="grid md:grid-cols-2 gap-6 max-w-6xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 w-full">
           {/* Bitcoin Education Profile & Hub */}
           <Card className="border-primary/20">
             <CardHeader>
@@ -159,7 +159,7 @@ const Support = () => {
           </Card>
 
           {/* Community Q&A */}
-          <Card className="border-primary/20 md:col-span-2">
+          <Card className="border-primary/20 col-span-1 md:col-span-2">
             <CardHeader>
               <CardTitle className="flex items-center gap-2 text-foreground">
                 <MessageCircle className="h-5 w-5" />
@@ -246,12 +246,12 @@ const Support = () => {
           </Card>
 
           {/* Contributors Section */}
-          <div className="col-span-2 mt-8">
+          <div className="col-span-1 md:col-span-2 mt-8">
             <NostrContributors />
           </div>
 
           {/* Full-Width Call to Action */}
-          <div className="col-span-2">
+          <div className="col-span-1 md:col-span-2">
             <Card className="border-primary/40 bg-primary/5">
               <CardHeader>
                 <CardTitle className="text-center text-foreground">
