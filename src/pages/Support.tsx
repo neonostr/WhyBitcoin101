@@ -213,7 +213,7 @@ const Support = () => {
             </CardContent>
           </Card>
 
-         {/* Donate */}
+   {/* Donate */}
 <Card className="border-primary/20">
   <CardHeader>
     <CardTitle className="flex items-center gap-2 text-foreground">
@@ -265,7 +265,3 @@ const Support = () => {
   </Card>
 </div>
 </div>
-  );
-};
-
-export default Support;
