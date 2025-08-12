@@ -33,6 +33,13 @@ const NostrContributors = () => {
     'npub1lr2zzf989mvf393y0tv39ara6a4vddkd6y87z784up9vl6ks6j3qtudl6a',
     'npub1864jglrrhv6alguwql9pqtmd5296nww5dpcewapmmcazk8vq4mks0tt2tq',
     'npub1cn670f663n3ks02jnnlsvd5y88zjnefy8343ykaxs7y3nzzketrsrjwt8a'
+    'npub1a2cww4kn9wqte4ry70vyfwqyqvpswksna27rtxd8vty6c74era8sdcw83a'
+    'npub1cvqlzvmjercdn0ypsmv8f7j9lge6ahsnueh5rparh53wuswftv4q49yjt3'
+    'npub1tkey6tcfk0jf2ageje7xvqnnph4443h4pc4aqesuqjeywyke073qfmwral'
+    'npub1yul83qxn35u607er3m7039t6rddj06qezfagfqlfw4qk5z5slrfqu8ncdu'
+    'npub1ug2p3zc0grtlcv2pjezpj486854ghyvhc64fqv6mcyz2xnaqrv8samuhu7'
+
+    
   ];
 
   useEffect(() => {
