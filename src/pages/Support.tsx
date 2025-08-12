@@ -2,8 +2,12 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { ArrowLeft, Heart, Share2, MessageCircle, Gift } from "lucide-react";
 import { Link } from "react-router-dom";
+import { useState } from "react";
+import DonationModal from "@/components/DonationModal";
 
 const Support = () => {
+  const [donationModalOpen, setDonationModalOpen] = useState(false);
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-background to-primary/5">
       <div className="container mx-auto px-4 py-8">
@@ -229,10 +233,14 @@ const Support = () => {
                 If you'd like to support this project financially, donations help to
                 market, maintain and improve the educational resources.
               </p>
-             <button onClick={() => setDonationModalOpen(true)} className="text-primary hover:underline"
-                <Heart className="h-4 w-4 mr-2" />
+              <Button
+                variant="outline"
+                onClick={() => setDonationModalOpen(true)}
+                className="w-full flex items-center gap-2"
+              >
+                <Heart className="h-4 w-4" />
                 Donate Sats
-              </button>
+              </Button>
             </CardContent>
           </Card>
 
@@ -269,6 +277,11 @@ const Support = () => {
           </div>
         </div>
       </div>
+      
+      <DonationModal 
+        isOpen={donationModalOpen} 
+        onClose={() => setDonationModalOpen(false)} 
+      />
     </div>
   );
 };
