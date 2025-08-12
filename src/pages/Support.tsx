@@ -51,7 +51,7 @@ const Support = () => {
             {/* Join Nostr Statement */}
             <div className="bg-white rounded-lg p-8 shadow-md border border-border">
               <p className="text-2xl font-semibold text-foreground mb-4">
-                Join Nostr
+                Why Bitcoiners Are Moving To Nostr
               </p>
               <p className="text-muted-foreground leading-relaxed mb-4">
                 To build a free and open future, we must coordinate on
@@ -73,7 +73,7 @@ const Support = () => {
                 }
                 className="w-full"
               >
-                Join Nostr
+                Get On Nostr
               </Button>
             </div>
           </div>
