@@ -4,6 +4,7 @@ import { ArrowLeft, Heart, Share2, MessageCircle, Gift } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import DonationModal from "@/components/DonationModal";
+import NostrContributors from "@/components/NostrContributors";
 
 const Support = () => {
   const [donationModalOpen, setDonationModalOpen] = useState(false);
@@ -244,8 +245,13 @@ const Support = () => {
             </CardContent>
           </Card>
 
-          {/* Full-Width Call to Action */}
+          {/* Contributors Section */}
           <div className="col-span-2 mt-8">
+            <NostrContributors />
+          </div>
+
+          {/* Full-Width Call to Action */}
+          <div className="col-span-2">
             <Card className="border-primary/40 bg-primary/5">
               <CardHeader>
                 <CardTitle className="text-center text-foreground">
