@@ -70,21 +70,21 @@ const Support = () => {
 
         {/* Support Cards */}
         <div className="grid md:grid-cols-2 gap-6 max-w-6xl mx-auto">
-{/* The WhyBitcoin101 Nostr Profile */}
+{/* Bitcoin Education Profile & Hub Nostr Profile */}
 <Card className="border-primary/20">
   <CardHeader>
     <CardTitle className="flex items-center gap-2 text-foreground">
       <MessageCircle className="h-5 w-5" />
-      The WhyBitcoin101 Nostr Profile
+      Bitcoin Education Profile & Hub
     </CardTitle>
   </CardHeader>
   <CardContent>
     <p className="text-muted-foreground leading-relaxed mb-4">
-      The Nostr profile is used to share useful Bitcoin education discovered together 
+      The  <strong> @WhyBitcoin101</strong> profile is used to share useful Bitcoin education discovered together 
       and to coordinate resources and efforts that move the shared mission forward. 
       It’s a place to stay connected with ongoing projects, collaborate, and help 
       make educational material easier to access and share. 
-      <strong> @WhyBitcoin101</strong> exists as a living resource — continuously 
+      It exists as a living resource - continuously 
       updated and refined through the participation and contributions of everyone involved.
     </p>
     <Button
