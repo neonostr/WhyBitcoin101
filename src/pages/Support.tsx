@@ -23,14 +23,14 @@ const Support = () => {
             {/* Mission Statement */}
             <div className="bg-white rounded-lg p-8 shadow-md border border-border">
               <p className="text-2xl font-semibold text-foreground mb-4">
-                We’re on a mission to orange‑pill the world — not with hype, but with truth,
+                We’re on a mission to orange‑pill the world - not with hype, but with truth,
                 connection, and action.
               </p>
               <p className="text-muted-foreground leading-relaxed mb-4">
                 Every conversation, every share, every spark of understanding moves us
                 closer to a future where Bitcoin empowers everyone.
               </p>
-              <p className="text-muted-foreground leading-relaxed mb-6">
+              <p className="text-muted-foreground leading-relaxed mb-21">
                 If you’re a Bitcoiner ready to build, educate, and amplify the signal,
                 this is your place to plug in.
               </p>
@@ -53,13 +53,10 @@ const Support = () => {
                 <strong> permissionless, censorship‑resistant rails</strong>.
               </p>
               <p className="text-muted-foreground leading-relaxed mb-4">
-                Nostr is open‑source, decentralized, and beyond the control of any single
-                party — no one can manipulate, delete, or silence our work together.
+                Nostr is open‑source, decentralized, and beyond the control of any single party - because everyone controls their own keys, our messages and resources can’t be altered or taken down.
               </p>
               <p className="text-muted-foreground leading-relaxed mb-6">
-                By joining us on Nostr, you help ensure that the important discussions
-                and coordination for orange‑pilling the world happen in a place where
-                they can’t be taken down.
+                By joining Nostr, you help ensure that Bitcoin education and discussions about the future of Bitcoin happen in a place that is permanent, censorship‑free, and safe from manipulation.
               </p>
               <Button variant="outline" onClick={() => window.open("https://primal.net", "_blank")} className="w-full">
                 Join Nostr
@@ -80,16 +77,11 @@ const Support = () => {
   </CardHeader>
   <CardContent>
     <p className="text-muted-foreground leading-relaxed mb-4">
-      The <strong> @WhyBitcoin101</strong> profile is used to share useful Bitcoin education discovered together 
-      and to coordinate resources and efforts that move the shared mission forward. 
-      It’s a place to stay connected with ongoing projects, collaborate, and help 
-      make educational material easier to access and share. 
-      It exists as a living resource - continuously 
-      updated and refined through the participation and contributions of everyone involved.
+      The <strong> @WhyBitcoin101</strong> profile shares valuable Bitcoin education resources and coordinates efforts that advance our shared mission. It focuses on finding and sharing the best tools, guides, and strategies that help people confidently teach others about Bitcoin. Keeping these resources open and accessible ensures that education about Bitcoin's future happens in the right place - free from censorship or manipulation.
     </p>
     <Button
       variant="outline"
-      onClick={() => window.open("https://primal.net/p/npub1whybitcoin101edu", "_blank")}
+      onClick={() => window.open("https://primal.net/p/nprofile1qqsqnlfl9ztzxxtzp674lr7w2pjqdrw3lz73dhwvspx0zegn0j4hgxqglh5xx", "_blank")}
       className="w-full"
     >
       Visit @WhyBitcoin101
@@ -108,7 +100,7 @@ const Support = () => {
             <CardContent>
               <p className="text-muted-foreground leading-relaxed mb-4">
   Found something that helps people understand Bitcoin better? 
-  Post it or repost it on Nostr with <strong>#whybitcoin101</strong>. 
+  Post it or repost it on Nostr with <span className="font-mono bg-muted px-1 rounded">#whybitcoin101</span>. 
   All tagged posts help build a growing public library of Bitcoin education 
   that we can all access and use to help others learn. We’ll also curate and 
   share some of these on the WhyBitcoin101 profile and website, so together 
@@ -130,27 +122,43 @@ const Support = () => {
                 Help Answer Questions on Nostr
               </CardTitle>
             </CardHeader>
-            <CardContent>
-              <p className="text-muted-foreground leading-relaxed mb-4">
-                Here's the magic: When someone asks a Bitcoin question through our
-                website, it's published on Nostr via a randomly generated key with
-                hashtags{" "}
-                <span className="font-mono bg-muted px-1 rounded">#asknostr</span> and{" "}
-                <span className="font-mono bg-muted px-1 rounded">#whybitcoin101</span>.
-              </p>
-              <p className="text-muted-foreground leading-relaxed mb-4">
-                This means the entire Bitcoin community on Nostr can see the question
-                and help answer it together. The person asking gets a link to follow the
-                conversation, and we're building an open collection of Bitcoin FAQ that
-                everyone can use.
-              </p>
-              <p className="text-muted-foreground leading-relaxed">
-                The best answers get added to our FAQ section, creating a growing
-                resource for Bitcoin education. It's the power of Nostr combined with
-                the Bitcoin community's desire to help newcomers.
-              </p>
-            </CardContent>
-          </Card>
+        <CardContent>
+  <p className="text-muted-foreground leading-relaxed mb-4">
+    Here's the magic: When someone asks a Bitcoin related question through our
+    website, it's published on Nostr via a randomly generated key with
+    hashtags{" "}
+    <span className="font-mono bg-muted px-1 rounded">#asknostr</span> and{" "}
+    <span className="font-mono bg-muted px-1 rounded">#whybitcoin101-faq</span>.
+  </p>
+  <p className="text-muted-foreground leading-relaxed mb-4">
+    This means the entire Bitcoin community on Nostr can see the question
+    and help answer it together. The person asking gets a link they can open
+    at any time to check for answers to their question (spam filtered). 
+    <a
+      href="https://example.com"
+      target="_blank"
+      rel="noopener noreferrer"
+      className="underline"
+    >
+      See Example
+    </a>
+  </p>
+  <p className="text-muted-foreground leading-relaxed mb-4">
+    This process creates a large, public Bitcoin FAQ that anyone can access
+    and reuse for educational projects or in any way they find useful. On top
+    of that, we curate and refine the content for our own WhyBitcoin101 hub —
+    building a polished, ever‑growing knowledge base that’s easy to explore
+    and share.
+  </p>
+  <p className="text-muted-foreground leading-relaxed">
+    So from now on, whenever you want to help educate others,
+    look for <span className="font-mono bg-muted px-1 rounded">#whybitcoin101-faq</span> on
+    Nostr, jump in, and share your knowledge. Every answer helps newcomers
+    understand Bitcoin better - and for the first time, thanks to the power of
+    Nostr, we can truly educate together as one global community.
+  </p>
+</CardContent>
+</Card>
 
           {/* Spread Awareness */}
           <Card className="border-primary/20">
