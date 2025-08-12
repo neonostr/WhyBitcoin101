@@ -2,65 +2,88 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { ArrowLeft, Heart, Share2, MessageCircle, Gift } from "lucide-react";
 import { Link } from "react-router-dom";
+
 const Support = () => {
-  return <div className="min-h-screen bg-gradient-to-br from-background to-primary/5">
+  return (
+    <div className="min-h-screen bg-gradient-to-br from-background to-primary/5">
       <div className="container mx-auto px-4 py-8">
         {/* Header */}
         <div className="mb-8">
-          <Link to="/" className="inline-flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors mb-4">
+          <Link
+            to="/"
+            className="inline-flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors mb-4"
+          >
             <ArrowLeft className="h-4 w-4" />
             Back to WhyBitcoin101
           </Link>
-         <div className="max-w-6xl mx-auto">
-  <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-4">
-    How You Can Help
-  </h1>
-  <p className="text-xl text-muted-foreground max-w-3xl mb-6">
-    For bitcoiners who want to support Bitcoin education and help newcomers understand why Bitcoin matters.
-  </p>
-</div>
+          <div className="max-w-6xl mx-auto">
+            <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-4">
+              How You Can Help
+            </h1>
+            <p className="text-xl text-muted-foreground max-w-3xl mb-6">
+              For bitcoiners who want to support Bitcoin education and help newcomers
+              understand why Bitcoin matters.
+            </p>
+          </div>
 
-          {/* Mission + Nostr Statement side-by-side on large screens */}
+          {/* Mission + Nostr Statement side-by-side */}
           <div className="grid md:grid-cols-2 gap-6 max-w-6xl mx-auto">
             {/* Mission Statement */}
-            <div className="bg-white rounded-lg p-8 shadow-md border border-border">
-              <p className="text-2xl font-semibold text-foreground mb-4">
-                We’re on a mission to orange‑pill the world - not with hype, but with truth,
-                connection, and action.
-              </p>
-              <p className="text-muted-foreground leading-relaxed mb-4">
-                Every conversation, every share, every spark of understanding moves us
-                closer to a future where Bitcoin empowers everyone.
-              </p>
-              <p className="text-muted-foreground leading-relaxed mb-21">
-                If you’re a Bitcoiner ready to build, educate, and amplify the signal,
-                this is your place to plug in.
-              </p>
-              <p className="text-sm text-muted-foreground italic border-t border-border pt-3">
+            <div className="bg-white rounded-lg p-8 shadow-md border border-border flex flex-col h-full">
+              <div>
+                <p className="text-2xl font-semibold text-foreground mb-4">
+                  We’re on a mission to orange‑pill the world - not with hype, but with truth,
+                  connection, and action.
+                </p>
+                <p className="text-muted-foreground leading-relaxed mb-4">
+                  Every conversation, every share, every spark of understanding moves us
+                  closer to a future where Bitcoin empowers everyone.
+                </p>
+                <p className="text-muted-foreground leading-relaxed mb-6">
+                  If you’re a Bitcoiner ready to build, educate, and amplify the signal,
+                  this is your place to plug in.
+                </p>
+              </div>
+              <div className="text-sm text-muted-foreground italic border-t border-border pt-3 mt-4 md:mt-auto">
                 Landed here first?{" "}
-                <Link to="/" target="_blank" rel="noopener noreferrer" className="font-medium text-primary hover:underline">
+                <Link
+                  to="/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="font-medium text-primary hover:underline"
+                >
                   Visit the educational front
                 </Link>{" "}
                 to see how we share Bitcoin with the world.
-              </p>
+              </div>
             </div>
 
             {/* Join Nostr Statement */}
-            <div className="bg-white rounded-lg p-8 shadow-md border border-border">
-              <p className="text-2xl font-semibold text-foreground mb-4">
-                Why Bitcoiners Are Moving To Nostr
-              </p>
-              <p className="text-muted-foreground leading-relaxed mb-4">
-                To build a free and open future, we must coordinate on
-                <strong> permissionless, censorship‑resistant rails</strong>.
-              </p>
-              <p className="text-muted-foreground leading-relaxed mb-4">
-                Nostr is open‑source, decentralized, and beyond the control of any single party - because everyone controls their own keys, our messages and resources can't be altered or taken down.
-              </p>
-              <p className="text-muted-foreground leading-relaxed mb-6">
-                By joining Nostr, you help ensure that Bitcoin education and discussions about the future of Bitcoin happen in a place that is permanent, censorship‑free, and safe from manipulation.
-              </p>
-              <Button variant="outline" onClick={() => window.open("https://primal.net", "_blank")} className="w-full">
+            <div className="bg-white rounded-lg p-8 shadow-md border border-border flex flex-col h-full">
+              <div className="flex-grow">
+                <p className="text-2xl font-semibold text-foreground mb-4">
+                  Why Bitcoiners Are Moving To Nostr
+                </p>
+                <p className="text-muted-foreground leading-relaxed mb-4">
+                  To build a free and open future, we must coordinate on
+                  <strong> permissionless, censorship‑resistant rails</strong>.
+                </p>
+                <p className="text-muted-foreground leading-relaxed mb-4">
+                  Nostr is open‑source, decentralized, and beyond the control of any single
+                  party - because everyone controls their own keys, our messages and
+                  resources can't be altered or taken down.
+                </p>
+                <p className="text-muted-foreground leading-relaxed mb-6">
+                  By joining Nostr, you help ensure that Bitcoin education and discussions
+                  about the future of Bitcoin happen in a place that is permanent,
+                  censorship‑free, and safe from manipulation.
+                </p>
+              </div>
+              <Button
+                variant="outline"
+                onClick={() => window.open("https://primal.net", "_blank")}
+                className="w-full"
+              >
                 Join Nostr
               </Button>
             </div>
@@ -69,27 +92,38 @@ const Support = () => {
 
         {/* Support Cards */}
         <div className="grid md:grid-cols-2 gap-6 max-w-6xl mx-auto">
-{/* Bitcoin Education Profile & Hub Nostr Profile */}
-<Card className="border-primary/20">
-  <CardHeader>
-    <CardTitle className="flex items-center gap-2 text-foreground">
-      <MessageCircle className="h-5 w-5" />
-      Bitcoin Education Profile & Hub
-    </CardTitle>
-  </CardHeader>
-  <CardContent>
-    <p className="text-muted-foreground leading-relaxed mb-4">
-      The <strong> @WhyBitcoin101</strong> profile shares valuable Bitcoin education resources and coordinates efforts that advance our shared mission. It focuses on finding and sharing the best tools, guides, and strategies that help people confidently teach others about Bitcoin. Keeping these resources open and accessible ensures that education about Bitcoin's future happens in the right place - free from censorship or manipulation.
-    </p>
-    <Button
-      variant="outline"
-      onClick={() => window.open("https://primal.net/p/nprofile1qqsqnlfl9ztzxxtzp674lr7w2pjqdrw3lz73dhwvspx0zegn0j4hgxqglh5xx", "_blank")}
-      className="w-full"
-    >
-      Visit @WhyBitcoin101
-    </Button>
-  </CardContent>
-</Card>
+          {/* Bitcoin Education Profile & Hub */}
+          <Card className="border-primary/20">
+            <CardHeader>
+              <CardTitle className="flex items-center gap-2 text-foreground">
+                <MessageCircle className="h-5 w-5" />
+                Bitcoin Education Profile & Hub
+              </CardTitle>
+            </CardHeader>
+            <CardContent>
+              <p className="text-muted-foreground leading-relaxed mb-4">
+                The <strong>@WhyBitcoin101</strong> profile shares valuable Bitcoin
+                education resources and coordinates efforts that advance our shared
+                mission. It focuses on finding and sharing the best tools, guides, and
+                strategies that help people confidently teach others about Bitcoin.
+                Keeping these resources open and accessible ensures that education about
+                Bitcoin's future happens in the right place - free from censorship or
+                manipulation.
+              </p>
+              <Button
+                variant="outline"
+                onClick={() =>
+                  window.open(
+                    "https://primal.net/p/nprofile1qqsqnlfl9ztzxxtzp674lr7w2pjqdrw3lz73dhwvspx0zegn0j4hgxqglh5xx",
+                    "_blank"
+                  )
+                }
+                className="w-full"
+              >
+                Visit @WhyBitcoin101
+              </Button>
+            </CardContent>
+          </Card>
 
           {/* Share Content */}
           <Card className="border-primary/20">
@@ -101,18 +135,18 @@ const Support = () => {
             </CardHeader>
             <CardContent>
               <p className="text-muted-foreground leading-relaxed mb-4">
-  Found something that helps people understand Bitcoin better? 
-  Post it or repost it on Nostr with <span className="font-mono bg-muted px-1 rounded">#whybitcoin101</span>. 
-  All tagged posts help build a growing public library of Bitcoin education 
-  that we can all access and use to help others learn. We’ll also curate and 
-  share some of these on the WhyBitcoin101 profile and website, so together 
-  we create both a complete hashtag archive and a focused hub of the most 
-  useful content.
-</p>
-
-<p className="text-sm text-muted-foreground">
-  Use the hashtag: <strong>#whybitcoin101</strong>
-</p>
+                Found something that helps people understand Bitcoin better? Post it or
+                repost it on Nostr with{" "}
+                <span className="font-mono bg-muted px-1 rounded">#whybitcoin101</span>. All
+                tagged posts help build a growing public library of Bitcoin education that
+                we can all access and use to help others learn. We’ll also curate and share
+                some of these on the WhyBitcoin101 profile and website, so together we
+                create both a complete hashtag archive and a focused hub of the most useful
+                content.
+              </p>
+              <p className="text-sm text-muted-foreground">
+                Use the hashtag: <strong>#whybitcoin101</strong>
+              </p>
             </CardContent>
           </Card>
 
@@ -124,43 +158,42 @@ const Support = () => {
                 Help Answer Questions on Nostr
               </CardTitle>
             </CardHeader>
-        <CardContent>
-  <p className="text-muted-foreground leading-relaxed mb-4">
-    Here's the magic: When someone asks a Bitcoin related question through our
-    website, it's published on Nostr via a randomly generated key with
-    hashtags{" "}
-    <span className="font-mono bg-muted px-1 rounded">#asknostr</span> and{" "}
-    <span className="font-mono bg-muted px-1 rounded">#whybitcoin101-faq</span>.
-  </p>
-  <p className="text-muted-foreground leading-relaxed mb-4">
-    This means the entire Bitcoin community on Nostr can see the question
-    and help answer it together. The person asking gets a link they can open
-    at any time to check for answers to their question (spam filtered). 
-    <a
-      href="https://example.com"
-      target="_blank"
-      rel="noopener noreferrer"
-      className="underline"
-    >
-      See Example
-    </a>
-  </p>
-  <p className="text-muted-foreground leading-relaxed mb-4">
-    This process creates a large, public Bitcoin FAQ that anyone can access
-    and reuse for educational projects or in any way they find useful. On top
-    of that, we curate and refine the content for our own WhyBitcoin101 hub —
-    building a polished, ever‑growing knowledge base that’s easy to explore
-    and share.
-  </p>
-  <p className="text-muted-foreground leading-relaxed">
-    So from now on, whenever you want to help educate others,
-    look for <span className="font-mono bg-muted px-1 rounded">#whybitcoin101-faq</span> on
-    Nostr, jump in, and share your knowledge. Every answer helps newcomers
-    understand Bitcoin better - and for the first time, thanks to the power of
-    Nostr, we can truly educate together as one global community.
-  </p>
-</CardContent>
-</Card>
+            <CardContent>
+              <p className="text-muted-foreground leading-relaxed mb-4">
+                Here's the magic: When someone asks a Bitcoin related question through our
+                website, it's published on Nostr via a randomly generated key with hashtags{" "}
+                <span className="font-mono bg-muted px-1 rounded">#asknostr</span> and{" "}
+                <span className="font-mono bg-muted px-1 rounded">#whybitcoin101-faq</span>.
+              </p>
+              <p className="text-muted-foreground leading-relaxed mb-4">
+                This means the entire Bitcoin community on Nostr can see the question and
+                help answer it together. The person asking gets a link they can open at any
+                time to check for answers to their question (spam filtered).{" "}
+                <a
+                  href="https://example.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="underline"
+                >
+                  See Example
+                </a>
+              </p>
+              <p className="text-muted-foreground leading-relaxed mb-4">
+                This process creates a large, public Bitcoin FAQ that anyone can access and
+                reuse for educational projects or in any way they find useful. On top of
+                that, we curate and refine the content for our own WhyBitcoin101 hub —
+                building a polished, ever‑growing knowledge base that’s easy to explore and
+                share.
+              </p>
+              <p className="text-muted-foreground leading-relaxed">
+                So from now on, whenever you want to help educate others, look for{" "}
+                <span className="font-mono bg-muted px-1 rounded">#whybitcoin101-faq</span>{" "}
+                on Nostr, jump in, and share your knowledge. Every answer helps newcomers
+                understand Bitcoin better - and for the first time, thanks to the power of
+                Nostr, we can truly educate together as one global community.
+              </p>
+            </CardContent>
+          </Card>
 
           {/* Spread Awareness */}
           <Card className="border-primary/20">
@@ -172,13 +205,11 @@ const Support = () => {
             </CardHeader>
             <CardContent>
               <p className="text-muted-foreground leading-relaxed mb-4">
-                Create stamps, flyers, or share the website with others to bring
-                awareness to this educational project. Every person who discovers
-                Bitcoin through education makes the network stronger.
+                Create stamps, flyers, or share the website with others to bring awareness
+                to this educational project. Every person who discovers Bitcoin through
+                education makes the network stronger.
               </p>
-              <p className="text-sm text-muted-foreground">
-                Share: whybitcoin101.com
-              </p>
+              <p className="text-sm text-muted-foreground">Share: whybitcoin101.com</p>
             </CardContent>
           </Card>
 
@@ -191,8 +222,15 @@ const Support = () => {
               </CardTitle>
             </CardHeader>
             <CardContent>
-              <p className="text-muted-foreground leading-relaxed mb-4">If you'd like to support this project financially, donations help to market, maintain and improve the educational resources.</p>
-              <Button variant="outline" onClick={() => window.open("bitcoin:bc1qexample", "_blank")} className="w-full">
+              <p className="text-muted-foreground leading-relaxed mb-4">
+                If you'd like to support this project financially, donations help to
+                market, maintain and improve the educational resources.
+              </p>
+              <Button
+                variant="outline"
+                onClick={() => window.open("bitcoin:bc1qexample", "_blank")}
+                className="w-full"
+              >
                 <Heart className="h-4 w-4 mr-2" />
                 Donate Sats
               </Button>
@@ -203,12 +241,14 @@ const Support = () => {
         {/* Bottom Message */}
         <div className="mt-16 text-center max-w-2xl mx-auto">
           <p className="text-muted-foreground leading-relaxed">
-            Together, we're building a more educated Bitcoin community. Every
-            contribution, whether it's time, content, or sats, helps newcomers
-            understand why Bitcoin is important for a freer future.
+            Together, we're building a more educated Bitcoin community. Every contribution,
+            whether it's time, content, or sats, helps newcomers understand why Bitcoin is
+            important for a freer future.
           </p>
         </div>
       </div>
-    </div>;
+    </div>
+  );
 };
+
 export default Support;
