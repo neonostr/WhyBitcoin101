@@ -23,27 +23,59 @@ const Support = () => {
             For bitcoiners who want to support Bitcoin education and help newcomers understand why Bitcoin matters.
           </p>
 
-          {/* Mission Statement - redesigned */}
-          <div className="bg-white rounded-lg p-8 shadow-md border border-border max-w-3xl">
-            <p className="text-2xl font-semibold text-foreground mb-4">
-              We’re on a mission to orange‑pill the world — not with hype, but with truth,
-              connection, and action.
-            </p>
-            <p className="text-muted-foreground leading-relaxed mb-4">
-              Every conversation, every share, every spark of understanding moves us
-              closer to a future where Bitcoin empowers everyone.
-            </p>
-            <p className="text-muted-foreground leading-relaxed mb-6">
-              If you’re a Bitcoiner ready to build, educate, and amplify the signal,
-              this is your place to plug in.
-            </p>
-            <p className="text-sm text-muted-foreground italic border-t border-border pt-3">
-              Landed here first?{" "}
-              <Link to="/" className="font-medium text-primary hover:underline">
-                Visit our educational front
-              </Link>{" "}
-              to see how we share Bitcoin with the world.
-            </p>
+          {/* Mission + Nostr Statement side-by-side on large screens */}
+          <div className="grid md:grid-cols-2 gap-6 max-w-6xl">
+            {/* Mission Statement */}
+            <div className="bg-white rounded-lg p-8 shadow-md border border-border">
+              <p className="text-2xl font-semibold text-foreground mb-4">
+                We’re on a mission to orange‑pill the world — not with hype, but with truth,
+                connection, and action.
+              </p>
+              <p className="text-muted-foreground leading-relaxed mb-4">
+                Every conversation, every share, every spark of understanding moves us
+                closer to a future where Bitcoin empowers everyone.
+              </p>
+              <p className="text-muted-foreground leading-relaxed mb-6">
+                If you’re a Bitcoiner ready to build, educate, and amplify the signal,
+                this is your place to plug in.
+              </p>
+              <p className="text-sm text-muted-foreground italic border-t border-border pt-3">
+                Landed here first?{" "}
+                <Link to="/" className="font-medium text-primary hover:underline">
+                  Visit our educational front
+                </Link>{" "}
+                to see how we share Bitcoin with the world.
+              </p>
+            </div>
+
+            {/* Join Nostr Statement */}
+            <div className="bg-white rounded-lg p-8 shadow-md border border-border">
+              <p className="text-2xl font-semibold text-foreground mb-4">
+                Join Us on Nostr
+              </p>
+              <p className="text-muted-foreground leading-relaxed mb-4">
+                To build a free and open future, we must coordinate on
+                <strong> permissionless, censorship‑resistant rails</strong>.
+              </p>
+              <p className="text-muted-foreground leading-relaxed mb-4">
+                Nostr is open‑source, decentralized, and beyond the control of any single
+                party — no one can manipulate, delete, or silence our work together.
+              </p>
+              <p className="text-muted-foreground leading-relaxed mb-6">
+                By joining us on Nostr, you help ensure that the important discussions
+                and coordination for orange‑pilling the world happen in a place where
+                they can’t be taken down.
+              </p>
+              <Button
+                variant="outline"
+                onClick={() =>
+                  window.open("https://primal.net/p/npub1whybitcoin101edu", "_blank")
+                }
+                className="w-full"
+              >
+                Follow on Nostr
+              </Button>
+            </div>
           </div>
         </div>
 
