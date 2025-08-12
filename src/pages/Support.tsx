@@ -11,12 +11,14 @@ const Support = () => {
             <ArrowLeft className="h-4 w-4" />
             Back to WhyBitcoin101
           </Link>
-          <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-4">
-            How You Can Help
-          </h1>
-          <p className="text-xl text-muted-foreground max-w-3xl mb-6">
-            For bitcoiners who want to support Bitcoin education and help newcomers understand why Bitcoin matters.
-          </p>
+         <div className="max-w-6xl mx-auto">
+  <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-4">
+    How You Can Help
+  </h1>
+  <p className="text-xl text-muted-foreground max-w-3xl mb-6">
+    For bitcoiners who want to support Bitcoin education and help newcomers understand why Bitcoin matters.
+  </p>
+</div>
 
           {/* Mission + Nostr Statement side-by-side on large screens */}
           <div className="grid md:grid-cols-2 gap-6 max-w-6xl mx-auto">
