@@ -9,42 +9,16 @@ const Support = () => {
       <div className="container mx-auto px-4 py-8">
         {/* Header */}
         <div className="mb-8">
-          <Link
-            to="/"
-            className="inline-flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors mb-4"
-          >
+          <Link to="/" className="inline-flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors mb-4">
             <ArrowLeft className="h-4 w-4" />
             Back to WhyBitcoin101
           </Link>
           <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-4">
             How You Can Help
           </h1>
-          <p className="text-xl text-muted-foreground max-w-3xl mb-6">
+          <p className="text-xl text-muted-foreground max-w-3xl">
             For bitcoiners who want to support Bitcoin education and help newcomers understand why Bitcoin matters.
           </p>
-
-          {/* Mission Statement */}
-          <div className="bg-muted rounded-lg p-6 shadow-sm border border-border max-w-3xl">
-            <p className="text-lg leading-relaxed text-foreground font-medium mb-3">
-              We’re on a mission to orange‑pill the world — not with hype,
-              but with truth, connection, and action.
-            </p>
-            <p className="text-muted-foreground leading-relaxed mb-3">
-              Every conversation, every share, every spark of understanding moves us
-              closer to a future where Bitcoin empowers everyone.
-            </p>
-            <p className="text-muted-foreground leading-relaxed">
-              If you’re a Bitcoiner ready to build, educate, and amplify the signal,
-              this is your place to plug in.{" "}
-              <span className="italic">
-                (New here?{" "}
-                <Link to="/" className="underline hover:text-primary">
-                  Click here
-                </Link>{" "}
-                to explore our main site.)
-              </span>
-            </p>
-          </div>
         </div>
 
         {/* Support Cards */}
@@ -59,15 +33,11 @@ const Support = () => {
             </CardHeader>
             <CardContent>
               <p className="text-muted-foreground leading-relaxed mb-4">
-                Our Nostr profile is exclusively used to coordinate educational content.
-                Get updates about new educational projects and resources that help you
-                educate others about Bitcoin.
+                Our Nostr profile is exclusively used to coordinate educational content. Get updates about new educational projects and resources that help you educate others about Bitcoin.
               </p>
-              <Button
-                variant="outline"
-                onClick={() =>
-                  window.open("https://primal.net/p/npub1whybitcoin101edu", "_blank")
-                }
+              <Button 
+                variant="outline" 
+                onClick={() => window.open("https://primal.net/p/npub1whybitcoin101edu", "_blank")}
                 className="w-full"
               >
                 Follow on Nostr
@@ -85,9 +55,7 @@ const Support = () => {
             </CardHeader>
             <CardContent>
               <p className="text-muted-foreground leading-relaxed mb-4">
-                Found great educational content? Link or mention us on Nostr so we get
-                notified. We're always looking for quality resources to help newcomers
-                understand Bitcoin.
+                Found great educational content? Link or mention us on Nostr so we get notified. We're always looking for quality resources to help newcomers understand Bitcoin.
               </p>
               <p className="text-sm text-muted-foreground">
                 Tag us: @whybitcoin101 on Nostr
@@ -105,22 +73,13 @@ const Support = () => {
             </CardHeader>
             <CardContent>
               <p className="text-muted-foreground leading-relaxed mb-4">
-                Here's the magic: When someone asks a Bitcoin question through our
-                website, it's published on Nostr via a randomly generated key with
-                hashtags{" "}
-                <span className="font-mono bg-muted px-1 rounded">#asknostr</span> and{" "}
-                <span className="font-mono bg-muted px-1 rounded">#whybitcoin101</span>.
+                Here's the magic: When someone asks a Bitcoin question through our website, it's published on Nostr via a randomly generated key with hashtags <span className="font-mono bg-muted px-1 rounded">#asknostr</span> and <span className="font-mono bg-muted px-1 rounded">#whybitcoin101</span>.
               </p>
               <p className="text-muted-foreground leading-relaxed mb-4">
-                This means the entire Bitcoin community on Nostr can see the question
-                and help answer it together. The person asking gets a link to follow the
-                conversation, and we're building an open collection of Bitcoin FAQ that
-                everyone can use.
+                This means the entire Bitcoin community on Nostr can see the question and help answer it together. The person asking gets a link to follow the conversation, and we're building an open collection of Bitcoin FAQ that everyone can use.
               </p>
               <p className="text-muted-foreground leading-relaxed">
-                The best answers get added to our FAQ section, creating a growing
-                resource for Bitcoin education. It's the power of Nostr combined with
-                the Bitcoin community's desire to help newcomers.
+                The best answers get added to our FAQ section, creating a growing resource for Bitcoin education. It's the power of Nostr combined with the Bitcoin community's desire to help newcomers.
               </p>
             </CardContent>
           </Card>
@@ -135,9 +94,7 @@ const Support = () => {
             </CardHeader>
             <CardContent>
               <p className="text-muted-foreground leading-relaxed mb-4">
-                Create stamps, flyers, or share the website with others to bring
-                awareness to this educational project. Every person who discovers
-                Bitcoin through education makes the network stronger.
+                Create stamps, flyers, or share the website with others to bring awareness to this educational project. Every person who discovers Bitcoin through education makes the network stronger.
               </p>
               <p className="text-sm text-muted-foreground">
                 Share: whybitcoin101.com
@@ -155,11 +112,10 @@ const Support = () => {
             </CardHeader>
             <CardContent>
               <p className="text-muted-foreground leading-relaxed mb-4">
-                If you'd like to support this project financially, donations help us
-                maintain and improve the educational resources.
+                If you'd like to support this project financially, donations help us maintain and improve the educational resources.
               </p>
-              <Button
-                variant="outline"
+              <Button 
+                variant="outline" 
                 onClick={() => window.open("bitcoin:bc1qexample", "_blank")}
                 className="w-full"
               >
@@ -173,9 +129,7 @@ const Support = () => {
         {/* Bottom Message */}
         <div className="mt-16 text-center max-w-2xl mx-auto">
           <p className="text-muted-foreground leading-relaxed">
-            Together, we're building a more educated Bitcoin community. Every
-            contribution, whether it's time, content, or sats, helps newcomers
-            understand why Bitcoin is important for a freer future.
+            Together, we're building a more educated Bitcoin community. Every contribution, whether it's time, content, or sats, helps newcomers understand why Bitcoin is important for a freer future.
           </p>
         </div>
       </div>
