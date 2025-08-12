@@ -189,7 +189,7 @@ const Support = () => {
               <p className="text-muted-foreground leading-relaxed mb-4">
                 This process creates a large, public Bitcoin FAQ that anyone can access and
                 reuse for educational projects or in any way they find useful. On top of
-                that, we curate and refine the content for the WhyBitcoin101 hub —
+                that, we curate and refine the content for the WhyBitcoin101 hub -
                 building a polished, ever‑growing knowledge base that’s easy to explore and
                 share.
               </p>
@@ -260,7 +260,7 @@ const Support = () => {
               </CardHeader>
               <CardContent>
                 <p className="text-muted-foreground leading-relaxed text-center mb-6 max-w-2xl mx-auto">
-                  Bitcoin needs more than code — it needs people, voices, and action. Every flyer handed out, post shared,
+                  Bitcoin needs more than code - it needs people, voices, and action. Every flyer handed out, post shared,
                   and question answered helps build a stronger foundation for future Bitcoiners.
                   Whether you design, share, donate, or simply guide one person to Bitcoin, <strong>you are part of this mission</strong>.
                 </p>
