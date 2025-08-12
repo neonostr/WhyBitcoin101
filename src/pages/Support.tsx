@@ -160,7 +160,7 @@ const Support = () => {
             </CardHeader>
             <CardContent>
               <p className="text-muted-foreground leading-relaxed mb-4">
-                Here's the magic: When someone asks a Bitcoin related question through our
+                Here's the magic: When someone asks a Bitcoin related question through the
                 website, it's published on Nostr via a randomly generated key with hashtags{" "}
                 <span className="font-mono bg-muted px-1 rounded">#asknostr</span> and{" "}
                 <span className="font-mono bg-muted px-1 rounded">#whybitcoin101-faq</span>.
@@ -181,7 +181,7 @@ const Support = () => {
               <p className="text-muted-foreground leading-relaxed mb-4">
                 This process creates a large, public Bitcoin FAQ that anyone can access and
                 reuse for educational projects or in any way they find useful. On top of
-                that, we curate and refine the content for our own WhyBitcoin101 hub —
+                that, we curate and refine the content for the WhyBitcoin101 hub —
                 building a polished, ever‑growing knowledge base that’s easy to explore and
                 share.
               </p>
@@ -217,7 +217,7 @@ const Support = () => {
           <Card className="border-primary/20">
             <CardHeader>
               <CardTitle className="flex items-center gap-2 text-foreground">
-                <Gift className="h-5 w-5" />
+                <Heart className="h-5 w-5 text-red-500 fill-current" />
                 Support with Sats
               </CardTitle>
             </CardHeader>
