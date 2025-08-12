@@ -213,55 +213,60 @@ const Support = () => {
             </CardContent>
           </Card>
 
-   {/* Donate */}
-<Card className="border-primary/20">
-  <CardHeader>
-    <CardTitle className="flex items-center gap-2 text-foreground">
-      <Heart className="h-5 w-5" />
-      Support with Sats
-    </CardTitle>
-  </CardHeader>
-  <CardContent>
-    <p className="text-muted-foreground leading-relaxed mb-4">
-      If you'd like to support this project financially, donations help to
-      market, maintain and improve the educational resources.
-    </p>
-    <Button
-      variant="outline"
-      onClick={() => window.open("bitcoin:bc1qexample", "_blank")}
-      className="w-full"
-    >
-      <Heart className="h-4 w-4 mr-2" />
-      Donate Sats
-    </Button>
-  </CardContent>
-</Card>
-</div>
+          {/* Donate */}
+          <Card className="border-primary/20">
+            <CardHeader>
+              <CardTitle className="flex items-center gap-2 text-foreground">
+                <Heart className="h-5 w-5" />
+                Support with Sats
+              </CardTitle>
+            </CardHeader>
+            <CardContent>
+              <p className="text-muted-foreground leading-relaxed mb-4">
+                If you'd like to support this project financially, donations help to
+                market, maintain and improve the educational resources.
+              </p>
+              <Button
+                variant="outline"
+                onClick={() => window.open("bitcoin:bc1qexample", "_blank")}
+                className="w-full"
+              >
+                <Heart className="h-4 w-4 mr-2" />
+                Donate Sats
+              </Button>
+            </CardContent>
+          </Card>
 
-{/* Full-Width Call to Action */}
-<div className="col-span-2 mt-8">
-  <Card className="border-primary/40 bg-primary/5">
-    <CardHeader>
-      <CardTitle className="text-center text-foreground">
-        United for Bitcoin Education
-      </CardTitle>
-    </CardHeader>
-    <CardContent>
-      <p className="text-muted-foreground leading-relaxed text-center mb-6 max-w-2xl mx-auto">
-        Bitcoin needs more than code — it needs people, voices, and action. Every flyer handed out, post shared,
-        and question answered helps build a stronger foundation for future Bitcoiners.
-        Whether you design, share, donate, or simply guide one person to Bitcoin, <strong>you are part of this mission</strong>.
-      </p>
-      <div className="flex justify-center">
-        <Button
-          variant="default"
-          onClick={() => window.location.href = "#get-involved"}
-          className="px-6"
-        >
-          Get Involved Today
-        </Button>
+          {/* Full-Width Call to Action */}
+          <div className="col-span-2 mt-8">
+            <Card className="border-primary/40 bg-primary/5">
+              <CardHeader>
+                <CardTitle className="text-center text-foreground">
+                  United for Bitcoin Education
+                </CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p className="text-muted-foreground leading-relaxed text-center mb-6 max-w-2xl mx-auto">
+                  Bitcoin needs more than code — it needs people, voices, and action. Every flyer handed out, post shared,
+                  and question answered helps build a stronger foundation for future Bitcoiners.
+                  Whether you design, share, donate, or simply guide one person to Bitcoin, <strong>you are part of this mission</strong>.
+                </p>
+                <div className="flex justify-center">
+                  <Button
+                    variant="default"
+                    onClick={() => window.location.href = "#get-involved"}
+                    className="px-6"
+                  >
+                    Get Involved Today
+                  </Button>
+                </div>
+              </CardContent>
+            </Card>
+          </div>
+        </div>
       </div>
-    </CardContent>
-  </Card>
-</div>
-</div>
+    </div>
+  );
+};
+
+export default Support;
