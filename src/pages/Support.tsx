@@ -19,7 +19,7 @@ const Support = () => {
           </p>
 
           {/* Mission + Nostr Statement side-by-side on large screens */}
-          <div className="grid md:grid-cols-2 gap-6 max-w-6xl">
+          <div className="grid md:grid-cols-2 gap-6 max-w-6xl mx-auto">
             {/* Mission Statement */}
             <div className="bg-white rounded-lg p-8 shadow-md border border-border">
               <p className="text-2xl font-semibold text-foreground mb-4">
@@ -53,7 +53,7 @@ const Support = () => {
                 <strong> permissionless, censorship‑resistant rails</strong>.
               </p>
               <p className="text-muted-foreground leading-relaxed mb-4">
-                Nostr is open‑source, decentralized, and beyond the control of any single party - because everyone controls their own keys, our messages and resources can’t be altered or taken down.
+                Nostr is open‑source, decentralized, and beyond the control of any single party - because everyone controls their own keys, our messages and resources can't be altered or taken down.
               </p>
               <p className="text-muted-foreground leading-relaxed mb-6">
                 By joining Nostr, you help ensure that Bitcoin education and discussions about the future of Bitcoin happen in a place that is permanent, censorship‑free, and safe from manipulation.
