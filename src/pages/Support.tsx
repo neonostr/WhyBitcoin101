@@ -264,4 +264,3 @@ const Support = () => {
     </CardContent>
   </Card>
 </div>
-</div>
