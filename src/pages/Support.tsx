@@ -100,13 +100,18 @@ const Support = () => {
             </CardHeader>
             <CardContent>
               <p className="text-muted-foreground leading-relaxed mb-4">
-                Found something that could help someone understand Bitcoin better? Post it on Nostr with the hashtag #whybitcoin101.
-                This way, anyone can follow the tag to discover fresh educational content, and we can all help surface the best resources. 
-                We’ll also try to repost standout posts and projects on the main WhyBitcoin101 profile, so the most useful material keeps spreading even further.
-              </p>
-              <p className="text-sm text-muted-foreground">
-                Tag us: @whybitcoin101 on Nostr
-              </p>
+  Found something that could help someone understand Bitcoin better? 
+  Post it — or repost it — on Nostr with <strong>#whybitcoin101</strong>. 
+  All tagged posts help build a growing public library of Bitcoin education 
+  that anyone can access and use to educate others. We’ll also curate and 
+  share some of these on the WhyBitcoin101 profile and website, giving the 
+  community both a complete hashtag archive and a focused hub of the most 
+  useful content.
+</p>
+
+<p className="text-sm text-muted-foreground">
+  Use the hashtag: <strong>#whybitcoin101</strong>
+</p>
             </CardContent>
           </Card>
 
