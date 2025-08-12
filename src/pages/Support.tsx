@@ -213,7 +213,7 @@ const Support = () => {
             </CardContent>
           </Card>
 
-         {/* Donate */}
+        {/* Donate */}
 <Card className="border-primary/20">
   <CardHeader>
     <CardTitle className="flex items-center gap-2 text-foreground">
@@ -236,7 +236,6 @@ const Support = () => {
     </Button>
   </CardContent>
 </Card>
-</div>
 
 {/* Full-Width Call to Action */}
 <div className="col-span-2 mt-8">
@@ -264,7 +263,10 @@ const Support = () => {
     </CardContent>
   </Card>
 </div>
-</div>
+</div> {/* closes the grid wrapper */}
+
+</div> {/* closes the container */}
+</div> {/* closes the min-h-screen wrapper */}
   );
 };
 
