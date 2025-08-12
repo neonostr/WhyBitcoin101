@@ -61,8 +61,8 @@ const Support = () => {
                 and coordination for orange‑pilling the world happen in a place where
                 they can’t be taken down.
               </p>
-              <Button variant="outline" onClick={() => window.open("https://primal.net/p/npub1whybitcoin101edu", "_blank")} className="w-full">
-                Get On Nostr
+              <Button variant="outline" onClick={() => window.open("https://primal.net", "_blank")} className="w-full">
+                Join Nostr
               </Button>
             </div>
           </div>
