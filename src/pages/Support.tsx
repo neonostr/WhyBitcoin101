@@ -2,17 +2,12 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { ArrowLeft, Heart, Share2, MessageCircle, Gift } from "lucide-react";
 import { Link } from "react-router-dom";
-
 const Support = () => {
-  return (
-    <div className="min-h-screen bg-gradient-to-br from-background to-primary/5">
+  return <div className="min-h-screen bg-gradient-to-br from-background to-primary/5">
       <div className="container mx-auto px-4 py-8">
         {/* Header */}
         <div className="mb-8">
-          <Link
-            to="/"
-            className="inline-flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors mb-4"
-          >
+          <Link to="/" className="inline-flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors mb-4">
             <ArrowLeft className="h-4 w-4" />
             Back to WhyBitcoin101
           </Link>
@@ -66,13 +61,7 @@ const Support = () => {
                 and coordination for orange‑pilling the world happen in a place where
                 they can’t be taken down.
               </p>
-              <Button
-                variant="outline"
-                onClick={() =>
-                  window.open("https://primal.net/p/npub1whybitcoin101edu", "_blank")
-                }
-                className="w-full"
-              >
+              <Button variant="outline" onClick={() => window.open("https://primal.net/p/npub1whybitcoin101edu", "_blank")} className="w-full">
                 Get On Nostr
               </Button>
             </div>
@@ -95,13 +84,7 @@ const Support = () => {
                 Get updates about new educational projects and resources that help you
                 educate others about Bitcoin.
               </p>
-              <Button
-                variant="outline"
-                onClick={() =>
-                  window.open("https://primal.net/p/npub1whybitcoin101edu", "_blank")
-                }
-                className="w-full"
-              >
+              <Button variant="outline" onClick={() => window.open("https://primal.net/p/npub1whybitcoin101edu", "_blank")} className="w-full">
                 Follow on Nostr
               </Button>
             </CardContent>
@@ -186,15 +169,8 @@ const Support = () => {
               </CardTitle>
             </CardHeader>
             <CardContent>
-              <p className="text-muted-foreground leading-relaxed mb-4">
-                If you'd like to support this project financially, donations help us
-                maintain and improve the educational resources.
-              </p>
-              <Button
-                variant="outline"
-                onClick={() => window.open("bitcoin:bc1qexample", "_blank")}
-                className="w-full"
-              >
+              <p className="text-muted-foreground leading-relaxed mb-4">If you'd like to support this project financially, donations help to market, maintain and improve the educational resources.</p>
+              <Button variant="outline" onClick={() => window.open("bitcoin:bc1qexample", "_blank")} className="w-full">
                 <Heart className="h-4 w-4 mr-2" />
                 Donate Sats
               </Button>
@@ -211,8 +187,6 @@ const Support = () => {
           </p>
         </div>
       </div>
-    </div>
-  );
+    </div>;
 };
-
 export default Support;
