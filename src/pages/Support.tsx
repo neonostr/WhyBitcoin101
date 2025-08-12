@@ -23,26 +23,26 @@ const Support = () => {
             For bitcoiners who want to support Bitcoin education and help newcomers understand why Bitcoin matters.
           </p>
 
-          {/* Mission Statement */}
-          <div className="bg-muted rounded-lg p-6 shadow-sm border border-border max-w-3xl">
-            <p className="text-lg leading-relaxed text-foreground font-medium mb-3">
-              We’re on a mission to orange‑pill the world — not with hype,
-              but with truth, connection, and action.
+          {/* Mission Statement - redesigned */}
+          <div className="bg-white rounded-lg p-8 shadow-md border border-border max-w-3xl">
+            <p className="text-2xl font-semibold text-foreground mb-4">
+              We’re on a mission to orange‑pill the world — not with hype, but with truth,
+              connection, and action.
             </p>
-            <p className="text-muted-foreground leading-relaxed mb-3">
+            <p className="text-muted-foreground leading-relaxed mb-4">
               Every conversation, every share, every spark of understanding moves us
               closer to a future where Bitcoin empowers everyone.
             </p>
-            <p className="text-muted-foreground leading-relaxed">
+            <p className="text-muted-foreground leading-relaxed mb-6">
               If you’re a Bitcoiner ready to build, educate, and amplify the signal,
-              this is your place to plug in.{" "}
-              <span className="italic">
-                (New here?{" "}
-                <Link to="/" className="underline hover:text-primary">
-                  Click here
-                </Link>{" "}
-                to explore our main site.)
-              </span>
+              this is your place to plug in.
+            </p>
+            <p className="text-sm text-muted-foreground italic border-t border-border pt-3">
+              Landed here first?{" "}
+              <Link to="/" className="font-medium text-primary hover:underline">
+                Visit our educational front
+              </Link>{" "}
+              to see how we share Bitcoin with the world.
             </p>
           </div>
         </div>
