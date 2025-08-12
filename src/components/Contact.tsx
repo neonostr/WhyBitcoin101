@@ -138,10 +138,18 @@ const Contact = () => {
           </div>
 
           <div className="mt-16 text-center">
-            <p className="text-muted-foreground">
+            <p className="text-muted-foreground mb-4">
               Remember: Take your time, stay curious, and always do your own
               research to make informed decisions.
             </p>
+            <div className="border-t border-muted-foreground/20 pt-4">
+              <a 
+                href="/support" 
+                className="text-sm text-muted-foreground hover:text-foreground underline underline-offset-2 transition-colors"
+              >
+                Already a bitcoiner? Learn how you can help →
+              </a>
+            </div>
           </div>
         </div>
       </section>
