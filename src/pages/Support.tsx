@@ -100,9 +100,9 @@ const Support = () => {
             </CardHeader>
             <CardContent>
               <p className="text-muted-foreground leading-relaxed mb-4">
-                Found great educational content? Link or mention us on Nostr so we get
-                notified. We're always looking for quality resources to help newcomers
-                understand Bitcoin.
+                Found something that could help someone understand Bitcoin better? Post it on Nostr with the hashtag #whybitcoin101.
+                This way, anyone can follow the tag to discover fresh educational content, and we can all help surface the best resources. 
+                We’ll also try to repost standout posts and projects on the main WhyBitcoin101 profile, so the most useful material keeps spreading even further.
               </p>
               <p className="text-sm text-muted-foreground">
                 Tag us: @whybitcoin101 on Nostr
