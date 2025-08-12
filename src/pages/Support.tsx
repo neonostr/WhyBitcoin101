@@ -80,7 +80,7 @@ const Support = () => {
   </CardHeader>
   <CardContent>
     <p className="text-muted-foreground leading-relaxed mb-4">
-      The  <strong> @WhyBitcoin101</strong> profile is used to share useful Bitcoin education discovered together 
+      The <strong> @WhyBitcoin101</strong> profile is used to share useful Bitcoin education discovered together 
       and to coordinate resources and efforts that move the shared mission forward. 
       It’s a place to stay connected with ongoing projects, collaborate, and help 
       make educational material easier to access and share. 
@@ -108,7 +108,7 @@ const Support = () => {
             <CardContent>
               <p className="text-muted-foreground leading-relaxed mb-4">
   Found something that helps people understand Bitcoin better? 
-  Post it - or repost it - on Nostr with <strong>#whybitcoin101</strong>. 
+  Post it or repost it on Nostr with <strong>#whybitcoin101</strong>. 
   All tagged posts help build a growing public library of Bitcoin education 
   that we can all access and use to help others learn. We’ll also curate and 
   share some of these on the WhyBitcoin101 profile and website, so together 
