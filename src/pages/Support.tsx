@@ -70,25 +70,32 @@ const Support = () => {
 
         {/* Support Cards */}
         <div className="grid md:grid-cols-2 gap-6 max-w-6xl mx-auto">
-          {/* Follow on Nostr */}
-          <Card className="border-primary/20">
-            <CardHeader>
-              <CardTitle className="flex items-center gap-2 text-foreground">
-                <MessageCircle className="h-5 w-5" />
-                Follow Us on Nostr
-              </CardTitle>
-            </CardHeader>
-            <CardContent>
-              <p className="text-muted-foreground leading-relaxed mb-4">
-                Our Nostr profile is exclusively used to coordinate educational content.
-                Get updates about new educational projects and resources that help you
-                educate others about Bitcoin.
-              </p>
-              <Button variant="outline" onClick={() => window.open("https://primal.net/p/npub1whybitcoin101edu", "_blank")} className="w-full">
-                Follow on Nostr
-              </Button>
-            </CardContent>
-          </Card>
+{/* The WhyBitcoin101 Nostr Profile */}
+<Card className="border-primary/20">
+  <CardHeader>
+    <CardTitle className="flex items-center gap-2 text-foreground">
+      <MessageCircle className="h-5 w-5" />
+      The WhyBitcoin101 Nostr Profile
+    </CardTitle>
+  </CardHeader>
+  <CardContent>
+    <p className="text-muted-foreground leading-relaxed mb-4">
+      The Nostr profile is used to share useful Bitcoin education discovered together 
+      and to coordinate resources and efforts that move the shared mission forward. 
+      It’s a place to stay connected with ongoing projects, collaborate, and help 
+      make educational material easier to access and share. 
+      <strong> @WhyBitcoin101</strong> exists as a living resource — continuously 
+      updated and refined through the participation and contributions of everyone involved.
+    </p>
+    <Button
+      variant="outline"
+      onClick={() => window.open("https://primal.net/p/npub1whybitcoin101edu", "_blank")}
+      className="w-full"
+    >
+      Visit @WhyBitcoin101
+    </Button>
+  </CardContent>
+</Card>
 
           {/* Share Content */}
           <Card className="border-primary/20">
@@ -100,12 +107,12 @@ const Support = () => {
             </CardHeader>
             <CardContent>
               <p className="text-muted-foreground leading-relaxed mb-4">
-  Found something that could help someone understand Bitcoin better? 
-  Post it — or repost it — on Nostr with <strong>#whybitcoin101</strong>. 
+  Found something that helps people understand Bitcoin better? 
+  Post it - or repost it - on Nostr with <strong>#whybitcoin101</strong>. 
   All tagged posts help build a growing public library of Bitcoin education 
-  that anyone can access and use to educate others. We’ll also curate and 
-  share some of these on the WhyBitcoin101 profile and website, giving the 
-  community both a complete hashtag archive and a focused hub of the most 
+  that we can all access and use to help others learn. We’ll also curate and 
+  share some of these on the WhyBitcoin101 profile and website, so together 
+  we create both a complete hashtag archive and a focused hub of the most 
   useful content.
 </p>
 
