@@ -229,14 +229,10 @@ const Support = () => {
                 If you'd like to support this project financially, donations help to
                 market, maintain and improve the educational resources.
               </p>
-              <Button
-                variant="outline"
-                onClick={() => window.open("bitcoin:bc1qexample", "_blank")}
-                className="w-full"
-              >
+             <button onClick={() => setDonationModalOpen(true)} className="text-primary hover:underline"
                 <Heart className="h-4 w-4 mr-2" />
                 Donate Sats
-              </Button>
+              </button>
             </CardContent>
           </Card>
 
