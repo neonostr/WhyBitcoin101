@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Copy, Check } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
@@ -120,76 +120,116 @@ const EditingOverlay: React.FC<EditingOverlayProps> = ({ isActive, onClose }) =>
     }
   };
 
+  // Add click handlers to content blocks when editing mode is active
+  useEffect(() => {
+    if (!isActive) return;
+
+    const handleBlockClick = (event: MouseEvent) => {
+      const target = event.target as HTMLElement;
+      const blockElement = target.closest('[data-block-id]') as HTMLElement;
+      
+      if (blockElement) {
+        const blockId = blockElement.getAttribute('data-block-id');
+        const hashtag = blockElement.getAttribute('data-hashtag');
+        const block = EDITABLE_BLOCKS.find(b => b.id === blockId);
+        
+        if (block && hashtag) {
+          event.preventDefault();
+          copyToClipboard(block.content, hashtag, blockId);
+        }
+      }
+    };
+
+    document.addEventListener('click', handleBlockClick);
+    
+    return () => {
+      document.removeEventListener('click', handleBlockClick);
+    };
+  }, [isActive]);
+
   if (!isActive) return null;
 
   return (
-    <div className="fixed inset-0 z-[9999] bg-black/50 backdrop-blur-sm">
-      <div className="absolute top-4 right-4">
-        <Button onClick={onClose} variant="outline" className="bg-background">
-          Exit Editing Mode
-        </Button>
-      </div>
-      
-      <div className="absolute top-16 left-4 right-4 bg-background/95 backdrop-blur-sm border border-border rounded-lg p-4">
-        <h3 className="text-lg font-bold mb-2">Collaborative Editing Mode</h3>
-        <p className="text-sm text-muted-foreground mb-4">
-          Click on any highlighted text block to copy it with its hashtag for collaborative editing on Nostr.
-        </p>
-        
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2 max-h-60 overflow-y-auto">
-          {EDITABLE_BLOCKS.map((block) => (
-            <div
-              key={block.id}
-              className="border border-border/50 rounded-lg p-3 hover:bg-accent/50 cursor-pointer transition-colors"
-              onClick={() => copyToClipboard(block.content, block.hashtag, block.id)}
-            >
-              <div className="flex items-center justify-between mb-2">
-                <h4 className="text-sm font-medium truncate">{block.title}</h4>
-                {copiedStates[block.id] ? (
-                  <Check className="h-4 w-4 text-green-500" />
-                ) : (
-                  <Copy className="h-4 w-4 text-muted-foreground" />
-                )}
-              </div>
-              <p className="text-xs text-muted-foreground mb-1">{block.hashtag}</p>
-              <p className="text-xs text-muted-foreground line-clamp-2">{block.content}</p>
-            </div>
-          ))}
-        </div>
-      </div>
-      
-      {/* Highlight overlays for actual content blocks */}
+    <>
+      {/* Global styles for editing mode */}
       <style>{`
-        .editing-mode-active [data-block-id] {
+        body.editing-mode-active [data-block-id] {
           position: relative;
-          cursor: pointer;
+          cursor: pointer !important;
+          transition: all 0.2s ease;
         }
-        .editing-mode-active [data-block-id]:hover::after {
-          content: '';
-          position: absolute;
-          inset: -4px;
-          border: 2px solid hsl(var(--primary));
-          border-radius: 8px;
-          background: hsl(var(--primary) / 0.1);
-          pointer-events: none;
+        body.editing-mode-active [data-block-id]:hover {
+          transform: scale(1.02);
           z-index: 10;
         }
-        .editing-mode-active [data-block-id]::before {
+        body.editing-mode-active [data-block-id]:hover::after {
+          content: '';
+          position: absolute;
+          inset: -8px;
+          border: 3px solid hsl(var(--primary));
+          border-radius: 12px;
+          background: hsl(var(--primary) / 0.1);
+          pointer-events: none;
+          z-index: 1;
+          animation: pulse 2s infinite;
+        }
+        body.editing-mode-active [data-block-id]:hover::before {
           content: attr(data-hashtag);
           position: absolute;
-          top: -8px;
-          left: -4px;
+          top: -12px;
+          left: -8px;
           background: hsl(var(--primary));
           color: hsl(var(--primary-foreground));
-          font-size: 10px;
-          padding: 2px 6px;
-          border-radius: 4px;
-          font-weight: 500;
-          z-index: 11;
+          font-size: 11px;
+          padding: 4px 8px;
+          border-radius: 6px;
+          font-weight: 600;
+          z-index: 12;
           pointer-events: none;
+          box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+        }
+        @keyframes pulse {
+          0%, 100% { opacity: 0.1; }
+          50% { opacity: 0.2; }
         }
       `}</style>
-    </div>
+      
+      <div className="fixed inset-0 z-[9999] bg-black/30 backdrop-blur-sm">
+        <div className="absolute top-4 right-4">
+          <Button onClick={onClose} variant="outline" className="bg-background">
+            Exit Editing Mode
+          </Button>
+        </div>
+        
+        <div className="absolute top-16 left-4 right-4 bg-background/95 backdrop-blur-sm border border-border rounded-lg p-4">
+          <h3 className="text-lg font-bold mb-2">Collaborative Editing Mode</h3>
+          <p className="text-sm text-muted-foreground mb-4">
+            Click on any highlighted text block below or directly on the page content to copy it with its hashtag for collaborative editing on Nostr.
+          </p>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2 max-h-60 overflow-y-auto">
+            {EDITABLE_BLOCKS.map((block) => (
+              <div
+                key={block.id}
+                className="border border-border/50 rounded-lg p-3 hover:bg-accent/50 cursor-pointer transition-colors"
+                onClick={() => copyToClipboard(block.content, block.hashtag, block.id)}
+              >
+                <div className="flex items-center justify-between mb-2">
+                  <h4 className="text-sm font-medium truncate">{block.title}</h4>
+                  {copiedStates[block.id] ? (
+                    <Check className="h-4 w-4 text-green-500" />
+                  ) : (
+                    <Copy className="h-4 w-4 text-muted-foreground" />
+                  )}
+                </div>
+                <p className="text-xs text-muted-foreground mb-1">{block.hashtag}</p>
+                <p className="text-xs text-muted-foreground line-clamp-2">{block.content}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </>
   );
 };
 
