@@ -19,7 +19,7 @@ const Basics = () => {
                 What is Bitcoin?
               </CardTitle>
             </CardHeader>
-            <CardContent data-block-id="what-is-bitcoin" data-hashtag="#bitcoin-definition-007">
+            <CardContent>
               <p className="text-muted-foreground text-center leading-relaxed">Bitcoin is money owned by the people that operates without a central authority. It's money that is truly yours, can't be manipulated, and can be sent directly to anyone in the world
             </p>
             </CardContent>
@@ -34,7 +34,7 @@ const Basics = () => {
                 How Does It Work?
               </CardTitle>
             </CardHeader>
-            <CardContent data-block-id="how-bitcoin-works" data-hashtag="#bitcoin-mechanics-008">
+            <CardContent>
               <p className="text-muted-foreground text-center leading-relaxed">Bitcoin securely records all transactions in a public record book distributed globally. A unique system ensures the record can't be altered, eliminating the need for banks or other intermediaries.</p>
             </CardContent>
           </Card>
@@ -48,9 +48,9 @@ const Basics = () => {
                 Why Is It Special?
               </CardTitle>
             </CardHeader>
-            <CardContent data-block-id="why-special" data-hashtag="#bitcoin-features-009">
+            <CardContent>
               <p className="text-muted-foreground text-center leading-relaxed">
-                Built by the people, free from control, Bitcoin is the world's most scarce asset. Limited to 21 million, it's designed to be perfect money - a secure store of your time and energy.
+                Built by the people, free from control, Bitcoin is the world’s most scarce asset. Limited to 21 million, it’s designed to be perfect money - a secure store of your time and energy.
               </p>
             </CardContent>
           </Card>
@@ -62,7 +62,7 @@ const Basics = () => {
               </div>
               <CardTitle className="text-xl text-foreground group-hover:text-primary transition-colors duration-300">Bitcoin is for Everyone</CardTitle>
             </CardHeader>
-            <CardContent data-block-id="bitcoin-for-everyone" data-hashtag="#bitcoin-accessibility-010">
+            <CardContent>
               <p className="text-muted-foreground text-center leading-relaxed">Just as one U.S. Dollar equals 100 cents, one Bitcoin equals 100 million satoshis. This divisibility means you can get involved with Bitcoin starting with any amount - even $1.</p>
             </CardContent>
           </Card>
