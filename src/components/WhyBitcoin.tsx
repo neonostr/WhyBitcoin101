@@ -1,10 +1,24 @@
 import { useState } from "react";
 import DonationModal from "./DonationModal";
+import CopyButton from "./CopyButton";
+
 const WhyBitcoin = () => {
   const [donationModalOpen, setDonationModalOpen] = useState(false);
+
+  const whyBitcoinText = `Building Tomorrow Together
+
+Imagine a world where sound money enables humanity to think beyond quarterly profits and election cycles. Where low time preference becomes the foundation for sustainable innovation, genuine prosperity, and decisions that benefit our children's children.
+
+A Society Worth Building - When money holds its value across time, people naturally start planning for decades, not months. Cities are built to last centuries. Companies invest in research that might take years to bear fruit. Education focuses on wisdom, not just skills for the next job cycle. This isn't utopian thinking - it's how humanity operated for most of history before inflationary money shortened our collective attention span.
+
+Quality Over Quantity - Our educational resources are carefully curated, no affiliate links, no hidden agendas, just the best content we can find. We update this collection constantly because understanding Bitcoin means understanding the future of human coordination. Every book, video, podcast, and article is selected purely for its quality and insight. This knowledge belongs to everyone.
+
+The Path Forward - Every great transformation starts with understanding. As more people grasp these principles, we move closer to a world where patient capital builds lasting value, where innovation serves humanity's long-term flourishing, and where financial sovereignty empowers individuals to think beyond survival. This transition isn't just about money - it's about reclaiming our ability to build for the future, to invest in ideas that matter, and to create a legacy worth leaving.`;
+
   return <>
       <section id="why-bitcoin" className="py-20 px-4 bg-gradient-to-b from-background to-secondary/20">
-      <div className="container mx-auto">
+      <div className="container mx-auto relative">
+        <CopyButton text={whyBitcoinText} hashtag="#whybitcoin101-why-bitcoin" />
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold mb-6 text-foreground">
             Building Tomorrow Together

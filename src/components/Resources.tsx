@@ -2,6 +2,8 @@ import { useState } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import VideoModal from "./VideoModal";
+import CopyButton from "./CopyButton";
+import ResourceCopyButton from "./ResourceCopyButton";
 const Resources = () => {
   const [videoModal, setVideoModal] = useState<{
     isOpen: boolean;
@@ -12,6 +14,10 @@ const Resources = () => {
     title: "",
     url: ""
   });
+
+  const resourcesText = `Dive Deeper
+
+Ready to learn more? These carefully curated resources will guide you towards a deeper understanding.`;
 
   // Video resources
   const videos = [{
@@ -271,31 +277,46 @@ const Resources = () => {
   const handleLinkClick = (url: string) => {
     window.open(url, '_blank');
   };
-  const renderSection = (title: string, emoji: string, items: any[], isVideo = false) => <div className="mb-16">
+  const renderSection = (title: string, emoji: string, items: any[], isVideo = false, categoryName = "") => <div className="mb-16">
       <h3 className="text-3xl font-bold text-center mb-10 text-foreground">{emoji} {title}</h3>
       <div className="grid md:grid-cols-3 gap-6">
-        {items.map((item, index) => <Card key={index} className="group hover:shadow-[var(--card-hover)] transition-all duration-300 cursor-pointer" onClick={() => isVideo ? handleVideoClick(item.title, item.url) : handleLinkClick(item.url)}>
-            <CardHeader>
-              <div className="flex justify-between items-start mb-2">
-                <CardTitle className="text-lg group-hover:text-primary transition-colors duration-300">
-                  {item.title}
-                </CardTitle>
-                <span className="text-xs bg-primary/10 text-primary px-2 py-1 rounded-full">
-                  {item.type}
-                </span>
-              </div>
-              {item.author && <p className="text-sm text-muted-foreground">by {item.author}</p>}
-              {item.host && <p className="text-sm text-muted-foreground">Hosted by {item.host}</p>}
-            </CardHeader>
-            <CardContent>
-              <p className="text-muted-foreground">{item.description}</p>
-            </CardContent>
-          </Card>)}
+        {items.map((item, index) => {
+          const hashtag = `#whybitcoin101-resource-${categoryName}-${index + 1}`;
+          return (
+            <Card key={index} className="group hover:shadow-[var(--card-hover)] transition-all duration-300 cursor-pointer relative" onClick={() => isVideo ? handleVideoClick(item.title, item.url) : handleLinkClick(item.url)}>
+              <ResourceCopyButton 
+                title={item.title}
+                description={item.description}
+                type={item.type}
+                url={item.url}
+                author={item.author}
+                host={item.host}
+                hashtag={hashtag}
+              />
+              <CardHeader>
+                <div className="flex justify-between items-start mb-2">
+                  <CardTitle className="text-lg group-hover:text-primary transition-colors duration-300">
+                    {item.title}
+                  </CardTitle>
+                  <span className="text-xs bg-primary/10 text-primary px-2 py-1 rounded-full">
+                    {item.type}
+                  </span>
+                </div>
+                {item.author && <p className="text-sm text-muted-foreground">by {item.author}</p>}
+                {item.host && <p className="text-sm text-muted-foreground">Hosted by {item.host}</p>}
+              </CardHeader>
+              <CardContent>
+                <p className="text-muted-foreground">{item.description}</p>
+              </CardContent>
+            </Card>
+          );
+        })}
       </div>
     </div>;
   return <>
       <section id="resources" className="py-20 px-4 bg-background">
-        <div className="container mx-auto">
+        <div className="container mx-auto relative">
+          <CopyButton text={resourcesText} hashtag="#whybitcoin101-resources" />
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-bold mb-6 text-foreground">
               Dive Deeper
@@ -303,16 +324,16 @@ const Resources = () => {
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto">Ready to learn more? These carefully curated resources will guide you towards a deeper understanding.</p>
           </div>
 
-          {renderSection("Videos", "🎥", videos, true)}
-          {renderSection("Articles & Essays", "📄", articles)}
-          {renderSection("Books", "📚", books)}
-          {renderSection("Podcasts", "🎧", podcasts)}
-          {renderSection("Mobile Wallets", "📱", mobileWallets)}
-          {renderSection("Hardware Wallets", "🔒", hardwareWallets)}
-          {renderSection("Exchanges", "💱", exchanges)}
-          {renderSection("Living On Bitcoin", "🌍", livingOnBitcoin)}
-          {renderSection("Educational Entertainment", "🍿", educationalEntertainment)}
-          {renderSection("Fun Stuff", "🎉", funStuff)}
+          {renderSection("Videos", "🎥", videos, true, "videos")}
+          {renderSection("Articles & Essays", "📄", articles, false, "articles")}
+          {renderSection("Books", "📚", books, false, "books")}
+          {renderSection("Podcasts", "🎧", podcasts, false, "podcasts")}
+          {renderSection("Mobile Wallets", "📱", mobileWallets, false, "mobile-wallets")}
+          {renderSection("Hardware Wallets", "🔒", hardwareWallets, false, "hardware-wallets")}
+          {renderSection("Exchanges", "💱", exchanges, false, "exchanges")}
+          {renderSection("Living On Bitcoin", "🌍", livingOnBitcoin, false, "living-on-bitcoin")}
+          {renderSection("Educational Entertainment", "🍿", educationalEntertainment, false, "educational-entertainment")}
+          {renderSection("Fun Stuff", "🎉", funStuff, false, "fun-stuff")}
 
           <div className="text-center">
             <div className="inline-block p-8 rounded-2xl bg-gradient-to-r from-primary/5 to-bitcoin-orange/5 border border-primary/10">

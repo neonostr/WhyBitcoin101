@@ -8,6 +8,7 @@ import { useToast } from "@/hooks/use-toast";
 import { finalizeEvent, generateSecretKey, getPublicKey } from "nostr-tools/pure";
 import { nip19 } from "nostr-tools";
 import { SimplePool } from "nostr-tools/pool";
+import CopyButton from "./CopyButton";
 
 const NostrQuestionModal = () => {
   const [open, setOpen] = useState(false);
@@ -220,6 +221,22 @@ const NostrQuestionModal = () => {
 };
 
 const FAQ = () => {
+  const faqText = `Common Questions
+
+Here are answers to the questions most people have when they're first learning about Bitcoin.
+
+Is Bitcoin safe to use? - Bitcoin's blockchain is extremely secure and has never been hacked. However, you need to keep your Bitcoin wallet safe, just like you would with cash or credit cards.
+
+How much Bitcoin should I buy? - Invest as much as you feel comfortable with. It makes no sense to go all-in without understanding Bitcoin. Start with an amount that feels good for you, then continue learning - as your understanding grows, you'll know when and how much more to invest.
+
+Can Bitcoin keep going up forever? - Bitcoin has no theoretical ceiling because humans will never stop inventing, improving, and creating value. With Bitcoin's fixed supply of 21 million coins and humanity's endless capacity for innovation, your purchasing power can increase indefinitely. As we develop better technology, more efficient systems, and new solutions, there's more value to capture - and Bitcoin's scarcity ensures your savings benefit from all of human progress.
+
+Can Bitcoin be shut down? - Bitcoin is decentralized across thousands of computers worldwide. There's no central authority that can shut it down, making it very resilient.
+
+How do I store Bitcoin safely? - For small amounts, a reputable mobile wallet is fine. For larger amounts, consider a hardware wallet for maximum security.
+
+Is Bitcoin bad for the environment? - Bitcoin mining increasingly uses renewable energy. The network's energy use secures a global financial system and drives renewable energy innovation.`;
+
   const faqs = [
     {
       question: "Is Bitcoin safe to use?",
@@ -249,7 +266,8 @@ const FAQ = () => {
 
   return (
     <section id="faq" className="py-20 px-4 bg-gradient-to-b from-background to-muted/20">
-      <div className="container mx-auto">
+      <div className="container mx-auto relative">
+        <CopyButton text={faqText} hashtag="#whybitcoin101-faq" />
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold mb-6 text-foreground">
             Common Questions

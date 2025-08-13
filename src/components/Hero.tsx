@@ -1,7 +1,14 @@
 import { Button } from "@/components/ui/button";
+import CopyButton from "./CopyButton";
+
 const Hero = () => {
+  const heroText = `Curious About Bitcoin?
+
+Your journey into understanding the future of money starts here. Simple explanations, trusted resources, and expert guidance.`;
+
   return <section className="relative min-h-[60vh] flex items-center justify-center bg-gradient-to-br from-background to-bitcoin-light/20 overflow-hidden">
       <div className="container mx-auto px-4 text-center relative z-10">
+        <CopyButton text={heroText} hashtag="#whybitcoin101-hero" />
         <div className="max-w-4xl mx-auto">
           <h1 className="text-5xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-foreground to-primary bg-clip-text text-transparent leading-tight">
             Curious About Bitcoin?
