@@ -282,8 +282,9 @@ Is Bitcoin bad for the environment? - Bitcoin mining increasingly uses renewable
             {faqs.map((faq, index) => (
               <Card 
                 key={index} 
-                className="group hover:shadow-[var(--card-hover)] transition-all duration-300 border-border/50 hover:border-primary/20"
+                className="group hover:shadow-[var(--card-hover)] transition-all duration-300 border-border/50 hover:border-primary/20 relative"
               >
+                <CopyButton text={`${faq.question} - ${faq.answer}`} hashtag={`#whybitcoin101-faq-${index + 1}`} />
                 <CardHeader>
                   <CardTitle className="text-lg text-foreground group-hover:text-primary transition-colors duration-300">
                     {faq.question}

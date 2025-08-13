@@ -30,6 +30,7 @@ The Path Forward - Every great transformation starts with understanding. As more
         
         <div className="grid md:grid-cols-2 gap-8">
           <div className="relative p-8 rounded-2xl bg-card border border-border/50 hover:border-primary/30 transition-all duration-300 group overflow-hidden">
+            <CopyButton text="A Society Worth Building - When money holds its value across time, people naturally start planning for decades, not months. Cities are built to last centuries. Companies invest in research that might take years to bear fruit. Education focuses on wisdom, not just skills for the next job cycle. This isn't utopian thinking - it's how humanity operated for most of history before inflationary money shortened our collective attention span." hashtag="#whybitcoin101-society-building" />
             <div className="absolute inset-0 bg-gradient-to-br from-primary to-bitcoin-orange opacity-0 group-hover:opacity-5 transition-opacity duration-300"></div>
             <div className="relative z-10">
               <h3 className="text-2xl font-bold mb-4 text-foreground group-hover:text-primary transition-colors duration-300">
@@ -43,6 +44,7 @@ The Path Forward - Every great transformation starts with understanding. As more
           </div>
           
           <div className="relative p-8 rounded-2xl bg-card border border-border/50 hover:border-primary/30 transition-all duration-300 group overflow-hidden">
+            <CopyButton text="Quality Over Quantity - Our educational resources are carefully curated, no affiliate links, no hidden agendas, just the best content we can find. We update this collection constantly because understanding Bitcoin means understanding the future of human coordination. Every book, video, podcast, and article is selected purely for its quality and insight. This knowledge belongs to everyone." hashtag="#whybitcoin101-quality-quantity" />
             <div className="absolute inset-0 bg-gradient-to-br from-bitcoin-orange to-accent opacity-0 group-hover:opacity-5 transition-opacity duration-300"></div>
             <div className="relative z-10">
               <h3 className="text-2xl font-bold mb-4 text-foreground group-hover:text-primary transition-colors duration-300">
@@ -55,7 +57,8 @@ The Path Forward - Every great transformation starts with understanding. As more
         </div>
         
         <div className="mt-16 text-center">
-          <div className="inline-block p-8 rounded-2xl bg-gradient-to-r from-primary/10 to-bitcoin-orange/10 border border-primary/20">
+          <div className="inline-block p-8 rounded-2xl bg-gradient-to-r from-primary/10 to-bitcoin-orange/10 border border-primary/20 relative">
+            <CopyButton text="The Path Forward - Every great transformation starts with understanding. As more people grasp these principles, we move closer to a world where patient capital builds lasting value, where innovation serves humanity's long-term flourishing, and where financial sovereignty empowers individuals to think beyond survival. This transition isn't just about money - it's about reclaiming our ability to build for the future, to invest in ideas that matter, and to create a legacy worth leaving." hashtag="#whybitcoin101-path-forward" />
             <h3 className="text-2xl font-bold mb-4 text-foreground">
               The Path Forward
             </h3>
