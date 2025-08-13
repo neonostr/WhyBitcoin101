@@ -301,7 +301,8 @@ Is Bitcoin bad for the environment? - Bitcoin mining increasingly uses renewable
         </div>
         
         <div className="mt-16 text-center">
-          <div className="inline-block p-8 rounded-2xl bg-card border border-border">
+          <div className="inline-block p-8 rounded-2xl bg-card border border-border relative">
+            <CopyButton text="Still Have Questions? Don't see your question here? Ask the Bitcoin community and get help from others who know about Bitcoin." hashtag="#whybitcoin101-still-questions" />
             <h3 className="text-2xl font-bold mb-4 text-foreground">Still Have Questions?</h3>
             <p className="text-muted-foreground mb-6 max-w-md">
               Don't see your question here? Ask the Bitcoin community and get help from others who know about Bitcoin.
