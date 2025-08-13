@@ -1,7 +1,7 @@
 const MoneyProblem = () => {
   return <section id="money-problem" className="py-20 px-4 bg-gradient-to-b from-background to-muted/30">
       <div className="container mx-auto">
-        <div className="text-center mb-16">
+        <div className="text-center mb-16" data-block-id="why-bitcoin-title" data-hashtag="#bitcoin-purpose-001">
           <h2 className="text-4xl md:text-5xl font-bold mb-6 text-foreground">
             Why Bitcoin in the First Place?
           </h2>
@@ -11,14 +11,14 @@ const MoneyProblem = () => {
         </div>
         
         <div className="max-w-4xl mx-auto space-y-12">
-          <div className="bg-card border border-border/50 rounded-2xl p-8 hover:shadow-lg transition-all duration-300">
+          <div className="bg-card border border-border/50 rounded-2xl p-8 hover:shadow-lg transition-all duration-300" data-block-id="what-money-should-be" data-hashtag="#money-definition-002">
             <h3 className="text-2xl font-bold mb-6 text-foreground">
               What Money Should Be
             </h3>
             <p className="text-lg text-muted-foreground leading-relaxed mb-6">Money is fundamentally stored energy. Every time you work or take a financial risk, you exchange your time, effort, and focus for a number in your bank account - a representation of the energy you've invested. Money should allow you to store this energy for future use, so you can later exchange it for things that improve your life: a car, a holiday trip, a home, or simply peace of mind.</p>
             <p className="text-lg text-muted-foreground leading-relaxed">Good money should reliably preserve the value of your work across time. If you work hard today and save money, that money should at least retain its purchasing power so you can access the same value months or years later when you need it.</p>
           </div>
-          <div className="bg-card border border-border/50 rounded-2xl p-8 hover:shadow-lg transition-all duration-300">
+          <div className="bg-card border border-border/50 rounded-2xl p-8 hover:shadow-lg transition-all duration-300" data-block-id="money-is-broken" data-hashtag="#money-problems-003">
             <h3 className="text-2xl font-bold mb-6 text-foreground">
               Money Is Broken
             </h3>
@@ -27,7 +27,7 @@ const MoneyProblem = () => {
           </p>
           </div>
 
-          <div className="bg-card border border-border/50 rounded-2xl p-8 hover:shadow-lg transition-all duration-300">
+          <div className="bg-card border border-border/50 rounded-2xl p-8 hover:shadow-lg transition-all duration-300" data-block-id="human-cost" data-hashtag="#social-impact-004">
             <h3 className="text-2xl font-bold mb-6 text-foreground">
               The Human Cost
             </h3>
@@ -37,14 +37,14 @@ const MoneyProblem = () => {
             <p className="text-lg text-muted-foreground leading-relaxed">This isn't just an economic problem - it's tearing apart the social fabric of society, disrupting families and communities that form the foundation of our civilization.</p>
           </div>
 
-          <div className="bg-card border border-border/50 rounded-2xl p-8 hover:shadow-lg transition-all duration-300">
+          <div className="bg-card border border-border/50 rounded-2xl p-8 hover:shadow-lg transition-all duration-300" data-block-id="money-manipulation" data-hashtag="#system-manipulation-005">
             <h3 className="text-2xl font-bold mb-6 text-foreground">The Manipulation of Money</h3>
             <p className="text-lg text-muted-foreground leading-relaxed mb-6">To make matters worse, because politicians and central banks have unchecked access to the money supply. When reckless speculators make bad bets and face bankruptcy, they are bailed out with freshly printed money, passing the costs on to the general public through inflation.</p>
             <p className="text-lg text-muted-foreground leading-relaxed">This system creates a rigged game, where those with connections to the money printer reap the benefits, while ordinary people bear the burden. The result is a perverse incentives structure that prioritizes profit over people, undermining the stability and fairness of our economic system.</p>
           </div>
 
           <div className="text-center">
-            <div className="inline-block p-8 rounded-2xl bg-gradient-to-r from-bitcoin-orange/10 to-primary/10 border-2 border-bitcoin-orange/20">
+            <div className="inline-block p-8 rounded-2xl bg-gradient-to-r from-bitcoin-orange/10 to-primary/10 border-2 border-bitcoin-orange/20" data-block-id="bitcoin-origin" data-hashtag="#bitcoin-birth-006">
               <h3 className="text-2xl font-bold mb-4 text-foreground">
                 Bitcoin Was Born From This Crisis
               </h3>

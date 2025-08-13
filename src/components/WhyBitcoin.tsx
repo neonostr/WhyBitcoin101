@@ -17,7 +17,7 @@ const WhyBitcoin = () => {
         <div className="grid md:grid-cols-2 gap-8">
           <div className="relative p-8 rounded-2xl bg-card border border-border/50 hover:border-primary/30 transition-all duration-300 group overflow-hidden">
             <div className="absolute inset-0 bg-gradient-to-br from-primary to-bitcoin-orange opacity-0 group-hover:opacity-5 transition-opacity duration-300"></div>
-            <div className="relative z-10">
+            <div className="relative z-10" data-block-id="society-worth-building" data-hashtag="#future-society-011">
               <h3 className="text-2xl font-bold mb-4 text-foreground group-hover:text-primary transition-colors duration-300">
                 A Society Worth Building
               </h3>
@@ -30,7 +30,7 @@ const WhyBitcoin = () => {
           
           <div className="relative p-8 rounded-2xl bg-card border border-border/50 hover:border-primary/30 transition-all duration-300 group overflow-hidden">
             <div className="absolute inset-0 bg-gradient-to-br from-bitcoin-orange to-accent opacity-0 group-hover:opacity-5 transition-opacity duration-300"></div>
-            <div className="relative z-10">
+            <div className="relative z-10" data-block-id="quality-over-quantity" data-hashtag="#content-quality-012">
               <h3 className="text-2xl font-bold mb-4 text-foreground group-hover:text-primary transition-colors duration-300">
                 Quality Over Quantity
               </h3>
