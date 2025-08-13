@@ -6,19 +6,22 @@ import WhyBitcoin from "@/components/WhyBitcoin";
 import Resources from "@/components/Resources";
 import FAQ from "@/components/FAQ";
 import Contact from "@/components/Contact";
+import { EditModeProvider } from "@/contexts/EditModeContext";
 
 const Index = () => {
   return (
-    <div className="min-h-screen bg-background">
-      <Navigation />
-      <Hero />
-      <MoneyProblem />
-      <Basics />
-      <WhyBitcoin />
-      <Resources />
-      <FAQ />
-      <Contact />
-    </div>
+    <EditModeProvider>
+      <div className="min-h-screen bg-background">
+        <Navigation />
+        <Hero />
+        <MoneyProblem />
+        <Basics />
+        <WhyBitcoin />
+        <Resources />
+        <FAQ />
+        <Contact />
+      </div>
+    </EditModeProvider>
   );
 };
 
