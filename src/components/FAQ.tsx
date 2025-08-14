@@ -28,7 +28,7 @@ const NostrQuestionModal = () => {
   ];
 
   const generateRandomUsername = () => {
-    const adjectives = ["Curious", "Learning", "New", "Eager", "Smart", "Bitcoin", "Hope", "Future", "Wise"];
+    const adjectives = ["SteadySats","FreedomLedger", "Learning", "OrangePillJourney", "FutureThinkerBTC", "AskAboutBitcoin", "Bitcoin", "Hope", "Future", "ProofOfCuriosity", "OpenLedgerLearner","BitcoinBeginnerQ","SatoshiStudent","OpenMindSeeker","StackTheFacts","BitcoinSignalQuest","PathToValue","BeyondThePrice","HonestLedger,","ProofOfWhy","DeepMoneyDive","OrangeClarity","OpenSourceWhy"];
     const nouns = ["Student", "Explorer", "Learner", "Seeker", "Beginner", "Enthusiast", "User", "Person", "Individual", "Member"];
     const numbers = Math.floor(Math.random() * 999) + 1;
     
@@ -65,7 +65,7 @@ const NostrQuestionModal = () => {
         tags: [],
         content: JSON.stringify({
           name: username,
-          about: "Created by whybitcoin101.com so this person can get help on his Bitcoin journey. Thanks for helping 🙏\n\nIf you want to help actively orange pilling, check out @npub1umxzqd3zsnxfg7uxtwc0cc5dksjcj46c4dpmn32yaj5sluc66lxskzn2e5 for further guidance.",
+          about: "Real person starting their Bitcoin journey via @npub1uuhsm53er3xxkq90up6gt2wg5vhaz0aenlw4m4rls04thf24heuq8vf4yh. Your reply helps them learn, builds the open Bitcoin FAQ, and fuels the ultimate orange-pill.",
           picture: "https://i.nostr.build/2U0f2VceVxNxy3LV.jpg",
         }),
         pubkey: publicKey,
