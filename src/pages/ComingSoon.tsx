@@ -148,7 +148,7 @@ const ComingSoon = () => {
             </Button>
             
             <p className="text-base text-muted-foreground">
-              Follow us on Nostr to see the community grow in real-time
+              We’re building a new home for Bitcoin education. Join us on Nostr while we create it together.
             </p>
           </div>
           
