@@ -137,7 +137,7 @@ const ComingSoon = () => {
               asChild
             >
               <a 
-                href="https://primal.net/p/npub1qny3tkh0acurzla8x3zy4nhrjz5zd8l9sy9jys09umwng00manysew95gx" 
+                href="https://primal.net/p/npub1uuhsm53er3xxkq90up6gt2wg5vhaz0aenlw4m4rls04thf24heuq8vf4yh" 
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="flex items-center space-x-3"
