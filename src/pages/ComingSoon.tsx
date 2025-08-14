@@ -93,7 +93,7 @@ const ComingSoon = () => {
               <div className="space-y-6">
                 <div className="flex items-start space-x-4 p-6 bg-card/60 backdrop-blur-sm border border-border/30 rounded-2xl hover:border-primary/30 transition-all duration-300">
                   <div className="w-3 h-3 bg-primary rounded-full mt-2 flex-shrink-0"></div>
-                  <p className="text-lg font-medium text-foreground text-left leading-relaxed">Impact at infinite scale - one spark of insight can ignite millions of minds.</p>
+                  <p className="text-lg font-medium text-foreground text-left leading-relaxed">Impact at infinite scale - one spark of insight can ignite infinite minds.</p>
                 </div>
                 <div className="flex items-start space-x-4 p-6 bg-card/60 backdrop-blur-sm border border-border/30 rounded-2xl hover:border-primary/30 transition-all duration-300">
                   <div className="w-3 h-3 bg-primary rounded-full mt-2 flex-shrink-0"></div>
