@@ -122,7 +122,7 @@ const Support = () => {
                 variant="outline"
                 onClick={() =>
                   window.open(
-                    "https://primal.net/p/nprofile1qqsqnlfl9ztzxxtzp674lr7w2pjqdrw3lz73dhwvspx0zegn0j4hgxqglh5xx",
+                    "https://primal.net/p/npub1uuhsm53er3xxkq90up6gt2wg5vhaz0aenlw4m4rls04thf24heuq8vf4yh",
                     "_blank"
                   )
                 }
