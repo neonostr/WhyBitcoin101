@@ -27,11 +27,6 @@ const Navigation = () => {
       clearTimeout(clickTimeoutRef.current);
     }
 
-    // Set new timeout to reset clicks after 5 seconds
-    clickTimeoutRef.current = setTimeout(() => {
-      setClickCount(0);
-    }, 5000);
-
     // Check if we've reached 5 clicks
     if (newClickCount >= 5) {
       setIsEditMode(true);
@@ -40,9 +35,15 @@ const Navigation = () => {
       if (clickTimeoutRef.current) {
         clearTimeout(clickTimeoutRef.current);
       }
-    } else {
-      scrollToSection('contact');
+      return; // Prevent further processing once edit mode is activated
     }
+
+    // Set new timeout to reset clicks after 5 seconds (only if not activating edit mode)
+    clickTimeoutRef.current = setTimeout(() => {
+      setClickCount(0);
+    }, 5000);
+
+    scrollToSection('contact');
   };
 
   const exitEditMode = () => {
