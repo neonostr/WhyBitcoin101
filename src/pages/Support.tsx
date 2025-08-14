@@ -213,7 +213,7 @@ const Support = () => {
   </CardHeader>
   <CardContent>
     <p className="text-muted-foreground leading-relaxed mb-4">
-      Activate hidden edit mode by clicking the Connect button 5 times within 5 seconds on the main page. This reveals copy buttons on every text section and resource across the site. Each button includes a unique hashtag and copies the content with attribution and a template for your improvements. Post to Nostr with the hashtag to contribute to building the world's best Bitcoin education content. Together, we're growing a public knowledge base that serves all of humanity - and this coordinated effort ensures we always have the best content on our educational front to create the ultimate orange pill.
+      Activate hidden edit mode by clicking the Connect button 5 times within 5 seconds on the main page. This reveals copy buttons on every text section and resource across the site. Each button includes a unique hashtag and copies the content with attribution and a template for your improvements. Post to Nostr with the hashtag - the copied content plus your suggested improvements to contribute to building the world's best Bitcoin education content. Together, we're growing a public knowledge base that serves all of humanity - and this coordinated effort ensures we always have the best content on our educational front to create the ultimate orange pill.
     </p>
   </CardContent>
 </Card>
