@@ -4,7 +4,7 @@ import { useEffect, useRef } from "react";
 import InfoModal from "./InfoModal";
 
 const Navigation = () => {
-  const { isEditMode, setIsEditMode, clickCount, setClickCount, setShowInfoModal } = useEditMode();
+  const { isEditMode, setIsEditMode, clickCount, setClickCount, setShowInfoModal, showInfoModal } = useEditMode();
   const clickTimeoutRef = useRef<NodeJS.Timeout | null>(null);
 
   const scrollToSection = (id: string) => {
@@ -14,6 +14,11 @@ const Navigation = () => {
   };
 
   const handleConnectClick = () => {
+    // If modal is open, don't do anything to prevent accidental closure
+    if (showInfoModal) {
+      return;
+    }
+
     if (isEditMode) {
       scrollToSection('contact');
       return;
