@@ -147,7 +147,9 @@ const ComingSoon = () => {
               </a>
             </Button>
             
-       
+            <p className="text-base text-muted-foreground">
+              Follow us on Nostr to see the community grow in real-time
+            </p>
           </div>
           
           <div className="pt-12">
