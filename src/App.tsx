@@ -18,8 +18,15 @@ const RedirectToComingSoon = () => {
   useEffect(() => {
     const urlParams = new URLSearchParams(window.location.search);
     const hasDevParam = urlParams.get('dev') === 'true';
+    console.log('Dev param check:', { 
+      search: window.location.search, 
+      hasDevParam, 
+      devValue: urlParams.get('dev') 
+    });
     setShouldRedirect(!hasDevParam);
   }, []);
+
+  console.log('Should redirect:', shouldRedirect);
 
   if (shouldRedirect) {
     return <Navigate to="/coming-soon" replace />;
