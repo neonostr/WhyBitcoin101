@@ -173,7 +173,7 @@ const NostrQuestionModal = () => {
                     maxLength={280}
                   />
                   <div className="flex justify-center items-center text-xs text-muted-foreground">
-                    <span>No account needed • Anonymous posting • Decentralized network</span>
+                    <span>No account needed • Anonymous posting</span>
                     <span>{question.length}/280</span>
                   </div>
                 </div>
