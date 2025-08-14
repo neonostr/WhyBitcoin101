@@ -14,11 +14,16 @@ const queryClient = new QueryClient();
 
 const RedirectToComingSoon = () => {
   const location = useLocation();
-  const [shouldRedirect, setShouldRedirect] = useState(true);
+  const [shouldRedirect, setShouldRedirect] = useState(() => {
+    // Check on initial render to avoid flash
+    const urlParams = new URLSearchParams(location.search);
+    const devValue = urlParams.get('dev')?.trim().replace(/\?+$/, '');
+    return devValue !== 'true';
+  });
 
   useEffect(() => {
     const urlParams = new URLSearchParams(location.search);
-    const devValue = urlParams.get('dev')?.trim().replace(/\?+$/, ''); // Remove trailing ?
+    const devValue = urlParams.get('dev')?.trim().replace(/\?+$/, '');
     const hasDevParam = devValue === 'true';
     console.log('Dev param check:', { 
       search: location.search, 
@@ -27,14 +32,17 @@ const RedirectToComingSoon = () => {
       rawDevValue: urlParams.get('dev')
     });
     setShouldRedirect(!hasDevParam);
+    console.log('Setting shouldRedirect to:', !hasDevParam);
   }, [location.search]);
 
-  console.log('Should redirect:', shouldRedirect);
+  console.log('Current shouldRedirect state:', shouldRedirect);
 
   if (shouldRedirect) {
+    console.log('Redirecting to coming-soon');
     return <Navigate to={`/coming-soon${location.search}`} replace />;
   }
 
+  console.log('Showing Index page');
   return <Index />;
 };
 
