@@ -143,78 +143,104 @@ const NostrQuestionModal = () => {
           Ask the Community
         </Button>
       </DialogTrigger>
-      <DialogContent className="max-w-md">
-        <DialogHeader>
-          <DialogTitle>
-            {showSuccess ? "Question Posted Successfully!" : "Ask Bitcoin Community"}
-          </DialogTitle>
-        </DialogHeader>
-        
-        {!showSuccess ? (
-          <div className="space-y-4">
-            <p className="text-sm text-muted-foreground">
-              Ask your Bitcoin related question and get an answer from us or the broader community. Your question will be publicly visible, but you'll remain anonymous.
-            </p>
-            
-            <Textarea
-              placeholder="What's your Bitcoin question?"
-              value={question}
-              onChange={(e) => setQuestion(e.target.value)}
-              className="min-h-[100px]"
-              maxLength={280}
-            />
-            
-            <p className="text-xs text-muted-foreground">
-              No account needed • Anonymous posting • Decentralized network
-            </p>
-            
-            <Button 
-              onClick={submitQuestion}
-              disabled={isSubmitting || !question.trim()}
-              className="w-full bg-primary text-primary-foreground hover:bg-primary/90"
-            >
-              <Send className="h-4 w-4 mr-2" />
-              {isSubmitting ? "Posting..." : "Post Question"}
-            </Button>
+      <DialogContent className="max-w-2xl w-full p-0 bg-gradient-to-br from-background to-muted/30 border-0 shadow-2xl">
+        <div className="relative overflow-hidden rounded-lg">
+          {/* Header with gradient background */}
+          <div className="bg-gradient-to-r from-primary/10 via-primary/5 to-background p-8 border-b border-border/20">
+            <DialogHeader>
+              <DialogTitle className="text-2xl font-bold text-center text-foreground">
+                {showSuccess ? "✨ Question Posted Successfully!" : "Ask Bitcoin Community"}
+              </DialogTitle>
+              {!showSuccess && (
+                <p className="text-center text-muted-foreground mt-3 text-base leading-relaxed">
+                  Ask your Bitcoin related question and get an answer from us or the broader community. Your question will be publicly visible, but you'll remain anonymous.
+                </p>
+              )}
+            </DialogHeader>
           </div>
-        ) : (
-          <div className="space-y-4">
-            <div className="flex items-center gap-2 text-green-600">
-              <CheckCircle className="h-5 w-5" />
-              <span className="font-medium">Your question is now live</span>
-            </div>
-            
-            <div className="p-4 bg-muted rounded-lg">
-              <h4 className="font-medium mb-2 text-foreground">Your Question:</h4>
-              <p className="text-sm text-muted-foreground italic">"{postedQuestion}"</p>
-            </div>
-            
-            <div className="space-y-3">
-              <h4 className="font-medium text-foreground">Follow-up Link</h4>
-              <p className="text-xs text-muted-foreground">
-                Save this link to check for responses to your question later:
-              </p>
-              <div className="flex gap-2">
-                <input 
-                  type="text" 
-                  value={followUpLink} 
-                  readOnly 
-                  className="flex-1 px-3 py-2 text-xs bg-background border border-border rounded-md"
-                />
-                <Button size="sm" onClick={copyLink} variant="outline">
-                  <Copy className="h-3 w-3" />
+          
+          {/* Content area */}
+          <div className="p-8">
+            {!showSuccess ? (
+              <div className="space-y-6">
+                <div className="space-y-3">
+                  <label className="text-sm font-medium text-foreground">Your Question</label>
+                  <Textarea
+                    placeholder="What's your Bitcoin question?"
+                    value={question}
+                    onChange={(e) => setQuestion(e.target.value)}
+                    className="min-h-[120px] text-base border-border/50 focus:border-primary/50 bg-background/50 backdrop-blur-sm resize-none"
+                    maxLength={280}
+                  />
+                  <div className="flex justify-between items-center text-xs text-muted-foreground">
+                    <span>No account needed • Anonymous posting • Decentralized network</span>
+                    <span>{question.length}/280</span>
+                  </div>
+                </div>
+                
+                <Button 
+                  onClick={submitQuestion}
+                  disabled={isSubmitting || !question.trim()}
+                  className="w-full h-12 text-base font-medium bg-gradient-to-r from-primary to-primary/80 hover:from-primary/90 hover:to-primary/70 shadow-lg hover:shadow-xl transition-all duration-300"
+                  size="lg"
+                >
+                  <Send className="h-5 w-5 mr-3" />
+                  {isSubmitting ? "Posting your question..." : "Post Question"}
                 </Button>
               </div>
-            </div>
-            
-            <Button 
-              onClick={resetModal}
-              className="w-full bg-primary text-primary-foreground hover:bg-primary/90"
-            >
-              Close
-            </Button>
+            ) : (
+              <div className="space-y-6">
+                <div className="text-center">
+                  <div className="inline-flex items-center gap-3 px-6 py-3 rounded-full bg-green-500/10 border border-green-500/20">
+                    <CheckCircle className="h-6 w-6 text-green-600" />
+                    <span className="font-semibold text-green-700 dark:text-green-400">Your question is now live on Nostr</span>
+                  </div>
+                </div>
+                
+                <div className="p-6 bg-gradient-to-br from-muted/50 to-muted/30 rounded-xl border border-border/30">
+                  <h4 className="font-semibold mb-3 text-foreground flex items-center gap-2">
+                    <span className="w-2 h-2 bg-primary rounded-full"></span>
+                    Your Question:
+                  </h4>
+                  <p className="text-muted-foreground italic leading-relaxed bg-background/30 p-4 rounded-lg border border-border/20">
+                    "{postedQuestion}"
+                  </p>
+                </div>
+                
+                <div className="space-y-4">
+                  <div className="space-y-2">
+                    <h4 className="font-semibold text-foreground flex items-center gap-2">
+                      <span className="w-2 h-2 bg-primary rounded-full"></span>
+                      Follow-up Link
+                    </h4>
+                    <p className="text-sm text-muted-foreground leading-relaxed">
+                      Save this link to check for responses to your question later. Bookmark it or copy it to your notes.
+                    </p>
+                  </div>
+                  <div className="flex gap-3">
+                    <input 
+                      type="text" 
+                      value={followUpLink} 
+                      readOnly 
+                      className="flex-1 px-4 py-3 text-sm bg-background/50 backdrop-blur-sm border border-border/50 rounded-lg focus:border-primary/50 transition-colors"
+                    />
+                    <Button size="lg" onClick={copyLink} variant="outline" className="px-6 border-border/50 hover:border-primary/50">
+                      <Copy className="h-4 w-4" />
+                    </Button>
+                  </div>
+                </div>
+                
+                <Button 
+                  onClick={resetModal}
+                  className="w-full h-12 text-base font-medium bg-gradient-to-r from-primary to-primary/80 hover:from-primary/90 hover:to-primary/70 shadow-lg hover:shadow-xl transition-all duration-300"
+                  size="lg"
+                >
+                  Ask Another Question
+                </Button>
+              </div>
+            )}
           </div>
-        )}
+        </div>
       </DialogContent>
     </Dialog>
   );
