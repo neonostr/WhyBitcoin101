@@ -112,7 +112,7 @@ const Contact = () => {
           <CopyButton text="From Bitcoin to a Freer World - The shift has already begun - not in boardrooms or behind closed doors, but in the hands of everyday people. Around the world, individuals are claiming the right to own their time, their work, and their privacy. Together, we're building systems that remain in the hands of the many, never the few. This is more than money. It's a grassroots movement for self‑sovereignty and a fairer future." hashtag="#whybitcoin101-freer-world" />
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-bold mb-6 text-foreground">
-              From Bitcoin to a Freer World
+              A Movement, Not Just Money
             </h2>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
               The shift has already begun - not in boardrooms or behind closed
