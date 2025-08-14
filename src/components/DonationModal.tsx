@@ -19,8 +19,8 @@ const DonationModal = ({
     lightning: null,
     onchain: null
   });
-  const lightningAddress = "bitcoinbasics@coinos.io";
-  const onchainAddress = "bc1q0mznrxrgmctjmzf7lchnxnv0tlpfyuj03yqrtm";
+  const lightningAddress = "whybitcoin101@coinos.io";
+  const onchainAddress = "bc1pnl2w7ca3z3t6hzy0c7aqj0tep06zakqxn8c52trd0uaj0a9xrytsm8we64";
   const handleCopy = async (text: string, field: string) => {
     try {
       await navigator.clipboard.writeText(text);
