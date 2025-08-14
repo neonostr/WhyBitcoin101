@@ -18,11 +18,13 @@ const RedirectToComingSoon = () => {
 
   useEffect(() => {
     const urlParams = new URLSearchParams(location.search);
-    const hasDevParam = urlParams.get('dev') === 'true';
+    const devValue = urlParams.get('dev')?.trim().replace(/\?+$/, ''); // Remove trailing ?
+    const hasDevParam = devValue === 'true';
     console.log('Dev param check:', { 
       search: location.search, 
       hasDevParam, 
-      devValue: urlParams.get('dev') 
+      devValue,
+      rawDevValue: urlParams.get('dev')
     });
     setShouldRedirect(!hasDevParam);
   }, [location.search]);
