@@ -2,7 +2,7 @@ import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate, useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
 import Index from "./pages/Index";
 import ComingSoon from "./pages/ComingSoon";
@@ -13,23 +13,24 @@ import Support from "./pages/Support";
 const queryClient = new QueryClient();
 
 const RedirectToComingSoon = () => {
+  const location = useLocation();
   const [shouldRedirect, setShouldRedirect] = useState(true);
 
   useEffect(() => {
-    const urlParams = new URLSearchParams(window.location.search);
+    const urlParams = new URLSearchParams(location.search);
     const hasDevParam = urlParams.get('dev') === 'true';
     console.log('Dev param check:', { 
-      search: window.location.search, 
+      search: location.search, 
       hasDevParam, 
       devValue: urlParams.get('dev') 
     });
     setShouldRedirect(!hasDevParam);
-  }, []);
+  }, [location.search]);
 
   console.log('Should redirect:', shouldRedirect);
 
   if (shouldRedirect) {
-    return <Navigate to="/coming-soon" replace />;
+    return <Navigate to={`/coming-soon${location.search}`} replace />;
   }
 
   return <Index />;
