@@ -81,24 +81,33 @@ const ComingSoon = () => {
             </h2>
             <div className="grid md:grid-cols-2 gap-8">
               <div className="space-y-6">
-                <div className="flex items-start space-x-4 p-6 bg-card/60 backdrop-blur-sm border border-border/30 rounded-2xl hover:border-primary/30 transition-all duration-300">
-                  <div className="w-3 h-3 bg-primary rounded-full mt-2 flex-shrink-0"></div>
-                  <span className="text-lg font-medium text-foreground">A unified voice for Bitcoin’s truth - built together, refined endlessly, and shared freely with the world.</span>
-                </div>
-                <div className="flex items-start space-x-4 p-6 bg-card/60 backdrop-blur-sm border border-border/30 rounded-2xl hover:border-primary/30 transition-all duration-300">
-                  <div className="w-3 h-3 bg-primary rounded-full mt-2 flex-shrink-0"></div>
-                  <span className="text-lg font-medium text-foreground">Global coordination on permissionless rails - no gates, no leaders, just unstoppable collaboration.</span>
-                </div>
-              </div>
-              <div className="space-y-6">
-                <div className="flex items-start space-x-4 p-6 bg-card/60 backdrop-blur-sm border border-border/30 rounded-2xl hover:border-primary/30 transition-all duration-300">
-                  <div className="w-3 h-3 bg-primary rounded-full mt-2 flex-shrink-0"></div>
-                  <span className="text-lg font-medium text-foreground">Impact at infinite scale - one spark of insight can ignite millions of minds.</span>
-                </div>
-                <div className="flex items-start space-x-4 p-6 bg-card/60 backdrop-blur-sm border border-border/30 rounded-2xl hover:border-primary/30 transition-all duration-300">
-                  <div className="w-3 h-3 bg-primary rounded-full mt-2 flex-shrink-0"></div>
-                  <span className="text-lg font-medium text-foreground">A collective legacy - knowledge created for humanity, belonging to everyone, forever.</span>
-                </div>
+        <div className="flex items-start space-x-4 p-6 bg-card/60 backdrop-blur-sm border border-border/30 rounded-2xl hover:border-primary/30 transition-all duration-300">
+  <div className="w-3 h-3 bg-primary rounded-full mt-2 flex-shrink-0"></div>
+  <span className="text-lg font-medium text-foreground">
+    A unified voice for Bitcoin’s truth — built together, refined endlessly, and shared freely with the world.
+  </span>
+</div>
+
+<div className="flex items-start space-x-4 p-6 bg-card/60 backdrop-blur-sm border border-border/30 rounded-2xl hover:border-primary/30 transition-all duration-300">
+  <div className="w-3 h-3 bg-primary rounded-full mt-2 flex-shrink-0"></div>
+  <span className="text-lg font-medium text-foreground">
+    Global coordination on permissionless rails — no gates, no leaders, just unstoppable collaboration.
+  </span>
+</div>
+
+<div className="flex items-start space-x-4 p-6 bg-card/60 backdrop-blur-sm border border-border/30 rounded-2xl hover:border-primary/30 transition-all duration-300">
+  <div className="w-3 h-3 bg-primary rounded-full mt-2 flex-shrink-0"></div>
+  <span className="text-lg font-medium text-foreground">
+    Impact at infinite scale — one spark of insight can ignite millions of minds.
+  </span>
+</div>
+
+<div className="flex items-start space-x-4 p-6 bg-card/60 backdrop-blur-sm border border-border/30 rounded-2xl hover:border-primary/30 transition-all duration-300">
+  <div className="w-3 h-3 bg-primary rounded-full mt-2 flex-shrink-0"></div>
+  <span className="text-lg font-medium text-foreground">
+    A collective legacy — knowledge created for humanity, belonging to everyone, forever.
+  </span>
+</div>
               </div>
             </div>
           </div>
