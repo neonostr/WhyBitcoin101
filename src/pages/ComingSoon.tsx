@@ -72,18 +72,18 @@ const ComingSoon = () => {
         </div>
       </div>
 
-      {/* What's Coming */}
+      {/* The Ultimate Orange Pill */}
       <div className="container mx-auto px-4 py-16 relative z-10">
         <div className="max-w-5xl mx-auto">
           <div className="text-center space-y-12">
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-primary leading-tight">
-              A platform that changes everything.
+              The Ultimate Orange Pill
             </h2>
             <div className="grid md:grid-cols-2 gap-8">
               <div className="space-y-6">
                 <div className="flex items-start space-x-4 p-6 bg-card/60 backdrop-blur-sm border border-border/30 rounded-2xl hover:border-primary/30 transition-all duration-300">
                   <div className="w-3 h-3 bg-primary rounded-full mt-2 flex-shrink-0"></div>
-                  <span className="text-lg font-medium text-foreground">Hidden edit mode for educators to improve content</span>
+                  <span className="text-lg font-medium text-foreground">Hidden edit mode for us to improve content</span>
                 </div>
                 <div className="flex items-start space-x-4 p-6 bg-card/60 backdrop-blur-sm border border-border/30 rounded-2xl hover:border-primary/30 transition-all duration-300">
                   <div className="w-3 h-3 bg-primary rounded-full mt-2 flex-shrink-0"></div>
@@ -97,7 +97,7 @@ const ComingSoon = () => {
                 </div>
                 <div className="flex items-start space-x-4 p-6 bg-card/60 backdrop-blur-sm border border-border/30 rounded-2xl hover:border-primary/30 transition-all duration-300">
                   <div className="w-3 h-3 bg-primary rounded-full mt-2 flex-shrink-0"></div>
-                  <span className="text-lg font-medium text-foreground">Community-driven content that serves all of humanity</span>
+                  <span className="text-lg font-medium text-foreground">Collective content that serves all of humanity</span>
                 </div>
               </div>
             </div>
