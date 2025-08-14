@@ -172,7 +172,7 @@ const NostrQuestionModal = () => {
                     className="min-h-[120px] text-base border-border/50 focus:border-primary/50 bg-background/50 backdrop-blur-sm resize-none"
                     maxLength={280}
                   />
-                  <div className="flex justify-between items-center text-xs text-muted-foreground">
+                  <div className="flex justify-center items-center text-xs text-muted-foreground">
                     <span>No account needed • Anonymous posting • Decentralized network</span>
                     <span>{question.length}/280</span>
                   </div>
