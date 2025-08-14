@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { ArrowLeft, Heart, Share2, MessageCircle, Gift } from "lucide-react";
+import { ArrowLeft, Heart, Share2, MessageCircle, Gift, Copy } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import DonationModal from "@/components/DonationModal";
@@ -202,6 +202,24 @@ const Support = () => {
               </p>
             </CardContent>
           </Card>
+
+          {/* Copy & Improve Content - NEW CARD */}
+<Card className="border-primary/20 col-span-1 md:col-span-2">
+  <CardHeader>
+    <CardTitle className="flex items-center gap-2 text-foreground">
+      <Copy className="h-5 w-5" />
+      Copy & Improve Content
+    </CardTitle>
+  </CardHeader>
+  <CardContent>
+    <p className="text-muted-foreground leading-relaxed mb-4">
+      Activate hidden edit mode by clicking the Connect button 5 times within 5 seconds on the main page. This reveals copy buttons on every text section and resource across the site. Each button includes a unique hashtag and copies the content with attribution and a template for your improvements. Post to Nostr with the hashtag to contribute to building the world's best Bitcoin education content. Together, we're growing a public knowledge base that serves all of humanity - and this coordinated effort ensures we always have the best content on our educational front to create the ultimate orange pill.
+    </p>
+  </CardContent>
+</Card>
+
+
+          
 
           {/* Spread Awareness */}
           <Card className="border-primary/20">
