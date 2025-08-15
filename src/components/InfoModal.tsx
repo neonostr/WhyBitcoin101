@@ -17,14 +17,14 @@ const InfoModal = () => {
             Welcome to the Bitcoin Education Revolution
           </p>
           <p>
-            Together we are building the most complete open Bitcoin knowledge base on permissionless rails. This library is our toolbox - the source we distill into sharp, impactful, curiosity‑driving content for our education hub. That’s where we make Bitcoin click for anyone, anywhere - the ultimate orange pill.
+            Together we are building the most complete open Bitcoin knowledge base on permissionless rails. This library is our toolbox - the source we distill into sharp, impactful, curiosity‑driving content for our education hub. That's where we make Bitcoin click for anyone, anywhere - <strong>the ultimate orange pill</strong>.
           </p>
 
           <p className="mt-4 font-medium">
             <strong>How it works:</strong>
           </p>
           <ul className="list-disc pl-6 space-y-2">
-            <li>Find a section or resource you’d like to improve or expand</li>
+            <li>Find a section or resource you'd like to improve or expand</li>
             <li>Click Copy — it will include the original text plus a unique hashtag</li>
             <li>Edit your version to make it clearer, sharper, or more inspiring</li>
             <li>Post it to Nostr with the hashtag so it becomes part of the open pool</li>
@@ -34,11 +34,6 @@ const InfoModal = () => {
           <p className="mt-4 text-center italic">
             Every edit here makes the ultimate orange pill stronger. Every improvement helps one more person see why Bitcoin matters.
           </p>
-
-          <p className="text-center font-medium">
-            Ready? Let’s do this together.
-          </p>
-          
           <div className="flex justify-center gap-4 pt-4">
             <Button onClick={() => setShowInfoModal(false)} className="bg-primary text-primary-foreground">
               Start Editing
