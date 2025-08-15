@@ -296,7 +296,6 @@ const Support = () => {
             </Card>
           </div>
         </div>
-      </div>
       
       <DonationModal 
         isOpen={donationModalOpen} 
