@@ -80,7 +80,7 @@ const NostrQuestionModal = () => {
       pool.publish(relays, signedProfileEvent);
       
       // Auto-follow the specified profile
-      const targetPubkey = "01472b55fece0a487dde1dae47fb0c498a043b8b777ae21e2e25078002521368"; // npub1uuhsm53er3xxkq90up6gt2wg5vhaz0aenlw4m4rls04thf24heuq8vf4yh
+      const targetPubkey = "e72f0dd2391c4c6b00afe07485a9c8a32fd13fb99fdd5dd47f83eabba555be78"; // npub1uuhsm53er3xxkq90up6gt2wg5vhaz0aenlw4m4rls04thf24heuq8vf4yh
       const followEvent = {
         kind: 3,
         created_at: Math.floor(Date.now() / 1000),
