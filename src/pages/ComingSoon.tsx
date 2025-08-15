@@ -14,15 +14,11 @@ const ComingSoon = () => {
           {/* Main Headline */}
           <div className="space-y-6">
             <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold text-foreground leading-tight tracking-tight">
-              The Bitcoin Education
-              <span className="block text-transparent bg-clip-text bg-gradient-to-r from-primary via-primary to-primary/80 mt-2">
-                Revolution is{" "}
-                <span className="relative inline-block">
-                  <span className="coming-text">Coming</span>
-                  <span className="here-text opacity-0">Here</span>
-                </span>
-              </span>
-            </h1>
+  The Bitcoin Education
+  <span className="block bg-clip-text text-transparent bg-gradient-to-r from-yellow-400 via-orange-500 to-red-500 mt-2 line-through decoration-4 decoration-red-500/80">
+    Revolution is Coming
+  </span>
+</h1>
             
             {/* Subheadline */}
             <div className="inline-block px-8 py-4 bg-gradient-to-r from-primary/10 to-primary/5 border border-primary/20 rounded-2xl">
