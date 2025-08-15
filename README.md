@@ -1,73 +1,54 @@
-# Welcome to your Lovable project
+# WhyBitcoin101 🧡
 
-## Project info
+**The Ultimate Orange Pill - Building Bitcoin's Future on Permissionless Rails**
 
-**URL**: https://lovable.dev/projects/20938225-7cee-4caa-8806-ff094b8155d9
+## Our Mission
 
-## How can I edit this code?
+We're not just building another Bitcoin education site. We're architecting the future of how Bitcoin knowledge spreads - permissionlessly, unstoppably, and collectively.
 
-There are several ways of editing your application.
+## The Vision: Three Layers of Bitcoin Education
 
-**Use Lovable**
+### Layer 1: The Open Flood
+All Bitcoin knowledge and discussion happens on **Nostr** - permissionless, uncensorable, unstoppable. Every insight, every improvement, every breakthrough gets connected through the unifying hashtag **#whybitcoin101**, making every contribution part of something bigger.
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/20938225-7cee-4caa-8806-ff094b8155d9) and start prompting.
+### Layer 2: The Signal  
+[@WhyBitcoin101](https://primal.net/whybitcoin101) works as our collective signal - linking efforts, amplifying the best insights, and making Bitcoin knowledge easier to discover. No gatekeepers. No algorithms deciding what you see.
 
-Changes made via Lovable will be committed automatically to this repo.
+### Layer 3: The Pill
+The very best gets distilled into **whybitcoin101.com** - the ultimate Bitcoin orange pill, designed to reach anyone, anywhere. Sharp, clear, undeniable.
 
-**Use your preferred IDE**
+## Why This Matters
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+Bitcoin deserves better than scattered, censored, or gatekept education. We're building the knowledge infrastructure that Bitcoin needs to reach everyone - from the curious normie to the seasoned Bitcoiner who wants to improve our collective understanding.
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+**The End Game:** The world understands Bitcoin. The world changes.
 
-Follow these steps:
+## How Bitcoiners Can Get Involved
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+This isn't just a website - it's a movement. Here's how you can help build the ultimate orange pill:
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+1. **Improve Our Content**: Find a section you can make better, clearer, stronger
+2. **Copy & Enhance**: Use our hidden edit mode to copy text with improvement templates
+3. **Share on Nostr**: Post your improvements with #whybitcoin101 
+4. **Answer Questions**: Help newcomers in #asknostr with #whybitcoin101-faq
+5. **Spread the Word**: Share whybitcoin101.com with anyone ready to learn
 
-# Step 3: Install the necessary dependencies.
-npm i
+## The Technology
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
-```
+Built on modern, fast, reliable tech:
+- React + TypeScript for bulletproof functionality
+- Tailwind CSS for beautiful, responsive design  
+- Nostr integration for permissionless coordination
+- Lightning Network for instant, global value transfer
 
-**Edit a file directly in GitHub**
+## Join the Revolution
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+This is bigger than any single project. We're laying the foundation for how Bitcoin knowledge spreads in a post-fiat world.
 
-**Use GitHub Codespaces**
+**Ready to help build the future?** 
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+Visit [whybitcoin101.com](https://whybitcoin101.com) and start improving Bitcoin education for everyone.
 
-## What technologies are used for this project?
+---
 
-This project is built with:
-
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
-
-## How can I deploy this project?
-
-Simply open [Lovable](https://lovable.dev/projects/20938225-7cee-4caa-8806-ff094b8155d9) and click on Share -> Publish.
-
-## Can I connect a custom domain to my Lovable project?
-
-Yes, you can!
-
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
-
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
+*Building the orange pill that changes everything. One improvement at a time.*
