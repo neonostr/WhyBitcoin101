@@ -47,7 +47,7 @@ This is bigger than any single project. We're laying the foundation for how Bitc
 
 **Ready to help build the future?** 
 
-Visit [whybitcoin101.com](https://whybitcoin101.com) and start improving Bitcoin education for everyone.
+Visit [whybitcoin101.com/mission](https://whybitcoin101.com/mission) and start improving Bitcoin education for everyone.
 
 ---
 
