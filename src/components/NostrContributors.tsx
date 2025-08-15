@@ -125,13 +125,12 @@ const NostrContributors = () => {
       <CardHeader>
         <CardTitle className="flex items-center gap-2 text-foreground">
           <Users className="h-5 w-5" />
-          Thank You to Our Contributors
+          Thank You To Our Contributors
         </CardTitle>
       </CardHeader>
       <CardContent>
         <p className="text-muted-foreground leading-relaxed mb-6">
-          Thank you to everyone helping the world understand Bitcoin! Here are some of the most active contributors 
-          whose content we actively use on our educational front and who help a lot on Nostr.
+          Shoutout to the amazing people whose work powers our site — from resource creators to active Nostr educators!
         </p>
         
         {loading ? (
