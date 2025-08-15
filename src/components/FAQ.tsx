@@ -174,7 +174,7 @@ const NostrQuestionModal = () => {
                   />
                   <div className="flex justify-center items-center text-xs text-muted-foreground">
                     <span>No account needed • Anonymous posting</span>
-                    <span>{question.length}/280</span>
+                    <span>{question.length}/500</span>
                   </div>
                 </div>
                 
