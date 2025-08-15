@@ -17,9 +17,9 @@ const ComingSoon = () => {
               The Bitcoin Education
               <span className="block text-transparent bg-clip-text bg-gradient-to-r from-primary via-primary to-primary/80 mt-2">
                 Revolution is{" "}
-                <span className="relative inline-block text-word-container">
-                  <span className="text-word coming-text text-transparent bg-clip-text bg-gradient-to-r from-primary via-primary to-primary/80">Coming</span>
-                  <span className="text-word here-text text-transparent bg-clip-text bg-gradient-to-r from-primary via-primary to-primary/80">Here</span>
+                <span className="relative inline-block">
+                  <span className="coming-text">Coming</span>
+                  <span className="here-text opacity-0">Here</span>
                 </span>
               </span>
             </h1>

@@ -120,23 +120,10 @@ All colors MUST be HSL.
   }
 
   /* Coming to Here animation - runs once only */
-  .text-word-container {
-    display: inline-block;
-    position: relative;
-  }
-
-  .text-word {
-    display: inline-block;
-    position: absolute;
-    top: 0;
-    left: 0;
-    white-space: nowrap;
-  }
-
   .coming-text {
-    opacity: 1;
-    animation: strikethrough-fade-out 3s ease-in-out forwards;
-    animation-delay: 2s;
+    position: relative;
+    animation: strikethrough-and-fade 3s ease-in-out forwards;
+    animation-delay: 1s;
   }
 
   .coming-text::after {
@@ -148,22 +135,25 @@ All colors MUST be HSL.
     height: 2px;
     background: hsl(var(--primary));
     transform: translateY(-50%);
-    animation: draw-line 3s ease-in-out forwards;
-    animation-delay: 2s;
+    animation: strikethrough-line 3s ease-in-out forwards;
+    animation-delay: 1s;
   }
 
   .here-text {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
     opacity: 0;
-    transform: translateY(5px);
     animation: fade-in-here 3s ease-in-out forwards;
-    animation-delay: 2s;
+    animation-delay: 1s;
   }
 
-  @keyframes draw-line {
-    0%, 33% {
+  @keyframes strikethrough-line {
+    0%, 30% {
       width: 0;
     }
-    66% {
+    60% {
       width: 100%;
     }
     100% {
@@ -171,12 +161,12 @@ All colors MUST be HSL.
     }
   }
 
-  @keyframes strikethrough-fade-out {
-    0%, 33% {
+  @keyframes strikethrough-and-fade {
+    0%, 30% {
       opacity: 1;
     }
-    66% {
-      opacity: 0.4;
+    60% {
+      opacity: 0.3;
     }
     100% {
       opacity: 0;
@@ -184,9 +174,9 @@ All colors MUST be HSL.
   }
 
   @keyframes fade-in-here {
-    0%, 66% {
+    0%, 70% {
       opacity: 0;
-      transform: translateY(5px);
+      transform: translateY(10px);
     }
     100% {
       opacity: 1;
