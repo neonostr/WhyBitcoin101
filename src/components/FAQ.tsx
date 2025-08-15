@@ -67,7 +67,7 @@ const NostrQuestionModal = () => {
         tags: [],
         content: JSON.stringify({
           name: username,
-          about: "Learning about Bitcoin and asking questions. #test21",
+          about: "Learning about Bitcoin and asking questions. #asknostr #whybitcoin-101",
           picture: "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%2Fid%2FOIP.s6ZcC1Tl3_UXQBQBmP6wRQHaHa%3Fpid%3DApi&f=1&ipt=84c58972f1eb5dbe83ab7f5732d5bd86bef6e913a4686ee995c35f8a25e6e2fb&ipo=images",
         }),
         pubkey: publicKey,
@@ -97,10 +97,11 @@ const NostrQuestionModal = () => {
         kind: 1,
         created_at: Math.floor(Date.now() / 1000),
         tags: [
-          ["t", "test21"],
+          ["t", "whybitcoin-101"],
+          ["t", "asknostr"],
           ["client", "Test"]
         ],
-        content: question + "\n\n#test21",
+        content: question + "\n\n#asknostr #whybitcoin-101",
         pubkey: publicKey,
       };
 

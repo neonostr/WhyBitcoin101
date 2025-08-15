@@ -116,11 +116,11 @@ const QuestionFollow = () => {
 
       const pool = poolRef.current;
       
-      // Find the original question by this pubkey with test21 tag
+      // Find the original question by this pubkey with whybitcoin-101 tag
       const questionFilter = {
         kinds: [1],
         authors: [publicKey],
-        "#t": ["test21"],
+        "#t": ["whybitcoin-101"],
         limit: 1
       };
       
