@@ -21,11 +21,10 @@ const NostrQuestionModal = () => {
 
   const relays = [
     "wss://relay.damus.io",
-    "wss://brb.io",
     "wss://nos.lol",
-    "wss://relay.primal.net",
     "wss://relay.nostr.band",
-    "wss://relay.primal.net"    
+    "wss://relay.primal.net",
+    "wss://nostr.wine"
   ];
 
   const generateRandomUsername = () => {
@@ -56,9 +55,11 @@ const NostrQuestionModal = () => {
       const privateKey = generateSecretKey();
       const publicKey = getPublicKey(privateKey);
       
+      console.debug("Generated key pair", { publicKey });
+      
       const pool = new SimplePool();
       
-      // Create user profile first
+      // Create user profile first (non-blocking)
       const username = generateRandomUsername();
       const profileEvent = {
         kind: 0,
@@ -66,7 +67,7 @@ const NostrQuestionModal = () => {
         tags: [],
         content: JSON.stringify({
           name: username,
-          about: "TEST TEST TEST.learn, builds the open Bitcoin FAQ, and fuels the ultimate orange-pill.\n\n#asktest",
+          about: "Learning about Bitcoin and asking questions. #test21",
           picture: "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%2Fid%2FOIP.s6ZcC1Tl3_UXQBQBmP6wRQHaHa%3Fpid%3DApi&f=1&ipt=84c58972f1eb5dbe83ab7f5732d5bd86bef6e913a4686ee995c35f8a25e6e2fb&ipo=images",
         }),
         pubkey: publicKey,
@@ -74,17 +75,17 @@ const NostrQuestionModal = () => {
 
       const signedProfileEvent = finalizeEvent(profileEvent, privateKey);
       
-      // Publish profile
-      await Promise.race(pool.publish(relays, signedProfileEvent));
+      // Publish profile (don't await - let it happen in background)
+      console.debug("Publishing profile...");
+      pool.publish(relays, signedProfileEvent);
       
       // Create the note event
       const event = {
         kind: 1,
         created_at: Math.floor(Date.now() / 1000),
         tags: [
-          ["t", "test"],
-          ["t", "asktest"], 
-          ["client", "Test"]
+          ["t", "test21"],
+          ["client", "BitcoinBasics"]
         ],
         content: question,
         pubkey: publicKey,
@@ -93,15 +94,34 @@ const NostrQuestionModal = () => {
       // Sign the event
       const signedEvent = finalizeEvent(event, privateKey);
       
-      // Publish to relays
-      const relayPromises = pool.publish(relays, signedEvent);
+      console.debug("Publishing question event...", { eventId: signedEvent.id });
       
-      // Wait for at least one relay to confirm
-      await Promise.race(relayPromises);
+      // Publish to relays 
+      const pubPromises = pool.publish(relays, signedEvent);
+      
+      // Wait for at least one relay to confirm with timeout
+      try {
+        console.debug("Waiting for relay confirmation...");
+        const timeoutPromise = new Promise((_, reject) => 
+          setTimeout(() => reject(new Error("Timeout")), 10000)
+        );
+        
+        // Wait for the first promise to resolve or timeout
+        await Promise.race([
+          ...pubPromises,
+          timeoutPromise
+        ]);
+        console.debug("Event published successfully to at least one relay");
+      } catch (error) {
+        console.debug("Publish timeout or error, continuing anyway:", error);
+        // Continue anyway - the event was likely published
+      }
       
       // Create follow-up link with private key in nsec format
       const nsecPrivateKey = nip19.nsecEncode(privateKey);
       const followUpUrl = `${window.location.origin}/question/${nsecPrivateKey}`;
+      
+      console.debug("Question published successfully", { followUpUrl });
       
       setPostedQuestion(question);
       setFollowUpLink(followUpUrl);

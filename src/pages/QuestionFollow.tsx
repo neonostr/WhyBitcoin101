@@ -116,15 +116,19 @@ const QuestionFollow = () => {
 
       const pool = poolRef.current;
       
-      // Find the original question by this pubkey with bitcoinbasics tag
+      // Find the original question by this pubkey with test21 tag
       const questionFilter = {
         kinds: [1],
         authors: [publicKey],
-        "#t": ["bitcoinbasics"],
+        "#t": ["test21"],
         limit: 1
       };
+      
+      console.debug("Searching for question with filter:", questionFilter);
 
       const questionEvents = await pool.querySync(relays, questionFilter);
+      
+      console.debug("Found question events:", questionEvents.length);
       
       if (questionEvents.length > 0) {
         const question = questionEvents[0];
