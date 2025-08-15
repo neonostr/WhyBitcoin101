@@ -10,8 +10,11 @@ const Support = () => {
   const [donationModalOpen, setDonationModalOpen] = useState(false);
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-background to-primary/5 safe-area-inset">
-      <div className="container mx-auto px-4 py-8 max-w-6xl">
+    <div className="min-h-screen bg-gradient-to-br from-background via-background to-primary/5 relative overflow-hidden safe-area-inset">
+      {/* Background decorative elements */}
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_80%,rgba(120,119,198,0.1),transparent_50%)]"></div>
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_80%_20%,rgba(120,119,198,0.05),transparent_50%)]"></div>
+      <div className="container mx-auto px-4 py-8 max-w-6xl relative z-10">
         {/* Header */}
         <div className="mb-8">
           <Link
@@ -37,7 +40,7 @@ const Support = () => {
           {/* Mission + Nostr Statement side-by-side */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 w-full">
             {/* Mission Statement */}
-            <div className="bg-white rounded-lg p-8 shadow-md border border-border flex flex-col h-full">
+            <div className="bg-gradient-to-r from-card/80 to-card/60 backdrop-blur-sm border border-border/50 rounded-3xl p-8 shadow-2xl flex flex-col h-full">
               <div>
                 <p className="text-2xl font-semibold text-foreground mb-4">
                   We’re on a mission to orange‑pill the world - not with hype, but with truth,
@@ -67,7 +70,7 @@ const Support = () => {
             </div>
 
             {/* Join Nostr Statement */}
-            <div className="bg-white rounded-lg p-8 shadow-md border border-border flex flex-col h-full">
+            <div className="bg-gradient-to-r from-card/80 to-card/60 backdrop-blur-sm border border-border/50 rounded-3xl p-8 shadow-2xl flex flex-col h-full">
               <div className="flex-grow">
                 <p className="text-2xl font-semibold text-foreground mb-4">
                   Why Bitcoiners Are Moving To Nostr
@@ -101,7 +104,7 @@ const Support = () => {
         {/* Support Cards */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 w-full">
           {/* Bitcoin Education Profile & Hub */}
-          <Card className="border-primary/20">
+          <Card className="border-primary/20 bg-card/60 backdrop-blur-sm shadow-xl hover:border-primary/30 transition-all duration-300">
             <CardHeader>
               <CardTitle className="flex items-center gap-2 text-foreground">
                 <MessageCircle className="h-5 w-5" />
@@ -134,7 +137,7 @@ const Support = () => {
           </Card>
 
           {/* Share Content */}
-          <Card className="border-primary/20">
+          <Card className="border-primary/20 bg-card/60 backdrop-blur-sm shadow-xl hover:border-primary/30 transition-all duration-300">
             <CardHeader>
               <CardTitle className="flex items-center gap-2 text-foreground">
                 <Share2 className="h-5 w-5" />
@@ -159,7 +162,7 @@ const Support = () => {
           </Card>
 
           {/* Community Q&A */}
-          <Card className="border-primary/20 col-span-1 md:col-span-2">
+          <Card className="border-primary/20 col-span-1 md:col-span-2 bg-card/60 backdrop-blur-sm shadow-xl hover:border-primary/30 transition-all duration-300">
             <CardHeader>
               <CardTitle className="flex items-center gap-2 text-foreground">
                 <MessageCircle className="h-5 w-5" />
@@ -204,7 +207,7 @@ const Support = () => {
           </Card>
 
           {/* Copy & Improve Content - NEW CARD */}
-<Card className="border-primary/20 col-span-1 md:col-span-2">
+<Card className="border-primary/20 col-span-1 md:col-span-2 bg-card/60 backdrop-blur-sm shadow-xl hover:border-primary/30 transition-all duration-300">
   <CardHeader>
     <CardTitle className="flex items-center gap-2 text-foreground">
       <Copy className="h-5 w-5" />
@@ -222,7 +225,7 @@ const Support = () => {
           
 
           {/* Spread Awareness */}
-          <Card className="border-primary/20">
+          <Card className="border-primary/20 bg-card/60 backdrop-blur-sm shadow-xl hover:border-primary/30 transition-all duration-300">
             <CardHeader>
               <CardTitle className="flex items-center gap-2 text-foreground">
                 <Share2 className="h-5 w-5" />
@@ -240,7 +243,7 @@ const Support = () => {
           </Card>
 
           {/* Donate */}
-          <Card className="border-primary/20">
+          <Card className="border-primary/20 bg-card/60 backdrop-blur-sm shadow-xl hover:border-primary/30 transition-all duration-300">
             <CardHeader>
               <CardTitle className="flex items-center gap-2 text-foreground">
                 <Heart className="h-5 w-5" />
@@ -266,7 +269,7 @@ const Support = () => {
 
           {/* Full-Width Call to Action */}
           <div className="col-span-1 md:col-span-2">
-            <Card className="border-primary/40 bg-primary/5">
+            <Card className="border-primary/40 bg-gradient-to-r from-primary/10 to-primary/5 backdrop-blur-sm shadow-xl">
               <CardHeader>
                 <CardTitle className="text-center text-foreground">
                   United for Bitcoin Education
@@ -302,6 +305,11 @@ const Support = () => {
           <NostrContributors />
         </div>
       </div>
+      
+      {/* Floating decorative elements */}
+      <div className="fixed top-20 left-10 w-32 h-32 bg-gradient-to-br from-primary/20 to-primary/5 rounded-full blur-3xl animate-pulse"></div>
+      <div className="fixed bottom-20 right-10 w-40 h-40 bg-gradient-to-br from-primary/10 to-primary/5 rounded-full blur-3xl animate-pulse delay-1000"></div>
+      <div className="fixed top-1/2 left-1/4 w-24 h-24 bg-gradient-to-br from-primary/15 to-primary/5 rounded-full blur-2xl animate-pulse delay-500"></div>
       
       <DonationModal 
         isOpen={donationModalOpen} 
