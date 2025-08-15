@@ -36,7 +36,7 @@ Here's my suggestion for improvement:
 [EDUCATOR'S IMPROVED VERSION]
 
 ---
-🚀 Join the global Bitcoin education revolution!
+🧡 Join the global Bitcoin education revolution!
 • Copy any section from whybitcoin101.com with its hashtag
 • Post your improvements to Nostr
 • Help build the world's largest Bitcoin FAQ on permissionless rails
