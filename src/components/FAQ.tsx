@@ -24,7 +24,7 @@ const NostrQuestionModal = () => {
     "wss://nos.lol",
     "wss://relay.nostr.band",
     "wss://relay.primal.net",
-    "wss://nostr.wine"
+    "wss://brb.io"
   ];
 
   const generateRandomUsername = () => {
@@ -67,8 +67,8 @@ const NostrQuestionModal = () => {
         tags: [],
         content: JSON.stringify({
           name: username,
-          about: "Learning about Bitcoin and asking questions. #asknostr #whybitcoin-101",
-          picture: "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%2Fid%2FOIP.s6ZcC1Tl3_UXQBQBmP6wRQHaHa%3Fpid%3DApi&f=1&ipt=84c58972f1eb5dbe83ab7f5732d5bd86bef6e913a4686ee995c35f8a25e6e2fb&ipo=images",
+          about: "Real person starting their Bitcoin journey via @npub1uuhsm53er3xxkq90up6gt2wg5vhaz0aenlw4m4rls04thf24heuq8vf4yh. Your reply helps them learn, builds the open Bitcoin FAQ, and fuels the ultimate orange-pill.\n Learn more: whybitcoin101.com/mission",
+          picture: "https://github.com/neonostr/images/blob/main/questions-pfp-whybitcoin101.jpg",
         }),
         pubkey: publicKey,
       };
@@ -97,9 +97,9 @@ const NostrQuestionModal = () => {
         kind: 1,
         created_at: Math.floor(Date.now() / 1000),
         tags: [
-          ["t", "whybitcoin-101"],
           ["t", "asknostr"],
-          ["client", "Test"]
+          ["t", "whybitcoin-101"],
+          ["client", "WhyBitcoin101"]
         ],
         content: question + "\n\n#asknostr #whybitcoin-101",
         pubkey: publicKey,
