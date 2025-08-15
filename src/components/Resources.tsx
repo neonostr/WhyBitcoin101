@@ -34,7 +34,7 @@ Ready to learn more? These carefully curated resources will guide you towards a 
     title: "Bitcoin Timing - Early or Late?",
     description: "Worried you missed the boat? This perspective-shifting analysis reveals why we're still in Bitcoin's early adoption phase and what that means for new buyers.",
     type: "Perspective",
-    url: "https://www.youtubetrimmer.com/view/?v=5893JBg7r9k&start=773&end=1000&loop=0"
+    url: "https://www.youtubetrimmer.com/view/?v=5893JBg7r9k&start=773&end=1003&loop=0"
   }, {
     title: "Bitcoin vs Diversification Myth",
     description: "Challenge conventional investment wisdom. Learn why concentrating in Bitcoin might be the smartest 'diversification' strategy for the digital age.",
