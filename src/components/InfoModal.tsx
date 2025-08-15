@@ -25,14 +25,14 @@ const InfoModal = () => {
           </p>
           <ul className="list-disc pl-6 space-y-2">
             <li>Find a section or resource you'd like to improve or expand</li>
-            <li>Click Copy — it will include the original text plus a unique hashtag</li>
+            <li>Click Copy - it will include the original text plus a unique hashtag</li>
             <li>Edit your version to make it clearer, sharper, or more inspiring</li>
             <li>Post it to Nostr with the hashtag so it becomes part of the open pool</li>
-            <li>Your contribution instantly joins the global stream — viewable, discussable, and reusable by anyone for any project</li>
+            <li>Your contribution instantly joins the global stream - viewable, discussable, and reusable by anyone for any project</li>
           </ul>
 
           <p className="mt-4 text-center italic">
-            Every edit here makes the ultimate orange pill stronger. Every improvement helps one more person see why Bitcoin matters.
+            Every edit makes the orange pill stronger.
           </p>
           <div className="flex justify-center gap-4 pt-4">
             <Button onClick={() => setShowInfoModal(false)} className="bg-primary text-primary-foreground">
