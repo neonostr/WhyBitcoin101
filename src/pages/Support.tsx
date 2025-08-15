@@ -263,10 +263,6 @@ const Support = () => {
             </CardContent>
           </Card>
 
-          {/* Contributors Section */}
-          <div className="col-span-1 md:col-span-2 mt-8">
-            <NostrContributors />
-          </div>
 
           {/* Full-Width Call to Action */}
           <div className="col-span-1 md:col-span-2">
@@ -307,6 +303,13 @@ const Support = () => {
         onClose={() => setDonationModalOpen(false)} 
       />
     </div>
+
+  {/* Contributors Section */}
+          <div className="col-span-1 md:col-span-2 mt-8">
+            <NostrContributors />
+          </div>
+
+    
   );
 };
 
