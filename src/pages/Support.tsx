@@ -249,7 +249,7 @@ const Support = () => {
             </CardHeader>
             <CardContent>
               <p className="text-muted-foreground leading-relaxed mb-4">
-                If you'd like to support this project financially, donations help to
+                If you'd like to support the mission financially, donations help to
                 market, maintain and improve the educational resources.
               </p>
               <Button
