@@ -1,7 +1,7 @@
 import { Copy } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useEditMode } from '@/contexts/EditModeContext';
-import { useToast } from '@/hooks/use-toast';
+import { useToast } from '@/hooks/useToast';
 
 interface CopyButtonProps {
   text: string;
