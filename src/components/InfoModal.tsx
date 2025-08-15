@@ -9,7 +9,7 @@ const InfoModal = () => {
     <Dialog open={showInfoModal} onOpenChange={setShowInfoModal}>
       <DialogContent className="max-w-2xl">
         <DialogHeader>
-          <DialogTitle className="text-2xl text-center">🧡 Edit Mode Activated!</DialogTitle>
+          <DialogTitle className="text-2xl text-center">🧡 Edit Mode Activated</DialogTitle>
         </DialogHeader>
         
         <div className="space-y-4 text-muted-foreground">
