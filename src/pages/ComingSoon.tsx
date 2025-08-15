@@ -1,7 +1,21 @@
 import { Button } from "@/components/ui/button";
 import { ExternalLink } from "lucide-react";
+import { useState, useEffect } from "react";
 
 const ComingSoon = () => {
+  const [showStrikethrough, setShowStrikethrough] = useState(false);
+  const [showHere, setShowHere] = useState(false);
+
+  useEffect(() => {
+    const timer1 = setTimeout(() => setShowStrikethrough(true), 2000);
+    const timer2 = setTimeout(() => setShowHere(true), 3500);
+    
+    return () => {
+      clearTimeout(timer1);
+      clearTimeout(timer2);
+    };
+  }, []);
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-background via-background to-primary/5 relative overflow-hidden">
       {/* Background decorative elements */}
@@ -16,7 +30,30 @@ const ComingSoon = () => {
             <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold text-foreground leading-tight tracking-tight">
               The Bitcoin Education
               <span className="block text-transparent bg-clip-text bg-gradient-to-r from-primary via-primary to-primary/80 mt-2">
-                Revolution is Coming
+                Revolution is{" "}
+                <span className="relative inline-block">
+                  <span 
+                    className={`transition-opacity duration-500 ${
+                      showHere ? 'opacity-0' : 'opacity-100'
+                    } ${
+                      showStrikethrough 
+                        ? 'after:content-[""] after:absolute after:left-0 after:top-1/2 after:w-full after:h-0.5 after:bg-primary after:animate-[strikethrough_1s_ease-in-out_forwards]' 
+                        : ''
+                    }`}
+                    style={{
+                      '--strikethrough-width': showStrikethrough ? '100%' : '0%'
+                    } as React.CSSProperties}
+                  >
+                    Coming
+                  </span>
+                  <span 
+                    className={`absolute left-0 top-0 transition-opacity duration-500 ${
+                      showHere ? 'opacity-100' : 'opacity-0'
+                    }`}
+                  >
+                    Here
+                  </span>
+                </span>
               </span>
             </h1>
             
