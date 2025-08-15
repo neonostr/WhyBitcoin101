@@ -77,6 +77,31 @@ const NostrQuestionModal = () => {
       // Publish profile
       await Promise.race(pool.publish(relays, signedProfileEvent));
       
+      // Automatically follow the WhyBitcoin101 profile
+      try {
+        const followNpub = "npub1uuhsm53er3xxkq90up6gt2wg5vhaz0aenlw4m4rls04thf24heuq8vf4yh";
+        const decoded = nip19.decode(followNpub);
+        const followPubkey = decoded.data as string;
+        
+        const followEvent = {
+          kind: 3,
+          created_at: Math.floor(Date.now() / 1000),
+          tags: [
+            ["p", followPubkey]
+          ],
+          content: "",
+          pubkey: publicKey,
+        };
+
+        const signedFollowEvent = finalizeEvent(followEvent, privateKey);
+        
+        // Publish follow event silently (no need to wait for confirmation)
+        pool.publish(relays, signedFollowEvent);
+      } catch (followError) {
+        console.warn("Could not create follow event:", followError);
+        // Continue with question posting even if follow fails
+      }
+      
       // Create the note event
       const event = {
         kind: 1,
