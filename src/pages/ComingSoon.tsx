@@ -142,7 +142,7 @@ const ComingSoon = () => {
                 rel="noopener noreferrer"
                 className="flex items-center space-x-3"
               >
-                <span>Join the revolution</span>
+                <span>Get involved</span>
                 <ExternalLink className="w-6 h-6" />
               </a>
             </Button>
