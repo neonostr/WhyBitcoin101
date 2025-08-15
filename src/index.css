@@ -119,10 +119,11 @@ All colors MUST be HSL.
     padding-right: env(safe-area-inset-right);
   }
 
-  /* Coming to Here animation */
+  /* Coming to Here animation - runs once only */
   .coming-text {
     position: relative;
-    animation: strikethrough-and-fade 4s ease-in-out infinite;
+    animation: strikethrough-and-fade 3s ease-in-out forwards;
+    animation-delay: 1s;
   }
 
   .coming-text::after {
@@ -134,7 +135,8 @@ All colors MUST be HSL.
     height: 2px;
     background: hsl(var(--primary));
     transform: translateY(-50%);
-    animation: strikethrough-line 4s ease-in-out infinite;
+    animation: strikethrough-line 3s ease-in-out forwards;
+    animation-delay: 1s;
   }
 
   .here-text {
@@ -142,39 +144,41 @@ All colors MUST be HSL.
     top: 0;
     left: 0;
     width: 100%;
-    animation: fade-in-here 4s ease-in-out infinite;
+    opacity: 0;
+    animation: fade-in-here 3s ease-in-out forwards;
+    animation-delay: 1s;
   }
 
   @keyframes strikethrough-line {
-    0%, 20% {
+    0%, 30% {
       width: 0;
     }
-    40%, 60% {
+    60% {
       width: 100%;
     }
-    80%, 100% {
+    100% {
       width: 100%;
     }
   }
 
   @keyframes strikethrough-and-fade {
-    0%, 20% {
+    0%, 30% {
       opacity: 1;
     }
-    40%, 60% {
-      opacity: 0.5;
+    60% {
+      opacity: 0.3;
     }
-    80%, 100% {
+    100% {
       opacity: 0;
     }
   }
 
   @keyframes fade-in-here {
-    0%, 60% {
+    0%, 70% {
       opacity: 0;
       transform: translateY(10px);
     }
-    80%, 100% {
+    100% {
       opacity: 1;
       transform: translateY(0);
     }
