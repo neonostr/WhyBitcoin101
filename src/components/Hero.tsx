@@ -6,7 +6,7 @@ const Hero = () => {
 
 Your journey into understanding the future of money starts here. Simple explanations, trusted resources, and expert guidance.`;
 
-  return <section className="relative min-h-[60vh] flex items-center justify-center bg-gradient-to-br from-background to-bitcoin-light/20 overflow-hidden">
+  return <section className="relative min-h-[60vh] flex items-center justify-center bg-gradient-to-br from-background to-bitcoin-light/20 overflow-hidden relative z-10">
       <div className="container mx-auto px-4 text-center relative z-10">
         <CopyButton text={heroText} hashtag="#whybitcoin101-hero" />
         <div className="max-w-4xl mx-auto">
