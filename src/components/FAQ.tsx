@@ -24,8 +24,7 @@ const NostrQuestionModal = () => {
     "wss://brb.io",
     "wss://nos.lol",
     "wss://relay.primal.net",
-    "wss://relay.nostr.band",
-    "wss://relay.primal.net"    
+    "wss://relay.nostr.band"
   ];
 
   const generateRandomUsername = () => {
@@ -58,50 +57,6 @@ const NostrQuestionModal = () => {
       
       const pool = new SimplePool();
       
-      // Create user profile first
-      const username = generateRandomUsername();
-      const profileEvent = {
-        kind: 0,
-        created_at: Math.floor(Date.now() / 1000),
-        tags: [],
-        content: JSON.stringify({
-          name: username,
-          about: "TEST TEST TEST.learn, builds the open Bitcoin FAQ, and fuels the ultimate orange-pill.\n\n#asktest",
-          picture: "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%2Fid%2FOIP.s6ZcC1Tl3_UXQBQBmP6wRQHaHa%3Fpid%3DApi&f=1&ipt=84c58972f1eb5dbe83ab7f5732d5bd86bef6e913a4686ee995c35f8a25e6e2fb&ipo=images",
-        }),
-        pubkey: publicKey,
-      };
-
-      const signedProfileEvent = finalizeEvent(profileEvent, privateKey);
-      
-      // Publish profile
-      await Promise.race(pool.publish(relays, signedProfileEvent));
-      
-      // Automatically follow the WhyBitcoin101 profile
-      try {
-        const followNpub = "npub1uuhsm53er3xxkq90up6gt2wg5vhaz0aenlw4m4rls04thf24heuq8vf4yh";
-        const decoded = nip19.decode(followNpub);
-        const followPubkey = decoded.data as string;
-        
-        const followEvent = {
-          kind: 3,
-          created_at: Math.floor(Date.now() / 1000),
-          tags: [
-            ["p", followPubkey]
-          ],
-          content: "",
-          pubkey: publicKey,
-        };
-
-        const signedFollowEvent = finalizeEvent(followEvent, privateKey);
-        
-        // Publish follow event silently (no need to wait for confirmation)
-        pool.publish(relays, signedFollowEvent);
-      } catch (followError) {
-        console.warn("Could not create follow event:", followError);
-        // Continue with question posting even if follow fails
-      }
-      
       // Create the note event
       const event = {
         kind: 1,
@@ -118,11 +73,12 @@ const NostrQuestionModal = () => {
       // Sign the event
       const signedEvent = finalizeEvent(event, privateKey);
       
-      // Publish to relays
-      const relayPromises = pool.publish(relays, signedEvent);
+      // Publish to relays and wait for at least one success
+      const publishPromises = pool.publish(relays, signedEvent);
+      const publishArray = Array.from(publishPromises);
       
       // Wait for at least one relay to confirm
-      await Promise.race(relayPromises);
+      await Promise.race(publishArray);
       
       // Create follow-up link with private key in nsec format
       const nsecPrivateKey = nip19.nsecEncode(privateKey);
@@ -132,6 +88,8 @@ const NostrQuestionModal = () => {
       setFollowUpLink(followUpUrl);
       setShowSuccess(true);
       setQuestion("");
+      
+      // Close pool after success
       pool.close(relays);
       
     } catch (error) {
