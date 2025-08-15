@@ -31,6 +31,8 @@ const ComingSoon = () => {
               The Bitcoin Education
               <span className="block text-transparent bg-clip-text bg-gradient-to-r from-primary via-primary to-primary/80 mt-2">
                 Revolution is{" "}
+              </span>
+              <span className="block text-transparent bg-clip-text bg-gradient-to-r from-primary via-primary to-primary/80 mt-2">
                 <span className="relative inline-block">
                   <span 
                     className={`transition-opacity duration-500 ${
@@ -40,9 +42,6 @@ const ComingSoon = () => {
                         ? 'after:content-[""] after:absolute after:left-0 after:top-1/2 after:w-full after:h-0.5 after:bg-primary after:animate-[strikethrough_1s_ease-in-out_forwards]' 
                         : ''
                     }`}
-                    style={{
-                      '--strikethrough-width': showStrikethrough ? '100%' : '0%'
-                    } as React.CSSProperties}
                   >
                     Coming
                   </span>
