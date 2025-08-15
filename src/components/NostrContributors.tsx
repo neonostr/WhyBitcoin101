@@ -130,7 +130,7 @@ const NostrContributors = () => {
       </CardHeader>
       <CardContent>
         <p className="text-muted-foreground leading-relaxed mb-6">
-          We're grateful to those making Bitcoin education possible - from creators whose work we feature on our site to active voices on Nostr who grow the global knowledge base."
+          We're grateful to those making Bitcoin education possible - from creators whose work we feature on our site to active voices on Nostr who grow the global knowledge base.
         </p>
         
         {loading ? (
