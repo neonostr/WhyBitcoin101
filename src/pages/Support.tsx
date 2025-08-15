@@ -296,19 +296,18 @@ const Support = () => {
             </Card>
           </div>
         </div>
+
+        {/* Contributors Section */}
+        <div className="col-span-1 md:col-span-2 mt-8">
+          <NostrContributors />
+        </div>
+      </div>
       
       <DonationModal 
         isOpen={donationModalOpen} 
         onClose={() => setDonationModalOpen(false)} 
       />
     </div>
-
-  {/* Contributors Section */}
-          <div className="col-span-1 md:col-span-2 mt-8">
-            <NostrContributors />
-          </div>
-
-    
   );
 };
 
