@@ -33,19 +33,18 @@ ${hashtag}
 Text from whybitcoin101.com
 
 Here's my suggestion for improvement:
-[YOUR IMPROVED VERSION]
+[EDUCATOR'S IMPROVED VERSION]
 
 ---
-🚀 Join the Bitcoin Education Revolution
-• Copy a section from whybitcoin101.com
-• Improve it — clearer, stronger, sharper
-• Post it to Nostr with tags
-• Help build the world’s biggest open Bitcoin FAQ to orange‑pill the world
-• Every answer plants a seed of Bitcoin understanding that can reach billions
+🚀 Join the global Bitcoin education revolution!
+• Copy any section from whybitcoin101.com with its hashtag
+• Post your improvements to Nostr
+• Help build the world's largest Bitcoin FAQ on permissionless rails
+• One answer can reach billions of people worldwide
 
-⚡ Orange‑pilling the world — not with hype, but with truth, connection, and action.
+This is how we orange-pill the world together - not with hype, but with truth, connection, and action.
 
-#bitcoineducation #whybitcoin101 #orange-pill #nostr;
+#bitcoineducation #nostr #whybitcoin101 #orange-pill`;
 
     navigator.clipboard.writeText(formattedText).then(() => {
       console.log('Text copied to clipboard');
