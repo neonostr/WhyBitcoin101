@@ -33,19 +33,20 @@ ${hashtag}
 Text from whybitcoin101.com
 
 Here's my suggestion for improvement:
-[EDUCATOR'S IMPROVED VERSION]
+[YOUR IMPROVED VERSION]
 
 ---
-🧡 We’re building the ultimate orange pill
 
-Layer 1:
-The Open Flood: All Bitcoin knowledge and discussion is happening on Nostr — permissionless, uncensorable, unstoppable — and connected through the unifying hashtag #whybitcoin101 so every contribution becomes part of the bigger picture.
+🧡 We're building the ultimate orange pill
 
-Layer 2:
-The Signal: @npub1uuhsm53er3xxkq90up6gt2wg5vhaz0aenlw4m4rls04thf24heuq8vf4yh works as a collective signal — linking efforts, amplifying the best insights, and making Bitcoin knowledge easier to discover.
+Layer 1
+The Open Flood: All Bitcoin knowledge and discussion is happening on Nostr - permissionless, uncensorable, unstoppable - and connected through the unifying hashtag #whybitcoin101 so every contribution becomes part of the bigger picture.
 
-Layer 3:
-The Pill: The very best is distilled on whybitcoin101.com — into the ultimate Bitcoin orange pill, designed to reach anyone, anywhere.
+Layer 2
+The Signal: @npub1uuhsm53er3xxkq90up6gt2wg5vhaz0aenlw4m4rls04thf24heuq8vf4yh works as a collective signal - linking efforts, amplifying the best insights, and making Bitcoin knowledge easier to discover.
+
+Layer 3
+The Pill: The very best is distilled on whybitcoin101.com - into the ultimate Bitcoin orange pill, designed to reach anyone, anywhere.
 
 Final Step:
 The world understands Bitcoin. The world changes.
@@ -56,7 +57,7 @@ Get Involved:
 • Post it to Nostr
 • Help refine the orange pill that will wake the world
 
-True Bitcoin education - not hype, but truth, connection, and action.
+True Bitcoin education - less hype, but truth, connection, and action.
 
 #bitcoineducation #whybitcoin101 #orange-pill #nostr`
 
