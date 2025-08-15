@@ -17,7 +17,7 @@ const InfoModal = () => {
             Welcome to the Bitcoin Education Revolution
           </p>
           <p>
-            Together we are building the most complete open Bitcoin knowledge base on permissionless rails. This library is our toolbox - the source we distill into sharp, impactful, curiosity‑driving content for our education hub. That's where we make Bitcoin click for anyone, anywhere - <strong>the ultimate orange pill</strong>.
+            <strong>Together we are building</strong> the most complete open Bitcoin knowledge base on permissionless rails. This library is our toolbox - the source we distill into sharp, impactful, curiosity‑driving content for our education hub. That's where we make Bitcoin click for anyone, anywhere - <strong>the ultimate orange pill</strong>.
           </p>
 
           <p className="mt-4 font-medium">
