@@ -10,6 +10,10 @@ import { nip19 } from "nostr-tools";
 import { SimplePool } from "nostr-tools/pool";
 import CopyButton from "./CopyButton";
 
+import { useNostrPublish } from "@/hooks/useNostrPublish";
+import { useCurrentUser } from "@/hooks/useCurrentUser";
+
+
 const NostrQuestionModal = () => {
   const [open, setOpen] = useState(false);
   const [question, setQuestion] = useState("");
