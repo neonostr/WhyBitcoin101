@@ -21,6 +21,7 @@ const NostrQuestionModal = () => {
 
   const relays = [
     "wss://relay.damus.io",
+    "wss://brb.io",
     "wss://nos.lol",
     "wss://relay.primal.net",
     "wss://relay.nostr.band",
@@ -65,8 +66,8 @@ const NostrQuestionModal = () => {
         tags: [],
         content: JSON.stringify({
           name: username,
-          about: "Real person starting their Bitcoin journey via @npub1uuhsm53er3xxkq90up6gt2wg5vhaz0aenlw4m4rls04thf24heuq8vf4yh. Your reply helps them learn, builds the open Bitcoin FAQ, and fuels the ultimate orange-pill.",
-          picture: "https://i.nostr.build/2U0f2VceVxNxy3LV.jpg",
+          about: "TEST TEST TEST.learn, builds the open Bitcoin FAQ, and fuels the ultimate orange-pill.\n\n#asktest",
+          picture: "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%2Fid%2FOIP.s6ZcC1Tl3_UXQBQBmP6wRQHaHa%3Fpid%3DApi&f=1&ipt=84c58972f1eb5dbe83ab7f5732d5bd86bef6e913a4686ee995c35f8a25e6e2fb&ipo=images",
         }),
         pubkey: publicKey,
       };
@@ -81,10 +82,9 @@ const NostrQuestionModal = () => {
         kind: 1,
         created_at: Math.floor(Date.now() / 1000),
         tags: [
-          ["t", "teststr"],
-          ["t", "bitcoinbasics"], 
-          ["t", "bitcoinknowledgehub"],
-          ["client", "BitcoinBasics"]
+          ["t", "test"],
+          ["t", "asktest"], 
+          ["client", "Test"]
         ],
         content: question,
         pubkey: publicKey,
