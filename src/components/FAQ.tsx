@@ -85,7 +85,7 @@ const NostrQuestionModal = () => {
         created_at: Math.floor(Date.now() / 1000),
         tags: [
           ["t", "test21"],
-          ["client", "BitcoinBasics"]
+          ["client", "Test"]
         ],
         content: question,
         pubkey: publicKey,
