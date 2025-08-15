@@ -16,11 +16,6 @@ const InfoModal = () => {
           <p className="text-lg font-medium text-center text-foreground">
             Welcome to the Bitcoin Education Revolution
           </p>
-
-          <p>
-            You’re now part of a mission to orange‑pill the world - not with hype, but with truth, connection, and action.
-          </p>
-
           <p>
             Together we are building the most complete open Bitcoin knowledge base on permissionless rails. This library is our toolbox - the source we distill into sharp, impactful, curiosity‑driving content for our education hub. That’s where we make Bitcoin click for anyone, anywhere - the ultimate orange pill.
           </p>
@@ -36,7 +31,7 @@ const InfoModal = () => {
             <li>Your contribution instantly joins the global stream — viewable, discussable, and reusable by anyone for any project</li>
           </ul>
 
-          <p className="mt-4">
+          <p className="mt-4 text-center italic">
             Every edit here makes the ultimate orange pill stronger. Every improvement helps one more person see why Bitcoin matters.
           </p>
 
