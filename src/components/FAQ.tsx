@@ -100,7 +100,7 @@ const NostrQuestionModal = () => {
           ["t", "test21"],
           ["client", "Test"]
         ],
-        content: question,
+        content: question + "\n\n#test21",
         pubkey: publicKey,
       };
 
