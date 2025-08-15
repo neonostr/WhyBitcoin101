@@ -15,7 +15,7 @@ Why Is It Special? - Built by the people, free from control, Bitcoin is the worl
 Bitcoin is for Everyone - Just as one U.S. Dollar equals 100 cents, one Bitcoin equals 100 million satoshis. This divisibility means you can get involved with Bitcoin starting with any amount - even $1.`;
 
   return (
-    <section id="basics" className="py-20 px-4 bg-background relative z-10">
+    <section id="basics" className="py-20 px-4 bg-background">
       <div className="container mx-auto relative">
         <CopyButton text={basicsText} hashtag="#whybitcoin101-basics" />
         <div className="text-center mb-16">
@@ -26,7 +26,7 @@ Bitcoin is for Everyone - Just as one U.S. Dollar equals 100 cents, one Bitcoin 
         </div>
         
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-          <Card className="group bg-card/80 backdrop-blur-sm shadow-xl hover:shadow-2xl transition-all duration-300 border-border/50 hover:border-primary/30 relative">
+          <Card className="group hover:shadow-[var(--card-hover)] transition-all duration-300 border-border/50 hover:border-primary/20 relative">
             <CopyButton text="What is Bitcoin? - Bitcoin is money owned by the people that operates without a central authority. It's money that is truly yours, can't be manipulated, and can be sent directly to anyone in the world." hashtag="#whybitcoin101-what-is-bitcoin" />
             <CardHeader className="text-center">
               <div className="text-4xl mb-4 group-hover:scale-110 transition-transform duration-300">
@@ -42,7 +42,7 @@ Bitcoin is for Everyone - Just as one U.S. Dollar equals 100 cents, one Bitcoin 
             </CardContent>
           </Card>
 
-          <Card className="group bg-card/80 backdrop-blur-sm shadow-xl hover:shadow-2xl transition-all duration-300 border-border/50 hover:border-primary/30 relative">
+          <Card className="group hover:shadow-[var(--card-hover)] transition-all duration-300 border-border/50 hover:border-primary/20 relative">
             <CopyButton text="How Does It Work? - Bitcoin securely records all transactions in a public record book distributed globally. A unique system ensures the record can't be altered, eliminating the need for banks or other intermediaries." hashtag="#whybitcoin101-how-bitcoin-works" />
             <CardHeader className="text-center">
               <div className="text-4xl mb-4 group-hover:scale-110 transition-transform duration-300">
@@ -57,7 +57,7 @@ Bitcoin is for Everyone - Just as one U.S. Dollar equals 100 cents, one Bitcoin 
             </CardContent>
           </Card>
 
-          <Card className="group bg-card/80 backdrop-blur-sm shadow-xl hover:shadow-2xl transition-all duration-300 border-border/50 hover:border-primary/30 relative">
+          <Card className="group hover:shadow-[var(--card-hover)] transition-all duration-300 border-border/50 hover:border-primary/20 relative">
             <CopyButton text="Why Is It Special? - Built by the people, free from control, Bitcoin is the world's most scarce asset. Limited to 21 million, it's designed to be perfect money - a secure store of your time and energy." hashtag="#whybitcoin101-why-special" />
             <CardHeader className="text-center">
               <div className="text-4xl mb-4 group-hover:scale-110 transition-transform duration-300">
@@ -74,7 +74,7 @@ Bitcoin is for Everyone - Just as one U.S. Dollar equals 100 cents, one Bitcoin 
             </CardContent>
           </Card>
 
-          <Card className="group bg-card/80 backdrop-blur-sm shadow-xl hover:shadow-2xl transition-all duration-300 border-border/50 hover:border-primary/30 relative">
+          <Card className="group hover:shadow-[var(--card-hover)] transition-all duration-300 border-border/50 hover:border-primary/20 relative">
             <CopyButton text="Bitcoin is for Everyone - Just as one U.S. Dollar equals 100 cents, one Bitcoin equals 100 million satoshis. This divisibility means you can get involved with Bitcoin starting with any amount - even $1." hashtag="#whybitcoin101-bitcoin-for-everyone" />
             <CardHeader className="text-center">
               <div className="text-4xl mb-4 group-hover:scale-110 transition-transform duration-300">
