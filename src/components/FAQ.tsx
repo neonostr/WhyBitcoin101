@@ -170,7 +170,7 @@ const NostrQuestionModal = () => {
                     value={question}
                     onChange={(e) => setQuestion(e.target.value)}
                     className="min-h-[120px] text-base border-border/50 focus:border-primary/50 bg-background/50 backdrop-blur-sm resize-none"
-                    maxLength={280}
+                    maxLength={500}
                   />
                   <div className="flex justify-center items-center text-xs text-muted-foreground">
                     <span>No account needed • Anonymous posting</span>
