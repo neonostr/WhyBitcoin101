@@ -7,14 +7,23 @@ const ComingSoon = () => {
   const [showHere, setShowHere] = useState(false);
 
   useEffect(() => {
-    const timer1 = setTimeout(() => setShowStrikethrough(true), 2000);
-    const timer2 = setTimeout(() => setShowHere(true), 3500);
+    console.log('ComingSoon component mounted');
+    const timer1 = setTimeout(() => {
+      console.log('Setting strikethrough to true');
+      setShowStrikethrough(true);
+    }, 2000);
+    const timer2 = setTimeout(() => {
+      console.log('Setting showHere to true');
+      setShowHere(true);
+    }, 3500);
     
     return () => {
       clearTimeout(timer1);
       clearTimeout(timer2);
     };
   }, []);
+
+  console.log('Render state:', { showStrikethrough, showHere });
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-background via-background to-primary/5 relative overflow-hidden">
@@ -29,21 +38,20 @@ const ComingSoon = () => {
           <div className="space-y-6">
             <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold text-foreground leading-tight tracking-tight">
               The Bitcoin Education
-              <span className="block text-transparent bg-clip-text bg-gradient-to-r from-primary via-primary to-primary/80 mt-2">
-                Revolution is{" "}
-              </span>
-              <span className="block text-transparent bg-clip-text bg-gradient-to-r from-primary via-primary to-primary/80 mt-2">
-                <span className="relative inline-block">
+              <span className="block mt-2">
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary via-primary to-primary/80">
+                  Revolution is{" "}
+                </span>
+                <span className="relative inline-block text-transparent bg-clip-text bg-gradient-to-r from-primary via-primary to-primary/80">
                   <span 
                     className={`transition-opacity duration-500 ${
                       showHere ? 'opacity-0' : 'opacity-100'
-                    } ${
-                      showStrikethrough 
-                        ? 'after:content-[""] after:absolute after:left-0 after:top-1/2 after:w-full after:h-0.5 after:bg-primary after:animate-[strikethrough_1s_ease-in-out_forwards]' 
-                        : ''
-                    }`}
+                    } relative`}
                   >
                     Coming
+                    {showStrikethrough && (
+                      <span className="absolute left-0 top-1/2 w-full h-0.5 bg-primary origin-left animate-strikethrough transform-gpu"></span>
+                    )}
                   </span>
                   <span 
                     className={`absolute left-0 top-0 transition-opacity duration-500 ${
