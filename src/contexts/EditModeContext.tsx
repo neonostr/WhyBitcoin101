@@ -58,7 +58,7 @@ Get Involved:
 
 True Bitcoin education - not hype, but truth, connection, and action.
 
-#bitcoineducation #whybitcoin101 #orange-pill #nostr
+#bitcoineducation #whybitcoin101 #orange-pill #nostr`
 
     navigator.clipboard.writeText(formattedText).then(() => {
       console.log('Text copied to clipboard');
