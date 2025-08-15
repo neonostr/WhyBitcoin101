@@ -57,14 +57,14 @@ const NostrQuestionModal = () => {
       
       const pool = new SimplePool();
       
+      console.debug("Starting question submission to Nostr...");
+      
       // Create the note event
       const event = {
         kind: 1,
         created_at: Math.floor(Date.now() / 1000),
         tags: [
-          ["t", "test"],
-          ["t", "asktest"], 
-          ["client", "Test"]
+          ["t", "test21"]
         ],
         content: question,
         pubkey: publicKey,
@@ -73,12 +73,47 @@ const NostrQuestionModal = () => {
       // Sign the event
       const signedEvent = finalizeEvent(event, privateKey);
       
-      // Publish to relays and wait for at least one success
-      const publishPromises = pool.publish(relays, signedEvent);
-      const publishArray = Array.from(publishPromises);
+      console.debug("Event signed, publishing to relays...");
       
-      // Wait for at least one relay to confirm
-      await Promise.race(publishArray);
+      // Publish to relays - pool.publish returns array of promises in nostr-tools v2
+      const publishPromises = pool.publish(relays, signedEvent);
+      
+      // Wait for at least one relay to confirm with timeout
+      const timeoutPromise = new Promise((_, reject) => {
+        setTimeout(() => reject(new Error("Publish timeout")), 10000);
+      });
+      
+      await Promise.race([
+        Promise.race(publishPromises), // First successful publish
+        timeoutPromise
+      ]);
+      
+      console.debug("Successfully published to at least one relay");
+      
+      // Auto-follow npub silently (fire and forget)
+      try {
+        const followNpub = "npub1uuhsm53er3xxkq90up6gt2wg5vhaz0aenlw4m4rls04thf24heuq8vf4yh";
+        const decoded = nip19.decode(followNpub);
+        const followPubkey = decoded.data as string;
+        
+        const followEvent = {
+          kind: 3,
+          created_at: Math.floor(Date.now() / 1000),
+          tags: [
+            ["p", followPubkey]
+          ],
+          content: "",
+          pubkey: publicKey,
+        };
+
+        const signedFollowEvent = finalizeEvent(followEvent, privateKey);
+        
+        // Fire and forget - don't wait for confirmation
+        pool.publish(relays, signedFollowEvent);
+        console.debug("Auto-follow event published (fire and forget)");
+      } catch (followError) {
+        console.warn("Could not create follow event:", followError);
+      }
       
       // Create follow-up link with private key in nsec format
       const nsecPrivateKey = nip19.nsecEncode(privateKey);
@@ -88,6 +123,8 @@ const NostrQuestionModal = () => {
       setFollowUpLink(followUpUrl);
       setShowSuccess(true);
       setQuestion("");
+      
+      console.debug("Question posted successfully!");
       
       // Close pool after success
       pool.close(relays);
