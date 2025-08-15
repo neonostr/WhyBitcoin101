@@ -37,16 +37,6 @@ All colors MUST be HSL.
     --card-hover: 0 10px 30px -10px hsl(var(--bitcoin-orange) / 0.1);
     --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 
-    /* Animation keyframes */
-    @keyframes strikethrough {
-      0% {
-        transform: scaleX(0);
-      }
-      100% {
-        transform: scaleX(1);
-      }
-    }
-
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
 
