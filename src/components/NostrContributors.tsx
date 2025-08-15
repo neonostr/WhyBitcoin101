@@ -130,7 +130,7 @@ const NostrContributors = () => {
       </CardHeader>
       <CardContent>
         <p className="text-muted-foreground leading-relaxed mb-6">
-          Shoutout to the amazing people whose work powers our site — from resource creators to active Nostr educators!
+          Shoutout to the amazing people whose work powers our site - from resource creators to active Nostr educators!
         </p>
         
         {loading ? (
