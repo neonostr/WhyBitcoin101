@@ -1,6 +1,63 @@
 import { Button } from "@/components/ui/button";
 import { ExternalLink } from "lucide-react";
-const ComingSoon = () => {
+import { useState, useEffect } from "react";
+const TypewriterText = () => {
+  const [displayText, setDisplayText] = useState("Revolution is ");
+  const [phase, setPhase] = useState("typing"); // typing, deleting, final
+
+  useEffect(() => {
+    const baseText = "Revolution is ";
+    const comingText = "Coming";
+    const finalText = "Here";
+    
+    let timeouts: NodeJS.Timeout[] = [];
+
+    // Phase 1: Type "Coming"
+    comingText.split("").forEach((char, index) => {
+      const timeout = setTimeout(() => {
+        setDisplayText(baseText + comingText.slice(0, index + 1));
+      }, (index + 1) * 150);
+      timeouts.push(timeout);
+    });
+
+    // Phase 2: Wait, then delete "Coming"
+    const deleteTimeout = setTimeout(() => {
+      setPhase("deleting");
+      for (let i = comingText.length; i >= 0; i--) {
+        const timeout = setTimeout(() => {
+          setDisplayText(baseText + comingText.slice(0, i));
+        }, 2000 + (comingText.length - i) * 100);
+        timeouts.push(timeout);
+      }
+    }, comingText.length * 150 + 1000);
+    timeouts.push(deleteTimeout);
+
+    // Phase 3: Type "Here" quickly
+    const finalTimeout = setTimeout(() => {
+      setPhase("final");
+      finalText.split("").forEach((char, index) => {
+        const timeout = setTimeout(() => {
+          setDisplayText(baseText + finalText.slice(0, index + 1));
+        }, (index + 1) * 80);
+        timeouts.push(timeout);
+      });
+    }, comingText.length * 150 + 1000 + comingText.length * 100 + 200);
+    timeouts.push(finalTimeout);
+
+    return () => {
+      timeouts.forEach(timeout => clearTimeout(timeout));
+    };
+  }, []);
+
+  return (
+    <span className="block text-transparent bg-clip-text bg-gradient-to-r from-primary via-primary to-primary/80 mt-2">
+      {displayText}
+      {phase !== "final" && <span className="animate-pulse">|</span>}
+    </span>
+  );
+};
+
+const Mission = () => {
   return <div className="min-h-screen bg-gradient-to-br from-background via-background to-primary/5 relative overflow-hidden">
       {/* Background decorative elements */}
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_80%,rgba(120,119,198,0.1),transparent_50%)]"></div>
@@ -13,9 +70,7 @@ const ComingSoon = () => {
           <div className="space-y-6">
             <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold text-foreground leading-tight tracking-tight">
               The Bitcoin Education
-              <span className="block text-transparent bg-clip-text bg-gradient-to-r from-primary via-primary to-primary/80 mt-2">
-                Revolution is Coming
-              </span>
+              <TypewriterText />
             </h1>
             
             {/* Subheadline */}
@@ -158,4 +213,4 @@ const ComingSoon = () => {
       <div className="fixed top-1/2 left-1/4 w-24 h-24 bg-gradient-to-br from-primary/15 to-primary/5 rounded-full blur-2xl animate-pulse delay-500"></div>
     </div>;
 };
-export default ComingSoon;
+export default Mission;
