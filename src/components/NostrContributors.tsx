@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { SimplePool, Event, nip19 } from 'nostr-tools';
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Users } from "lucide-react";
+import { Heart } from "lucide-react";
 
 interface ProfileData {
   npub: string;
@@ -124,7 +124,7 @@ const NostrContributors = () => {
     <Card className="border-primary/20 mb-6">
       <CardHeader>
         <CardTitle className="flex items-center gap-2 text-foreground">
-          ❤️
+          <Heart className="h-5 w-5" />
           Thank You To Our Contributors
         </CardTitle>
       </CardHeader>
