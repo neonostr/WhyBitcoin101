@@ -122,7 +122,7 @@ const Support = () => {
                 }
                 className="w-full"
               >
-                Visit @WhyBitcoin101
+                Connect on Nostr
               </Button>
             </CardContent>
           </Card>
