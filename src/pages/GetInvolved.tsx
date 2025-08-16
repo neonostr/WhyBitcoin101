@@ -105,18 +105,12 @@ const Support = () => {
             <CardHeader>
               <CardTitle className="flex items-center gap-2 text-foreground">
                 <MessageCircle className="h-5 w-5" />
-                Bitcoin Education Profile & Hub
+                Turning Hashtags Into Signa
               </CardTitle>
             </CardHeader>
             <CardContent>
               <p className="text-muted-foreground leading-relaxed mb-4">
-                The <strong>@WhyBitcoin101</strong> profile is the <strong>signal layer</strong> of our mission. 
-                While all Bitcoin discussions and resources flow into Nostr tagged <strong>#whybitcoin101</strong>, 
-                this profile curates and amplifies only the strongest insights and explanations. Instead of every 
-                Bitcoiner orange-pilling alone with scattered bookmarks, we now work together to create the largest 
-                open collection of Bitcoin educational content. The profile coordinates community efforts so we achieve 
-                more together, with less wasted energy — transforming scattered voices into one unified signal that 
-                helps people understand WHY Bitcoin matters, not just how to buy it.
+                The <strong>WhyBitcoin101</strong> Nostr profile serves as a signal layer of our mission. As conversations and resources about Bitcoin flow into Nostr, this profile curates and amplifies the strongest insights and explanations surfaced through our hashtags. Beyond that, it helps coordinate community efforts, allowing us to achieve more together with less wasted energy. In doing so, scattered voices become a unified signal - one that emphasizes why Bitcoin matters, not just how to buy it.
               </p>
               <Button
                 variant="outline"
@@ -171,7 +165,7 @@ const Support = () => {
                 Here's the magic: When someone asks a Bitcoin related question through the
                 website, it's published on Nostr via a randomly generated key with hashtags{" "}
                 <span className="font-mono bg-muted px-1 rounded">#asknostr</span> and{" "}
-                <span className="font-mono bg-muted px-1 rounded">#whybitcoin101-faq</span>.
+                <span className="font-mono bg-muted px-1 rounded">#whybitcoin101faq</span>.
               </p>
               <p className="text-muted-foreground leading-relaxed mb-4">
                 This means the entire Bitcoin community on Nostr can see the question and
