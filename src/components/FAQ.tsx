@@ -99,10 +99,10 @@ const NostrQuestionModal = () => {
         created_at: Math.floor(Date.now() / 1000),
         tags: [
           ["t", "asknostr"],
-          ["t", "whybitcoin101"],
+          ["t", "whybitcoin101faq"],
           ["client", "WhyBitcoin101"]
         ],
-        content: question + "\n\n#asknostr #whybitcoin101",
+        content: question + "\n\n#asknostr #whybitcoin101faq",
         pubkey: publicKey,
       };
 
