@@ -50,7 +50,7 @@ const TypewriterText = () => {
 
   return (
     <span className="block text-transparent bg-clip-text bg-gradient-to-r from-primary via-primary to-primary/80 mt-2">
-      Revolution is {displayText}
+      Revolution is <span className="inline-block w-[6ch] text-left">{displayText}</span>
       {phase !== "final" && <span className="animate-pulse">|</span>}
     </span>
   );
