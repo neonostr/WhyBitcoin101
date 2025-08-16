@@ -178,7 +178,7 @@ const Support = () => {
                 help answer it together. The person asking gets a link they can open at any
                 time to check for answers to their question (spam filtered).{" "}
                 <a
-                  href="https://example.com"
+                  href="https://whybitcoin101.com/question/npub1384a86kplad450s7kzz2gen6pyfk3f7f3fme4zkyuf2mnyzdufwswlae8j"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="underline"
