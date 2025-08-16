@@ -110,13 +110,11 @@ const Support = () => {
             </CardHeader>
             <CardContent>
               <p className="text-muted-foreground leading-relaxed mb-4">
-                The <strong>@WhyBitcoin101</strong> profile shares valuable Bitcoin
-                education resources and coordinates efforts that advance our shared
-                mission. It focuses on finding and sharing the best tools, guides, and
-                strategies that help people confidently teach others about Bitcoin.
-                Keeping these resources open and accessible ensures that education about
-                Bitcoin's future happens in the right place - free from censorship or
-                manipulation.
+                This is where the global Bitcoin education revolution starts. The <strong>@WhyBitcoin101</strong> profile 
+                coordinates thousands of Bitcoiners working together to create the world's best Bitcoin education content - 
+                built together, refined endlessly, and shared freely. Every resource, every insight is crafted to help 
+                people understand WHY Bitcoin matters, not just how to buy it. Join the movement to orange-pill the world 
+                through truth, not hype.
               </p>
               <Button
                 variant="outline"
