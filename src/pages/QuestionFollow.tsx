@@ -25,7 +25,7 @@ interface UserProfile {
 }
 
 const QuestionFollow = () => {
-  const { key } = useParams<{ key: string }>();
+  const { nsec } = useParams<{ nsec: string }>();
   const [originalQuestion, setOriginalQuestion] = useState<NostrEvent | null>(null);
   const [replies, setReplies] = useState<NostrEvent[]>([]);
   const [likes, setLikes] = useState<Record<string, number>>({});
@@ -103,32 +103,16 @@ const QuestionFollow = () => {
   };
 
   const fetchQuestionAndReplies = async () => {
-    if (!key || !poolRef.current) {
+    if (!nsec || !poolRef.current) {
       setError("Invalid follow-up link");
       setLoading(false);
       return;
     }
 
     try {
-      // Determine if we have nsec (private key) or npub (public key)
-      let publicKey: string;
-      let hasPrivateKey = false;
-      
-      if (key.startsWith('nsec')) {
-        // Decode nsec private key to get the public key
-        const { data: privateKey } = nip19.decode(key);
-        publicKey = getPublicKey(privateKey as Uint8Array);
-        hasPrivateKey = true;
-      } else if (key.startsWith('npub')) {
-        // Decode npub directly to get the public key
-        const { data: decodedPubkey } = nip19.decode(key);
-        publicKey = decodedPubkey as string;
-        hasPrivateKey = false;
-      } else {
-        setError("Invalid key format. Must be nsec or npub.");
-        setLoading(false);
-        return;
-      }
+      // Decode the nsec private key to get the public key
+      const { data: privateKey } = nip19.decode(nsec);
+      const publicKey = getPublicKey(privateKey as Uint8Array);
 
       const pool = poolRef.current;
       
@@ -136,7 +120,7 @@ const QuestionFollow = () => {
       const questionFilter = {
         kinds: [1],
         authors: [publicKey],
-        "#t": ["whybitcoin101"],
+        "#t": ["whybitcoin101","whybitcoin101faq"],
         limit: 1
       };
       
@@ -225,7 +209,7 @@ const QuestionFollow = () => {
 
   useEffect(() => {
     fetchQuestionAndReplies();
-  }, [key]);
+  }, [nsec]);
 
   const handleRefresh = async () => {
     const now = Date.now();
@@ -420,21 +404,11 @@ const QuestionFollow = () => {
   };
 
   const handleReply = async (replyToEventId: string) => {
-    if (!key || !replyText.trim() || !poolRef.current) return;
-    
-    // Only allow replies if we have a private key (nsec)
-    if (!key.startsWith('nsec')) {
-      toast({
-        title: "Cannot reply",
-        description: "Replying requires your private key (nsec). This link only has your public key (npub).",
-        variant: "destructive",
-      });
-      return;
-    }
+    if (!nsec || !replyText.trim() || !poolRef.current) return;
 
     setSubmittingReply(true);
     try {
-      const { data: privateKey } = nip19.decode(key);
+      const { data: privateKey } = nip19.decode(nsec);
       const publicKey = getPublicKey(privateKey as Uint8Array);
 
       const replyEvent = finalizeEvent({
@@ -493,21 +467,11 @@ const QuestionFollow = () => {
   };
 
   const handleLike = async (eventId: string) => {
-    if (!key || !poolRef.current) return;
-    
-    // Only allow likes if we have a private key (nsec)
-    if (!key.startsWith('nsec')) {
-      toast({
-        title: "Cannot like",
-        description: "Liking requires your private key (nsec). This link only has your public key (npub).",
-        variant: "destructive",
-      });
-      return;
-    }
+    if (!nsec || !poolRef.current) return;
 
     setLikingPost(eventId);
     try {
-      const { data: privateKey } = nip19.decode(key);
+      const { data: privateKey } = nip19.decode(nsec);
       const targetReply = replies.find(r => r.id === eventId) || originalQuestion;
 
       const likeEvent = finalizeEvent({
