@@ -266,11 +266,11 @@ const Support = () => {
                 </CardTitle>
               </CardHeader>
               <CardContent>
-                <p className="text-muted-foreground leading-relaxed text-center mb-6 max-w-2xl mx-auto">
+                <div className="text-muted-foreground leading-relaxed text-center mb-6 max-w-2xl mx-auto">
                  
 When people grasp the why behind Bitcoin - how broken money fuels unaffordable housing, erodes savings, and kills long‑term thinking - everything changes. They stop chasing price hype and start building for generations. They reclaim their right to fair money, strong families, and a society where human values matter more than quarterly profits. Together, we create the ultimate orange pill: clear, powerful education that transforms worldviews and makes Bitcoin the obvious solution.
                   <strong>This is how we leave behind fiat’s decay and step into a sound money future.</strong>
-                </p>
+                </div>
                 <div className="flex justify-center">
       <Button
   variant="default"
