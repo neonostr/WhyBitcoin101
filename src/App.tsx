@@ -55,7 +55,7 @@ const App = () => (
         <Routes>
           <Route path="/" element={<RedirectToComingSoon />} />
           <Route path="/coming-soon" element={<ComingSoon />} />
-          <Route path="/question/:nsec" element={<QuestionFollow />} />
+          <Route path="/question/:key" element={<QuestionFollow />} />
           <Route path="/mission" element={<Support />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
