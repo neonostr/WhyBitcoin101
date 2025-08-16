@@ -259,7 +259,7 @@ const Support = () => {
 
           {/* Full-Width Call to Action */}
           <div className="col-span-1 md:col-span-2">
-            <Card className="border-primary/20">
+            <Card className="border-primary/20 col-span-1 md:col-span-2">
               <CardHeader>
                 <CardTitle className="text-center text-foreground text-xl">
                   Get Involved – Help Shape the Signal
