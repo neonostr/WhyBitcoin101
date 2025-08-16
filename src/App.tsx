@@ -8,7 +8,7 @@ import Index from "./pages/Index";
 import ComingSoon from "./pages/ComingSoon";
 import NotFound from "./pages/NotFound";
 import QuestionFollow from "./pages/QuestionFollow";
-import Support from "./pages/Support";
+import GetInvolved from "./pages/GetInvolved";
 
 const queryClient = new QueryClient();
 
@@ -54,9 +54,9 @@ const App = () => (
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<RedirectToComingSoon />} />
-          <Route path="/coming-soon" element={<ComingSoon />} />
+          <Route path="/mission" element={<ComingSoon />} />
           <Route path="/question/:key" element={<QuestionFollow />} />
-          <Route path="/mission" element={<Support />} />
+          <Route path="/get-involved" element={<GetInvolved />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
