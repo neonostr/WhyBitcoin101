@@ -111,10 +111,10 @@ const NostrQuestionModal = () => {
       
       console.debug("Publishing question event...", { eventId: signedEvent.id });
       
-      // Publish to relays 
+      // Publish to relays - SimplePool.publish returns promises
       const pubPromises = pool.publish(relays, signedEvent);
       
-      // Wait for at least one relay to confirm with timeout
+      // Try to wait for at least one relay to succeed, but don't fail if timeout
       try {
         console.debug("Waiting for relay confirmation...");
         const timeoutPromise = new Promise((_, reject) => 
@@ -123,12 +123,12 @@ const NostrQuestionModal = () => {
         
         // Wait for the first promise to resolve or timeout
         await Promise.race([
-          ...pubPromises,
+          Promise.allSettled(pubPromises),
           timeoutPromise
         ]);
-        console.debug("Event published successfully to at least one relay");
+        console.debug("Event published successfully");
       } catch (error) {
-        console.debug("Publish timeout or error, continuing anyway:", error);
+        console.debug("Publish timeout, continuing anyway:", error);
         // Continue anyway - the event was likely published
       }
       
