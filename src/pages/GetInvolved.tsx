@@ -262,7 +262,7 @@ const Support = () => {
             <Card className="border-primary/40 bg-primary/5">
               <CardHeader>
                 <CardTitle className="text-center text-foreground">
-                  One Curious Mind at a Time
+                  The Collective Orange Pill
                 </CardTitle>
               </CardHeader>
               <CardContent>
