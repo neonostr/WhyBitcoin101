@@ -130,7 +130,7 @@ const ComingSoon = () => {
           
           <div className="space-y-8">
             <Button size="lg" className="text-xl px-10 py-8 h-auto bg-gradient-to-r from-primary to-primary/90 hover:from-primary/90 hover:to-primary shadow-2xl hover:shadow-primary/25 transition-all duration-300 transform hover:scale-105" asChild>
-              <a href="https://primal.net/p/npub1uuhsm53er3xxkq90up6gt2wg5vhaz0aenlw4m4rls04thf24heuq8vf4yh" target="_blank" rel="noopener noreferrer" className="flex items-center space-x-3">
+              <a href="https://whybitcoin101.com/get-involved" target="_blank" rel="noopener noreferrer" className="flex items-center space-x-3">
                 <span>Get involved</span>
                 <ExternalLink className="w-6 h-6" />
               </a>
