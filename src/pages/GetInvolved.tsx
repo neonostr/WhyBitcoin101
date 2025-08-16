@@ -294,21 +294,7 @@ const Support = () => {
                     Get involved. Shape the signal. <strong>Help the world understand why Bitcoin matters.</strong>
                 
                 </div>
-                
-                <div className="flex justify-center mt-6">
-                  <Button
-                    variant="outline"
-                    onClick={() => {
-                      const section = document.getElementById("how-you-can-help");
-                      if (section) {
-                        section.scrollIntoView({ behavior: "smooth" });
-                      }
-                    }}
-                    className="px-6"
-                  >
-                    Get Involved Today
-                  </Button>
-                </div>
+         
               </CardContent>
             </Card>
           </div>
