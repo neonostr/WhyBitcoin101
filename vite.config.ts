@@ -19,4 +19,13 @@ export default defineConfig(({ mode }) => ({
       "@": path.resolve(__dirname, "./src"),
     },
   },
+  build: {
+    rollupOptions: {
+      input: {
+        main: 'index.html',
+        mission: 'mission/index.html',
+        getInvolved: 'get-involved/index.html',
+      },
+    },
+  },
 }));
