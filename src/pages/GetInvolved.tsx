@@ -243,8 +243,7 @@ const Support = () => {
             </CardHeader>
             <CardContent>
               <p className="text-muted-foreground leading-relaxed mb-4">
-                If you'd like to support the mission financially, donations help to
-                market, maintain and improve the educational resources.
+                Fuel the mission by contributing sats. Your support helps us share Bitcoin's why with the world - funding outreach, maintaining resources, and creating better education for all.
               </p>
               <Button
                 variant="outline"
