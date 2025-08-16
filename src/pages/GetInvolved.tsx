@@ -261,7 +261,8 @@ const Support = () => {
           <div className="col-span-1 md:col-span-2">
             <Card className="border-primary/20 col-span-1 md:col-span-2">
               <CardHeader>
-                <CardTitle className="text-center text-foreground text-xl">
+                <CardTitle className="flex items-center gap-2 text-foreground">
+                  <Gift className="h-5 w-5" />
                   Get Involved – Help Shape the Signal
                 </CardTitle>
               </CardHeader>
