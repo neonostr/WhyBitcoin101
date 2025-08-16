@@ -120,7 +120,7 @@ const QuestionFollow = () => {
       const questionFilter = {
         kinds: [1],
         authors: [publicKey],
-        "#t": ["whybitcoin101faq"],
+        "#t": ["whybitcoin101"],
         limit: 1
       };
       
