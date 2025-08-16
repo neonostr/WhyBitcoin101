@@ -124,7 +124,7 @@ const NostrContributors = () => {
     <Card className="border-primary/20 mb-6">
       <CardHeader>
         <CardTitle className="flex items-center gap-2 text-foreground">
-          <Users className="h-5 w-5" />
+          ❤️
           Thank You To Our Contributors
         </CardTitle>
       </CardHeader>
