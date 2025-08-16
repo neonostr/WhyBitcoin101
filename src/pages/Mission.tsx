@@ -2,8 +2,8 @@ import { Button } from "@/components/ui/button";
 import { ExternalLink } from "lucide-react";
 import { useState, useEffect } from "react";
 const TypewriterText = () => {
-  const [displayText, setDisplayText] = useState("");
-  const [phase, setPhase] = useState("typing"); // typing, deleting, final
+  const [displayText, setDisplayText] = useState("Coming");
+  const [phase, setPhase] = useState("waiting"); // waiting, deleting, typing, final
 
   useEffect(() => {
     const comingText = "Coming";
@@ -11,36 +11,33 @@ const TypewriterText = () => {
     
     let timeouts: NodeJS.Timeout[] = [];
 
-    // Phase 1: Type "Coming"
-    comingText.split("").forEach((char, index) => {
-      const timeout = setTimeout(() => {
-        setDisplayText(comingText.slice(0, index + 1));
-      }, (index + 1) * 150);
-      timeouts.push(timeout);
-    });
-
-    // Phase 2: Wait, then delete "Coming"
-    const deleteTimeout = setTimeout(() => {
+    // Phase 1: Wait with "Coming" displayed
+    const waitTimeout = setTimeout(() => {
       setPhase("deleting");
+      
+      // Phase 2: Delete "Coming"
       for (let i = comingText.length; i >= 0; i--) {
         const timeout = setTimeout(() => {
           setDisplayText(comingText.slice(0, i));
-        }, 2000 + (comingText.length - i) * 100);
+        }, (comingText.length - i) * 100);
         timeouts.push(timeout);
       }
-    }, comingText.length * 150 + 1000);
-    timeouts.push(deleteTimeout);
+    }, 1500);
+    timeouts.push(waitTimeout);
 
     // Phase 3: Type "Here" quickly
     const finalTimeout = setTimeout(() => {
-      setPhase("final");
+      setPhase("typing");
       finalText.split("").forEach((char, index) => {
         const timeout = setTimeout(() => {
           setDisplayText(finalText.slice(0, index + 1));
+          if (index === finalText.length - 1) {
+            setTimeout(() => setPhase("final"), 100);
+          }
         }, (index + 1) * 80);
         timeouts.push(timeout);
       });
-    }, comingText.length * 150 + 1000 + comingText.length * 100 + 200);
+    }, 1500 + comingText.length * 100 + 200);
     timeouts.push(finalTimeout);
 
     return () => {
