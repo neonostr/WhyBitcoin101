@@ -263,7 +263,7 @@ const Support = () => {
               <CardHeader>
                 <CardTitle className="flex items-center gap-2 text-foreground">
                   <Users className="h-5 w-5" />
-                  Get Involved – Help Shape the Signal
+                  Add Your Spark to the Orange Pill
                 </CardTitle>
               </CardHeader>
               <CardContent>
@@ -290,9 +290,9 @@ const Support = () => {
                     This is not only about donating sats. It is about contributing your voice, your time, your experience. Because each effort adds to the strength of the whole.
              
                   
-                  <p className="text-center font-medium text-foreground">
-                    Get involved. Shape the signal. Help the world understand why Bitcoin matters.
-                  </p>
+                 
+                    Get involved. Shape the signal. <strong>Help the world understand why Bitcoin matters.</strong>
+                
                 </div>
                 
                 <div className="flex justify-center mt-6">
