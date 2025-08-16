@@ -279,7 +279,7 @@ const Support = () => {
                   
                   
                   
-                    WhyBitcoin101 is part of this flow too. Not above, not separate — just another tool, another hand carrying the message. It gathers what we together create and places it where more people can find it.
+                    WhyBitcoin101 is part of this flow too. Not above, not separate - just another tool, another hand carrying the message. It gathers what we together create and places it where more people can find it.
                 
                   
                  
