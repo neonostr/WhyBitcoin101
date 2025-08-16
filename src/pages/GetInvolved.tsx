@@ -105,7 +105,7 @@ const Support = () => {
             <CardHeader>
               <CardTitle className="flex items-center gap-2 text-foreground">
                 <MessageCircle className="h-5 w-5" />
-                Turning Hashtags Into Signa
+                Turning Hashtags Into Signal
               </CardTitle>
             </CardHeader>
             <CardContent>
