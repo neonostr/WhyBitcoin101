@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { ArrowLeft, Heart, Share2, MessageCircle, Gift, Copy } from "lucide-react";
+import { ArrowLeft, Heart, Share2, MessageCircle, Copy } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import DonationModal from "@/components/DonationModal";
@@ -21,20 +21,20 @@ const Support = () => {
             <ArrowLeft className="h-4 w-4" />
             Back to WhyBitcoin101
           </Link>
-    <div className="max-w-6xl mx-auto">
-  <h1
-    id="how-you-can-help"
-    className="text-4xl md:text-5xl font-bold text-foreground mb-4"
-  >
-    How You Can Help
-  </h1>
+          <div className="max-w-6xl mx-auto">
+            <h1
+              id="how-you-can-help"
+              className="text-4xl md:text-5xl font-bold text-foreground mb-4"
+            >
+              How You Can Help
+            </h1>
             <p className="text-xl text-muted-foreground max-w-3xl mb-6">
               For bitcoiners who want to support Bitcoin education and help newcomers
               understand why Bitcoin matters.
             </p>
           </div>
 
-          {/* Mission + Nostr Statement side-by-side */}
+          {/* Mission + Nostr Statement */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 w-full">
             {/* Mission Statement */}
             <div className="bg-white rounded-lg p-8 shadow-md border border-border flex flex-col h-full">
@@ -100,162 +100,46 @@ const Support = () => {
 
         {/* Support Cards */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 w-full">
-          {/* Bitcoin Education Profile & Hub */}
-          <Card className="border-primary/20">
+          {/* ... existing cards ... */}
+
+          {/* New Final Section */}
+          <Card className="border-primary/30 col-span-1 md:col-span-2 bg-white shadow-md">
             <CardHeader>
-              <CardTitle className="flex items-center gap-2 text-foreground">
-                <MessageCircle className="h-5 w-5" />
-                Turning Hashtags Into Signal
+              <CardTitle className="text-center text-foreground">
+                Get Involved – Help Shape the Signal
               </CardTitle>
             </CardHeader>
             <CardContent>
-              <p className="text-muted-foreground leading-relaxed mb-4">
-                The <strong>WhyBitcoin101</strong> Nostr profile serves as a signal layer of our mission. As conversations and resources about Bitcoin flow into Nostr, this profile curates and amplifies the strongest insights and explanations surfaced through our hashtags. Beyond that, it helps coordinate community efforts, allowing us to achieve more together with less wasted energy. In doing so, scattered voices become a unified signal - one that emphasizes why Bitcoin matters, not just how to buy it.
-              </p>
-              <Button
-                variant="outline"
-                onClick={() =>
-                  window.open(
-                    "https://primal.net/p/npub1uuhsm53er3xxkq90up6gt2wg5vhaz0aenlw4m4rls04thf24heuq8vf4yh",
-                    "_blank"
-                  )
-                }
-                className="w-full"
-              >
-                Connect on Nostr
-              </Button>
+              <div className="text-muted-foreground leading-relaxed max-w-3xl mx-auto space-y-4">
+                <p>Every small action matters.</p>
+                <p>
+                  When you share great educational content, help answer questions on Nostr,
+                  or add your own ideas and resources, it becomes a piece of the bigger picture.
+                </p>
+                <p>
+                  On Nostr these pieces connect. They spread, get repeated, improved, and remembered.  
+                  What starts as one spark from you can echo into a lasting signal for others.
+                </p>
+                <p>
+                  WhyBitcoin101 is part of this flow too. Not above, not separate — just another tool,  
+                  another hand carrying the message. It gathers what we together create and places it  
+                  where more people can find it.
+                </p>
+                <p>
+                  Together we build a library of clear answers.  
+                  A place to point the next curious mind - a living orange pill that keeps evolving,  
+                  gathering sparks of change, one curious mind at a time.
+                </p>
+                <p>
+                  This is not only about donating sats. It is about contributing your voice, your time,  
+                  your experience. Because each effort adds to the strength of the whole.
+                </p>
+                <p>
+                  <strong>Get involved. Shape the signal. Help the world understand why Bitcoin matters.</strong>
+                </p>
+              </div>
             </CardContent>
           </Card>
-
-          {/* Share Content */}
-          <Card className="border-primary/20">
-            <CardHeader>
-              <CardTitle className="flex items-center gap-2 text-foreground">
-                <Share2 className="h-5 w-5" />
-                Share Great Content
-              </CardTitle>
-            </CardHeader>
-            <CardContent>
-              <p className="text-muted-foreground leading-relaxed mb-4">
-                Found something that helps people understand Bitcoin better? Post it or
-                repost it on Nostr with{" "}
-                <span className="font-mono bg-muted px-1 rounded">#whybitcoin101</span>. All
-                tagged posts help build a growing public library of Bitcoin education that
-                we can all access and use to help others learn. We’ll also curate and share
-                some of these on the WhyBitcoin101 profile and website, so together we
-                create both a complete hashtag archive and a focused hub of the most useful
-                content.
-              </p>
-              <p className="text-sm text-muted-foreground">
-                Use the hashtag: <strong>#whybitcoin101</strong>
-              </p>
-            </CardContent>
-          </Card>
-
-          {/* Community Q&A */}
-          <Card className="border-primary/20 col-span-1 md:col-span-2">
-            <CardHeader>
-              <CardTitle className="flex items-center gap-2 text-foreground">
-                <MessageCircle className="h-5 w-5" />
-                Help Answer Questions on Nostr
-              </CardTitle>
-            </CardHeader>
-            <CardContent>
-              <p className="text-muted-foreground leading-relaxed mb-4">
-                Here's the magic: When someone asks a Bitcoin related question through the
-                website, it's published on Nostr via a randomly generated key with hashtags{" "}
-                <span className="font-mono bg-muted px-1 rounded">#asknostr</span> and{" "}
-                <span className="font-mono bg-muted px-1 rounded">#whybitcoin101faq</span>.
-              </p>
-              <p className="text-muted-foreground leading-relaxed mb-4">
-                This means the entire Bitcoin community on Nostr can see the question and
-                help answer it together. The person asking gets a link they can open at any
-                time to check for answers to their question (spam filtered).{" "}
-                <a
-                  href="https://whybitcoin101.com/question/npub1384a86kplad450s7kzz2gen6pyfk3f7f3fme4zkyuf2mnyzdufwswlae8j"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="underline"
-                >
-                  See Example
-                </a>
-              </p>
-              <p className="text-muted-foreground leading-relaxed mb-4">
-                This process creates a large, public Bitcoin FAQ that anyone can access and
-                reuse for educational projects or in any way they find useful. On top of
-                that, we curate and refine the content for the WhyBitcoin101 hub -
-                building a polished, ever‑growing knowledge base that’s easy to explore and
-                share.
-              </p>
-              <p className="text-muted-foreground leading-relaxed">
-                So from now on, whenever you want to help others understanding Bitcoin, look for{" "}
-                <span className="font-mono bg-muted px-1 rounded">#whybitcoin101-faq</span>{" "}
-                on Nostr, jump in, and share your knowledge. Every answer helps newcomers
-                understand Bitcoin better - and for the first time, thanks to the power of
-                Nostr, we can truly educate together as one global community.
-              </p>
-            </CardContent>
-          </Card>
-
-          {/* Copy & Improve Content - NEW CARD */}
-<Card className="border-primary/20 col-span-1 md:col-span-2">
-  <CardHeader>
-    <CardTitle className="flex items-center gap-2 text-foreground">
-      <Copy className="h-5 w-5" />
-      Copy & Improve Content
-    </CardTitle>
-  </CardHeader>
-  <CardContent>
-    <p className="text-muted-foreground leading-relaxed mb-4">
-      Activate hidden edit mode by clicking the Connect button 5 times within 5 seconds on the main page. This reveals copy buttons on every text section and resource across the site. Each button includes a unique hashtag and copies the content with instructions and a template for your improvements. Post to Nostr with the hashtag - the copied content plus your suggested improvements to contribute to building the world's best Bitcoin education content. Together, we're growing a public knowledge base that serves all of humanity - and this coordinated effort ensures we always have the best content on our educational front to create the ultimate orange pill.
-    </p>
-  </CardContent>
-</Card>
-
-
-          
-
-          {/* Spread Awareness */}
-          <Card className="border-primary/20">
-            <CardHeader>
-              <CardTitle className="flex items-center gap-2 text-foreground">
-                <Share2 className="h-5 w-5" />
-                Spread Awareness
-              </CardTitle>
-            </CardHeader>
-            <CardContent>
-              <p className="text-muted-foreground leading-relaxed mb-4">
-                Create stamps, flyers, or share the website with others to bring awareness
-                to this educational project. Every person who discovers Bitcoin through
-                education makes the network stronger.
-              </p>
-              <p className="text-sm text-muted-foreground">Share: whybitcoin101.com</p>
-            </CardContent>
-          </Card>
-
-          {/* Donate */}
-          <Card className="border-primary/20">
-            <CardHeader>
-              <CardTitle className="flex items-center gap-2 text-foreground">
-                <Heart className="h-5 w-5" />
-                Support with Sats
-              </CardTitle>
-            </CardHeader>
-            <CardContent>
-              <p className="text-muted-foreground leading-relaxed mb-4">
-                Fuel the mission by contributing sats. Your support helps us share Bitcoin's why with the world - funding outreach, maintaining resources, and creating better education for all.
-              </p>
-              <Button
-                variant="outline"
-                onClick={() => setDonationModalOpen(true)}
-                className="w-full flex items-center gap-2"
-              >
-                <Heart className="h-4 w-4" />
-                Donate Sats
-              </Button>
-            </CardContent>
-          </Card>
-
 
           {/* Full-Width Call to Action */}
           <div className="col-span-1 md:col-span-2">
@@ -266,24 +150,27 @@ const Support = () => {
                 </CardTitle>
               </CardHeader>
               <CardContent>
-                <div className="text-muted-foreground leading-relaxed text-center mb-6 max-w-2xl mx-auto">
-                 
-When people grasp the why behind Bitcoin - how broken money fuels unaffordable housing, erodes savings, and kills long‑term thinking - everything changes. They stop chasing price hype and start building for generations. They reclaim their right to fair money, strong families, and a society where human values matter more than quarterly profits. Together, we create the ultimate orange pill: clear, powerful education that transforms worldviews and makes Bitcoin the obvious solution.
-                  <strong>This is how we leave behind fiat’s decay and step into a sound money future.</strong>
-                </div>
+                <p className="text-muted-foreground leading-relaxed text-center mb-6 max-w-2xl mx-auto">
+                  When people grasp the why behind Bitcoin - how broken money fuels unaffordable housing, 
+                  erodes savings, and kills long‑term thinking - everything changes. They stop chasing price hype 
+                  and start building for generations. They reclaim their right to fair money, strong families, 
+                  and a society where human values matter more than quarterly profits. Together, we create the 
+                  ultimate orange pill: clear, powerful education that transforms worldviews and makes Bitcoin 
+                  the obvious solution. <strong>This is how we leave behind fiat’s decay and step into a sound money future.</strong>
+                </p>
                 <div className="flex justify-center">
-      <Button
-  variant="default"
-  onClick={() => {
-    const section = document.getElementById("how-you-can-help");
-    if (section) {
-      section.scrollIntoView({ behavior: "smooth" });
-    }
-  }}
-  className="px-6"
->
-  Get Involved Today
-</Button>
+                  <Button
+                    variant="default"
+                    onClick={() => {
+                      const section = document.getElementById("how-you-can-help");
+                      if (section) {
+                        section.scrollIntoView({ behavior: "smooth" });
+                      }
+                    }}
+                    className="px-6"
+                  >
+                    Get Involved Today
+                  </Button>
                 </div>
               </CardContent>
             </Card>
@@ -295,10 +182,10 @@ When people grasp the why behind Bitcoin - how broken money fuels unaffordable
           <NostrContributors />
         </div>
       </div>
-      
-      <DonationModal 
-        isOpen={donationModalOpen} 
-        onClose={() => setDonationModalOpen(false)} 
+
+      <DonationModal
+        isOpen={donationModalOpen}
+        onClose={() => setDonationModalOpen(false)}
       />
     </div>
   );
