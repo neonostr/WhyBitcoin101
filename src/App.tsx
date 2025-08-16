@@ -12,38 +12,8 @@ import GetInvolved from "./pages/GetInvolved";
 
 const queryClient = new QueryClient();
 
-const RedirectToComingSoon = () => {
-  const location = useLocation();
-  const [shouldRedirect, setShouldRedirect] = useState(() => {
-    // Check on initial render to avoid flash
-    const urlParams = new URLSearchParams(location.search);
-    const devValue = urlParams.get('dev')?.trim().replace(/\?+$/, '');
-    return devValue !== 'true';
-  });
-
-  useEffect(() => {
-    const urlParams = new URLSearchParams(location.search);
-    const devValue = urlParams.get('dev')?.trim().replace(/\?+$/, '');
-    const hasDevParam = devValue === 'true';
-    console.log('Dev param check:', { 
-      search: location.search, 
-      hasDevParam, 
-      devValue,
-      rawDevValue: urlParams.get('dev')
-    });
-    setShouldRedirect(!hasDevParam);
-    console.log('Setting shouldRedirect to:', !hasDevParam);
-  }, [location.search]);
-
-  console.log('Current shouldRedirect state:', shouldRedirect);
-
-  if (shouldRedirect) {
-    console.log('Redirecting to coming-soon');
-    return <Navigate to={`/coming-soon${location.search}`} replace />;
-  }
-
-  console.log('Showing Index page');
-  return <Index />;
+const ComingSoonRedirect = () => {
+  return <Navigate to="/mission" replace />;
 };
 
 const App = () => (
@@ -53,7 +23,8 @@ const App = () => (
       <Sonner />
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<RedirectToComingSoon />} />
+          <Route path="/" element={<Index />} />
+          <Route path="/coming-soon" element={<ComingSoonRedirect />} />
           <Route path="/mission" element={<ComingSoon />} />
           <Route path="/question/:key" element={<QuestionFollow />} />
           <Route path="/get-involved" element={<GetInvolved />} />
