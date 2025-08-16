@@ -61,7 +61,7 @@ const ComingSoon = () => {
                 For the first time in history, we can coordinate Bitcoin education globally.
               </h2>
               <p className="text-lg md:text-xl text-muted-foreground leading-relaxed max-w-3xl mx-auto">
-                Thanks to Nostr, we can now work together to create the world's best Bitcoin educational content. A single answer can reach billions of people. This is how we orange pill the world—together.
+                Thanks to Nostr, we can now work together to create the world's best Bitcoin educational content. A single answer can reach billions of people. This is how we orange pill the world - together.
               </p>
             </div>
           </div>
