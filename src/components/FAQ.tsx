@@ -99,10 +99,10 @@ const NostrQuestionModal = () => {
         created_at: Math.floor(Date.now() / 1000),
         tags: [
           ["t", "asknostr"],
-          ["t", "whybitcoin-101"],
+          ["t", "whybitcoin101"],
           ["client", "WhyBitcoin101"]
         ],
-        content: question + "\n\n#asknostr #whybitcoin-101",
+        content: question + "\n\n#asknostr #whybitcoin101",
         pubkey: publicKey,
       };
 
@@ -328,7 +328,7 @@ Is Bitcoin bad for the environment? - Bitcoin mining increasingly uses renewable
   return (
     <section id="faq" className="py-20 px-4 bg-gradient-to-b from-background to-muted/20">
       <div className="container mx-auto relative">
-        <CopyButton text={faqText} hashtag="#whybitcoin101-faq" />
+        <CopyButton text={faqText} hashtag="#whybitcoin101faq" />
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold mb-6 text-foreground">
             Common Questions
@@ -345,7 +345,7 @@ Is Bitcoin bad for the environment? - Bitcoin mining increasingly uses renewable
                 key={index} 
                 className="group hover:shadow-[var(--card-hover)] transition-all duration-300 border-border/50 hover:border-primary/20 relative"
               >
-                <CopyButton text={`${faq.question} - ${faq.answer}`} hashtag={`#whybitcoin101-faq-${index + 1}`} />
+                <CopyButton text={`${faq.question} - ${faq.answer}`} hashtag={`#whybitcoin101faq-${index + 1}`} />
                 <CardHeader>
                   <CardTitle className="text-lg text-foreground group-hover:text-primary transition-colors duration-300">
                     {faq.question}
