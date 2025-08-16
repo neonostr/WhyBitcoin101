@@ -268,27 +268,27 @@ const Support = () => {
               </CardHeader>
               <CardContent>
                 <div className="space-y-4 text-muted-foreground leading-relaxed">
-                  <p className="font-medium">Every small action matters.</p>
+                 Every small action matters.
                   
-                  <p>
+                 
                     When you share great educational content, help answer questions on Nostr, or add your own ideas and resources, it becomes a piece of the bigger picture.
-                  </p>
+                 
                   
-                  <p>
+                  
                     On Nostr these pieces connect. They spread, get repeated, improved, and remembered. What starts as one spark from you can echo into a lasting signal for others.
-                  </p>
                   
-                  <p>
+                  
+                  
                     WhyBitcoin101 is part of this flow too. Not above, not separate — just another tool, another hand carrying the message. It gathers what we together create and places it where more people can find it.
-                  </p>
+                
                   
-                  <p className="font-medium">
+                 
                     Together we build a library of clear answers. A place to point the next curious mind - a living orange pill that keeps evolving, gathering sparks of change, one curious mind at a time.
-                  </p>
                   
-                  <p>
+                  
+               
                     This is not only about donating sats. It is about contributing your voice, your time, your experience. Because each effort adds to the strength of the whole.
-                  </p>
+             
                   
                   <p className="text-center font-medium text-foreground">
                     Get involved. Shape the signal. Help the world understand why Bitcoin matters.
