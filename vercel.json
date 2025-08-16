@@ -5,8 +5,20 @@
       "destination": "/mission/index.html"
     },
     {
+      "source": "/mission/",
+      "destination": "/mission/index.html"
+    },
+    {
       "source": "/get-involved", 
       "destination": "/get-involved/index.html"
+    },
+    {
+      "source": "/get-involved/",
+      "destination": "/get-involved/index.html"
+    },
+    {
+      "source": "/((?!mission|get-involved).*)",
+      "destination": "/index.html"
     }
   ]
 }
