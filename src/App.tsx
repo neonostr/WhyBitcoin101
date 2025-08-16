@@ -5,7 +5,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route, Navigate, useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
 import Index from "./pages/Index";
-import ComingSoon from "./pages/ComingSoon";
+import Mission from "./pages/Mission";
 import NotFound from "./pages/NotFound";
 import QuestionFollow from "./pages/QuestionFollow";
 import GetInvolved from "./pages/GetInvolved";
@@ -25,7 +25,7 @@ const App = () => (
         <Routes>
           <Route path="/" element={<Index />} />
           <Route path="/coming-soon" element={<ComingSoonRedirect />} />
-          <Route path="/mission" element={<ComingSoon />} />
+          <Route path="/mission" element={<Mission />} />
           <Route path="/question/:key" element={<QuestionFollow />} />
           <Route path="/get-involved" element={<GetInvolved />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
