@@ -1,9 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { ExternalLink } from "lucide-react";
-
 const ComingSoon = () => {
-  return (
-    <div className="min-h-screen bg-gradient-to-br from-background via-background to-primary/5 relative overflow-hidden">
+  return <div className="min-h-screen bg-gradient-to-br from-background via-background to-primary/5 relative overflow-hidden">
       {/* Background decorative elements */}
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_80%,rgba(120,119,198,0.1),transparent_50%)]"></div>
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_80%_20%,rgba(120,119,198,0.05),transparent_50%)]"></div>
@@ -131,25 +129,14 @@ const ComingSoon = () => {
           </h2>
           
           <div className="space-y-8">
-            <Button 
-              size="lg" 
-              className="text-xl px-10 py-8 h-auto bg-gradient-to-r from-primary to-primary/90 hover:from-primary/90 hover:to-primary shadow-2xl hover:shadow-primary/25 transition-all duration-300 transform hover:scale-105"
-              asChild
-            >
-              <a 
-                href="https://primal.net/p/npub1uuhsm53er3xxkq90up6gt2wg5vhaz0aenlw4m4rls04thf24heuq8vf4yh" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="flex items-center space-x-3"
-              >
+            <Button size="lg" className="text-xl px-10 py-8 h-auto bg-gradient-to-r from-primary to-primary/90 hover:from-primary/90 hover:to-primary shadow-2xl hover:shadow-primary/25 transition-all duration-300 transform hover:scale-105" asChild>
+              <a href="https://primal.net/p/npub1uuhsm53er3xxkq90up6gt2wg5vhaz0aenlw4m4rls04thf24heuq8vf4yh" target="_blank" rel="noopener noreferrer" className="flex items-center space-x-3">
                 <span>Get involved</span>
                 <ExternalLink className="w-6 h-6" />
               </a>
             </Button>
             
-            <p className="text-base text-muted-foreground">
-              We’re building a new home for Bitcoin education. Join us on Nostr while we create it together.
-            </p>
+            <p className="text-base text-muted-foreground">Start now. Everything you need to help is on the next page.</p>
           </div>
           
           <div className="pt-12">
@@ -169,8 +156,6 @@ const ComingSoon = () => {
       <div className="fixed top-20 left-10 w-32 h-32 bg-gradient-to-br from-primary/20 to-primary/5 rounded-full blur-3xl animate-pulse"></div>
       <div className="fixed bottom-20 right-10 w-40 h-40 bg-gradient-to-br from-primary/10 to-primary/5 rounded-full blur-3xl animate-pulse delay-1000"></div>
       <div className="fixed top-1/2 left-1/4 w-24 h-24 bg-gradient-to-br from-primary/15 to-primary/5 rounded-full blur-2xl animate-pulse delay-500"></div>
-    </div>
-  );
+    </div>;
 };
-
 export default ComingSoon;
