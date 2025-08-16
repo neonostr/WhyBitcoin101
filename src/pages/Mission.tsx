@@ -2,11 +2,10 @@ import { Button } from "@/components/ui/button";
 import { ExternalLink } from "lucide-react";
 import { useState, useEffect } from "react";
 const TypewriterText = () => {
-  const [displayText, setDisplayText] = useState("Revolution is ");
+  const [displayText, setDisplayText] = useState("");
   const [phase, setPhase] = useState("typing"); // typing, deleting, final
 
   useEffect(() => {
-    const baseText = "Revolution is ";
     const comingText = "Coming";
     const finalText = "Here";
     
@@ -15,7 +14,7 @@ const TypewriterText = () => {
     // Phase 1: Type "Coming"
     comingText.split("").forEach((char, index) => {
       const timeout = setTimeout(() => {
-        setDisplayText(baseText + comingText.slice(0, index + 1));
+        setDisplayText(comingText.slice(0, index + 1));
       }, (index + 1) * 150);
       timeouts.push(timeout);
     });
@@ -25,7 +24,7 @@ const TypewriterText = () => {
       setPhase("deleting");
       for (let i = comingText.length; i >= 0; i--) {
         const timeout = setTimeout(() => {
-          setDisplayText(baseText + comingText.slice(0, i));
+          setDisplayText(comingText.slice(0, i));
         }, 2000 + (comingText.length - i) * 100);
         timeouts.push(timeout);
       }
@@ -37,7 +36,7 @@ const TypewriterText = () => {
       setPhase("final");
       finalText.split("").forEach((char, index) => {
         const timeout = setTimeout(() => {
-          setDisplayText(baseText + finalText.slice(0, index + 1));
+          setDisplayText(finalText.slice(0, index + 1));
         }, (index + 1) * 80);
         timeouts.push(timeout);
       });
@@ -51,7 +50,7 @@ const TypewriterText = () => {
 
   return (
     <span className="block text-transparent bg-clip-text bg-gradient-to-r from-primary via-primary to-primary/80 mt-2">
-      {displayText}
+      Revolution is {displayText}
       {phase !== "final" && <span className="animate-pulse">|</span>}
     </span>
   );
