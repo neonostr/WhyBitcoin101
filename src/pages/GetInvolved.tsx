@@ -40,18 +40,16 @@ const Support = () => {
             <div className="bg-white rounded-lg p-8 shadow-md border border-border flex flex-col h-full">
               <div>
                 <p className="text-2xl font-semibold text-foreground mb-4">
-                  We unite to forge the ultimate orange pill - one that awakens the world to the "why" 
-                  behind Bitcoin and ignites a profound shift in how humanity thinks about money, time, and values.
+                  We’re on a mission to orange‑pill the world - not with hype, but with truth,
+                  connection, and action.
                 </p>
                 <p className="text-muted-foreground leading-relaxed mb-4">
-                  When people understand how broken fiat money creates unaffordable housing, erodes savings, 
-                  and destroys long-term thinking, Bitcoin becomes the obvious solution. This understanding 
-                  transforms lives - people reclaim their right to sound money and begin building for decades, not days.
+                  Every conversation, every share, every spark of understanding moves us
+                  closer to a future where Bitcoin empowers everyone.
                 </p>
                 <p className="text-muted-foreground leading-relaxed mb-6">
-                  Through Nostr's permissionless coordination, every Bitcoiner worldwide can now work together 
-                  to amplify this truth. If you're ready to help create the clearest, most powerful Bitcoin 
-                  education the world has ever seen, this is where you plug in.
+                  If you’re a Bitcoiner ready to build, educate, and amplify the signal,
+                  this is your place to plug in.
                 </p>
               </div>
               <div className="text-sm text-muted-foreground italic border-t border-border pt-3 mt-4 md:mt-auto">
@@ -149,7 +147,7 @@ const Support = () => {
                 repost it on Nostr with{" "}
                 <span className="font-mono bg-muted px-1 rounded">#whybitcoin101</span>. All
                 tagged posts help build a growing public library of Bitcoin education that
-                we can all access and use to help others learn. We'll also curate and share
+                we can all access and use to help others learn. We’ll also curate and share
                 some of these on the WhyBitcoin101 profile and website, so together we
                 create both a complete hashtag archive and a focused hub of the most useful
                 content.
@@ -192,7 +190,7 @@ const Support = () => {
                 This process creates a large, public Bitcoin FAQ that anyone can access and
                 reuse for educational projects or in any way they find useful. On top of
                 that, we curate and refine the content for the WhyBitcoin101 hub -
-                building a polished, ever‑growing knowledge base that's easy to explore and
+                building a polished, ever‑growing knowledge base that’s easy to explore and
                 share.
               </p>
               <p className="text-muted-foreground leading-relaxed">
@@ -276,9 +274,12 @@ const Support = () => {
               </CardHeader>
               <CardContent>
                 <p className="text-muted-foreground leading-relaxed text-center mb-6 max-w-2xl mx-auto">
-                  Bitcoin needs more than code - it needs people, voices, and action. Every flyer handed out, post shared,
-                  and question answered helps build a stronger foundation for future Bitcoiners.
-                  Whether you design, share, donate, or simply guide one person to Bitcoin, <strong>you are part of this mission</strong>.
+                  When people understand the "why" behind Bitcoin - how broken money creates unaffordable housing, 
+                  erodes savings, and destroys long-term thinking - everything changes. They stop chasing price hype 
+                  and start building for decades. They reclaim their right to fair money, stable families, and a society 
+                  where human values matter more than quarterly profits. Together, we're creating the ultimate orange pill: 
+                  clear, powerful education that transforms worldviews and awakens people to Bitcoin as the obvious solution. 
+                  <strong>This is how we shift society from broken fiat thinking to sound money abundance.</strong>
                 </p>
                 <div className="flex justify-center">
       <Button
