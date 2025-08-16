@@ -14,7 +14,7 @@ const ComingSoon = () => {
             <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold text-foreground leading-tight tracking-tight">
               The Bitcoin Education
               <span className="block text-transparent bg-clip-text bg-gradient-to-r from-primary via-primary to-primary/80 mt-2">
-                Revolution is Coming
+                Revolution Is Here
               </span>
             </h1>
             
