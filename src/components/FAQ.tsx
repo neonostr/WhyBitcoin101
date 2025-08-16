@@ -67,8 +67,8 @@ const NostrQuestionModal = () => {
         tags: [],
         content: JSON.stringify({
           name: username,
-          about: "Real person starting their Bitcoin journey via @npub1uuhsm53er3xxkq90up6gt2wg5vhaz0aenlw4m4rls04thf24heuq8vf4yh. Your reply helps them learn, builds the open Bitcoin FAQ, and fuels the ultimate orange-pill.\n Learn more: whybitcoin101.com/mission",
-          picture: "https://github.com/neonostr/images/blob/main/questions-pfp-whybitcoin101.jpg",
+          about: "🟠 This person just started their Bitcoin journey via our site.\n✍️ Your answer helps 1 person today and thousands tomorrow (open FAQ).\n🌍 Together we’re building the ultimate orange‑pill.\n👉 Learn more: whybitcoin101.com/mission",
+          picture: "https://raw.githubusercontent.com/neonostr/images/refs/heads/main/questions-pfp-whybitcoin101.jpg",
           banner: "https://raw.githubusercontent.com/neonostr/images/refs/heads/main/banner_whybitcoin101.png",
         }),
         pubkey: publicKey,
