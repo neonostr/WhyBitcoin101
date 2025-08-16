@@ -259,30 +259,78 @@ const Support = () => {
 
           {/* Full-Width Call to Action */}
           <div className="col-span-1 md:col-span-2">
-            <Card className="border-primary/40 bg-primary/5">
-              <CardHeader>
-                <CardTitle className="text-center text-foreground">
-                  The Collective Orange Pill
+            <Card className="border-primary/50 bg-gradient-to-br from-primary/5 via-primary/3 to-secondary/10 backdrop-blur-sm relative overflow-hidden">
+              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-primary/5 to-transparent opacity-50"></div>
+              <CardHeader className="relative z-10 pb-6">
+                <CardTitle className="text-center text-2xl md:text-3xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
+                  Get Involved – Help Shape the Signal
                 </CardTitle>
               </CardHeader>
-              <CardContent>
-                <p className="text-muted-foreground leading-relaxed text-center mb-6 max-w-2xl mx-auto">
-                 
-Help shaping thes signal, every small action matters. When you share great educational content, help answer questions on Nostr, or add your own ideas and resources, it becomes a piece of the bigger picture. On Nostr these pieces connect. They spread, get repeated, improved, and remembered. What starts as one spark from you can echo into a lasting signal for others. WhyBitcoin101 is part of this flow too. Not above, not separate - just another tool, another hand carrying the message. It gathers what we together create and places it where more people can find it. Together we build a library of clear answers. A place to point the next curious mind - a living orange pill that keeps evolving, gathering sparks of change, one curious mind at a time. This is not only about donating sats. It is about contributing your voice, your time, your experience. Because each effort adds to the strength of the whole. Get involved. Shape the signal. Help the world understand why Bitcoin matters.
-                </p>
-                <div className="flex justify-center">
-      <Button
-  variant="default"
-  onClick={() => {
-    const section = document.getElementById("how-you-can-help");
-    if (section) {
-      section.scrollIntoView({ behavior: "smooth" });
-    }
-  }}
-  className="px-6"
->
-  Get Involved Today
-</Button>
+              <CardContent className="relative z-10 space-y-4">
+                <div className="max-w-4xl mx-auto">
+                  <div className="text-foreground/90 text-lg font-medium mb-6 text-center">
+                    Every small action matters.
+                  </div>
+                  
+                  <div className="space-y-4 text-muted-foreground leading-relaxed">
+                    <p>
+                      When you share great educational content, help answer questions on Nostr, or add your own ideas and resources, it becomes a piece of the bigger picture.
+                    </p>
+                    
+                    <p>
+                      <strong className="text-foreground">On Nostr these pieces connect.</strong><br />
+                      They spread, get repeated, improved, and remembered.<br />
+                      What starts as one spark from you can echo into a lasting signal for others.
+                    </p>
+                    
+                    <p>
+                      WhyBitcoin101 is part of this flow too.<br />
+                      Not above, not separate — just another tool, another hand carrying the message.<br />
+                      It gathers what we together create and places it where more people can find it.
+                    </p>
+                    
+                    <div className="border-l-4 border-primary/30 pl-6 py-4 bg-background/20 rounded-r-lg">
+                      <p className="font-medium text-foreground">
+                        Together we build a library of clear answers.
+                      </p>
+                      <p>
+                        A place to point the next curious mind - a living orange pill that keeps evolving, gathering sparks of change, one curious mind at a time.
+                      </p>
+                    </div>
+                    
+                    <p>
+                      This is not only about donating sats.<br />
+                      It is about contributing your voice, your time, your experience.<br />
+                      Because each effort adds to the strength of the whole.
+                    </p>
+                    
+                    <div className="text-center pt-4">
+                      <div className="text-foreground font-semibold text-lg mb-2">
+                        Get involved.
+                      </div>
+                      <div className="text-primary font-semibold text-lg mb-2">
+                        Shape the signal.
+                      </div>
+                      <div className="text-foreground font-semibold text-lg">
+                        Help the world understand why Bitcoin matters.
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+                <div className="flex justify-center pt-6">
+                  <Button
+                    variant="default"
+                    onClick={() => {
+                      const section = document.getElementById("how-you-can-help");
+                      if (section) {
+                        section.scrollIntoView({ behavior: "smooth" });
+                      }
+                    }}
+                    className="px-8 py-3 text-lg font-semibold shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-200"
+                  >
+                    Get Involved Today
+                  </Button>
                 </div>
               </CardContent>
             </Card>
