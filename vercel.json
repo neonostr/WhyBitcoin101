@@ -1,0 +1,12 @@
+{
+  "rewrites": [
+    {
+      "source": "/mission",
+      "destination": "/mission/index.html"
+    },
+    {
+      "source": "/get-involved", 
+      "destination": "/get-involved/index.html"
+    }
+  ]
+}
