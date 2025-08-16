@@ -274,9 +274,12 @@ const Support = () => {
               </CardHeader>
               <CardContent>
                 <p className="text-muted-foreground leading-relaxed text-center mb-6 max-w-2xl mx-auto">
-                  Bitcoin needs more than code - it needs people, voices, and action. Every flyer handed out, post shared,
-                  and question answered helps build a stronger foundation for future Bitcoiners.
-                  Whether you design, share, donate, or simply guide one person to Bitcoin, <strong>you are part of this mission</strong>.
+                  When people understand the "why" behind Bitcoin - how broken money creates unaffordable housing, 
+                  erodes savings, and destroys long-term thinking - everything changes. They stop chasing price hype 
+                  and start building for decades. They reclaim their right to fair money, stable families, and a society 
+                  where human values matter more than quarterly profits. Together, we're creating the ultimate orange pill: 
+                  clear, powerful education that transforms worldviews and awakens people to Bitcoin as the obvious solution. 
+                  <strong>This is how we shift society from broken fiat thinking to sound money abundance.</strong>
                 </p>
                 <div className="flex justify-center">
       <Button
