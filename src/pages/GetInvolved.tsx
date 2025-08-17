@@ -29,7 +29,7 @@ const Support = () => {
     How You Can Help
   </h1>
             <p className="text-xl text-muted-foreground max-w-3xl mb-6">
-              For bitcoiners who want to support Bitcoin education and help newcomers
+              For bitcoiners who want to support Bitcoin education and help people
               understand why Bitcoin matters.
             </p>
           </div>
