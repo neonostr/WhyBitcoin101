@@ -47,7 +47,7 @@ Ready to learn more? These carefully curated resources will guide you towards a 
     url: "https://v.nostr.build/tIA2DN77tAW2qNgT.mp4"
   }, {
     title: "Inflation - The Silent Wealth Thief",
-    description: "Analysis of how inflation destroys the social fabric by eroding savings, widening inequality, and breaking the fundamental promise that hard work leads to prosperity. Watch society's foundation crumble under monetary debasement.",
+    description: "Analysis of how inflation destroys the social fabric by eroding savings, widening inequality, and breaking the fundamental promise that hard work leads to prosperity.",
     type: "Wake-Up Call",
     url: "https://www.youtubetrimmer.com/view/?v=qfeMas1zU6Q&start=2327&end=2512&loop=0"
   }];
