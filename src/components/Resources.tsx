@@ -32,7 +32,7 @@ Ready to learn more? These carefully curated resources will guide you towards a 
     url: "https://www.youtube.com/watch?v=Pef22g53zsg"
   }, {
     title: "Bitcoin Timing - Early or Late?",
-    description: "Worried you missed the boat? This perspective-shifting analysis reveals why we're still in Bitcoin's early adoption phase and what that means for new buyers.",
+    description: "Worried you missed the boat? This perspective-shifting analysis reveals why we're still in Bitcoin's early adoption phase and what that means for you.",
     type: "Perspective",
     url: "https://www.youtubetrimmer.com/view/?v=5893JBg7r9k&start=773&end=1003&loop=0"
   }, {
