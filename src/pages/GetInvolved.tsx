@@ -189,7 +189,7 @@ const Support = () => {
               </p>
               <p className="text-muted-foreground leading-relaxed">
                 So from now on, whenever you want to help others understanding Bitcoin, look for{" "}
-                <span className="font-mono bg-muted px-1 rounded">#whybitcoin101-faq</span>{" "}
+                <span className="font-mono bg-muted px-1 rounded">#whybitcoin101faq</span>{" "}
                 on Nostr, jump in, and share your knowledge. Every answer helps newcomers
                 understand Bitcoin better - and for the first time, thanks to the power of
                 Nostr, we can truly educate together as one global community.

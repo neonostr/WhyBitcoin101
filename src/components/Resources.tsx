@@ -281,7 +281,7 @@ Ready to learn more? These carefully curated resources will guide you towards a 
       <h3 className="text-3xl font-bold text-center mb-10 text-foreground">{emoji} {title}</h3>
       <div className="grid md:grid-cols-3 gap-6">
         {items.map((item, index) => {
-          const hashtag = `#whybitcoin101-resource-${categoryName}-${index + 1}`;
+          const hashtag = `#whybitcoin101resource${categoryName}${index + 1}`;
           return (
             <Card key={index} className="group hover:shadow-[var(--card-hover)] transition-all duration-300 cursor-pointer relative" onClick={() => isVideo ? handleVideoClick(item.title, item.url) : handleLinkClick(item.url)}>
               <ResourceCopyButton 
@@ -316,7 +316,7 @@ Ready to learn more? These carefully curated resources will guide you towards a 
   return <>
       <section id="resources" className="py-20 px-4 bg-background">
         <div className="container mx-auto relative">
-          <CopyButton text={resourcesText} hashtag="#whybitcoin101-resources" />
+          <CopyButton text={resourcesText} hashtag="#whybitcoin101resources" />
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-bold mb-6 text-foreground">
               Dive Deeper

@@ -345,7 +345,7 @@ Is Bitcoin bad for the environment? - Bitcoin mining increasingly uses renewable
                 key={index} 
                 className="group hover:shadow-[var(--card-hover)] transition-all duration-300 border-border/50 hover:border-primary/20 relative"
               >
-                <CopyButton text={`${faq.question} - ${faq.answer}`} hashtag={`#whybitcoin101faq-${index + 1}`} />
+                <CopyButton text={`${faq.question} - ${faq.answer}`} hashtag={`#whybitcoin101faq${index + 1}`} />
                 <CardHeader>
                   <CardTitle className="text-lg text-foreground group-hover:text-primary transition-colors duration-300">
                     {faq.question}
@@ -363,7 +363,7 @@ Is Bitcoin bad for the environment? - Bitcoin mining increasingly uses renewable
         
         <div className="mt-16 text-center">
           <div className="inline-block p-8 rounded-2xl bg-card border border-border relative">
-            <CopyButton text="Still Have Questions? Don't see your question here? Ask the Bitcoin community and get help from others who know about Bitcoin." hashtag="#whybitcoin101-still-questions" />
+            <CopyButton text="Still Have Questions? Don't see your question here? Ask the Bitcoin community and get help from others who know about Bitcoin." hashtag="#whybitcoin101stillquestions" />
             <h3 className="text-2xl font-bold mb-4 text-foreground">Still Have Questions?</h3>
             <p className="text-muted-foreground mb-6 max-w-md">
               Don't see your question here? Ask the Bitcoin community and get help from others who know about Bitcoin.
