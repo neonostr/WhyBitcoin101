@@ -40,7 +40,7 @@ Here's my suggestion for improvement:
 🧡 We're building the ultimate orange pill
 
 Layer 1
-The Open Flood: All Bitcoin knowledge and discussion is happening on Nostr - permissionless, uncensorable, unstoppable - and connected through the unifying hashtag #whybitcoin101 so every contribution becomes part of the bigger picture.
+The Base Layer: All Bitcoin knowledge and discussion is happening on Nostr - permissionless, uncensorable, unstoppable - and connected through the unifying hashtag #whybitcoin101 so every contribution becomes part of the bigger picture.
 
 Layer 2
 The Signal: @npub1uuhsm53er3xxkq90up6gt2wg5vhaz0aenlw4m4rls04thf24heuq8vf4yh works as a collective signal - linking efforts, amplifying the best insights, and making Bitcoin knowledge easier to discover.
