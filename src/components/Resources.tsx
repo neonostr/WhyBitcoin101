@@ -1,19 +1,21 @@
-import { useState } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import VideoModal from "./VideoModal";
 import CopyButton from "./CopyButton";
 import ResourceCopyButton from "./ResourceCopyButton";
-const Resources = () => {
-  const [videoModal, setVideoModal] = useState<{
-    isOpen: boolean;
-    title: string;
-    url: string;
-  }>({
-    isOpen: false,
-    title: "",
-    url: ""
-  });
+
+interface VideoModalState {
+  isOpen: boolean;
+  title: string;
+  url: string;
+}
+
+interface ResourcesProps {
+  videoModal: VideoModalState;
+  setVideoModal: React.Dispatch<React.SetStateAction<VideoModalState>>;
+}
+
+const Resources = ({ videoModal, setVideoModal }: ResourcesProps) => {
 
   const resourcesText = `Dive Deeper
 
