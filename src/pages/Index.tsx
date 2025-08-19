@@ -7,30 +7,8 @@ import Resources from "@/components/Resources";
 import FAQ from "@/components/FAQ";
 import Contact from "@/components/Contact";
 import { EditModeProvider } from "@/contexts/EditModeContext";
-import { useState, useEffect } from "react";
 
 const Index = () => {
-  const [videoModal, setVideoModal] = useState({
-    isOpen: false,
-    title: "",
-    url: ""
-  });
-
-  useEffect(() => {
-    // Check for shared video URL parameters
-    const urlParams = new URLSearchParams(window.location.search);
-    const sharedVideoUrl = urlParams.get('video');
-    const sharedTitle = urlParams.get('title');
-    
-    if (sharedVideoUrl && sharedTitle) {
-      setVideoModal({
-        isOpen: true,
-        title: decodeURIComponent(sharedTitle),
-        url: decodeURIComponent(sharedVideoUrl)
-      });
-    }
-  }, []);
-
   return (
     <EditModeProvider>
       <div className="min-h-screen bg-background">
@@ -39,10 +17,7 @@ const Index = () => {
         <MoneyProblem />
         <Basics />
         <WhyBitcoin />
-        <Resources 
-          videoModal={videoModal}
-          setVideoModal={setVideoModal}
-        />
+        <Resources />
         <FAQ />
         <Contact />
       </div>
