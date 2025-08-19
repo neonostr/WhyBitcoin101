@@ -26,7 +26,7 @@ The very best gets distilled into **whybitcoin101.com** - the ultimate Bitcoin o
 ## Why This Matters
 Education is the bridge. And here's where it gets really powerful:
 
-Anyone visiting [whybitcoin101.com](https://whybitcoin101.com) can ask their Bitcoin questions directly. Those questions don't just vanish into a private inbox - they flow into Nostr under #whybitcoin101-faq, where they help form the largest global Bitcoin FAQ.
+Anyone visiting [whybitcoin101.com](https://whybitcoin101.com) can ask their Bitcoin questions directly. Those questions don't just vanish into a private inbox - they flow into Nostr under #whybitcoin101faq, where they help form the largest global Bitcoin FAQ.
 
 That means:
 
