@@ -12,7 +12,7 @@ This isn't just another Bitcoin education site. Together, we are architecting th
 
 
 
-### Layer 1: The Open Flood  
+### Layer 1: The Base Layer  
 All Bitcoin knowledge and discussion happens on **Nostr** - permissionless, uncensorable, unstoppable. Every insight, every improvement, every breakthrough gets connected through the unifying hashtag **#whybitcoin101**, making every contribution part of something bigger.  
 
 ### Layer 2: The Signal  
