@@ -75,7 +75,7 @@ const VideoModal = ({ isOpen, onClose, title, videoUrl }: VideoModalProps) => {
           <Button
             onClick={handleShare}
             size="sm"
-            variant="ghost"
+            variant="outline"
             className="ml-4"
           >
             <Share2 className="h-4 w-4 mr-2" />
