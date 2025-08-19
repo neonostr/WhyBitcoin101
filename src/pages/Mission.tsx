@@ -128,7 +128,7 @@ const ComingSoon = () => {
           
           <div className="space-y-8">
             <Button size="lg" className="text-xl px-10 py-8 h-auto bg-gradient-to-r from-primary to-primary/90 hover:from-primary/90 hover:to-primary shadow-2xl hover:shadow-primary/25 transition-all duration-300 transform hover:scale-105" asChild>
-              <a href="/get-involved/" rel="noopener noreferrer" className="flex items-center space-x-3">
+              <a href="get-involved" rel="noopener noreferrer" className="flex items-center space-x-3">
                 <span>Get involved</span>
                 <ExternalLink className="w-6 h-6" />
               </a>

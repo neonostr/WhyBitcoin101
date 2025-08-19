@@ -153,7 +153,7 @@ const Contact = () => {
             </p>
             <div className="border-t border-muted-foreground/20 pt-4">
               <a 
-                href="/get-involved/" 
+                href="/get-involved" 
                 className="text-sm text-muted-foreground hover:text-foreground underline underline-offset-2 transition-colors"
               >
                 Already a bitcoiner? Learn how you can help →
