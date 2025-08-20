@@ -65,7 +65,7 @@ const VideoModal = ({ isOpen, onClose, title, videoUrl }: VideoModalProps) => {
       try {
         await navigator.share({
           title: title,
-          text: `Check out this video: ${title}`,
+          text: `Check out this video: ${title}\n\n${shareUrl}`,
           url: shareUrl,
         });
       } catch (error) {
