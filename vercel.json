@@ -17,7 +17,35 @@
       "destination": "/get-involved/index.html"
     },
     {
-      "source": "/((?!mission|get-involved).*)",
+      "source": "/video/bitcoin-vs-crypto-know-the-difference",
+      "destination": "/video/bitcoin-vs-crypto-know-the-difference/index.html"
+    },
+    {
+      "source": "/video/the-broken-money-system-exposed",
+      "destination": "/video/the-broken-money-system-exposed/index.html"
+    },
+    {
+      "source": "/video/bitcoin-timing-early-or-late",
+      "destination": "/video/bitcoin-timing-early-or-late/index.html"
+    },
+    {
+      "source": "/video/bitcoin-vs-diversification-myth",
+      "destination": "/video/bitcoin-vs-diversification-myth/index.html"
+    },
+    {
+      "source": "/video/federal-reserve-the-greatest-lie",
+      "destination": "/video/federal-reserve-the-greatest-lie/index.html"
+    },
+    {
+      "source": "/video/inflation-the-silent-wealth-thief",
+      "destination": "/video/inflation-the-silent-wealth-thief/index.html"
+    },
+    {
+      "source": "/video/(.*)",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/((?!mission|get-involved|video).*)",
       "destination": "/index.html"
     }
   ]

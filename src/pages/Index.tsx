@@ -22,6 +22,30 @@ const Index = () => {
   });
 
   useEffect(() => {
+    // Check for shared video flag from static HTML redirects
+    const sharedVideoData = localStorage.getItem('open-shared-video');
+    
+    if (sharedVideoData) {
+      try {
+        const parsed = JSON.parse(sharedVideoData);
+        
+        // Clear the flag
+        localStorage.removeItem('open-shared-video');
+        
+        // Scroll to top
+        window.scrollTo(0, 0);
+        
+        // Open video modal with shared content
+        setSharedVideo({
+          isOpen: true,
+          title: parsed.title,
+          url: parsed.videoUrl
+        });
+      } catch (error) {
+        console.error('Error parsing shared video data:', error);
+      }
+    }
+    
     // Check for shared video parameters in URL (legacy format for backwards compatibility)
     const urlParams = new URLSearchParams(window.location.search);
     const videoUrl = urlParams.get('video');
