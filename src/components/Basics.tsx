@@ -15,7 +15,7 @@ Why Is It Special? - Built by the people, free from control, Bitcoin is the worl
 Bitcoin is for Everyone - Just as one U.S. Dollar equals 100 cents, one Bitcoin equals 100 million satoshis. This divisibility means you can get involved with Bitcoin starting with any amount - even $1.`;
 
   return (
-    <section id="basics" className="py-20 px-4 bg-background">
+    <section id="basics" className="py-12 md:py-20 px-4 bg-background">
       <div className="container mx-auto relative">
         <CopyButton text={basicsText} hashtag="#whybitcoin101basics" />
         <div className="text-center mb-16">
