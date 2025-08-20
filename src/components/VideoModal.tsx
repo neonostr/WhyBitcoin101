@@ -1,4 +1,7 @@
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
+import { Button } from "@/components/ui/button";
+import { Share2 } from "lucide-react";
+import { useToast } from "@/hooks/use-toast";
 
 interface VideoModalProps {
   isOpen: boolean;
@@ -8,6 +11,8 @@ interface VideoModalProps {
 }
 
 const VideoModal = ({ isOpen, onClose, title, videoUrl }: VideoModalProps) => {
+  const { toast } = useToast();
+
   // Convert YouTube URLs to embed format with autoplay and timestamp
   const getEmbedUrl = (url: string) => {
     let embedUrl = "";
@@ -34,11 +39,48 @@ const VideoModal = ({ isOpen, onClose, title, videoUrl }: VideoModalProps) => {
     return embedUrl;
   };
 
+  const handleShare = async () => {
+    const shareUrl = `${window.location.origin}?video=${encodeURIComponent(videoUrl)}&title=${encodeURIComponent(title)}`;
+    
+    // Check if native sharing is available (mobile)
+    if (navigator.share && /Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+      try {
+        await navigator.share({
+          title: title,
+          text: `Check out this video: ${title}`,
+          url: shareUrl,
+        });
+      } catch (error) {
+        // Fallback to clipboard if user cancels or sharing fails
+        await navigator.clipboard.writeText(shareUrl);
+        toast({
+          title: "Link copied!",
+          description: "Share link has been copied to clipboard",
+        });
+      }
+    } else {
+      // Desktop: copy to clipboard
+      await navigator.clipboard.writeText(shareUrl);
+      toast({
+        title: "Link copied!",
+        description: "Share link has been copied to clipboard",
+      });
+    }
+  };
+
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
       <DialogContent className="max-w-4xl w-full">
-        <DialogHeader>
+        <DialogHeader className="relative">
           <DialogTitle>{title}</DialogTitle>
+          <Button
+            onClick={handleShare}
+            size="sm"
+            variant="ghost"
+            className="absolute top-0 right-0 h-8 w-8 p-0 text-muted-foreground hover:text-foreground opacity-60 hover:opacity-100 transition-opacity"
+          >
+            <Share2 className="h-4 w-4" />
+          </Button>
         </DialogHeader>
         <div className="aspect-video w-full">
           <iframe
