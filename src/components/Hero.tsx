@@ -12,7 +12,7 @@ Your journey into understanding the future of money starts here. Simple explanat
           <h1 className="text-5xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-foreground to-primary bg-clip-text text-transparent leading-tight md:leading-tight my-0">
             Curious About Bitcoin?
           </h1>
-          <p className="text-xl md:text-2xl text-muted-foreground mb-8 max-w-2xl mx-auto leading-relaxed">Your journey into understanding the future of money starts here. Simple explanations, trusted resources, and expert guidance.</p>
+          <p className="text-xl md:text-2xl text-muted-foreground mb-8 max-w-2xl mx-auto leading-relaxed my-[21px]">Your journey into understanding the future of money starts here. Simple explanations, trusted resources, and expert guidance.</p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button size="lg" className="bg-primary hover:bg-primary/90 text-primary-foreground text-lg px-8 py-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300" onClick={() => document.getElementById('money-problem')?.scrollIntoView({
             behavior: 'smooth'
