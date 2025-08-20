@@ -9,6 +9,7 @@ import Mission from "./pages/Mission";
 import NotFound from "./pages/NotFound";
 import QuestionFollow from "./pages/QuestionFollow";
 import GetInvolved from "./pages/GetInvolved";
+import VideoPage from "./pages/VideoPage";
 
 const queryClient = new QueryClient();
 
@@ -24,6 +25,7 @@ const App = () => (
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Index />} />
+          <Route path="/video/:slug" element={<VideoPage />} />
           <Route path="/coming-soon" element={<ComingSoonRedirect />} />
           <Route path="/mission" element={<Mission />} />
           <Route path="/question/:key" element={<QuestionFollow />} />

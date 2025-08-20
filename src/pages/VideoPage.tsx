@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { useParams, useNavigate } from "react-router-dom";
 import Navigation from "@/components/Navigation";
 import Hero from "@/components/Hero";
 import MoneyProblem from "@/components/MoneyProblem";
@@ -10,7 +11,9 @@ import Contact from "@/components/Contact";
 import VideoModal from "@/components/VideoModal";
 import { EditModeProvider } from "@/contexts/EditModeContext";
 
-const Index = () => {
+const VideoPage = () => {
+  const { slug } = useParams();
+  const navigate = useNavigate();
   const [sharedVideo, setSharedVideo] = useState<{
     isOpen: boolean;
     title: string;
@@ -22,26 +25,39 @@ const Index = () => {
   });
 
   useEffect(() => {
-    // Check for shared video parameters in URL (legacy format for backwards compatibility)
-    const urlParams = new URLSearchParams(window.location.search);
-    const videoUrl = urlParams.get('video');
-    const videoTitle = urlParams.get('title');
-    
-    if (videoUrl && videoTitle) {
-      // Scroll to top
-      window.scrollTo(0, 0);
+    if (slug) {
+      // Try to get video data from localStorage
+      const videoData = localStorage.getItem(`video-${slug}`);
       
-      // Open video modal with shared content
-      setSharedVideo({
-        isOpen: true,
-        title: decodeURIComponent(videoTitle),
-        url: decodeURIComponent(videoUrl)
-      });
-      
-      // Clean URL without reloading
-      window.history.replaceState({}, document.title, window.location.pathname);
+      if (videoData) {
+        try {
+          const parsed = JSON.parse(videoData);
+          
+          // Scroll to top
+          window.scrollTo(0, 0);
+          
+          // Open video modal with shared content
+          setSharedVideo({
+            isOpen: true,
+            title: parsed.title,
+            url: parsed.videoUrl
+          });
+        } catch (error) {
+          console.error('Error parsing video data:', error);
+          navigate('/');
+        }
+      } else {
+        // Video not found, redirect to homepage
+        navigate('/');
+      }
     }
-  }, []);
+  }, [slug, navigate]);
+
+  const handleCloseVideo = () => {
+    setSharedVideo({ isOpen: false, title: "", url: "" });
+    // Navigate back to homepage after closing
+    navigate('/');
+  };
 
   return (
     <EditModeProvider>
@@ -57,7 +73,7 @@ const Index = () => {
         
         <VideoModal 
           isOpen={sharedVideo.isOpen} 
-          onClose={() => setSharedVideo({ isOpen: false, title: "", url: "" })} 
+          onClose={handleCloseVideo} 
           title={sharedVideo.title} 
           videoUrl={sharedVideo.url} 
         />
@@ -66,4 +82,4 @@ const Index = () => {
   );
 };
 
-export default Index;
+export default VideoPage;

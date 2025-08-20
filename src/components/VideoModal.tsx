@@ -39,8 +39,26 @@ const VideoModal = ({ isOpen, onClose, title, videoUrl }: VideoModalProps) => {
     return embedUrl;
   };
 
+  const createSlug = (title: string) => {
+    return title
+      .toLowerCase()
+      .replace(/[^a-z0-9\s-]/g, '')
+      .replace(/\s+/g, '-')
+      .replace(/-+/g, '-')
+      .trim();
+  };
+
   const handleShare = async () => {
-    const shareUrl = `${window.location.origin}?video=${encodeURIComponent(videoUrl)}&title=${encodeURIComponent(title)}`;
+    const slug = createSlug(title);
+    
+    // Store video data in localStorage with slug as key
+    localStorage.setItem(`video-${slug}`, JSON.stringify({
+      title,
+      videoUrl,
+      timestamp: Date.now()
+    }));
+    
+    const shareUrl = `${window.location.origin}/video/${slug}`;
     
     // Check if native sharing is available (mobile)
     if (navigator.share && /Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
