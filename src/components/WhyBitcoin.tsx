@@ -1,10 +1,8 @@
 import { useState } from "react";
 import DonationModal from "./DonationModal";
 import CopyButton from "./CopyButton";
-
 const WhyBitcoin = () => {
   const [donationModalOpen, setDonationModalOpen] = useState(false);
-
   const whyBitcoinText = `Building Tomorrow Together
 
 Imagine a world where sound money enables humanity to think beyond quarterly profits and election cycles. Where low time preference becomes the foundation for sustainable innovation, genuine prosperity, and decisions that benefit our children's children.
@@ -14,7 +12,6 @@ A Society Worth Building - When money holds its value across time, people natura
 Quality Over Quantity - Our educational resources are carefully curated, no affiliate links, no hidden agendas, just the best content we can find. We update this collection constantly because understanding Bitcoin means understanding the future of human coordination. Every book, video, podcast, and article is selected purely for its quality and insight. This knowledge belongs to everyone.
 
 The Path Forward - Every great transformation starts with understanding. As more people grasp these principles, we move closer to a world where patient capital builds lasting value, where innovation serves humanity's long-term flourishing, and where financial sovereignty empowers individuals to think beyond survival. This transition isn't just about money - it's about reclaiming our ability to build for the future, to invest in ideas that matter, and to create a legacy worth leaving.`;
-
   return <>
       <section id="why-bitcoin" className="py-20 px-4 bg-gradient-to-b from-background to-secondary/20">
       <div className="container mx-auto relative">
@@ -50,7 +47,7 @@ The Path Forward - Every great transformation starts with understanding. As more
               <h3 className="text-2xl font-bold mb-4 text-foreground group-hover:text-primary transition-colors duration-300">
                 Quality Over Quantity
               </h3>
-              <p className="text-muted-foreground leading-relaxed mb-4">Our educational resources are carefully curated, no affiliate links, no hidden agendas, just the best content we can find. We update this collection constantly because understanding Bitcoin means understanding the future of human coordination.</p>
+              <p className="text-muted-foreground leading-relaxed mb-4">Our educational resources are carefully curated, no affiliate links, no hidden agendas, just the best content we can find. We update this collection constantly to provide the most reliable and insightful paths to understanding Bitcoin.</p>
               <p className="text-muted-foreground leading-relaxed">Every book, video, podcast, and article is selected purely for its quality and insight. This knowledge belongs to everyone.</p>
             </div>
           </div>
