@@ -95,7 +95,7 @@ const VideoModal = ({ isOpen, onClose, title, videoUrl }: VideoModalProps) => {
             onClick={handleShare}
             size="sm"
             variant="ghost"
-            className="h-8 w-8 p-0 text-muted-foreground hover:text-foreground opacity-60 hover:opacity-100 transition-opacity flex-shrink-0"
+            className="h-8 w-8 p-0 text-muted-foreground hover:text-foreground opacity-60 hover:opacity-100 transition-opacity flex-shrink-0 focus-visible:ring-0 focus-visible:ring-offset-0"
           >
             <Share2 className="h-4 w-4" />
           </Button>
