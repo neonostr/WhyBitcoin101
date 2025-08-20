@@ -48,7 +48,7 @@ The Path Forward - Every great transformation starts with understanding. As more
                 Quality Over Quantity
               </h3>
               <p className="text-muted-foreground leading-relaxed mb-4">Our educational resources are carefully curated, no affiliate links, no hidden agendas, just the best content we can find. We update this collection constantly to provide the most reliable and insightful paths to understanding Bitcoin.</p>
-              <p className="text-muted-foreground leading-relaxed">Every book, video, podcast, and article is selected purely for its quality and insight. This knowledge belongs to everyone.</p>
+              <p className="text-muted-foreground leading-relaxed">Every book, video, podcast, and article is selected purely for its quality and insight. Start exploring, and you'll see how each step deepens your understanding and opens new perspectives on Bitcoin.</p>
             </div>
           </div>
         </div>
