@@ -70,14 +70,14 @@ const VideoModal = ({ isOpen, onClose, title, videoUrl }: VideoModalProps) => {
 
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
-      <DialogContent className="max-w-4xl w-full">
-        <DialogHeader className="relative">
-          <DialogTitle>{title}</DialogTitle>
+      <DialogContent className="max-w-4xl w-full [&>button]:hidden">
+        <DialogHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+          <DialogTitle className="text-left">{title}</DialogTitle>
           <Button
             onClick={handleShare}
             size="sm"
             variant="ghost"
-            className="absolute top-0 right-0 h-8 w-8 p-0 text-muted-foreground hover:text-foreground opacity-60 hover:opacity-100 transition-opacity"
+            className="h-8 w-8 p-0 text-muted-foreground hover:text-foreground opacity-60 hover:opacity-100 transition-opacity flex-shrink-0"
           >
             <Share2 className="h-4 w-4" />
           </Button>
