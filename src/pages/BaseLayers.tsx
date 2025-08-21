@@ -365,6 +365,7 @@ const BaseLayers = () => {
     const imageRegex = /(https?:\/\/[^\s]+\.(?:jpg|jpeg|png|gif|webp))/gi;
     const videoRegex = /(https?:\/\/[^\s]+\.(?:mp4|webm|mov))/gi;
     const youtubeRegex = /(?:https?:\/\/)?(?:www\.)?(?:youtube\.com\/watch\?v=|youtu\.be\/)([a-zA-Z0-9_-]+)/gi;
+    const youtubeTrimmerRegex = /https?:\/\/www\.youtubetrimmer\.com\/view\/\?v=([a-zA-Z0-9_-]+)&start=(\d+)&end=(\d+)(?:&loop=\d+)?/gi;
 
     let processedContent = content;
     const mediaElements = [];
@@ -395,6 +396,28 @@ const BaseLayers = () => {
         />
       );
       processedContent = processedContent.replace(match[1], '');
+    }
+
+    // Extract and render YouTube Trimmer videos
+    while ((match = youtubeTrimmerRegex.exec(content)) !== null) {
+      const videoId = match[1];
+      const startTime = match[2];
+      const endTime = match[3];
+      mediaElements.push(
+        <div key={`trimmer-${videoId}-${startTime}`} className="mt-2 w-full">
+          <div className="relative w-full" style={{ paddingBottom: '56.25%' }}>
+            <iframe
+              className="absolute top-0 left-0 w-full h-full rounded-lg"
+              src={`https://www.youtube.com/embed/${videoId}?start=${startTime}&end=${endTime}`}
+              title="YouTube video"
+              frameBorder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowFullScreen
+            />
+          </div>
+        </div>
+      );
+      processedContent = processedContent.replace(match[0], '');
     }
 
     // Extract and render YouTube videos
