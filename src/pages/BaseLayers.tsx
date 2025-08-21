@@ -419,7 +419,8 @@ const BaseLayers = () => {
   };
 
   const removeNostrReferences = (content: string): string => {
-    return content.replace(/nostr:(nevent1[a-zA-Z0-9]+|note1[a-zA-Z0-9]+|npub1[a-zA-Z0-9]+)/g, '').trim();
+    // Only remove note and nevent references, keep npub mentions for processing
+    return content.replace(/nostr:(nevent1[a-zA-Z0-9]+|note1[a-zA-Z0-9]+)/g, '').trim();
   };
 
   const renderQuotedEvent = (quotedEvent: NostrEvent) => {
@@ -468,10 +469,9 @@ const BaseLayers = () => {
 
   const processTextContent = (content: string) => {
     // Replace npub mentions with display names (but not clickable)
-    const npubRegex = /nostr:(npub1[a-zA-Z0-9]+)/g;
     let processedContent = content;
     
-    // First extract all npub references and process them
+    // Extract all npub references and process them
     const npubReferences = extractNostrReferences(content);
     npubReferences.forEach(ref => {
       if (ref.type === 'npub' && 'pubkey' in ref) {
