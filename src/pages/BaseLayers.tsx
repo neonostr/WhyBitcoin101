@@ -6,6 +6,7 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 import { Search, Copy, ExternalLink, Quote, Eye, EyeOff, Shield, Users } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 
@@ -593,78 +594,102 @@ const BaseLayers = () => {
                   {showAuthors ? <EyeOff className="h-4 w-4 mr-2" /> : <Eye className="h-4 w-4 mr-2" />}
                   {showAuthors ? "Hide Authors" : "Show Authors"}
                 </Button>
+
+                <Dialog>
+                  <DialogTrigger asChild>
+                    <Button 
+                      variant={webOfTrustEnabled ? "default" : "outline"} 
+                      size="sm"
+                      className="flex-1 sm:flex-initial"
+                    >
+                      <Shield className="h-4 w-4 mr-2" />
+                      Web of Trust Filter
+                      {webOfTrustEnabled && trustedPubkeys.size > 0 && (
+                        <Badge variant="secondary" className="ml-2 text-xs">
+                          {trustedPubkeys.size}
+                        </Badge>
+                      )}
+                    </Button>
+                  </DialogTrigger>
+                  <DialogContent className="sm:max-w-[425px]">
+                    <DialogHeader>
+                      <DialogTitle className="flex items-center gap-2">
+                        <Shield className="h-5 w-5" />
+                        Web of Trust Filter
+                      </DialogTitle>
+                    </DialogHeader>
+                    
+                    <div className="space-y-4">
+                      <div className="flex items-center justify-between">
+                        <span className="text-sm font-medium">Enable Filter</span>
+                        <Button
+                          onClick={() => setWebOfTrustEnabled(!webOfTrustEnabled)}
+                          variant={webOfTrustEnabled ? "default" : "outline"}
+                          size="sm"
+                        >
+                          {webOfTrustEnabled ? "Enabled" : "Disabled"}
+                        </Button>
+                      </div>
+                      
+                      {webOfTrustEnabled && (
+                        <>
+                          <div className="space-y-2">
+                            <label className="text-sm font-medium">Trust Root (npub)</label>
+                            <Input
+                              placeholder="Enter npub (e.g., npub123...)"
+                              value={webOfTrustNpub}
+                              onChange={(e) => setWebOfTrustNpub(e.target.value)}
+                              className="text-sm"
+                            />
+                          </div>
+                          
+                          <div className="space-y-2">
+                            <label className="text-sm font-medium">Trust Level</label>
+                            <Select value={webOfTrustLevel.toString()} onValueChange={(value) => setWebOfTrustLevel(parseInt(value) as 1 | 2)}>
+                              <SelectTrigger>
+                                <SelectValue />
+                              </SelectTrigger>
+                              <SelectContent>
+                                <SelectItem value="1">
+                                  <div className="flex items-center gap-2">
+                                    <Users className="h-3 w-3" />
+                                    Level 1 (Direct follows)
+                                  </div>
+                                </SelectItem>
+                                <SelectItem value="2">
+                                  <div className="flex items-center gap-2">
+                                    <Users className="h-3 w-3" />
+                                    Level 2 (Extended network)
+                                  </div>
+                                </SelectItem>
+                              </SelectContent>
+                            </Select>
+                          </div>
+                          
+                          <Button
+                            onClick={buildWebOfTrust}
+                            disabled={!webOfTrustNpub.trim() || webOfTrustLoading}
+                            className="w-full"
+                          >
+                            {webOfTrustLoading ? "Building Trust Network..." : "Build Web of Trust"}
+                          </Button>
+                          
+                          {trustedPubkeys.size > 0 && (
+                            <div className="text-xs text-muted-foreground p-3 bg-muted/30 rounded-lg">
+                              ✓ Filtering by {trustedPubkeys.size} trusted pubkeys (Level {webOfTrustLevel})
+                            </div>
+                          )}
+                        </>
+                      )}
+                    </div>
+                  </DialogContent>
+                </Dialog>
                 
                 <Button onClick={copyVisibleContent} variant="outline" size="sm" className="flex-1 sm:flex-initial">
                   <Copy className="h-4 w-4 mr-2" />
                   Copy Visible ({filteredEvents.length})
                 </Button>
               </div>
-            </div>
-
-            {/* Web of Trust Controls */}
-            <div className="flex flex-col gap-3 p-4 bg-muted/30 rounded-lg border">
-              <div className="flex items-center gap-2">
-                <Shield className="h-4 w-4 text-primary" />
-                <span className="font-medium text-sm">Web of Trust Filter</span>
-                <Button
-                  onClick={() => setWebOfTrustEnabled(!webOfTrustEnabled)}
-                  variant={webOfTrustEnabled ? "default" : "outline"}
-                  size="sm"
-                  className="ml-auto"
-                >
-                  {webOfTrustEnabled ? "Enabled" : "Disabled"}
-                </Button>
-              </div>
-              
-              {webOfTrustEnabled && (
-                <div className="flex flex-col sm:flex-row gap-3">
-                  <div className="flex-1">
-                    <Input
-                      placeholder="Enter npub (e.g., npub123...)"
-                      value={webOfTrustNpub}
-                      onChange={(e) => setWebOfTrustNpub(e.target.value)}
-                      className="text-sm"
-                    />
-                  </div>
-                  
-                  <div className="flex gap-2 items-center">
-                    <Select value={webOfTrustLevel.toString()} onValueChange={(value) => setWebOfTrustLevel(parseInt(value) as 1 | 2)}>
-                      <SelectTrigger className="w-32">
-                        <SelectValue />
-                      </SelectTrigger>
-                      <SelectContent>
-                        <SelectItem value="1">
-                          <div className="flex items-center gap-2">
-                            <Users className="h-3 w-3" />
-                            Level 1
-                          </div>
-                        </SelectItem>
-                        <SelectItem value="2">
-                          <div className="flex items-center gap-2">
-                            <Users className="h-3 w-3" />
-                            Level 2
-                          </div>
-                        </SelectItem>
-                      </SelectContent>
-                    </Select>
-                    
-                    <Button
-                      onClick={buildWebOfTrust}
-                      disabled={!webOfTrustNpub.trim() || webOfTrustLoading}
-                      size="sm"
-                      className="whitespace-nowrap"
-                    >
-                      {webOfTrustLoading ? "Building..." : "Build Trust"}
-                    </Button>
-                  </div>
-                </div>
-              )}
-              
-              {webOfTrustEnabled && trustedPubkeys.size > 0 && (
-                <div className="text-xs text-muted-foreground">
-                  Filtering by {trustedPubkeys.size} trusted pubkeys (Level {webOfTrustLevel})
-                </div>
-              )}
             </div>
           </div>
         </div>
