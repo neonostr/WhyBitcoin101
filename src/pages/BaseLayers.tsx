@@ -238,22 +238,28 @@ const BaseLayers = () => {
       const profileFilter = {
         kinds: [0],
         authors: pubkeys,
-        limit: pubkeys.length
+        limit: pubkeys.length * 5 // Get multiple profile events per author
       };
 
       const profileEvents = await poolRef.current.querySync(relays, profileFilter);
       const profiles: Record<string, UserProfile> = {};
 
-      profileEvents.forEach(event => {
-        try {
-          const profileData = JSON.parse(event.content);
-          profiles[event.pubkey] = profileData;
-        } catch (error) {
-          console.error("Error parsing profile:", error);
+      // Sort by created_at to get the most recent profile for each pubkey
+      const sortedEvents = profileEvents.sort((a, b) => b.created_at - a.created_at);
+      
+      sortedEvents.forEach(event => {
+        // Only use the most recent profile for each pubkey
+        if (!profiles[event.pubkey]) {
+          try {
+            const profileData = JSON.parse(event.content);
+            profiles[event.pubkey] = profileData;
+          } catch (error) {
+            console.error("Error parsing profile:", error);
+          }
         }
       });
 
-      setUserProfiles(profiles);
+      setUserProfiles(prev => ({ ...prev, ...profiles }));
     } catch (error) {
       console.error("Error fetching user profiles:", error);
     }
