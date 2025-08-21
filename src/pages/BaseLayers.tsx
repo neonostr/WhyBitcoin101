@@ -316,23 +316,23 @@ const BaseLayers = () => {
     return (
       <div className="border-l-4 border-primary/30 pl-4 mt-3 bg-muted/30 rounded-r-lg p-3">
         <div className="flex items-center gap-2 mb-2">
-          <Quote className="h-4 w-4 text-primary" />
+          <Quote className="h-4 w-4 text-primary flex-shrink-0" />
           <img
             src={profile?.picture || `https://robohash.org/${quotedEvent.pubkey}?set=set4&size=24x24`}
             alt="Quoted author"
-            className="w-6 h-6 rounded-full"
+            className="w-6 h-6 rounded-full flex-shrink-0"
           />
-          <span className="text-sm font-medium">
+          <span className="text-sm font-medium truncate">
             {getUserDisplayName(quotedEvent.pubkey)}
           </span>
-          <span className="text-xs text-muted-foreground">
+          <span className="text-xs text-muted-foreground flex-shrink-0">
             {formatDate(quotedEvent.created_at)}
           </span>
         </div>
         
         {textContent && (
           <div className="prose prose-sm max-w-none mb-2">
-            <p className="whitespace-pre-wrap text-foreground text-sm">
+            <p className="whitespace-pre-wrap text-foreground text-sm break-words">
               {textContent}
             </p>
           </div>
@@ -364,7 +364,7 @@ const BaseLayers = () => {
           key={match[1]} 
           src={match[1]} 
           alt="Shared content" 
-          className="max-w-sm max-h-64 object-cover rounded-lg mt-2"
+          className="w-full max-w-full h-auto max-h-48 object-cover rounded-lg mt-2"
           loading="lazy"
         />
       );
@@ -378,7 +378,7 @@ const BaseLayers = () => {
           key={match[1]} 
           src={match[1]} 
           controls 
-          className="max-w-md max-h-64 rounded-lg mt-2"
+          className="w-full max-w-full max-h-48 rounded-lg mt-2"
         />
       );
       processedContent = processedContent.replace(match[1], '');
@@ -388,17 +388,17 @@ const BaseLayers = () => {
     while ((match = youtubeRegex.exec(content)) !== null) {
       const videoId = match[1];
       mediaElements.push(
-        <div key={videoId} className="mt-2 max-w-md">
-          <iframe
-            width="100%"
-            height="200"
-            src={`https://www.youtube.com/embed/${videoId}`}
-            title="YouTube video"
-            frameBorder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowFullScreen
-            className="rounded-lg"
-          />
+        <div key={videoId} className="mt-2 w-full">
+          <div className="relative w-full" style={{ paddingBottom: '56.25%' }}>
+            <iframe
+              className="absolute top-0 left-0 w-full h-full rounded-lg"
+              src={`https://www.youtube.com/embed/${videoId}`}
+              title="YouTube video"
+              frameBorder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowFullScreen
+            />
+          </div>
         </div>
       );
       processedContent = processedContent.replace(match[0], '');
@@ -426,7 +426,7 @@ const BaseLayers = () => {
   }
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-background overflow-x-hidden">
       {/* Header */}
       <div className="border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 sticky top-0 z-50">
         <div className="container mx-auto px-4 py-4">
@@ -435,18 +435,18 @@ const BaseLayers = () => {
             <Badge variant="secondary">#whybitcoin101</Badge>
           </div>
           
-          <div className="flex gap-4 items-center">
-            <div className="relative flex-1 max-w-md">
+          <div className="flex flex-col sm:flex-row gap-4 items-start sm:items-center">
+            <div className="relative flex-1 max-w-md w-full">
               <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground h-4 w-4" />
               <Input
                 placeholder="Search bitcoin knowledge..."
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
-                className="pl-10"
+                className="pl-10 w-full"
               />
             </div>
             
-            <Button onClick={copyVisibleContent} variant="outline" size="sm">
+            <Button onClick={copyVisibleContent} variant="outline" size="sm" className="w-full sm:w-auto">
               <Copy className="h-4 w-4 mr-2" />
               Copy Visible ({filteredEvents.length})
             </Button>
@@ -479,39 +479,39 @@ const BaseLayers = () => {
           </div>
         )}
 
-        <div className="grid gap-4">
+        <div className="grid gap-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
           {filteredEvents.map((event) => {
             const profile = userProfiles[event.pubkey];
             const cleanContent = removeNostrReferences(removeHashtags(event.content));
             const { textContent, mediaElements } = renderMedia(cleanContent);
             
             return (
-              <Card key={event.id} className="hover:shadow-md transition-shadow">
+              <Card key={event.id} className="hover:shadow-md transition-shadow h-fit">
                 <CardContent className="p-4">
                   <div className="flex items-start gap-3">
                     <img
                       src={profile?.picture || `https://robohash.org/${event.pubkey}?set=set4&size=40x40`}
                       alt="Profile"
-                      className="w-10 h-10 rounded-full cursor-pointer hover:ring-2 hover:ring-primary"
+                      className="w-10 h-10 rounded-full cursor-pointer hover:ring-2 hover:ring-primary flex-shrink-0"
                       onClick={() => openNostrProfile(event.pubkey)}
                     />
                     
                     <div className="flex-1 min-w-0">
                       <div className="flex items-center gap-2 mb-2">
                         <span 
-                          className="font-medium cursor-pointer hover:text-primary"
+                          className="font-medium cursor-pointer hover:text-primary truncate"
                           onClick={() => openNostrProfile(event.pubkey)}
                         >
                           {getUserDisplayName(event.pubkey)}
                         </span>
-                        <span className="text-xs text-muted-foreground">
+                        <span className="text-xs text-muted-foreground flex-shrink-0">
                           {formatDate(event.created_at)}
                         </span>
                       </div>
                       
                       {textContent && (
                         <div className="prose prose-sm max-w-none mb-2">
-                          <p className="whitespace-pre-wrap text-foreground">
+                          <p className="whitespace-pre-wrap text-foreground break-words">
                             {textContent}
                           </p>
                         </div>
