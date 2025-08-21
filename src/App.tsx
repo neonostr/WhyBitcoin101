@@ -10,6 +10,7 @@ import NotFound from "./pages/NotFound";
 import QuestionFollow from "./pages/QuestionFollow";
 import GetInvolved from "./pages/GetInvolved";
 import VideoPage from "./pages/VideoPage";
+import BaseLayers from "./pages/BaseLayers";
 
 const queryClient = new QueryClient();
 
@@ -30,6 +31,7 @@ const App = () => (
           <Route path="/mission" element={<Mission />} />
           <Route path="/question/:key" element={<QuestionFollow />} />
           <Route path="/get-involved" element={<GetInvolved />} />
+          <Route path="/base-layer" element={<BaseLayers />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
