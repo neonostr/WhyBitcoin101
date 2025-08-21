@@ -418,6 +418,7 @@ const BaseLayers = () => {
   };
 
   const openNostrProfile = (pubkey: string) => {
+    console.log('Opening profile for:', pubkey);
     window.open(`https://primal.net/p/${pubkey}`, '_blank');
   };
 
