@@ -364,7 +364,7 @@ const BaseLayers = () => {
           key={match[1]} 
           src={match[1]} 
           alt="Shared content" 
-          className="max-w-full h-auto rounded-lg mt-2"
+          className="max-w-sm max-h-64 object-cover rounded-lg mt-2"
           loading="lazy"
         />
       );
@@ -378,7 +378,7 @@ const BaseLayers = () => {
           key={match[1]} 
           src={match[1]} 
           controls 
-          className="max-w-full h-auto rounded-lg mt-2"
+          className="max-w-md max-h-64 rounded-lg mt-2"
         />
       );
       processedContent = processedContent.replace(match[1], '');
@@ -388,10 +388,10 @@ const BaseLayers = () => {
     while ((match = youtubeRegex.exec(content)) !== null) {
       const videoId = match[1];
       mediaElements.push(
-        <div key={videoId} className="mt-2">
+        <div key={videoId} className="mt-2 max-w-md">
           <iframe
             width="100%"
-            height="315"
+            height="200"
             src={`https://www.youtube.com/embed/${videoId}`}
             title="YouTube video"
             frameBorder="0"
