@@ -111,34 +111,41 @@ const BaseLayers = () => {
     const enrichedEvents = [];
     
     for (const event of events) {
-      // Check if event is mostly just hashtags and has reply tags
-      const isJustHashtags = event.content.trim().split(/\s+/).every(word => 
-        word.startsWith('#') || word.length < 3
-      );
-      
       const replyTags = event.tags.filter(tag => tag[0] === 'e');
       
-      if (isJustHashtags && replyTags.length > 0) {
-        // Try to fetch the original event being replied to
-        try {
-          const originalEventId = replyTags[0][1];
-          const originalEvents = await poolRef.current.querySync(relays, {
-            kinds: [1],
-            ids: [originalEventId],
-            limit: 1
-          });
+      // Check if event is a reply and has minimal content (hashtag + max 7 additional chars)
+      if (replyTags.length > 0) {
+        const content = event.content.trim();
+        const hasHashtag = content.includes('#whybitcoin101') || content.includes('#');
+        
+        if (hasHashtag) {
+          // Remove all hashtags and count remaining characters
+          const contentWithoutHashtags = content.replace(/#\w+/g, '').trim();
+          const remainingChars = contentWithoutHashtags.replace(/\s+/g, '').length;
           
-          if (originalEvents.length > 0) {
-            // Use original content but keep the reply metadata
-            enrichedEvents.push({
-              ...event,
-              content: originalEvents[0].content,
-              originalEvent: originalEvents[0]
-            });
-            continue;
+          if (remainingChars <= 7) {
+            // Try to fetch the original event being replied to
+            try {
+              const originalEventId = replyTags[0][1];
+              const originalEvents = await poolRef.current.querySync(relays, {
+                kinds: [1],
+                ids: [originalEventId],
+                limit: 1
+              });
+              
+              if (originalEvents.length > 0) {
+                // Use original content but keep the reply metadata
+                enrichedEvents.push({
+                  ...event,
+                  content: originalEvents[0].content,
+                  originalEvent: originalEvents[0]
+                });
+                continue;
+              }
+            } catch (error) {
+              console.error("Error fetching original event:", error);
+            }
           }
-        } catch (error) {
-          console.error("Error fetching original event:", error);
         }
       }
       
