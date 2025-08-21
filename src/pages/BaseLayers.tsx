@@ -5,7 +5,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { Search, Copy, ExternalLink, Quote } from "lucide-react";
+import { Search, Copy, ExternalLink, Quote, Eye, EyeOff } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 
 interface NostrEvent {
@@ -31,6 +31,7 @@ const BaseLayers = () => {
   const [quotedEvents, setQuotedEvents] = useState<Record<string, NostrEvent>>({});
   const [loading, setLoading] = useState(true);
   const [searchTerm, setSearchTerm] = useState("");
+  const [showAuthors, setShowAuthors] = useState(false);
   const { toast } = useToast();
   
   const poolRef = useRef<SimplePool | null>(null);
@@ -315,20 +316,26 @@ const BaseLayers = () => {
     
     return (
       <div className="border-l-4 border-primary/30 pl-4 mt-3 bg-muted/30 rounded-r-lg p-3">
-        <div className="flex items-center gap-2 mb-2">
-          <Quote className="h-4 w-4 text-primary flex-shrink-0" />
-          <img
-            src={profile?.picture || `https://robohash.org/${quotedEvent.pubkey}?set=set4&size=24x24`}
-            alt="Quoted author"
-            className="w-6 h-6 rounded-full flex-shrink-0"
-          />
-          <span className="text-sm font-medium truncate">
-            {getUserDisplayName(quotedEvent.pubkey)}
-          </span>
-          <span className="text-xs text-muted-foreground flex-shrink-0">
-            {formatDate(quotedEvent.created_at)}
-          </span>
-        </div>
+        {showAuthors && (
+          <div className="flex items-center gap-2 mb-2">
+            <Quote className="h-4 w-4 text-primary flex-shrink-0" />
+            <img
+              src={profile?.picture || `https://robohash.org/${quotedEvent.pubkey}?set=set4&size=24x24`}
+              alt="Quoted author"
+              className="w-6 h-6 rounded-full flex-shrink-0 cursor-pointer hover:ring-2 hover:ring-primary"
+              onClick={() => openNostrProfile(quotedEvent.pubkey)}
+            />
+            <span 
+              className="text-sm font-medium truncate cursor-pointer hover:text-primary"
+              onClick={() => openNostrProfile(quotedEvent.pubkey)}
+            >
+              {getUserDisplayName(quotedEvent.pubkey)}
+            </span>
+            <span className="text-xs text-muted-foreground flex-shrink-0">
+              {formatDate(quotedEvent.created_at)}
+            </span>
+          </div>
+        )}
         
         {textContent && (
           <div className="prose prose-sm max-w-none mb-2">
@@ -446,10 +453,22 @@ const BaseLayers = () => {
               />
             </div>
             
-            <Button onClick={copyVisibleContent} variant="outline" size="sm" className="w-full sm:w-auto">
-              <Copy className="h-4 w-4 mr-2" />
-              Copy Visible ({filteredEvents.length})
-            </Button>
+            <div className="flex gap-2 w-full sm:w-auto">
+              <Button 
+                onClick={() => setShowAuthors(!showAuthors)} 
+                variant="outline" 
+                size="sm"
+                className="flex-1 sm:flex-initial"
+              >
+                {showAuthors ? <EyeOff className="h-4 w-4 mr-2" /> : <Eye className="h-4 w-4 mr-2" />}
+                {showAuthors ? "Hide Authors" : "Show Authors"}
+              </Button>
+              
+              <Button onClick={copyVisibleContent} variant="outline" size="sm" className="flex-1 sm:flex-initial">
+                <Copy className="h-4 w-4 mr-2" />
+                Copy Visible ({filteredEvents.length})
+              </Button>
+            </div>
           </div>
         </div>
       </div>
@@ -489,25 +508,29 @@ const BaseLayers = () => {
               <Card key={event.id} className="hover:shadow-md transition-shadow h-fit">
                 <CardContent className="p-4">
                   <div className="flex items-start gap-3">
-                    <img
-                      src={profile?.picture || `https://robohash.org/${event.pubkey}?set=set4&size=40x40`}
-                      alt="Profile"
-                      className="w-10 h-10 rounded-full cursor-pointer hover:ring-2 hover:ring-primary flex-shrink-0"
-                      onClick={() => openNostrProfile(event.pubkey)}
-                    />
+                    {showAuthors && (
+                      <img
+                        src={profile?.picture || `https://robohash.org/${event.pubkey}?set=set4&size=40x40`}
+                        alt="Profile"
+                        className="w-10 h-10 rounded-full cursor-pointer hover:ring-2 hover:ring-primary flex-shrink-0"
+                        onClick={() => openNostrProfile(event.pubkey)}
+                      />
+                    )}
                     
                     <div className="flex-1 min-w-0">
-                      <div className="flex items-center gap-2 mb-2">
-                        <span 
-                          className="font-medium cursor-pointer hover:text-primary truncate"
-                          onClick={() => openNostrProfile(event.pubkey)}
-                        >
-                          {getUserDisplayName(event.pubkey)}
-                        </span>
-                        <span className="text-xs text-muted-foreground flex-shrink-0">
-                          {formatDate(event.created_at)}
-                        </span>
-                      </div>
+                      {showAuthors && (
+                        <div className="flex items-center gap-2 mb-2">
+                          <span 
+                            className="font-medium cursor-pointer hover:text-primary truncate"
+                            onClick={() => openNostrProfile(event.pubkey)}
+                          >
+                            {getUserDisplayName(event.pubkey)}
+                          </span>
+                          <span className="text-xs text-muted-foreground flex-shrink-0">
+                            {formatDate(event.created_at)}
+                          </span>
+                        </div>
+                      )}
                       
                       {textContent && (
                         <div className="prose prose-sm max-w-none mb-2">
