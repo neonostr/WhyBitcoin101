@@ -1,10 +1,11 @@
 import { useState, useEffect, useRef } from "react";
 import { SimplePool } from "nostr-tools/pool";
+import { nip19 } from "nostr-tools";
 import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { Search, Copy, ExternalLink } from "lucide-react";
+import { Search, Copy, ExternalLink, Quote } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 
 interface NostrEvent {
@@ -13,6 +14,7 @@ interface NostrEvent {
   created_at: number;
   pubkey: string;
   tags: string[][];
+  quotedEvents?: NostrEvent[];
 }
 
 interface UserProfile {
@@ -26,6 +28,7 @@ const BaseLayers = () => {
   const [events, setEvents] = useState<NostrEvent[]>([]);
   const [filteredEvents, setFilteredEvents] = useState<NostrEvent[]>([]);
   const [userProfiles, setUserProfiles] = useState<Record<string, UserProfile>>({});
+  const [quotedEvents, setQuotedEvents] = useState<Record<string, NostrEvent>>({});
   const [loading, setLoading] = useState(true);
   const [searchTerm, setSearchTerm] = useState("");
   const { toast } = useToast();
@@ -83,7 +86,10 @@ const BaseLayers = () => {
       // For events that are just hashtags and are replies, try to get the original content
       const enrichedEvents = await enrichReplyEvents(sortedEvents);
       
-      setEvents(enrichedEvents);
+      // Process quoted events
+      const eventsWithQuotes = await processQuotedEvents(enrichedEvents);
+      
+      setEvents(eventsWithQuotes);
     } catch (error) {
       console.error("Error fetching hashtag content:", error);
     } finally {
@@ -132,6 +138,96 @@ const BaseLayers = () => {
     }
     
     return enrichedEvents;
+  };
+
+  const processQuotedEvents = async (events: NostrEvent[]): Promise<NostrEvent[]> => {
+    if (!poolRef.current) return events;
+
+    const eventsWithQuotes = [];
+    const quotedEventIds = new Set<string>();
+    let quotedEventsMap: Record<string, NostrEvent> = {};
+
+    // First pass: collect all quoted event IDs
+    for (const event of events) {
+      const quotes = extractNostrReferences(event.content);
+      quotes.forEach(quote => {
+        if ((quote.type === 'nevent' || quote.type === 'note') && quote.eventId) {
+          quotedEventIds.add(quote.eventId);
+        }
+      });
+    }
+
+    // Fetch all quoted events in batch
+    if (quotedEventIds.size > 0) {
+      try {
+        const quotedEventsData = await poolRef.current.querySync(relays, {
+          kinds: [1],
+          ids: Array.from(quotedEventIds),
+          limit: quotedEventIds.size
+        });
+
+        quotedEventsData.forEach(event => {
+          quotedEventsMap[event.id] = event;
+        });
+        setQuotedEvents(prev => ({ ...prev, ...quotedEventsMap }));
+
+        // Fetch profiles for quoted event authors
+        const quotedAuthors = quotedEventsData.map(e => e.pubkey);
+        if (quotedAuthors.length > 0) {
+          await fetchUserProfiles(quotedAuthors);
+        }
+      } catch (error) {
+        console.error("Error fetching quoted events:", error);
+      }
+    }
+
+    // Second pass: attach quoted events to main events
+    for (const event of events) {
+      const quotes = extractNostrReferences(event.content);
+      const eventQuotedEvents = quotes
+        .filter(quote => (quote.type === 'nevent' || quote.type === 'note') && quote.eventId)
+        .map(quote => quotedEventsMap[quote.eventId!])
+        .filter(Boolean);
+
+      eventsWithQuotes.push({
+        ...event,
+        quotedEvents: eventQuotedEvents.length > 0 ? eventQuotedEvents : undefined
+      });
+    }
+
+    return eventsWithQuotes;
+  };
+
+  const extractNostrReferences = (content: string) => {
+    const nostrRegex = /nostr:(nevent1[a-zA-Z0-9]+|note1[a-zA-Z0-9]+|npub1[a-zA-Z0-9]+)/g;
+    const references = [];
+    let match;
+
+    while ((match = nostrRegex.exec(content)) !== null) {
+      const reference = match[1];
+      try {
+        const decoded = nip19.decode(reference);
+        
+        if (decoded.type === 'nevent') {
+          references.push({
+            type: 'nevent' as const,
+            raw: match[0],
+            eventId: decoded.data.id,
+            relays: decoded.data.relays
+          });
+        } else if (decoded.type === 'note') {
+          references.push({
+            type: 'note' as const,
+            raw: match[0],
+            eventId: decoded.data
+          });
+        }
+      } catch (error) {
+        console.warn('Failed to decode nostr reference:', reference);
+      }
+    }
+
+    return references;
   };
 
   const fetchUserProfiles = async (pubkeys: string[]) => {
@@ -207,6 +303,48 @@ const BaseLayers = () => {
 
   const removeHashtags = (content: string): string => {
     return content.replace(/#whybitcoin101/gi, '').trim();
+  };
+
+  const removeNostrReferences = (content: string): string => {
+    return content.replace(/nostr:(nevent1[a-zA-Z0-9]+|note1[a-zA-Z0-9]+|npub1[a-zA-Z0-9]+)/g, '').trim();
+  };
+
+  const renderQuotedEvent = (quotedEvent: NostrEvent) => {
+    const profile = userProfiles[quotedEvent.pubkey];
+    const { textContent, mediaElements } = renderMedia(removeHashtags(quotedEvent.content));
+    
+    return (
+      <div className="border-l-4 border-primary/30 pl-4 mt-3 bg-muted/30 rounded-r-lg p-3">
+        <div className="flex items-center gap-2 mb-2">
+          <Quote className="h-4 w-4 text-primary" />
+          <img
+            src={profile?.picture || `https://robohash.org/${quotedEvent.pubkey}?set=set4&size=24x24`}
+            alt="Quoted author"
+            className="w-6 h-6 rounded-full"
+          />
+          <span className="text-sm font-medium">
+            {getUserDisplayName(quotedEvent.pubkey)}
+          </span>
+          <span className="text-xs text-muted-foreground">
+            {formatDate(quotedEvent.created_at)}
+          </span>
+        </div>
+        
+        {textContent && (
+          <div className="prose prose-sm max-w-none mb-2">
+            <p className="whitespace-pre-wrap text-foreground text-sm">
+              {textContent}
+            </p>
+          </div>
+        )}
+        
+        {mediaElements.length > 0 && (
+          <div className="space-y-2">
+            {mediaElements}
+          </div>
+        )}
+      </div>
+    );
   };
 
   const renderMedia = (content: string) => {
@@ -344,7 +482,8 @@ const BaseLayers = () => {
         <div className="grid gap-4">
           {filteredEvents.map((event) => {
             const profile = userProfiles[event.pubkey];
-            const { textContent, mediaElements } = renderMedia(removeHashtags(event.content));
+            const cleanContent = removeNostrReferences(removeHashtags(event.content));
+            const { textContent, mediaElements } = renderMedia(cleanContent);
             
             return (
               <Card key={event.id} className="hover:shadow-md transition-shadow">
@@ -383,6 +522,13 @@ const BaseLayers = () => {
                           {mediaElements}
                         </div>
                       )}
+
+                      {/* Render quoted events */}
+                      {event.quotedEvents && event.quotedEvents.map((quotedEvent, index) => (
+                        <div key={`${event.id}-quote-${index}`}>
+                          {renderQuotedEvent(quotedEvent)}
+                        </div>
+                      ))}
                     </div>
                   </div>
                 </CardContent>
