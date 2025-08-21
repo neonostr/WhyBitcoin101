@@ -418,8 +418,14 @@ const BaseLayers = () => {
   };
 
   const openNostrProfile = (pubkey: string) => {
-    console.log('Opening profile for:', pubkey);
-    window.open(`https://primal.net/p/${pubkey}`, '_blank');
+    const url = `https://primal.net/p/${pubkey}`;
+    const link = document.createElement('a');
+    link.href = url;
+    link.target = '_blank';
+    link.rel = 'noopener noreferrer';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
   };
 
   if (loading) {
