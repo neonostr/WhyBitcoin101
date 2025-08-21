@@ -236,12 +236,6 @@ const BaseLayers = () => {
             raw: match[0],
             eventId: decoded.data
           });
-        } else if (decoded.type === 'npub') {
-          references.push({
-            type: 'npub' as const,
-            raw: match[0],
-            pubkey: decoded.data
-          });
         }
       } catch (error) {
         console.warn('Failed to decode nostr reference:', reference);
@@ -452,7 +446,7 @@ const BaseLayers = () => {
         {textContent && (
           <div className="prose prose-sm max-w-none mb-2">
             <p className="whitespace-pre-wrap text-foreground text-sm break-words">
-              {processTextContent(textContent)}
+              {textContent}
             </p>
           </div>
         )}
@@ -464,23 +458,6 @@ const BaseLayers = () => {
         )}
       </div>
     );
-  };
-
-  const processTextContent = (content: string) => {
-    // Replace npub mentions with display names (but not clickable)
-    const npubRegex = /nostr:(npub1[a-zA-Z0-9]+)/g;
-    let processedContent = content;
-    
-    // First extract all npub references and process them
-    const npubReferences = extractNostrReferences(content);
-    npubReferences.forEach(ref => {
-      if (ref.type === 'npub' && 'pubkey' in ref) {
-        const displayName = getUserDisplayName(ref.pubkey);
-        processedContent = processedContent.replace(ref.raw, `@${displayName}`);
-      }
-    });
-    
-    return processedContent;
   };
 
   const renderMedia = (content: string) => {
@@ -501,7 +478,7 @@ const BaseLayers = () => {
           key={match[1]} 
           src={match[1]} 
           alt="Shared content" 
-          className="w-full h-auto object-contain rounded-lg mt-2 max-h-96"
+          className="w-full max-w-full h-auto max-h-48 object-cover rounded-lg mt-2"
           loading="lazy"
         />
       );
@@ -787,7 +764,7 @@ const BaseLayers = () => {
                       {textContent && (
                         <div className="prose prose-sm max-w-none mb-2">
                           <p className="whitespace-pre-wrap text-foreground break-words">
-                            {processTextContent(textContent)}
+                            {textContent}
                           </p>
                         </div>
                       )}
