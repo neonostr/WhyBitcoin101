@@ -5,7 +5,8 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { Search, Copy, ExternalLink, Quote, Eye, EyeOff } from "lucide-react";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { Search, Copy, ExternalLink, Quote, Eye, EyeOff, Shield, Users } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 
 interface NostrEvent {
@@ -32,6 +33,11 @@ const BaseLayers = () => {
   const [loading, setLoading] = useState(true);
   const [searchTerm, setSearchTerm] = useState("");
   const [showAuthors, setShowAuthors] = useState(false);
+  const [webOfTrustEnabled, setWebOfTrustEnabled] = useState(false);
+  const [webOfTrustNpub, setWebOfTrustNpub] = useState("");
+  const [webOfTrustLevel, setWebOfTrustLevel] = useState<1 | 2>(1);
+  const [trustedPubkeys, setTrustedPubkeys] = useState<Set<string>>(new Set());
+  const [webOfTrustLoading, setWebOfTrustLoading] = useState(false);
   const { toast } = useToast();
   
   const poolRef = useRef<SimplePool | null>(null);
@@ -61,7 +67,7 @@ const BaseLayers = () => {
 
   useEffect(() => {
     filterEvents();
-  }, [searchTerm, events]);
+  }, [searchTerm, events, webOfTrustEnabled, trustedPubkeys]);
 
   const fetchHashtagContent = async () => {
     if (!poolRef.current) return;
@@ -266,14 +272,20 @@ const BaseLayers = () => {
   };
 
   const filterEvents = () => {
-    if (!searchTerm.trim()) {
-      setFilteredEvents(events);
-      return;
+    let filtered = events;
+
+    // Apply search filter
+    if (searchTerm.trim()) {
+      filtered = filtered.filter(event => 
+        event.content.toLowerCase().includes(searchTerm.toLowerCase())
+      );
     }
 
-    const filtered = events.filter(event => 
-      event.content.toLowerCase().includes(searchTerm.toLowerCase())
-    );
+    // Apply Web of Trust filter
+    if (webOfTrustEnabled && trustedPubkeys.size > 0) {
+      filtered = filtered.filter(event => trustedPubkeys.has(event.pubkey));
+    }
+
     setFilteredEvents(filtered);
   };
 
@@ -291,6 +303,86 @@ const BaseLayers = () => {
       title: "Content copied!",
       description: `Copied ${filteredEvents.length} notes to clipboard`,
     });
+  };
+
+  const buildWebOfTrust = async () => {
+    if (!webOfTrustNpub.trim() || !poolRef.current) return;
+
+    setWebOfTrustLoading(true);
+    try {
+      let trustPubkey: string;
+      
+      // Decode npub if provided
+      try {
+        const decoded = nip19.decode(webOfTrustNpub.trim());
+        if (decoded.type === 'npub') {
+          trustPubkey = decoded.data;
+        } else {
+          throw new Error('Invalid npub format');
+        }
+      } catch (error) {
+        toast({
+          title: "Invalid npub",
+          description: "Please enter a valid npub",
+          variant: "destructive"
+        });
+        return;
+      }
+
+      // Fetch the follow list (kind 3) for the trust root
+      const followListEvents = await poolRef.current.querySync(relays, {
+        kinds: [3],
+        authors: [trustPubkey],
+        limit: 1
+      });
+
+      if (followListEvents.length === 0) {
+        toast({
+          title: "No follow list found",
+          description: "Could not find follow list for this npub",
+          variant: "destructive"
+        });
+        return;
+      }
+
+      const followList = followListEvents[0];
+      const directFollows = followList.tags
+        .filter(tag => tag[0] === 'p')
+        .map(tag => tag[1]);
+
+      let trustedSet = new Set([trustPubkey, ...directFollows]);
+
+      // If level 2, also fetch follows of follows
+      if (webOfTrustLevel === 2 && directFollows.length > 0) {
+        const secondLevelEvents = await poolRef.current.querySync(relays, {
+          kinds: [3],
+          authors: directFollows,
+          limit: directFollows.length
+        });
+
+        secondLevelEvents.forEach(event => {
+          const secondLevelFollows = event.tags
+            .filter(tag => tag[0] === 'p')
+            .map(tag => tag[1]);
+          secondLevelFollows.forEach(pubkey => trustedSet.add(pubkey));
+        });
+      }
+
+      setTrustedPubkeys(trustedSet);
+      toast({
+        title: "Web of Trust built",
+        description: `Trusting ${trustedSet.size} pubkeys (Level ${webOfTrustLevel})`,
+      });
+    } catch (error) {
+      console.error("Error building Web of Trust:", error);
+      toast({
+        title: "Error",
+        description: "Failed to build Web of Trust",
+        variant: "destructive"
+      });
+    } finally {
+      setWebOfTrustLoading(false);
+    }
   };
 
   const getUserDisplayName = (pubkey: string): string => {
@@ -478,32 +570,101 @@ const BaseLayers = () => {
             <Badge variant="secondary">#whybitcoin101</Badge>
           </div>
           
-          <div className="flex flex-col sm:flex-row gap-4 items-start sm:items-center">
-            <div className="relative flex-1 max-w-md w-full">
-              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground h-4 w-4" />
-              <Input
-                placeholder="Search bitcoin knowledge..."
-                value={searchTerm}
-                onChange={(e) => setSearchTerm(e.target.value)}
-                className="pl-10 w-full"
-              />
-            </div>
-            
-            <div className="flex gap-2 w-full sm:w-auto">
-              <Button 
-                onClick={() => setShowAuthors(!showAuthors)} 
-                variant="outline" 
-                size="sm"
-                className="flex-1 sm:flex-initial"
-              >
-                {showAuthors ? <EyeOff className="h-4 w-4 mr-2" /> : <Eye className="h-4 w-4 mr-2" />}
-                {showAuthors ? "Hide Authors" : "Show Authors"}
-              </Button>
+          <div className="flex flex-col gap-4">
+            {/* Main Controls Row */}
+            <div className="flex flex-col sm:flex-row gap-4 items-start sm:items-center">
+              <div className="relative flex-1 max-w-md w-full">
+                <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground h-4 w-4" />
+                <Input
+                  placeholder="Search bitcoin knowledge..."
+                  value={searchTerm}
+                  onChange={(e) => setSearchTerm(e.target.value)}
+                  className="pl-10 w-full"
+                />
+              </div>
               
-              <Button onClick={copyVisibleContent} variant="outline" size="sm" className="flex-1 sm:flex-initial">
-                <Copy className="h-4 w-4 mr-2" />
-                Copy Visible ({filteredEvents.length})
-              </Button>
+              <div className="flex gap-2 w-full sm:w-auto">
+                <Button 
+                  onClick={() => setShowAuthors(!showAuthors)} 
+                  variant="outline" 
+                  size="sm"
+                  className="flex-1 sm:flex-initial"
+                >
+                  {showAuthors ? <EyeOff className="h-4 w-4 mr-2" /> : <Eye className="h-4 w-4 mr-2" />}
+                  {showAuthors ? "Hide Authors" : "Show Authors"}
+                </Button>
+                
+                <Button onClick={copyVisibleContent} variant="outline" size="sm" className="flex-1 sm:flex-initial">
+                  <Copy className="h-4 w-4 mr-2" />
+                  Copy Visible ({filteredEvents.length})
+                </Button>
+              </div>
+            </div>
+
+            {/* Web of Trust Controls */}
+            <div className="flex flex-col gap-3 p-4 bg-muted/30 rounded-lg border">
+              <div className="flex items-center gap-2">
+                <Shield className="h-4 w-4 text-primary" />
+                <span className="font-medium text-sm">Web of Trust Filter</span>
+                <Button
+                  onClick={() => setWebOfTrustEnabled(!webOfTrustEnabled)}
+                  variant={webOfTrustEnabled ? "default" : "outline"}
+                  size="sm"
+                  className="ml-auto"
+                >
+                  {webOfTrustEnabled ? "Enabled" : "Disabled"}
+                </Button>
+              </div>
+              
+              {webOfTrustEnabled && (
+                <div className="flex flex-col sm:flex-row gap-3">
+                  <div className="flex-1">
+                    <Input
+                      placeholder="Enter npub (e.g., npub123...)"
+                      value={webOfTrustNpub}
+                      onChange={(e) => setWebOfTrustNpub(e.target.value)}
+                      className="text-sm"
+                    />
+                  </div>
+                  
+                  <div className="flex gap-2 items-center">
+                    <Select value={webOfTrustLevel.toString()} onValueChange={(value) => setWebOfTrustLevel(parseInt(value) as 1 | 2)}>
+                      <SelectTrigger className="w-32">
+                        <SelectValue />
+                      </SelectTrigger>
+                      <SelectContent>
+                        <SelectItem value="1">
+                          <div className="flex items-center gap-2">
+                            <Users className="h-3 w-3" />
+                            Level 1
+                          </div>
+                        </SelectItem>
+                        <SelectItem value="2">
+                          <div className="flex items-center gap-2">
+                            <Users className="h-3 w-3" />
+                            Level 2
+                          </div>
+                        </SelectItem>
+                      </SelectContent>
+                    </Select>
+                    
+                    <Button
+                      onClick={buildWebOfTrust}
+                      disabled={!webOfTrustNpub.trim() || webOfTrustLoading}
+                      size="sm"
+                      className="whitespace-nowrap"
+                    >
+                      {webOfTrustLoading ? "Building..." : "Build Trust"}
+                    </Button>
+                  </div>
+                </div>
+              )}
+              
+              {webOfTrustEnabled && trustedPubkeys.size > 0 && (
+                <div className="text-xs text-muted-foreground">
+                  Filtering by {trustedPubkeys.size} trusted pubkeys (Level {webOfTrustLevel})
+                </div>
+              )}
             </div>
           </div>
         </div>
