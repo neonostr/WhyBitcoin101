@@ -214,7 +214,7 @@ const BaseLayers = () => {
   };
 
   const extractNostrReferences = (content: string) => {
-    const nostrRegex = /nostr:(nevent1[a-zA-Z0-9]+|note1[a-zA-Z0-9]+|npub1[a-zA-Z0-9]+)/g;
+    const nostrRegex = /nostr:(nevent1[a-zA-Z0-9]+|note1[a-zA-Z0-9]+|npub1[a-zA-Z0-9]+|nprofile1[a-zA-Z0-9]+)/g;
     const references = [];
     let match;
 
@@ -241,6 +241,13 @@ const BaseLayers = () => {
             type: 'npub' as const,
             raw: match[0],
             pubkey: decoded.data
+          });
+        } else if (decoded.type === 'nprofile') {
+          references.push({
+            type: 'nprofile' as const,
+            raw: match[0],
+            pubkey: (decoded.data as any).pubkey,
+            relays: (decoded.data as any).relays
           });
         }
       } catch (error) {
@@ -419,7 +426,7 @@ const BaseLayers = () => {
   };
 
   const removeNostrReferences = (content: string): string => {
-    // Only remove note and nevent references, keep npub mentions for processing
+    // Only remove note and nevent references, keep npub and nprofile mentions for processing
     return content.replace(/nostr:(nevent1[a-zA-Z0-9]+|note1[a-zA-Z0-9]+)/g, '').trim();
   };
 
@@ -468,13 +475,13 @@ const BaseLayers = () => {
   };
 
   const processTextContent = (content: string) => {
-    // Replace npub mentions with display names (but not clickable)
+    // Replace npub and nprofile mentions with display names (but not clickable)
     let processedContent = content;
     
-    // Extract all npub references and process them
-    const npubReferences = extractNostrReferences(content);
-    npubReferences.forEach(ref => {
-      if (ref.type === 'npub' && 'pubkey' in ref) {
+    // Extract all nostr references and process them
+    const nostrReferences = extractNostrReferences(content);
+    nostrReferences.forEach(ref => {
+      if ((ref.type === 'npub' || ref.type === 'nprofile') && 'pubkey' in ref) {
         const displayName = getUserDisplayName(ref.pubkey);
         processedContent = processedContent.replace(ref.raw, `@${displayName}`);
       }
