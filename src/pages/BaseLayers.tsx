@@ -359,21 +359,6 @@ const BaseLayers = () => {
       filtered = filtered.filter(event => trustedPubkeys.has(event.pubkey));
     }
 
-    // Debug logging
-    if (searchTerm.trim()) {
-      console.log(`Search term: "${searchTerm}"`);
-      console.log(`Original events: ${events.length}`);
-      console.log(`Filtered events: ${filtered.length}`);
-      
-      // Check for duplicates
-      const eventIds = filtered.map(e => e.id);
-      const uniqueIds = [...new Set(eventIds)];
-      if (eventIds.length !== uniqueIds.length) {
-        console.warn(`DUPLICATE EVENTS FOUND! Total: ${eventIds.length}, Unique: ${uniqueIds.length}`);
-        console.log('Duplicate IDs:', eventIds.filter((id, index) => eventIds.indexOf(id) !== index));
-      }
-    }
-
     setFilteredEvents(filtered);
   };
 
@@ -874,13 +859,13 @@ const BaseLayers = () => {
         )}
 
         <div className="columns-1 md:columns-2 lg:columns-3 xl:columns-4 gap-4 space-y-4">
-          {filteredEvents.map((event) => {
+          {filteredEvents.map((event, index) => {
             const profile = userProfiles[event.pubkey];
             const cleanContent = removeNostrReferences(removeHashtags(event.content));
             const { textContent, mediaElements } = renderMedia(cleanContent);
             
             return (
-              <Card key={event.id} className="hover:shadow-md transition-shadow h-fit">
+              <Card key={`${event.id}-${searchTerm}`} className="hover:shadow-md transition-shadow h-fit break-inside-avoid mb-4">
                 <CardContent className="p-4">
                   <div className="flex items-start gap-3">
                     {showAuthors && (
@@ -922,8 +907,8 @@ const BaseLayers = () => {
                       )}
 
                       {/* Render quoted events */}
-                      {event.quotedEvents && event.quotedEvents.map((quotedEvent, index) => (
-                        <div key={`${event.id}-quote-${index}`}>
+                      {event.quotedEvents && event.quotedEvents.map((quotedEvent, qIndex) => (
+                        <div key={`${event.id}-quote-${qIndex}-${searchTerm}`}>
                           {renderQuotedEvent(quotedEvent)}
                         </div>
                       ))}
