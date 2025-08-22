@@ -426,13 +426,27 @@ const BaseLayers = () => {
   };
 
   const removeNostrReferences = (content: string): string => {
-    // Only remove note and nevent references, keep npub and nprofile mentions for processing
-    return content.replace(/nostr:(nevent1[a-zA-Z0-9]+|note1[a-zA-Z0-9]+)/g, '').trim();
+    let processedContent = content;
+    
+    // First, convert npub and nprofile mentions to @username format
+    const nostrReferences = extractNostrReferences(content);
+    nostrReferences.forEach(ref => {
+      if ((ref.type === 'npub' || ref.type === 'nprofile') && 'pubkey' in ref) {
+        const displayName = getUserDisplayName(ref.pubkey);
+        processedContent = processedContent.replace(ref.raw, `@${displayName}`);
+      }
+    });
+    
+    // Then remove note and nevent references
+    processedContent = processedContent.replace(/nostr:(nevent1[a-zA-Z0-9]+|note1[a-zA-Z0-9]+)/g, '');
+    
+    return processedContent.trim();
   };
 
   const renderQuotedEvent = (quotedEvent: NostrEvent) => {
     const profile = userProfiles[quotedEvent.pubkey];
-    const { textContent, mediaElements } = renderMedia(removeHashtags(quotedEvent.content));
+    const cleanQuotedContent = removeNostrReferences(removeHashtags(quotedEvent.content));
+    const { textContent, mediaElements } = renderMedia(cleanQuotedContent);
     
     return (
       <div className="border-l-4 border-primary/30 pl-4 mt-3 bg-muted/30 rounded-r-lg p-3">
@@ -460,7 +474,7 @@ const BaseLayers = () => {
         {textContent && (
           <div className="prose prose-sm max-w-none mb-2">
             <p className="whitespace-pre-wrap text-foreground text-sm break-words">
-              {processTextContent(textContent)}
+              {textContent}
             </p>
           </div>
         )}
@@ -472,22 +486,6 @@ const BaseLayers = () => {
         )}
       </div>
     );
-  };
-
-  const processTextContent = (content: string) => {
-    // Replace npub and nprofile mentions with display names (but not clickable)
-    let processedContent = content;
-    
-    // Extract all nostr references and process them
-    const nostrReferences = extractNostrReferences(content);
-    nostrReferences.forEach(ref => {
-      if ((ref.type === 'npub' || ref.type === 'nprofile') && 'pubkey' in ref) {
-        const displayName = getUserDisplayName(ref.pubkey);
-        processedContent = processedContent.replace(ref.raw, `@${displayName}`);
-      }
-    });
-    
-    return processedContent;
   };
 
   const renderMedia = (content: string) => {
@@ -794,7 +792,7 @@ const BaseLayers = () => {
                       {textContent && (
                         <div className="prose prose-sm max-w-none mb-2">
                           <p className="whitespace-pre-wrap text-foreground break-words">
-                            {processTextContent(textContent)}
+                            {textContent}
                           </p>
                         </div>
                       )}
