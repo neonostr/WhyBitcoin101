@@ -327,9 +327,18 @@ const BaseLayers = () => {
 
     // Apply search filter
     if (searchTerm.trim()) {
-      filtered = filtered.filter(event => 
-        event.content.toLowerCase().includes(searchTerm.toLowerCase())
-      );
+      const searchLower = searchTerm.toLowerCase();
+      filtered = filtered.filter(event => {
+        // Search in main event content
+        const mainContentMatch = event.content.toLowerCase().includes(searchLower);
+        
+        // Search in quoted events content
+        const quotedContentMatch = event.quotedEvents?.some(quotedEvent => 
+          quotedEvent.content.toLowerCase().includes(searchLower)
+        ) || false;
+        
+        return mainContentMatch || quotedContentMatch;
+      });
     }
 
     // Apply Web of Trust filter
