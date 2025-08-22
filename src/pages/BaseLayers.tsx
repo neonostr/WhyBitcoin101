@@ -411,6 +411,12 @@ const BaseLayers = () => {
     return profile?.name || profile?.display_name || `${pubkey.slice(0, 8)}...`;
   };
 
+  const getDisplayNameForMention = (pubkey: string): string => {
+    const profile = userProfiles[pubkey];
+    // Only return a username if we have a real name/display_name, otherwise return empty to keep original mention
+    return profile?.name || profile?.display_name || '';
+  };
+
   const formatDate = (timestamp: number): string => {
     return new Date(timestamp * 1000).toLocaleDateString("en-US", {
       year: "numeric",
@@ -433,9 +439,11 @@ const BaseLayers = () => {
       try {
         const decoded = nip19.decode(mentionString);
         if (decoded.type === 'npub') {
-          return `@${getUserDisplayName(decoded.data)}`;
+          const displayName = getDisplayNameForMention(decoded.data);
+          return displayName ? `@${displayName}` : mentionString;
         } else if (decoded.type === 'nprofile') {
-          return `@${getUserDisplayName((decoded.data as any).pubkey)}`;
+          const displayName = getDisplayNameForMention((decoded.data as any).pubkey);
+          return displayName ? `@${displayName}` : mentionString;
         }
       } catch (error) {
         console.warn('Failed to decode nostr mention:', mentionString);
