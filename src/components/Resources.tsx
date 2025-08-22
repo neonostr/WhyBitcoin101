@@ -133,7 +133,7 @@ Ready to learn more? These carefully curated resources will guide you towards a 
     url: "https://bluewallet.io"
   }, {
     title: "Nunchuk - Enterprise Security",
-    description: "Professional-grade Bitcoin wallet with multisig, inheritance planning, and collaborative custody. Perfect for serious Bitcoin holders who need advanced security and estate planning features.",
+    description: "Professional-grade Bitcoin wallet with multisig, inheritance planning, and collaborative custody. Perfect for Bitcoin holders who need advanced security and estate planning features.",
     type: "Multisig & Inheritance",
     url: "https://nunchuk.io"
   }];
@@ -253,7 +253,7 @@ Ready to learn more? These carefully curated resources will guide you towards a 
   // Fun Stuff
   const funStuff = [{
     title: "Feed Real Cats with Lightning",
-    description: "Experience the magic of instant micropayments by feeding rescue cats in real-time using Bitcoin's Lightning Network. Watch them enjoy their treats as your sats arrive instantly!",
+    description: "Experience the magic of instant micropayments by feeding cats in real-time using Bitcoin's Lightning Network. Watch them enjoy their treats as your sats arrive instantly!",
     type: "Interactive",
     url: "https://lightningcats.io/"
   }, {
