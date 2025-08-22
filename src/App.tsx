@@ -34,7 +34,7 @@ const App = () => (
           <Route path="/question/:key" element={<QuestionFollow />} />
           <Route path="/get-involved" element={<GetInvolved />} />
           <Route path="/base-layer" element={
-            <Suspense fallback={<div className="min-h-screen flex items-center justify-center"><div className="animate-pulse">Loading...</div></div>}>
+            <Suspense fallback={null}>
               <BaseLayers />
             </Suspense>
           } />
