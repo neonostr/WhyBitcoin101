@@ -97,6 +97,21 @@ const BaseLayers = () => {
       // Process quoted events
       const eventsWithQuotes = await processQuotedEvents(enrichedEvents);
       
+      // Extract and fetch profiles for all mentioned users
+      const mentionedPubkeys = new Set<string>();
+      eventsWithQuotes.forEach(event => {
+        const mentions = extractNostrReferences(event.content);
+        mentions.forEach(mention => {
+          if (mention.type === 'npub' || mention.type === 'nprofile') {
+            mentionedPubkeys.add(mention.pubkey);
+          }
+        });
+      });
+      
+      if (mentionedPubkeys.size > 0) {
+        await fetchUserProfiles(Array.from(mentionedPubkeys));
+      }
+      
       setEvents(eventsWithQuotes);
     } catch (error) {
       console.error("Error fetching hashtag content:", error);
