@@ -9,6 +9,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 import { Search, Copy, ExternalLink, Quote, Eye, EyeOff, Shield, Users } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
+import CopyButton from "@/components/CopyButton";
 
 interface NostrEvent {
   id: string;
@@ -591,6 +592,38 @@ const BaseLayers = () => {
     );
   };
 
+  const extractMediaUrls = (content: string) => {
+    const imageRegex = /(https?:\/\/[^\s]+\.(?:jpg|jpeg|png|gif|webp))/gi;
+    const videoRegex = /(https?:\/\/[^\s]+\.(?:mp4|webm|mov))/gi;
+    const youtubeRegex = /(?:https?:\/\/)?(?:www\.)?(?:youtube\.com\/watch\?v=|youtu\.be\/)([a-zA-Z0-9_-]+)/gi;
+    const youtubeTrimmerRegex = /https?:\/\/www\.youtubetrimmer\.com\/view\/\?v=([a-zA-Z0-9_-]+)&start=(\d+)&end=(\d+)(?:&loop=\d+)?/gi;
+    
+    const urls: string[] = [];
+    let match;
+    
+    // Extract image URLs
+    while ((match = imageRegex.exec(content)) !== null) {
+      urls.push(match[1]);
+    }
+    
+    // Extract video URLs
+    while ((match = videoRegex.exec(content)) !== null) {
+      urls.push(match[1]);
+    }
+    
+    // Extract YouTube Trimmer URLs
+    while ((match = youtubeTrimmerRegex.exec(content)) !== null) {
+      urls.push(match[0]);
+    }
+    
+    // Extract YouTube URLs
+    while ((match = youtubeRegex.exec(content)) !== null) {
+      urls.push(match[0]);
+    }
+    
+    return urls;
+  };
+
   const renderMedia = (content: string) => {
     // Image URLs
     const imageRegex = /(https?:\/\/[^\s]+\.(?:jpg|jpeg|png|gif|webp))/gi;
@@ -860,12 +893,18 @@ const BaseLayers = () => {
 
         <div className="columns-1 md:columns-2 lg:columns-3 xl:columns-4 gap-4 space-y-4">
           {filteredEvents.map((event, index) => {
-            const profile = userProfiles[event.pubkey];
+             const profile = userProfiles[event.pubkey];
             const cleanContent = removeNostrReferences(removeHashtags(event.content));
             const { textContent, mediaElements } = renderMedia(cleanContent);
+            const mediaUrls = extractMediaUrls(cleanContent);
             
             return (
-              <Card key={`${event.id}-${searchTerm}`} className="hover:shadow-md transition-shadow h-fit break-inside-avoid mb-4">
+              <Card key={`${event.id}-${searchTerm}`} className="hover:shadow-md transition-shadow h-fit break-inside-avoid mb-4 relative">
+                <CopyButton 
+                  text={textContent} 
+                  hashtag="#whybitcoin101" 
+                  mediaUrls={mediaUrls}
+                />
                 <CardContent className="p-4">
                   <div className="flex items-start gap-3">
                     {showAuthors && (

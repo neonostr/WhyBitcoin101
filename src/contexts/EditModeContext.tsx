@@ -7,7 +7,7 @@ interface EditModeContextType {
   setClickCount: (value: number) => void;
   showInfoModal: boolean;
   setShowInfoModal: (value: boolean) => void;
-  copyText: (text: string, hashtag: string) => void;
+  copyText: (text: string, hashtag: string, mediaUrls?: string[]) => void;
 }
 
 const EditModeContext = createContext<EditModeContextType | undefined>(undefined);
@@ -25,8 +25,15 @@ export const EditModeProvider = ({ children }: { children: ReactNode }) => {
   const [clickCount, setClickCount] = useState(0);
   const [showInfoModal, setShowInfoModal] = useState(false);
 
-  const copyText = (text: string, hashtag: string) => {
-    const formattedText = `${text}
+  const copyText = (text: string, hashtag: string, mediaUrls: string[] = []) => {
+    let formattedText = `${text}`;
+    
+    // Add media URLs if present
+    if (mediaUrls.length > 0) {
+      formattedText += `\n\nMedia files:\n${mediaUrls.join('\n')}`;
+    }
+    
+    formattedText += `
 
 ---
 ${hashtag}
@@ -59,7 +66,7 @@ Get Involved:
 
 True Bitcoin education - less hype, but truth, connection, and action.
 
-#bitcoineducation #whybitcoin101 #orange-pill #nostr`
+#bitcoineducation #whybitcoin101 #orange-pill #nostr`;
 
     navigator.clipboard.writeText(formattedText).then(() => {
       console.log('Text copied to clipboard');
