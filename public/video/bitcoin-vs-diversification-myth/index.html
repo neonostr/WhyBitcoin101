@@ -36,8 +36,6 @@
   </head>
 
   <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
     <script>
       // Set video data in localStorage and redirect to main page
       localStorage.setItem('open-shared-video', JSON.stringify({
@@ -46,7 +44,7 @@
         timestamp: Date.now()
       }));
       // Redirect to main page which will read this flag and open the video
-      window.location.href = '/';
+      window.location.replace('/');
     </script>
   </body>
 </html>
