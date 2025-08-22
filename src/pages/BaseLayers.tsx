@@ -84,8 +84,13 @@ const BaseLayers = () => {
 
       const fetchedEvents = await poolRef.current.querySync(relays, filter);
       
+      // Remove duplicates by event ID
+      const uniqueEvents = fetchedEvents.filter((event, index, self) => 
+        index === self.findIndex(e => e.id === event.id)
+      );
+      
       // Sort by created_at descending (newest first)
-      const sortedEvents = fetchedEvents.sort((a, b) => b.created_at - a.created_at);
+      const sortedEvents = uniqueEvents.sort((a, b) => b.created_at - a.created_at);
       
       // Fetch user profiles
       const uniquePubkeys = [...new Set(sortedEvents.map(e => e.pubkey))];
