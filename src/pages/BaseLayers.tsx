@@ -347,13 +347,41 @@ const BaseLayers = () => {
       const author = getUserDisplayName(event.pubkey);
       const date = new Date(event.created_at * 1000).toLocaleDateString();
       
-      return `[${date}] ${author}: ${textContent}`;
+      let fullContent = `[${date}] ${author}: ${textContent}`;
+      
+      // Add quoted events content if they exist
+      if (event.quotedEvents && event.quotedEvents.length > 0) {
+        event.quotedEvents.forEach(quotedEvent => {
+          const quotedCleanContent = removeNostrReferences(removeHashtags(quotedEvent.content));
+          const { textContent: quotedTextContent } = renderMedia(quotedCleanContent);
+          const quotedAuthor = getUserDisplayName(quotedEvent.pubkey);
+          const quotedDate = new Date(quotedEvent.created_at * 1000).toLocaleDateString();
+          
+          if (quotedTextContent.trim()) {
+            fullContent += `\n\n> Quoted from [${quotedDate}] ${quotedAuthor}: ${quotedTextContent}`;
+          }
+        });
+      }
+      
+      return fullContent;
+    }).filter(content => {
+      // Only include posts that have actual content (not just author and date)
+      const hasContent = content.split(': ')[1]?.trim().length > 0;
+      return hasContent;
     }).join('\n\n');
 
     navigator.clipboard.writeText(content);
     toast({
       title: "Content copied!",
-      description: `Copied ${filteredEvents.length} notes to clipboard`,
+      description: `Copied ${filteredEvents.filter(event => {
+        const cleanContent = removeNostrReferences(removeHashtags(event.content));
+        const { textContent } = renderMedia(cleanContent);
+        return textContent.trim().length > 0 || (event.quotedEvents && event.quotedEvents.some(q => {
+          const qCleanContent = removeNostrReferences(removeHashtags(q.content));
+          const { textContent: qTextContent } = renderMedia(qCleanContent);
+          return qTextContent.trim().length > 0;
+        }));
+      }).length} notes to clipboard`,
     });
   };
 
