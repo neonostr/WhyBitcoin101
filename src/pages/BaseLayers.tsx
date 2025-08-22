@@ -443,27 +443,12 @@ const BaseLayers = () => {
       return mentionString;
     };
     
-    // Handle standalone npub/nprofile mentions (without nostr: prefix)
-    const standaloneNpubRegex = /(^|\s)(npub1[a-zA-Z0-9]+)/g;
-    const standaloneNprofileRegex = /(^|\s)(nprofile1[a-zA-Z0-9]+)/g;
+    // Handle ALL npub/nprofile mentions (both with and without nostr: prefix) in one pass
+    const allMentionsRegex = /(?:nostr:)?(npub1[a-zA-Z0-9]+|nprofile1[a-zA-Z0-9]+)/g;
     
-    processedContent = processedContent.replace(standaloneNpubRegex, (match, prefix, mention) => {
+    processedContent = processedContent.replace(allMentionsRegex, (match, mention) => {
       const processed = processNostrMention(mention);
-      return processed.startsWith('@') ? `${prefix}${processed}` : match;
-    });
-    
-    processedContent = processedContent.replace(standaloneNprofileRegex, (match, prefix, mention) => {
-      const processed = processNostrMention(mention);
-      return processed.startsWith('@') ? `${prefix}${processed}` : match;
-    });
-    
-    // Handle nostr: prefixed mentions
-    const nostrReferences = extractNostrReferences(content);
-    nostrReferences.forEach(ref => {
-      if ((ref.type === 'npub' || ref.type === 'nprofile') && 'pubkey' in ref) {
-        const displayName = getUserDisplayName(ref.pubkey);
-        processedContent = processedContent.replace(ref.raw, `@${displayName}`);
-      }
+      return processed.startsWith('@') ? processed : match;
     });
     
     // Then remove note and nevent references
