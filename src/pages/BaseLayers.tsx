@@ -117,7 +117,12 @@ const BaseLayers = () => {
         await fetchUserProfiles(Array.from(mentionedPubkeys));
       }
       
-      setEvents(eventsWithQuotes);
+      // Final deduplication to ensure no duplicates exist
+      const finalEvents = eventsWithQuotes.filter((event, index, self) => 
+        index === self.findIndex(e => e.id === event.id)
+      );
+      
+      setEvents(finalEvents);
     } catch (error) {
       console.error("Error fetching hashtag content:", error);
     } finally {
@@ -154,7 +159,7 @@ const BaseLayers = () => {
               });
               
               if (originalEvents.length > 0) {
-                // Use original content but keep the reply metadata
+                // Use original content but keep the reply metadata and ensure unique ID
                 enrichedEvents.push({
                   ...event,
                   content: originalEvents[0].content,
@@ -172,7 +177,10 @@ const BaseLayers = () => {
       enrichedEvents.push(event);
     }
     
-    return enrichedEvents;
+    // Remove any duplicates that might have been created during enrichment
+    return enrichedEvents.filter((event, index, self) => 
+      index === self.findIndex(e => e.id === event.id)
+    );
   };
 
   const processQuotedEvents = async (events: NostrEvent[]): Promise<NostrEvent[]> => {
@@ -349,6 +357,21 @@ const BaseLayers = () => {
     // Apply Web of Trust filter
     if (webOfTrustEnabled && trustedPubkeys.size > 0) {
       filtered = filtered.filter(event => trustedPubkeys.has(event.pubkey));
+    }
+
+    // Debug logging
+    if (searchTerm.trim()) {
+      console.log(`Search term: "${searchTerm}"`);
+      console.log(`Original events: ${events.length}`);
+      console.log(`Filtered events: ${filtered.length}`);
+      
+      // Check for duplicates
+      const eventIds = filtered.map(e => e.id);
+      const uniqueIds = [...new Set(eventIds)];
+      if (eventIds.length !== uniqueIds.length) {
+        console.warn(`DUPLICATE EVENTS FOUND! Total: ${eventIds.length}, Unique: ${uniqueIds.length}`);
+        console.log('Duplicate IDs:', eventIds.filter((id, index) => eventIds.indexOf(id) !== index));
+      }
     }
 
     setFilteredEvents(filtered);
