@@ -6,11 +6,10 @@ import { useToast } from '@/hooks/use-toast';
 interface CopyButtonProps {
   text: string;
   hashtag: string;
-  mediaUrls?: string[];
   className?: string;
 }
 
-const CopyButton = ({ text, hashtag, mediaUrls = [], className = "" }: CopyButtonProps) => {
+const CopyButton = ({ text, hashtag, className = "" }: CopyButtonProps) => {
   const { isEditMode, copyText } = useEditMode();
   const { toast } = useToast();
 
@@ -18,7 +17,7 @@ const CopyButton = ({ text, hashtag, mediaUrls = [], className = "" }: CopyButto
 
   const handleCopy = (e: React.MouseEvent) => {
     e.stopPropagation();
-    copyText(text, hashtag, mediaUrls);
+    copyText(text, hashtag);
     toast({
       title: "Copied!",
       description: `Text copied with ${hashtag}`,
