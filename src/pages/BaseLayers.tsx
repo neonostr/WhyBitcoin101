@@ -342,11 +342,12 @@ const BaseLayers = () => {
 
   const copyVisibleContent = () => {
     const content = filteredEvents.map(event => {
-      const cleanContent = event.content.replace(/#whybitcoin101/gi, '').trim();
+      const cleanContent = removeNostrReferences(removeHashtags(event.content));
+      const { textContent } = renderMedia(cleanContent);
       const author = getUserDisplayName(event.pubkey);
       const date = new Date(event.created_at * 1000).toLocaleDateString();
       
-      return `[${date}] ${author}: ${cleanContent}`;
+      return `[${date}] ${author}: ${textContent}`;
     }).join('\n\n');
 
     navigator.clipboard.writeText(content);
