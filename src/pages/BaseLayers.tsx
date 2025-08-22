@@ -362,25 +362,66 @@ const BaseLayers = () => {
     setFilteredEvents(filtered);
   };
 
+  const extractMediaUrls = (content: string): string[] => {
+    const urls: string[] = [];
+    
+    // Extract image URLs
+    const imageRegex = /(https?:\/\/[^\s]+\.(?:jpg|jpeg|png|gif|webp))/gi;
+    let match;
+    while ((match = imageRegex.exec(content)) !== null) {
+      urls.push(match[1]);
+    }
+    
+    // Extract video URLs
+    const videoRegex = /(https?:\/\/[^\s]+\.(?:mp4|webm|mov))/gi;
+    while ((match = videoRegex.exec(content)) !== null) {
+      urls.push(match[1]);
+    }
+    
+    // Extract YouTube URLs
+    const youtubeRegex = /(?:https?:\/\/)?(?:www\.)?(?:youtube\.com\/watch\?v=|youtu\.be\/)([a-zA-Z0-9_-]+)/gi;
+    while ((match = youtubeRegex.exec(content)) !== null) {
+      urls.push(`https://www.youtube.com/watch?v=${match[1]}`);
+    }
+    
+    // Extract YouTube Trimmer URLs  
+    const youtubeTrimmerRegex = /(https?:\/\/www\.youtubetrimmer\.com\/view\/\?v=[a-zA-Z0-9_-]+&start=\d+&end=\d+(?:&loop=\d+)?)/gi;
+    while ((match = youtubeTrimmerRegex.exec(content)) !== null) {
+      urls.push(match[1]);
+    }
+    
+    return urls;
+  };
+
   const copyVisibleContent = () => {
     const content = filteredEvents.map(event => {
       const cleanContent = removeNostrReferences(removeHashtags(event.content));
       const { textContent } = renderMedia(cleanContent);
+      const mediaUrls = extractMediaUrls(event.content);
       const author = getUserDisplayName(event.pubkey);
       const date = new Date(event.created_at * 1000).toLocaleDateString();
       
       let fullContent = `[${date}] ${author}: ${textContent}`;
+      
+      // Add media URLs if they exist
+      if (mediaUrls.length > 0) {
+        fullContent += '\n\nMedia:\n' + mediaUrls.join('\n');
+      }
       
       // Add quoted events content if they exist
       if (event.quotedEvents && event.quotedEvents.length > 0) {
         event.quotedEvents.forEach(quotedEvent => {
           const quotedCleanContent = removeNostrReferences(removeHashtags(quotedEvent.content));
           const { textContent: quotedTextContent } = renderMedia(quotedCleanContent);
+          const quotedMediaUrls = extractMediaUrls(quotedEvent.content);
           const quotedAuthor = getUserDisplayName(quotedEvent.pubkey);
           const quotedDate = new Date(quotedEvent.created_at * 1000).toLocaleDateString();
           
-          if (quotedTextContent.trim()) {
+          if (quotedTextContent.trim() || quotedMediaUrls.length > 0) {
             fullContent += `\n\n> Quoted from [${quotedDate}] ${quotedAuthor}: ${quotedTextContent}`;
+            if (quotedMediaUrls.length > 0) {
+              fullContent += '\n> Media:\n> ' + quotedMediaUrls.join('\n> ');
+            }
           }
         });
       }
@@ -398,10 +439,12 @@ const BaseLayers = () => {
       description: `Copied ${filteredEvents.filter(event => {
         const cleanContent = removeNostrReferences(removeHashtags(event.content));
         const { textContent } = renderMedia(cleanContent);
-        return textContent.trim().length > 0 || (event.quotedEvents && event.quotedEvents.some(q => {
+        const mediaUrls = extractMediaUrls(event.content);
+        return textContent.trim().length > 0 || mediaUrls.length > 0 || (event.quotedEvents && event.quotedEvents.some(q => {
           const qCleanContent = removeNostrReferences(removeHashtags(q.content));
           const { textContent: qTextContent } = renderMedia(qCleanContent);
-          return qTextContent.trim().length > 0;
+          const qMediaUrls = extractMediaUrls(q.content);
+          return qTextContent.trim().length > 0 || qMediaUrls.length > 0;
         }));
       }).length} notes to clipboard`,
     });
