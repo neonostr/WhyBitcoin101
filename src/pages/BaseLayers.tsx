@@ -206,6 +206,21 @@ const BaseLayers = () => {
         if (quotedAuthors.length > 0) {
           await fetchUserProfiles(quotedAuthors);
         }
+
+        // Fetch profiles for mentions within quoted events
+        const quotedMentionedPubkeys = new Set<string>();
+        quotedEventsData.forEach(event => {
+          const mentions = extractNostrReferences(event.content);
+          mentions.forEach(mention => {
+            if (mention.type === 'npub' || mention.type === 'nprofile') {
+              quotedMentionedPubkeys.add(mention.pubkey);
+            }
+          });
+        });
+        
+        if (quotedMentionedPubkeys.size > 0) {
+          await fetchUserProfiles(Array.from(quotedMentionedPubkeys));
+        }
       } catch (error) {
         console.error("Error fetching quoted events:", error);
       }
