@@ -428,7 +428,36 @@ const BaseLayers = () => {
   const removeNostrReferences = (content: string): string => {
     let processedContent = content;
     
-    // First, convert npub and nprofile mentions to @username format
+    // Helper function to process npub/nprofile mentions
+    const processNostrMention = (mentionString: string): string => {
+      try {
+        const decoded = nip19.decode(mentionString);
+        if (decoded.type === 'npub') {
+          return `@${getUserDisplayName(decoded.data)}`;
+        } else if (decoded.type === 'nprofile') {
+          return `@${getUserDisplayName((decoded.data as any).pubkey)}`;
+        }
+      } catch (error) {
+        console.warn('Failed to decode nostr mention:', mentionString);
+      }
+      return mentionString;
+    };
+    
+    // Handle standalone npub/nprofile mentions (without nostr: prefix)
+    const standaloneNpubRegex = /(^|\s)(npub1[a-zA-Z0-9]+)/g;
+    const standaloneNprofileRegex = /(^|\s)(nprofile1[a-zA-Z0-9]+)/g;
+    
+    processedContent = processedContent.replace(standaloneNpubRegex, (match, prefix, mention) => {
+      const processed = processNostrMention(mention);
+      return processed.startsWith('@') ? `${prefix}${processed}` : match;
+    });
+    
+    processedContent = processedContent.replace(standaloneNprofileRegex, (match, prefix, mention) => {
+      const processed = processNostrMention(mention);
+      return processed.startsWith('@') ? `${prefix}${processed}` : match;
+    });
+    
+    // Handle nostr: prefixed mentions
     const nostrReferences = extractNostrReferences(content);
     nostrReferences.forEach(ref => {
       if ((ref.type === 'npub' || ref.type === 'nprofile') && 'pubkey' in ref) {
