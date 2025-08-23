@@ -7,7 +7,7 @@ import {
   DialogDescription,
 } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
-import { Copy, Share2, Users, Globe } from "lucide-react";
+import { Copy, Check, Share2, Users, Globe } from "lucide-react";
 
 interface ShareModalProps {
   isOpen: boolean;
@@ -62,10 +62,9 @@ const ShareModal: React.FC<ShareModalProps> = ({ isOpen, onClose }) => {
           size="sm"
           variant="outline"
           onClick={() => handleCopy(url, field)}
-          className="shrink-0"
+          className="flex-shrink-0"
         >
-          <Copy className="h-3 w-3" />
-          {copiedField === field ? "Copied!" : "Copy"}
+          {copiedField === field ? <Check className="h-4 w-4 text-green-500" /> : <Copy className="h-4 w-4" />}
         </Button>
       </div>
     </div>
