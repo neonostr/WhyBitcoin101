@@ -637,7 +637,7 @@ const BaseLayers = () => {
   const renderMedia = (content: string) => {
     // Image URLs
     const imageRegex = /(https?:\/\/[^\s]+\.(?:jpg|jpeg|png|gif|webp))/gi;
-    const videoRegex = /(https?:\/\/[^\s]+\.(?:mp4|webm|mov))/gi;
+    const videoRegex = /(https?:\/\/[^\s]+\.(?:mp4|webm|mov|avi|mkv|m4v))/gi;
     const youtubeRegex = /(?:https?:\/\/)?(?:www\.)?(?:youtube\.com\/watch\?v=|youtu\.be\/)([a-zA-Z0-9_-]+)/gi;
     const youtubeTrimmerRegex = /https?:\/\/www\.youtubetrimmer\.com\/view\/\?v=([a-zA-Z0-9_-]+)&start=(\d+)&end=(\d+)(?:&loop=\d+)?/gi;
 
@@ -666,8 +666,25 @@ const BaseLayers = () => {
           key={match[1]} 
           src={match[1]} 
           controls 
-          className="w-full max-w-full max-h-48 rounded-lg mt-2"
-        />
+          preload="metadata"
+          className="w-full max-w-full max-h-96 rounded-lg mt-2"
+          onError={(e) => {
+            console.error('Video failed to load:', match[1]);
+            // Try to display as a link if video fails to load
+            const target = e.target as HTMLVideoElement;
+            const linkElement = document.createElement('a');
+            linkElement.href = match[1];
+            linkElement.textContent = `Video: ${match[1]}`;
+            linkElement.target = '_blank';
+            linkElement.className = 'text-primary hover:underline';
+            target.parentNode?.replaceChild(linkElement, target);
+          }}
+        >
+          Your browser does not support the video tag.
+          <a href={match[1]} target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">
+            Download video: {match[1]}
+          </a>
+        </video>
       );
       processedContent = processedContent.replace(match[1], '');
     }
