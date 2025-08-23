@@ -144,9 +144,18 @@ const Support = () => {
 
                 content.
               </p>
-              <p className="text-sm text-muted-foreground">
-                Use the hashtag: <strong>#whybitcoin101</strong>
-              </p>
+                           <Button
+                variant="outline"
+                onClick={() =>
+                  window.open(
+                    "https://whybitcoin101.com/base-layer",
+                    "_blank"
+                  )
+                }
+                className="w-full"
+              >
+                Live Hashtag Feed
+              </Button>
             </CardContent>
           </Card>
 
