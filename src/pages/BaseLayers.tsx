@@ -601,7 +601,7 @@ const BaseLayers = () => {
           {showAuthors && (
             <div className="flex items-center gap-2 mb-2">
               <img
-                src={profile?.picture || `https://robohash.org/${quotedEvent.pubkey}?set=set4&size=30x30`}
+                src={profile?.picture || `https://robohash.org/${quotedEvent.pubkey}?set=set4&size=21x21`}
                 alt="Author"
                 className="w-10 h-10 rounded-full flex-shrink-0 cursor-pointer hover:ring-2 hover:ring-primary"
                 onClick={() => openNostrProfile(quotedEvent.pubkey)}
@@ -641,7 +641,7 @@ const BaseLayers = () => {
           <div className="flex items-center gap-2 mb-2">
             <Quote className="h-4 w-4 text-primary flex-shrink-0" />
             <img
-              src={profile?.picture || `https://robohash.org/${quotedEvent.pubkey}?set=set4&size=40x40`}
+              src={profile?.picture || `https://robohash.org/${quotedEvent.pubkey}?set=set4&size=21x21`}
               alt="Quoted author"
               className="w-10 h-10 rounded-full flex-shrink-0 cursor-pointer hover:ring-2 hover:ring-primary"
               onClick={() => openNostrProfile(quotedEvent.pubkey)}
@@ -1014,7 +1014,7 @@ const BaseLayers = () => {
                   <div className="flex items-start gap-3">
                     {showAuthors && !isStandaloneQuote && (
                       <img
-                        src={profile?.picture || `https://robohash.org/${event.pubkey}?set=set4&size=40x40`}
+                        src={profile?.picture || `https://robohash.org/${event.pubkey}?set=set4&size=21x21`}
                         alt="Profile"
                         className="w-10 h-10 rounded-full cursor-pointer hover:ring-2 hover:ring-primary flex-shrink-0"
                         onClick={() => openNostrProfile(event.pubkey)}
