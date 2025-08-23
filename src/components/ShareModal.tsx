@@ -8,7 +8,6 @@ import {
 } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { Copy, Share2, Users, Globe } from "lucide-react";
-import { useToast } from "@/hooks/use-toast";
 
 interface ShareModalProps {
   isOpen: boolean;
@@ -17,7 +16,6 @@ interface ShareModalProps {
 
 const ShareModal: React.FC<ShareModalProps> = ({ isOpen, onClose }) => {
   const [copiedField, setCopiedField] = useState<string | null>(null);
-  const { toast } = useToast();
 
   const mainUrl = "https://whybitcoin101.com";
   const missionUrl = "https://whybitcoin101.com/mission";
@@ -28,10 +26,6 @@ const ShareModal: React.FC<ShareModalProps> = ({ isOpen, onClose }) => {
   const handleCopy = (text: string, field: string) => {
     navigator.clipboard.writeText(text).then(() => {
       setCopiedField(field);
-      toast({
-        title: "Copied!",
-        description: `${text} copied to clipboard`,
-      });
       setTimeout(() => setCopiedField(null), 2000);
     });
   };
