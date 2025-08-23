@@ -589,10 +589,51 @@ const BaseLayers = () => {
     return processedContent.trim();
   };
 
-  const renderQuotedEvent = (quotedEvent: NostrEvent) => {
+  const renderQuotedEvent = (quotedEvent: NostrEvent, isStandaloneQuote: boolean = false) => {
     const profile = userProfiles[quotedEvent.pubkey];
     const cleanQuotedContent = removeNostrReferences(removeHashtags(quotedEvent.content));
     const { textContent, mediaElements } = renderMedia(cleanQuotedContent);
+    
+    // If it's a standalone quote (just note ID + hashtag), don't apply quote styling
+    if (isStandaloneQuote) {
+      return (
+        <div className="mt-3">
+          {showAuthors && (
+            <div className="flex items-center gap-2 mb-2">
+              <img
+                src={profile?.picture || `https://robohash.org/${quotedEvent.pubkey}?set=set4&size=24x24`}
+                alt="Author"
+                className="w-6 h-6 rounded-full flex-shrink-0 cursor-pointer hover:ring-2 hover:ring-primary"
+                onClick={() => openNostrProfile(quotedEvent.pubkey)}
+              />
+              <span 
+                className="text-sm font-medium truncate cursor-pointer hover:text-primary"
+                onClick={() => openNostrProfile(quotedEvent.pubkey)}
+              >
+                {getUserDisplayName(quotedEvent.pubkey)}
+              </span>
+              <span className="text-xs text-muted-foreground flex-shrink-0">
+                {formatDate(quotedEvent.created_at)}
+              </span>
+            </div>
+          )}
+          
+          {textContent && (
+            <div className="prose prose-sm max-w-none mb-2">
+              <p className="whitespace-pre-wrap text-foreground text-sm break-words">
+                {textContent}
+              </p>
+            </div>
+          )}
+          
+          {mediaElements.length > 0 && (
+            <div className="space-y-2">
+              {mediaElements}
+            </div>
+          )}
+        </div>
+      );
+    }
     
     return (
       <div className="border-l-4 border-primary/30 pl-4 mt-3 bg-muted/30 rounded-r-lg p-3">
@@ -924,11 +965,24 @@ const BaseLayers = () => {
             const cleanContent = removeNostrReferences(removeHashtags(event.content));
             const { textContent, mediaElements } = renderMedia(cleanContent);
             
+            // Check if this is a standalone quote (note ID + hashtag only)
+            const isStandaloneQuote = event.quotedEvents && event.quotedEvents.length > 0 && 
+              (() => {
+                const originalContent = event.content.trim();
+                // Remove hashtags and whitespace
+                const contentWithoutHashtags = originalContent.replace(/#\w+/g, '').trim();
+                // Check if remaining content is just nostr references
+                const nostrRefs = extractNostrReferences(originalContent);
+                const contentWithoutNostrRefs = removeNostrReferences(contentWithoutHashtags);
+                // It's standalone if there's minimal content after removing hashtags and nostr refs
+                return contentWithoutNostrRefs.length <= 5 && nostrRefs.length > 0;
+              })();
+            
             return (
               <Card key={`${event.id}-${searchTerm}`} className="hover:shadow-md transition-shadow h-fit break-inside-avoid mb-4">
                 <CardContent className="p-4">
                   <div className="flex items-start gap-3">
-                    {showAuthors && (
+                    {showAuthors && !isStandaloneQuote && (
                       <img
                         src={profile?.picture || `https://robohash.org/${event.pubkey}?set=set4&size=40x40`}
                         alt="Profile"
@@ -938,7 +992,7 @@ const BaseLayers = () => {
                     )}
                     
                     <div className="flex-1 min-w-0">
-                      {showAuthors && (
+                      {showAuthors && !isStandaloneQuote && (
                         <div className="flex items-center gap-2 mb-2">
                           <span 
                             className="font-medium cursor-pointer hover:text-primary truncate"
@@ -952,7 +1006,7 @@ const BaseLayers = () => {
                         </div>
                       )}
                       
-                      {textContent && (
+                      {textContent && !isStandaloneQuote && (
                         <div className="prose prose-sm max-w-none mb-2">
                           <p className="whitespace-pre-wrap text-foreground break-words">
                             {textContent}
@@ -960,7 +1014,7 @@ const BaseLayers = () => {
                         </div>
                       )}
                       
-                      {mediaElements.length > 0 && (
+                      {mediaElements.length > 0 && !isStandaloneQuote && (
                         <div className="space-y-2">
                           {mediaElements}
                         </div>
@@ -969,7 +1023,7 @@ const BaseLayers = () => {
                       {/* Render quoted events */}
                       {event.quotedEvents && event.quotedEvents.map((quotedEvent, qIndex) => (
                         <div key={`${event.id}-quote-${qIndex}-${searchTerm}`}>
-                          {renderQuotedEvent(quotedEvent)}
+                          {renderQuotedEvent(quotedEvent, isStandaloneQuote)}
                         </div>
                       ))}
                     </div>
