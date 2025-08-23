@@ -49,9 +49,9 @@ const Support = () => {
                   Every conversation, every share, every spark of understanding moves us
                   closer to a future where Bitcoin empowers everyone.
                 </p>
-                <p className="text-muted-foreground leading-relaxed mb-4">
+                <p className="text-muted-foreground leading-relaxed mb-6">
                   If you're a Bitcoiner ready to build, educate, and amplify the signal,
-                  this is your place to plug in - Together, let’s build the world we want to live in.
+                  this is your place to plug in.
                 </p>
               </div>
               <div className="text-sm text-muted-foreground italic border-t border-border pt-3 mt-4 md:mt-auto">
@@ -117,9 +117,9 @@ const Support = () => {
                 The <strong>WhyBitcoin101</strong> Nostr profile serves as a signal layer of
                 our mission. As conversations and resources about Bitcoin flow into Nostr, this 
                 profile curates and amplifies the strongest insights and explanations surfaced
-                through our hashtags. Beyond coordination of community efforts, helping us achieve
-                more together with less wasted energy - it also provides a space where we
-                publish deeper reflections on our common plans, visions, and the ideas that
+                through our hashtags. Beyond that, it helps coordinate community efforts, enabling
+                us to achieve more together with greater efficiency - it also provides a space where we
+                can publish deeper reflections on our common plans, visions, and the ideas that
                 can guide us forward. In doing so, scattered voices become a unified signal, one 
                 that emphasizes why Bitcoin matters, not just how to buy it.
               </p>
