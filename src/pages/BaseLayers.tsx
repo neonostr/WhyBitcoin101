@@ -681,6 +681,8 @@ const BaseLayers = () => {
     const videoRegex = /(https?:\/\/[^\s]+\.(?:mp4|webm|mov|avi|mkv|m4v))/gi;
     const youtubeRegex = /(?:https?:\/\/)?(?:www\.)?(?:youtube\.com\/watch\?v=|youtu\.be\/)([a-zA-Z0-9_-]+)/gi;
     const youtubeTrimmerRegex = /https?:\/\/www\.youtubetrimmer\.com\/view\/\?v=([a-zA-Z0-9_-]+)&start=(\d+)&end=(\d+)(?:&loop=\d+)?/gi;
+    // Generic URL regex to catch other URLs that might leave spacing
+    const genericUrlRegex = /(https?:\/\/[^\s]+)/gi;
 
     let processedContent = content;
     const mediaElements = [];
@@ -772,8 +774,36 @@ const BaseLayers = () => {
       processedContent = processedContent.replace(match[0], '');
     }
 
+    // Remove any remaining URLs that might not be media
+    const remainingUrls = [];
+    while ((match = genericUrlRegex.exec(processedContent)) !== null) {
+      // Check if this URL wasn't already processed as media
+      const url = match[1];
+      const isAlreadyProcessed = content !== processedContent || 
+        imageRegex.test(url) || videoRegex.test(url) || 
+        youtubeRegex.test(url) || youtubeTrimmerRegex.test(url);
+      
+      if (!isAlreadyProcessed) {
+        remainingUrls.push(url);
+        processedContent = processedContent.replace(url, '');
+      }
+    }
+
+    // Clean up whitespace and formatting
+    processedContent = processedContent
+      // Replace multiple spaces with single space
+      .replace(/\s+/g, ' ')
+      // Replace multiple line breaks with double line break
+      .replace(/\n\s*\n\s*\n+/g, '\n\n')
+      // Remove leading/trailing whitespace from each line
+      .split('\n')
+      .map(line => line.trim())
+      .filter(line => line.length > 0)
+      .join('\n')
+      .trim();
+
     return {
-      textContent: processedContent.trim(),
+      textContent: processedContent,
       mediaElements
     };
   };
