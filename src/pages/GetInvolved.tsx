@@ -51,11 +51,7 @@ const Support = () => {
                 </p>
                 <p className="text-muted-foreground leading-relaxed mb-4">
                   If you're a Bitcoiner ready to build, educate, and amplify the signal,
-                  this is your place to plug in.
-                </p>
-                 <p className="text-muted-foreground leading-relaxed mb-4">
-                Together, let’s build the world we want to live in - open, fair, and free.
-                It's up to all of us.
+                  this is your place to plug in - Together, let’s build the world we want to live in.
                 </p>
               </div>
               <div className="text-sm text-muted-foreground italic border-t border-border pt-3 mt-4 md:mt-auto">
