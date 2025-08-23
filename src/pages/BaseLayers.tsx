@@ -601,13 +601,13 @@ const BaseLayers = () => {
           {showAuthors && (
             <div className="flex items-center gap-2 mb-2">
               <img
-                src={profile?.picture || `https://robohash.org/${quotedEvent.pubkey}?set=set4&size=24x24`}
+                src={profile?.picture || `https://robohash.org/${quotedEvent.pubkey}?set=set4&size=40x40`}
                 alt="Author"
-                className="w-6 h-6 rounded-full flex-shrink-0 cursor-pointer hover:ring-2 hover:ring-primary"
+                className="w-10 h-10 rounded-full flex-shrink-0 cursor-pointer hover:ring-2 hover:ring-primary"
                 onClick={() => openNostrProfile(quotedEvent.pubkey)}
               />
               <span 
-                className="text-sm font-medium truncate cursor-pointer hover:text-primary"
+                className="font-medium cursor-pointer hover:text-primary truncate"
                 onClick={() => openNostrProfile(quotedEvent.pubkey)}
               >
                 {getUserDisplayName(quotedEvent.pubkey)}
@@ -620,7 +620,7 @@ const BaseLayers = () => {
           
           {textContent && (
             <div className="prose prose-sm max-w-none mb-2">
-              <p className="whitespace-pre-wrap text-foreground text-sm break-words">
+              <p className="whitespace-pre-wrap text-foreground break-words">
                 {textContent}
               </p>
             </div>
@@ -641,13 +641,13 @@ const BaseLayers = () => {
           <div className="flex items-center gap-2 mb-2">
             <Quote className="h-4 w-4 text-primary flex-shrink-0" />
             <img
-              src={profile?.picture || `https://robohash.org/${quotedEvent.pubkey}?set=set4&size=24x24`}
+              src={profile?.picture || `https://robohash.org/${quotedEvent.pubkey}?set=set4&size=40x40`}
               alt="Quoted author"
-              className="w-6 h-6 rounded-full flex-shrink-0 cursor-pointer hover:ring-2 hover:ring-primary"
+              className="w-10 h-10 rounded-full flex-shrink-0 cursor-pointer hover:ring-2 hover:ring-primary"
               onClick={() => openNostrProfile(quotedEvent.pubkey)}
             />
             <span 
-              className="text-sm font-medium truncate cursor-pointer hover:text-primary"
+              className="font-medium cursor-pointer hover:text-primary truncate"
               onClick={() => openNostrProfile(quotedEvent.pubkey)}
             >
               {getUserDisplayName(quotedEvent.pubkey)}
@@ -660,7 +660,7 @@ const BaseLayers = () => {
         
         {textContent && (
           <div className="prose prose-sm max-w-none mb-2">
-            <p className="whitespace-pre-wrap text-foreground text-sm break-words">
+            <p className="whitespace-pre-wrap text-foreground break-words">
               {textContent}
             </p>
           </div>
