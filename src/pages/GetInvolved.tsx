@@ -40,7 +40,7 @@ const Support = () => {
             <div className="bg-white rounded-lg p-8 shadow-md border border-border flex flex-col h-full">
               <div>
                 <p className="text-2xl font-semibold text-foreground mb-4">
-                  We’re on a mission to orange pill the world - not with hype, but with truth,
+                  We're on a mission to orange pill the world - not with hype, but with truth,
                   connection, and action.
                 </p>
                 <p className="text-muted-foreground leading-relaxed mb-4">
