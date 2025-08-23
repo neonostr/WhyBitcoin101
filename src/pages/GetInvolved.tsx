@@ -114,13 +114,14 @@ const Support = () => {
             </CardHeader>
             <CardContent className="flex flex-col flex-grow">
               <p className="text-muted-foreground leading-relaxed mb-4">
-                The <strong>WhyBitcoin101</strong> Nostr profile serves as a signal layer
-                of our mission. As conversations and resources about Bitcoin flow into
-                Nostr, this profile curates and amplifies the strongest insights and
-                explanations surfaced through our hashtags. Beyond that, it helps
-                coordinate community efforts, allowing us to achieve more together with
-                less wasted energy. In doing so, scattered voices become a unified signal -
-                one that emphasizes why Bitcoin matters, not just how to buy it.
+                The <strong>WhyBitcoin101</strong> Nostr profile serves as a signal layer of
+                our mission. As conversations and resources about Bitcoin flow into Nostr, this 
+                profile curates and amplifies the strongest insights and explanations surfaced
+                through our hashtags. Beyond coordination of community efforts, helping us achieve
+                more together with less wasted energy - it also provides a space where we
+                publish deeper reflections on our common plans, visions, and the ideas that
+                can guide us forward. In doing so, scattered voices become a unified signal, one 
+                that emphasizes why Bitcoin matters, not just how to buy it.
               </p>
               <div className="mt-auto">
                 <Button
