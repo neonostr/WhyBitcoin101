@@ -601,7 +601,7 @@ const BaseLayers = () => {
           {showAuthors && (
             <div className="flex items-center gap-2 mb-2">
               <img
-                src={profile?.picture || `https://robohash.org/${quotedEvent.pubkey}?set=set4&size=40x40`}
+                src={profile?.picture || `https://robohash.org/${quotedEvent.pubkey}?set=set4&size=30x30`}
                 alt="Author"
                 className="w-10 h-10 rounded-full flex-shrink-0 cursor-pointer hover:ring-2 hover:ring-primary"
                 onClick={() => openNostrProfile(quotedEvent.pubkey)}
