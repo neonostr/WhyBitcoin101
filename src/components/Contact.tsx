@@ -156,7 +156,6 @@ const Contact = () => {
             <Link 
               to="/get-involved" 
               className="text-sm text-muted-foreground hover:text-foreground underline underline-offset-2 transition-colors"
-              onClick={() => window.scrollTo(0, 0)}
             >
               Already a bitcoiner? Learn how you can help →
             </Link>
