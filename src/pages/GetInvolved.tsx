@@ -138,7 +138,7 @@ const Support = () => {
             <CardContent>
               <p className="text-muted-foreground leading-relaxed mb-4">
                 Got something that helps explain Bitcoin - even a small spark like a meme, quote, or note? Post it on Nostr with{" "}
-                <span className="font-mono bg-muted px-1 rounded">#whybitcoin101</span>, or comment with the note ID + hashtag (hashtag alone works too). Every spark counts - on its own or combined, it can inspire the kind of content that makes Bitcoin really click.
+                <span className="font-mono bg-muted px-1 rounded">#whybitcoin101</span>, or comment with the note ID + hashtag. Every spark counts - on its own or combined, it can inspire the kind of content that makes Bitcoin really click.
                 All tagged posts fuel a growing public library of Bitcoin education. We'll amplify some on the WhyBitcoin101 profile, and on our website shape these sparks into the <strong>ultimate orange pill</strong>. Together we're creating both an open archive and a powerful hub of the most useful content.
 
 
