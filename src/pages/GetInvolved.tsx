@@ -48,7 +48,7 @@ const Support = () => {
                   closer to a future where Bitcoin empowers everyone.
                 </p>
                 <p className="text-muted-foreground leading-relaxed mb-6">
-                  If you’re a Bitcoiner ready to build, educate, and amplify the signal,
+                  If you're a Bitcoiner ready to build, educate, and amplify the signal,
                   this is your place to plug in.
                 </p>
               </div>
