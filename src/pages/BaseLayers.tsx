@@ -589,16 +589,16 @@ const BaseLayers = () => {
     return processedContent.trim();
   };
 
-  const renderQuotedEvent = (quotedEvent: NostrEvent) => {
+  const renderQuotedEvent = (quotedEvent: NostrEvent, isNested: boolean = true) => {
     const profile = userProfiles[quotedEvent.pubkey];
     const cleanQuotedContent = removeNostrReferences(removeHashtags(quotedEvent.content));
     const { textContent, mediaElements } = renderMedia(cleanQuotedContent);
     
     return (
-      <div className="border-l-4 border-primary/30 pl-4 mt-3 bg-muted/30 rounded-r-lg p-3">
+      <div className={isNested ? "border-l-4 border-primary/30 pl-4 mt-3 bg-muted/30 rounded-r-lg p-3" : "mt-3 p-3"}>
         {showAuthors && (
           <div className="flex items-center gap-2 mb-2">
-            <Quote className="h-4 w-4 text-primary flex-shrink-0" />
+            {isNested && <Quote className="h-4 w-4 text-primary flex-shrink-0" />}
             <img
               src={profile?.picture || `https://robohash.org/${quotedEvent.pubkey}?set=set4&size=24x24`}
               alt="Quoted author"
