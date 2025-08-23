@@ -842,8 +842,8 @@ const BaseLayers = () => {
           
           <div className="flex flex-col gap-4">
             {/* Main Controls Row */}
-            <div className="flex flex-col sm:flex-row gap-4 items-start sm:items-center">
-              <div className="relative flex-1 max-w-md w-full">
+            <div className="flex flex-col gap-4">
+              <div className="relative max-w-md w-full">
                 <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground h-4 w-4" />
                 <Input
                   placeholder="Search bitcoin knowledge..."
@@ -853,15 +853,17 @@ const BaseLayers = () => {
                 />
               </div>
               
-              <div className="flex gap-2 w-full sm:w-auto">
+              <div className="flex flex-col sm:flex-row gap-2 sm:gap-4">
                 <Button 
                   onClick={() => setShowAuthors(!showAuthors)} 
                   variant="outline" 
                   size="sm"
-                  className="flex-1 sm:flex-initial"
+                  className="w-full sm:w-auto"
                 >
                   {showAuthors ? <EyeOff className="h-4 w-4 mr-2" /> : <Eye className="h-4 w-4 mr-2" />}
-                  {showAuthors ? "Hide Authors" : "Show Authors"}
+                  <span className="sm:inline">
+                    {showAuthors ? "Hide Authors" : "Show Authors"}
+                  </span>
                 </Button>
 
                 <Dialog>
@@ -869,10 +871,10 @@ const BaseLayers = () => {
                     <Button 
                       variant={webOfTrustEnabled ? "default" : "outline"} 
                       size="sm"
-                      className="flex-1 sm:flex-initial"
+                      className="w-full sm:w-auto"
                     >
                       <Shield className="h-4 w-4 mr-2" />
-                      Web of Trust Filter
+                      <span className="sm:inline">Web of Trust Filter</span>
                       {webOfTrustEnabled && trustedPubkeys.size > 0 && (
                         <Badge variant="secondary" className="ml-2 text-xs">
                           {trustedPubkeys.size}
@@ -954,9 +956,9 @@ const BaseLayers = () => {
                   </DialogContent>
                 </Dialog>
                 
-                <Button onClick={copyVisibleContent} variant="outline" size="sm" className="flex-1 sm:flex-initial">
+                <Button onClick={copyVisibleContent} variant="outline" size="sm" className="w-full sm:w-auto">
                   <Copy className="h-4 w-4 mr-2" />
-                  Copy Visible ({filteredEvents.length})
+                  <span className="sm:inline">Copy Visible ({filteredEvents.length})</span>
                 </Button>
               </div>
             </div>
