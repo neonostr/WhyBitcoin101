@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Link } from "react-router-dom";
 import CopyButton from "./CopyButton";
 
 const Contact = () => {
@@ -152,12 +153,12 @@ const Contact = () => {
               research to make informed decisions.
             </p>
             <div className="border-t border-muted-foreground/20 pt-4">
-              <a 
-                href="/get-involved" 
+              <Link 
+                to="/get-involved" 
                 className="text-sm text-muted-foreground hover:text-foreground underline underline-offset-2 transition-colors"
               >
                 Already a bitcoiner? Learn how you can help →
-              </a>
+              </Link>
             </div>
           </div>
         </div>
