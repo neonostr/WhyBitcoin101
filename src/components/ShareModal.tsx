@@ -79,7 +79,7 @@ const ShareModal: React.FC<ShareModalProps> = ({ isOpen, onClose }) => {
             Share WhyBitcoin101
           </DialogTitle>
           <DialogDescription>
-            Choose the right link for the people you're sending it to.
+            Choose the link that fits who you're sharing with
           </DialogDescription>
         </DialogHeader>
 
