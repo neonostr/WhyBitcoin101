@@ -51,21 +51,21 @@ const ShareModal: React.FC<ShareModalProps> = ({ isOpen, onClose }) => {
     url: string; 
     field: string;
   }) => (
-    <div className="space-y-3 p-4 rounded-lg border border-border bg-card">
-      <div className="flex items-center gap-2">
-        <Icon className="h-5 w-5 text-primary" />
-        <h3 className="font-semibold text-foreground">{title}</h3>
+    <div className="space-y-4 p-6 rounded-lg border border-border bg-card shadow-sm">
+      <div className="flex items-center gap-3">
+        <Icon className="h-6 w-6 text-primary" />
+        <h3 className="font-semibold text-foreground text-lg">{title}</h3>
       </div>
-      <p className="text-sm text-muted-foreground">{description}</p>
-      <div className="flex items-center gap-2 p-2 bg-muted rounded text-sm font-mono text-foreground">
-        <span className="flex-1 truncate">{url}</span>
+      <p className="text-muted-foreground leading-relaxed">{description}</p>
+      <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 p-3 bg-muted/50 rounded-md border">
+        <span className="flex-1 text-sm font-mono text-foreground break-all">{url}</span>
         <Button
           size="sm"
           variant="outline"
           onClick={() => handleCopy(url, field)}
-          className="shrink-0"
+          className="shrink-0 w-full sm:w-auto bg-background hover:bg-accent"
         >
-          <Copy className="h-3 w-3" />
+          <Copy className="h-3 w-3 mr-2" />
           {copiedField === field ? "Copied!" : "Copy"}
         </Button>
       </div>
@@ -74,18 +74,18 @@ const ShareModal: React.FC<ShareModalProps> = ({ isOpen, onClose }) => {
 
   return (
     <Dialog open={isOpen} onOpenChange={handleClose}>
-      <DialogContent className="sm:max-w-md">
-        <DialogHeader>
-          <DialogTitle className="flex items-center gap-2">
+      <DialogContent className="sm:max-w-lg w-[95vw] max-h-[90vh] overflow-y-auto">
+        <DialogHeader className="pb-4">
+          <DialogTitle className="flex items-center gap-2 text-lg">
             <Share2 className="h-5 w-5" />
             Share WhyBitcoin101
           </DialogTitle>
-          <DialogDescription>
+          <DialogDescription className="text-base">
             Choose the right link for your audience
           </DialogDescription>
         </DialogHeader>
 
-        <div className="space-y-4">
+        <div className="space-y-6">
           <ShareOption
             icon={Globe}
             title="For Newcomers"
@@ -103,7 +103,7 @@ const ShareModal: React.FC<ShareModalProps> = ({ isOpen, onClose }) => {
           />
         </div>
 
-        <div className="text-center pt-4 border-t border-border">
+        <div className="text-center pt-6 mt-6 border-t border-border">
           <p className="text-sm text-muted-foreground">
             Thank you for spreading Bitcoin education! 🧡
           </p>
