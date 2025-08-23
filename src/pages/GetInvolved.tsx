@@ -4,10 +4,12 @@ import { ArrowLeft, Heart, Share2, MessageCircle, Copy, Users } from "lucide-rea
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import DonationModal from "@/components/DonationModal";
+import ShareModal from "@/components/ShareModal";
 import NostrContributors from "@/components/NostrContributors";
 
 const Support = () => {
   const [donationModalOpen, setDonationModalOpen] = useState(false);
+  const [shareModalOpen, setShareModalOpen] = useState(false);
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-background to-primary/5 safe-area-inset">
@@ -254,7 +256,14 @@ const Support = () => {
                 to this educational project. Every person who discovers Bitcoin through
                 education makes the network stronger.
               </p>
-              <p className="text-sm text-muted-foreground">Share: whybitcoin101.com</p>
+              <Button
+                variant="outline"
+                onClick={() => setShareModalOpen(true)}
+                className="w-full flex items-center gap-2"
+              >
+                <Share2 className="h-4 w-4" />
+                Share Links
+              </Button>
             </CardContent>
           </Card>
 
@@ -330,6 +339,10 @@ const Support = () => {
       <DonationModal
         isOpen={donationModalOpen}
         onClose={() => setDonationModalOpen(false)}
+      />
+      <ShareModal
+        isOpen={shareModalOpen}
+        onClose={() => setShareModalOpen(false)}
       />
     </div>
   );
