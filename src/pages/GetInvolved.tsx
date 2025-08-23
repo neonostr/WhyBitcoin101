@@ -137,14 +137,10 @@ const Support = () => {
             </CardHeader>
             <CardContent>
               <p className="text-muted-foreground leading-relaxed mb-4">
-                Found something that helps people understand Bitcoin better? Post it or
-                repost it on Nostr with{" "}
-                <span className="font-mono bg-muted px-1 rounded">#whybitcoin101</span>. All
-                tagged posts help build a growing public library of Bitcoin education that
-                we can all access and use to help others learn. We’ll also curate and share
-                some of these on the WhyBitcoin101 profile and website, so together we
-                create both a complete hashtag archive and a focused hub of the most useful
-                content.
+                Found something that could helpe people understand Bitcoin better? Post it on Nostr with{" "}
+                <span className="font-mono bg-muted px-1 rounded">#whybitcoin101</span>,or comment with the note ID + hashtag (only hashtag works too). Every little spark helps - a meme, quote, or idea might inspire someone else to shape it into content that makes Bitcoin "click."
+                All tagged posts build a public library of Bitcoin education. We'll repost some on the WhyBitcoin101 profile, and on our website refine these sparks into the ultimate orange pill. Together we build both an open archive and a focused hub.
+.”
               </p>
               <p className="text-sm text-muted-foreground">
                 Use the hashtag: <strong>#whybitcoin101</strong>
