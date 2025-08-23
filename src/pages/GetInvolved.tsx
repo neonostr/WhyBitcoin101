@@ -244,54 +244,49 @@ const Support = () => {
 Copy code
 
 {/* Spread Awareness */}
-<Card className="border-primary/20 flex flex-col">
+<Card className="border-primary/20">
   <CardHeader>
     <CardTitle className="flex items-center gap-2 text-foreground">
       <Share2 className="h-5 w-5" />
       Spread Awareness
     </CardTitle>
   </CardHeader>
-  <CardContent className="flex flex-col flex-grow">
+  <CardContent>
     <p className="text-muted-foreground leading-relaxed mb-4">
       Create stamps, flyers, or share the website with others to bring awareness
       to this educational project. Every person who discovers Bitcoin through
       education makes the network stronger.
     </p>
-    <div className="mt-auto">
-      <Button
-        variant="outline"
-        onClick={async () => {
-          const url = "https://whybitcoin101.com";
-          if (navigator.share) {
-            // Mobile: open native share menu
-            try {
-              await navigator.share({
-                title: "WhyBitcoin101",
-                text: "Check out this Bitcoin education project",
-                url,
-              });
-            } catch (err) {
-              console.error("Error sharing:", err);
-            }
-          } else {
-            // Desktop: copy to clipboard
-            try {
-              await navigator.clipboard.writeText(url);
-              alert("Link copied to clipboard!");
-            } catch (err) {
-              console.error("Failed to copy:", err);
-            }
+    <Button
+      variant="outline"
+      onClick={async () => {
+        const url = "https://whybitcoin101.com";
+        if (navigator.share) {
+          try {
+            await navigator.share({
+              title: "WhyBitcoin101",
+              text: "Check out this Bitcoin education project",
+              url,
+            });
+          } catch (err) {
+            console.error("Error sharing:", err);
           }
-        }}
-        className="w-full flex items-center gap-2"
-      >
-        <Share2 className="h-4 w-4" />
-        Share whybitcoin101.com
-      </Button>
-    </div>
+        } else {
+          try {
+            await navigator.clipboard.writeText(url);
+            alert("Link copied to clipboard!");
+          } catch (err) {
+            console.error("Failed to copy:", err);
+          }
+        }
+      }}
+      className="w-full flex items-center gap-2"
+    >
+      <Share2 className="h-4 w-4" />
+      Share whybitcoin101.com
+    </Button>
   </CardContent>
 </Card>
-
           {/* Donate */}
           <Card className="border-primary/20 flex flex-col">
             <CardHeader>
