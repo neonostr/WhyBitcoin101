@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { ArrowLeft, Heart, RadioTower, Share2, MessageCircle, Copy, Users } from "lucide-react";
+import { ArrowLeft, Heart, Share2, MessageCircle, Copy, Users } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import DonationModal from "@/components/DonationModal";
@@ -102,42 +102,13 @@ const Support = () => {
           </div>
         </div>
 
-          {/* Share Content */}
-          <Card className="border-primary/20 flex flex-col">
-            <CardHeader>
-              <CardTitle className="flex items-center gap-2 text-foreground">
-                <Share2 className="h-5 w-5" />
-                Hashtags As Signal
-              </CardTitle>
-            </CardHeader>
-            <CardContent className="flex flex-col flex-grow">
-              <p className="text-muted-foreground leading-relaxed mb-4">
-               Every note, meme, or quote becomes a spark when tagged with{" "}
-                <span className="font-mono bg-muted px-1 rounded">#whybitcoin101</span>on Nostr.
-                These hashtags act as our <strong>signal layer</strong> - the raw flow of ideas,
-                insights, and conversations around Bitcoin. Each tag adds to an open archive,
-                making it easier for the strongest truths to surface and be discovered.
-                The more sparks, the stronger the signal.
-              </p>
-              <div className="mt-auto">
-                <Button
-                  variant="outline"
-                  onClick={() => window.open("https://whybitcoin101.com/base-layer", "_blank")}
-                  className="w-full"
-                >
-                  Watch The Signal Live
-                </Button>
-              </div>
-            </CardContent>
-          </Card>
-
- {/* Support Cards */}
+        {/* Support Cards */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 w-full">
           {/* Bitcoin Education Profile & Hub */}
           <Card className="border-primary/20 flex flex-col">
             <CardHeader>
               <CardTitle className="flex items-center gap-2 text-foreground">
-                <RadioTower className="h-5 w-5" />
+                <MessageCircle className="h-5 w-5" />
                 Turning Hashtags Into Signal
               </CardTitle>
             </CardHeader>
@@ -168,7 +139,39 @@ const Support = () => {
               </div>
             </CardContent>
           </Card>
-        
+
+          {/* Share Content */}
+          <Card className="border-primary/20 flex flex-col">
+            <CardHeader>
+              <CardTitle className="flex items-center gap-2 text-foreground">
+                <Share2 className="h-5 w-5" />
+                Share Great Content
+              </CardTitle>
+            </CardHeader>
+            <CardContent className="flex flex-col flex-grow">
+              <p className="text-muted-foreground leading-relaxed mb-4">
+                Got something that helps explain Bitcoin - even a small spark like a meme
+                or quote? Post it on Nostr with{" "}
+                <span className="font-mono bg-muted px-1 rounded">#whybitcoin101</span>, or
+                comment with the note ID + hashtag. Every spark counts - on its own or
+                combined, it can inspire the kind of content that makes Bitcoin really
+                click. All tagged posts fuel a growing public library of Bitcoin education.
+                We'll amplify some on the WhyBitcoin101 profile, and on our website we
+                shape these sparks into the <strong>ultimate orange pill</strong>. Together
+                we're creating both an open archive and a powerful hub of the most useful
+                content.
+              </p>
+              <div className="mt-auto">
+                <Button
+                  variant="outline"
+                  onClick={() => window.open("https://whybitcoin101.com/base-layer", "_blank")}
+                  className="w-full"
+                >
+                  Live Hashtag Feed
+                </Button>
+              </div>
+            </CardContent>
+          </Card>
 
           {/* Community Q&A */}
           <Card className="border-primary/20 col-span-1 md:col-span-2">
