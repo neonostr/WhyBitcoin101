@@ -148,13 +148,13 @@ const Support = () => {
             </CardHeader>
             <CardContent className="flex flex-col flex-grow">
               <p className="text-muted-foreground leading-relaxed mb-4">
-                The hashtag #whybitcoin101 is the pulse of our shared signal on Nostr. Each note tagged adds to a real‑time stream
+                The hashtag #whybitcoin101 is the pulse of our shared signal on Nostr. Each tagged note adds to a real‑time stream
                 of ideas that show why Bitcoin matters. Even the smallest
                 spark counts, alone or combined with others, it can inspire clearer, stronger ways to explain Bitcoin.
 
-                To amplify something, tag your note with{" "}
+                To add a note, simply tag your note with{" "}
                 <span className="font-mono bg-muted px-1 rounded">#whybitcoin101</span>{" "} or comment on existing ones with its
-                note ID + #whybitcoin101. Each spark adds fuel; together they power the pulse that carries this signal across the world.
+                note ID + #whybitcoin101. Alone they are fragments, but together they form a pulse that carries forward the purpose behind Bitcoin.
               </p>
               <div className="mt-auto">
                 <Button
