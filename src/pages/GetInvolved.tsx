@@ -153,9 +153,9 @@ const Support = () => {
                 of ideas that show why Bitcoin matters. Even the smallest
                 spark counts, alone or combined with others, it can inspire clearer, stronger ways to explain Bitcoin.
 
-                To amplify something, tag your note with #whybitcoin101 or comment on an existing ones with its
-                note ID + #whybitcoin101. Together, these sparks form an open resource for Bitcoin education. From this pulse,
-                we amplify the best on the WhyBitcoin101 profile and beyond, shaping them into the clearest orange pill possible.                
+                To amplify something, tag your note with #whybitcoin101 or comment on existing ones with its
+                note ID + #whybitcoin101. Together, these sparks form an open resource for Bitcoin education - a signal
+                we can refine and amplify into the clearest orange pill possible.
               </p>
               <div className="mt-auto">
                 <Button
