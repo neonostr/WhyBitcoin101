@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { ArrowLeft, Heart, Share2, MessageCircle, Copy, Users } from "lucide-react";
+import { ArrowLeft, Heart, RadioTower, Share2, MessageCircle, Copy, Users } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import DonationModal from "@/components/DonationModal";
@@ -108,19 +108,19 @@ const Support = () => {
           <Card className="border-primary/20 flex flex-col">
             <CardHeader>
               <CardTitle className="flex items-center gap-2 text-foreground">
-                <MessageCircle className="h-5 w-5" />
+                <RadioTower className="h-5 w-5" />
                 The Signal Layer on Nostr
               </CardTitle>
             </CardHeader>
             <CardContent className="flex flex-col flex-grow">
               <p className="text-muted-foreground leading-relaxed mb-4">
                
-                Our WhyBitcoin101 profile exists to bring us all together around our shared mission.
-                Here, scattered voices become a unified signal: We curate and amplify the strongest
-                insights surfaced through our hashtags, while also publishing deeper reflections on visions,
-                plans, and strategies that move us forward. Soon, we'll also have a structured community
-                space on Nostr - a place designed for ongoing collaboration, deeper discussion, and organized teamwork. 
-                Together, they form the signal layer of <strong>WhyBitcoin101</strong> - our shared base for vision, action, and impact.
+                The WhyBitcoin101 profile exists to bring us all together around our shared mission.
+                Here, we curate and amplify the strongest insights surfaced through our hashtags, while
+                also publishing deeper reflections on visions, plans, and strategies that move us forward.
+                Soon, we'll also have a structured community space on Nostr - a place designed for ongoing collaboration,
+                deeper discussion, and organized teamwork. Together, they form the signal layer of
+                <strong>WhyBitcoin101</strong> - our shared base for vision, action, and impact.
               </p>
               <div className="mt-auto">
                 <Button
