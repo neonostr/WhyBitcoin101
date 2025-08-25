@@ -340,29 +340,12 @@ const BaseLayers = () => {
 
     // Hide specific testing notes by their npubs (more precise than text matching)
     // These were created during testing phase and shouldn't have used the hashtag
-    // TODO: Replace with actual npubs once identified
     const hiddenTestingNpubs = [
-      // Add the specific npubs here once identified
-      // Format: "pubkeyinhexformat"
+      nip19.decode("npub1z9aue008g635r6c549pyuaxr6y0wueq68364erusprj44nuanrvql558d3").data as string, // Testing account that created spam notes
     ];
 
-    // Filter by npubs if we have them, otherwise fall back to text matching
-    if (hiddenTestingNpubs.length > 0) {
-      filtered = filtered.filter(event => !hiddenTestingNpubs.includes(event.pubkey));
-    } else {
-      // Temporary fallback to text matching until npubs are identified
-      const testingNoteTexts = [
-        "You can even use a bitcoin prepaid credit card that seamlessly converts your bitcoin to fiat currency at stores that don't directly accept bitcoin. This allows you to shop freely in a fiat economy while still HODLing onto your bitcoin.",
-        "Hey, I'm new to all this 🙂 Just curious... is it really possible to buy something as simple as a coffee with Bitcoin."
-      ];
-      
-      filtered = filtered.filter(event => {
-        const cleanContent = removeHashtags(event.content).trim();
-        return !testingNoteTexts.some(testText => 
-          cleanContent.includes(testText)
-        );
-      });
-    }
+    // Filter out testing notes by npub
+    filtered = filtered.filter(event => !hiddenTestingNpubs.includes(event.pubkey));
 
     // Apply search filter
     if (searchTerm.trim()) {
