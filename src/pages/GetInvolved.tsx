@@ -41,10 +41,9 @@ const Support = () => {
             {/* Mission Statement */}
             <div className="bg-white rounded-lg p-8 shadow-md border border-border flex flex-col h-full">
               <div>
-                <p className="text-2xl font-semibold text-foreground mb-4 flex items-start gap-2">
-                  <Globe className="h-5 w-5 mt-1 flex-shrink-0" />
-                  <span>We're on a mission to orange pill the world - not with hype, but with truth,
-                  connection, and action.</span>
+                <p className="text-2xl font-semibold text-foreground mb-4">
+                  We're on a mission to orange pill the world - not with hype, but with truth,
+                  connection, and action.
                 </p>
                 <p className="text-muted-foreground leading-relaxed mb-4">
                   Every conversation, every share, every spark of understanding moves us
@@ -72,8 +71,7 @@ const Support = () => {
             {/* Join Nostr Statement */}
             <div className="bg-white rounded-lg p-8 shadow-md border border-border flex flex-col h-full">
               <div className="flex-grow">
-                <p className="text-2xl font-semibold text-foreground mb-4 flex items-center gap-2">
-                  <Unlock className="h-5 w-5" />
+                <p className="text-2xl font-semibold text-foreground mb-4">
                   Why Bitcoiners Are Moving To Nostr
                 </p>
                 <p className="text-muted-foreground leading-relaxed mb-4">
@@ -109,8 +107,7 @@ const Support = () => {
           {/* Bitcoin Education Profile & Hub */}
           <Card className="border-primary/20 flex flex-col">
             <CardHeader>
-              <CardTitle className="flex items-center gap-2 text-foreground">
-                <RadioTower className="h-5 w-5" />
+              <CardTitle className="text-foreground">
                 The Signal Layer on Nostr
               </CardTitle>
             </CardHeader>
@@ -143,8 +140,7 @@ const Support = () => {
           {/* Share Content */}
           <Card className="border-primary/20 flex flex-col">
             <CardHeader>
-              <CardTitle className="flex items-center gap-2 text-foreground">
-                <AudioLines className="h-5 w-5" />
+              <CardTitle className="text-foreground">
                 The Pulse of the Signal
               </CardTitle>
             </CardHeader>
@@ -173,8 +169,7 @@ const Support = () => {
           {/* Community Q&A */}
           <Card className="border-primary/20 col-span-1 md:col-span-2">
             <CardHeader>
-              <CardTitle className="flex items-center gap-2 text-foreground">
-                <MessageCircle className="h-5 w-5" />
+              <CardTitle className="text-foreground">
                 Help Answer Questions on Nostr
               </CardTitle>
             </CardHeader>
@@ -220,8 +215,7 @@ const Support = () => {
           {/* Copy & Improve Content */}
           <Card className="border-primary/20 col-span-1 md:col-span-2">
             <CardHeader>
-              <CardTitle className="flex items-center gap-2 text-foreground">
-                <Copy className="h-5 w-5" />
+              <CardTitle className="text-foreground">
                 Copy & Improve Content
               </CardTitle>
             </CardHeader>
@@ -243,8 +237,7 @@ const Support = () => {
           {/* Spread Awareness */}
           <Card className="border-primary/20">
             <CardHeader>
-              <CardTitle className="flex items-center gap-2 text-foreground">
-                <Share2 className="h-5 w-5" />
+              <CardTitle className="text-foreground">
                 Spread Awareness
               </CardTitle>
             </CardHeader>
@@ -268,8 +261,7 @@ const Support = () => {
           {/* Donate */}
           <Card className="border-primary/20 flex flex-col">
             <CardHeader>
-              <CardTitle className="flex items-center gap-2 text-foreground">
-                <Heart className="h-5 w-5" />
+              <CardTitle className="text-foreground">
                 Support with Sats
               </CardTitle>
             </CardHeader>
@@ -296,8 +288,7 @@ const Support = () => {
           <div className="col-span-1 md:col-span-2">
             <Card className="border-primary/20 col-span-1 md:col-span-2">
               <CardHeader>
-                <CardTitle className="flex items-center gap-2 text-foreground">
-                  <Users className="h-5 w-5" />
+                <CardTitle className="text-foreground">
                   Add Your Spark to the Orange Pill
                 </CardTitle>
               </CardHeader>
