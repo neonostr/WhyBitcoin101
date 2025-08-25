@@ -119,7 +119,7 @@ const Support = () => {
                 Here, we curate and amplify the strongest insights surfaced through our hashtags, while
                 also publishing deeper reflections on visions, plans, and strategies that move us forward.
                 Soon, we'll also have a structured community space on Nostr - a place designed for ongoing collaboration,
-                deeper discussion, and organized teamwork. The perfect foundation to show the world why Bitcoin matters.
+                deeper discussion, and organized teamwork. The perfect foundation to help the world understand why Bitcoin matters.
               </p>
               <div className="mt-auto">
                 <Button
