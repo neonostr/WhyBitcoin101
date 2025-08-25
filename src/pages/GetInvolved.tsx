@@ -154,7 +154,7 @@ const Support = () => {
 
                 To amplify something, tag your note with{" "}
                 <span className="font-mono bg-muted px-1 rounded">#whybitcoin101</span>{" "} or comment on existing ones with its
-                note ID + #whybitcoin101. Add your piece, however small, and help create a living map of why Bitcoin matters for the world.
+                note ID + #whybitcoin101. Each spark adds fuel; together they power the pulse that carries this signal across the world.
               </p>
               <div className="mt-auto">
                 <Button
