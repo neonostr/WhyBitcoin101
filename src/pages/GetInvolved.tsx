@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { ArrowLeft, Heart, RadioTower, Share2, MessageCircle, Copy, Users } from "lucide-react";
+import { ArrowLeft, Heart, Share2, MessageCircle, Copy, Users } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import DonationModal from "@/components/DonationModal";
@@ -108,18 +108,20 @@ const Support = () => {
           <Card className="border-primary/20 flex flex-col">
             <CardHeader>
               <CardTitle className="flex items-center gap-2 text-foreground">
-                <RadioTower className="h-5 w-5" />
-                Hashtags As Signal
+                <MessageCircle className="h-5 w-5" />
+                Turning Hashtags Into Signal
               </CardTitle>
             </CardHeader>
             <CardContent className="flex flex-col flex-grow">
               <p className="text-muted-foreground leading-relaxed mb-4">
-                Every note, meme, or quote becomes a spark when tagged with{" "}
-                <span className="font-mono bg-muted px-1 rounded">#whybitcoin101</span>
-                on Nostr. These hashtags act as our signal layer - the raw flow of ideas, insights,
-                and conversations around Bitcoin. Each tag adds to an open archive, making it
-                easier for the strongest truths to surface and be discovered. The more
-                sparks,the stronger the signal.
+                The <strong>WhyBitcoin101</strong> Nostr profile serves as a signal layer of
+                our mission. As conversations and resources about Bitcoin flow into Nostr, this 
+                profile curates and amplifies the strongest insights and explanations surfaced
+                through our hashtags. Beyond that, it helps coordinate community efforts, enabling
+                us to achieve more together with greater efficiency - it also provides a space where we
+                can publish deeper reflections on our common plans, visions, and the ideas that
+                can guide us forward. In doing so, scattered voices become a unified signal, one 
+                that emphasizes why Bitcoin matters, not just how to buy it.
               </p>
               <div className="mt-auto">
                 <Button
@@ -142,7 +144,7 @@ const Support = () => {
           <Card className="border-primary/20 flex flex-col">
             <CardHeader>
               <CardTitle className="flex items-center gap-2 text-foreground">
-                <MessageCircle className="h-5 w-5" />
+                <Share2 className="h-5 w-5" />
                 Share Great Content
               </CardTitle>
             </CardHeader>
