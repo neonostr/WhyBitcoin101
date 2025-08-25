@@ -149,11 +149,11 @@ const Support = () => {
             </CardHeader>
             <CardContent className="flex flex-col flex-grow">
               <p className="text-muted-foreground leading-relaxed mb-4">
-                The hashtag #whybitcoin101 is the pulse of our shared signal on Nostr. Each note, meme, quote, or
-                comment tagged adds to a real‑time stream of ideas that show why Bitcoin matters. Even the smallest
+                The hashtag #whybitcoin101 is the pulse of our shared signal on Nostr. Each note tagged adds to a real‑time stream
+                of ideas that show why Bitcoin matters. Even the smallest
                 spark counts, alone or combined with others, it can inspire clearer, stronger ways to explain Bitcoin.
 
-                To amplify something, tag your own note with #whybitcoin101 or comment on an existing one with its
+                To amplify something, tag your note with #whybitcoin101 or comment on an existing ones with its
                 note ID + #whybitcoin101. Together, these sparks form an open resource for Bitcoin education. From this pulse,
                 we amplify the best on the WhyBitcoin101 profile and beyond, shaping them into the clearest orange pill possible.                
               </p>
@@ -163,7 +163,7 @@ const Support = () => {
                   onClick={() => window.open("https://whybitcoin101.com/base-layer", "_blank")}
                   className="w-full"
                 >
-                  Live Pulse Feed
+                  Watch Pulse Feed
                 </Button>
               </div>
             </CardContent>
