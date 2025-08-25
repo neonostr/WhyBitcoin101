@@ -341,7 +341,7 @@ const BaseLayers = () => {
     // Hide specific testing notes by their npubs (more precise than text matching)
     // These were created during testing phase and shouldn't have used the hashtag
     const hiddenTestingNpubs = [
-      nip19.decode("npub1z9aue008g635r6c549pyuaxr6y0wueq68364erusprj44nuanrvql558d3").data as string, // Testing account that created spam notes
+      nip19.decode("npub1z9aue008g635r6c549pyuaxr6y0wueq68364erusprj44nuanrvql558d3").data as string,nip19.decode("npub1384a86kplad450s7kzz2gen6pyfk3f7f3fme4zkyuf2mnyzdufwswlae8j").data as string, // Testing account that created spam notes
     ];
 
     // Filter out testing notes by npub
