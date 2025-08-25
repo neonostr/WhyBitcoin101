@@ -102,73 +102,73 @@ const Support = () => {
           </div>
         </div>
 
-         {/* Share Content + Support Cards */}
-<div className="grid grid-cols-1 md:grid-cols-2 gap-6 w-full">
-  {/* Hashtags As Signal */}
-  <Card className="border-primary/20 flex flex-col">
-    <CardHeader>
-      <CardTitle className="flex items-center gap-2 text-foreground">
-        <RadioTower className="h-5 w-5" />
-        Hashtags As Signal
-      </CardTitle>
-    </CardHeader>
-    <CardContent className="flex flex-col flex-grow">
-      <p className="text-muted-foreground leading-relaxed mb-4">
-        Every note, meme, or quote becomes a spark when tagged with{" "}
-        <span className="font-mono bg-muted px-1 rounded">#whybitcoin101</span>on Nostr.
-        These hashtags act as our <strong>signal layer</strong> - the raw flow of ideas,
-        insights, and conversations around Bitcoin. Each tag adds to an open archive,
-        making it easier for the strongest truths to surface and be discovered.
-        The more sparks, the stronger the signal.
-      </p>
-      <div className="mt-auto">
-        <Button
-          variant="outline"
-          onClick={() => window.open("https://whybitcoin101.com/base-layer", "_blank")}
-          className="w-full"
-        >
-          Watch The Signal Live
-        </Button>
-      </div>
-    </CardContent>
-  </Card>
+          {/* Share Content */}
+          <Card className="border-primary/20 flex flex-col">
+            <CardHeader>
+              <CardTitle className="flex items-center gap-2 text-foreground">
+                <Share2 className="h-5 w-5" />
+                Hashtags As Signal
+              </CardTitle>
+            </CardHeader>
+            <CardContent className="flex flex-col flex-grow">
+              <p className="text-muted-foreground leading-relaxed mb-4">
+               Every note, meme, or quote becomes a spark when tagged with{" "}
+                <span className="font-mono bg-muted px-1 rounded">#whybitcoin101</span>on Nostr.
+                These hashtags act as our <strong>signal layer</strong> - the raw flow of ideas,
+                insights, and conversations around Bitcoin. Each tag adds to an open archive,
+                making it easier for the strongest truths to surface and be discovered.
+                The more sparks, the stronger the signal.
+              </p>
+              <div className="mt-auto">
+                <Button
+                  variant="outline"
+                  onClick={() => window.open("https://whybitcoin101.com/base-layer", "_blank")}
+                  className="w-full"
+                >
+                  Watch The Signal Live
+                </Button>
+              </div>
+            </CardContent>
+          </Card>
 
-  {/* Bitcoin Education Profile & Hub */}
-  <Card className="border-primary/20 flex flex-col">
-    <CardHeader>
-      <CardTitle className="flex items-center gap-2 text-foreground">
-        <MessageCircle className="h-5 w-5" />
-        Turning Hashtags Into Signal
-      </CardTitle>
-    </CardHeader>
-    <CardContent className="flex flex-col flex-grow">
-      <p className="text-muted-foreground leading-relaxed mb-4">
-        The <strong>WhyBitcoin101</strong> Nostr profile serves as a signal layer of
-        our mission. As conversations and resources about Bitcoin flow into Nostr, this 
-        profile curates and amplifies the strongest insights and explanations surfaced
-        through our hashtags. Beyond that, it helps coordinate community efforts, enabling
-        us to achieve more together with greater efficiency - it also provides a space where we
-        can publish deeper reflections on our common plans, visions, and the ideas that
-        can guide us forward. In doing so, scattered voices become a unified signal, one 
-        that emphasizes why Bitcoin matters, not just how to buy it.
-      </p>
-      <div className="mt-auto">
-        <Button
-          variant="outline"
-          onClick={() =>
-            window.open(
-              "https://primal.net/p/npub1uuhsm53er3xxkq90up6gt2wg5vhaz0aenlw4m4rls04thf24heuq8vf4yh",
-              "_blank"
-            )
-          }
-          className="w-full"
-        >
-          Connect on Nostr
-        </Button>
-      </div>
-    </CardContent>
-  </Card>
-</div>
+ {/* Support Cards */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 w-full">
+          {/* Bitcoin Education Profile & Hub */}
+          <Card className="border-primary/20 flex flex-col">
+            <CardHeader>
+              <CardTitle className="flex items-center gap-2 text-foreground">
+                <RadioTower className="h-5 w-5" />
+                Turning Hashtags Into Signal
+              </CardTitle>
+            </CardHeader>
+            <CardContent className="flex flex-col flex-grow">
+              <p className="text-muted-foreground leading-relaxed mb-4">
+                The <strong>WhyBitcoin101</strong> Nostr profile serves as a signal layer of
+                our mission. As conversations and resources about Bitcoin flow into Nostr, this 
+                profile curates and amplifies the strongest insights and explanations surfaced
+                through our hashtags. Beyond that, it helps coordinate community efforts, enabling
+                us to achieve more together with greater efficiency - it also provides a space where we
+                can publish deeper reflections on our common plans, visions, and the ideas that
+                can guide us forward. In doing so, scattered voices become a unified signal, one 
+                that emphasizes why Bitcoin matters, not just how to buy it.
+              </p>
+              <div className="mt-auto">
+                <Button
+                  variant="outline"
+                  onClick={() =>
+                    window.open(
+                      "https://primal.net/p/npub1uuhsm53er3xxkq90up6gt2wg5vhaz0aenlw4m4rls04thf24heuq8vf4yh",
+                      "_blank"
+                    )
+                  }
+                  className="w-full"
+                >
+                  Connect on Nostr
+                </Button>
+              </div>
+            </CardContent>
+          </Card>
+        
 
           {/* Community Q&A */}
           <Card className="border-primary/20 col-span-1 md:col-span-2">
