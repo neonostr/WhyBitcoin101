@@ -119,8 +119,8 @@ const Support = () => {
                 Here, we curate and amplify the strongest insights surfaced through our hashtags, while
                 also publishing deeper reflections on visions, plans, and strategies that move us forward.
                 Soon, we'll also have a structured community space on Nostr - a place designed for ongoing collaboration,
-                deeper discussion, and organized teamwork. Together, they form the signal layer of
-                <strong>WhyBitcoin101</strong> - our shared base for vision, action, and impact.
+                deeper discussion, and organized teamwork. Together, they form the signal layer of WhyBitcoin101 — our foundation
+                to orange pill the world by creating the easiest way to understand why Bitcoin matters.
               </p>
               <div className="mt-auto">
                 <Button
