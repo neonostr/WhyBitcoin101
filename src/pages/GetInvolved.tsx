@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { ArrowLeft, Heart, RadioTower, Share2, MessageCircle, Copy, Users } from "lucide-react";
+import { Activity, ArrowLeft, Heart, RadioTower, Share2, MessageCircle, Copy, Users } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import DonationModal from "@/components/DonationModal";
@@ -143,22 +143,26 @@ const Support = () => {
           <Card className="border-primary/20 flex flex-col">
             <CardHeader>
               <CardTitle className="flex items-center gap-2 text-foreground">
-                <Share2 className="h-5 w-5" />
-                Share Great Content
+                <Activity className="h-5 w-5" />
+                The Pulse: #whybitcoin101
               </CardTitle>
             </CardHeader>
             <CardContent className="flex flex-col flex-grow">
               <p className="text-muted-foreground leading-relaxed mb-4">
-                Got something that helps explain Bitcoin - even a small spark like a meme
-                or quote? Post it on Nostr with{" "}
-                <span className="font-mono bg-muted px-1 rounded">#whybitcoin101</span>, or
-                comment with the note ID + hashtag. Every spark counts - on its own or
-                combined, it can inspire the kind of content that makes Bitcoin really
-                click. All tagged posts fuel a growing public library of Bitcoin education.
-                We'll amplify some on the WhyBitcoin101 profile, and on our website we
-                shape these sparks into the <strong>ultimate orange pill</strong>. Together
-                we're creating both an open archive and a powerful hub of the most useful
-                content.
+                The hashtag #whybitcoin101 is the pulse of our shared signal on Nostr. Every note, meme, quote, or
+                comment tagged here adds to a living stream of ideas that show why Bitcoin matters.
+                Even the smallest spark counts - on its own or combined with others, it can inspire clearer,
+                stronger ways to explain Bitcoin to the world.
+
+                And it doesn't need to be original content. If you find something worth amplifying,
+                simply comment with #whybitcoin101 - or better, add the note ID + hashtag. That alone
+                feeds the signal and keeps the pulse alive.
+
+                Together, these small contributions form an open resource of Bitcoin education. From this
+                pulse, we amplify the best sparks on the WhyBitcoin101 profile and beyond, shaping them into
+                the clearest orange pill possible.
+
+                
               </p>
               <div className="mt-auto">
                 <Button
@@ -166,7 +170,7 @@ const Support = () => {
                   onClick={() => window.open("https://whybitcoin101.com/base-layer", "_blank")}
                   className="w-full"
                 >
-                  Live Hashtag Feed
+                  Live Pulse Feed
                 </Button>
               </div>
             </CardContent>
