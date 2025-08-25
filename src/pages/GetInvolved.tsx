@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { ArrowLeft, Hash, Heart, RadioTower, Share2, MessageCircle, Waveform, Copy, Users } from "lucide-react";
+import { ArrowLeft, Hash, Heart, RadioTower, Share2, MessageCircle, Waves, Copy, Users } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import DonationModal from "@/components/DonationModal";
@@ -142,7 +142,7 @@ const Support = () => {
           <Card className="border-primary/20 flex flex-col">
             <CardHeader>
               <CardTitle className="flex items-center gap-2 text-foreground">
-                <Waveform className="h-5 w-5" />
+                <Waves className="h-5 w-5" />
                 The Pulse of the Signal
               </CardTitle>
             </CardHeader>
