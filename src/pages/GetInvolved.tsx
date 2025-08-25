@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Activity, ArrowLeft, Heart, RadioTower, Share2, MessageCircle, Copy, Users } from "lucide-react";
+import { ArrowLeft, Hash, Heart, RadioTower, Share2, MessageCircle, Copy, Users } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import DonationModal from "@/components/DonationModal";
@@ -143,8 +143,8 @@ const Support = () => {
           <Card className="border-primary/20 flex flex-col">
             <CardHeader>
               <CardTitle className="flex items-center gap-2 text-foreground">
-                <Activity className="h-5 w-5" />
-                The Pulse: #whybitcoin101
+                <Hash className="h-5 w-5" />
+                The Pulse Layer
               </CardTitle>
             </CardHeader>
             <CardContent className="flex flex-col flex-grow">
@@ -154,11 +154,10 @@ const Support = () => {
                 Even the smallest spark counts - on its own or combined with others, it can inspire clearer,
                 stronger ways to explain Bitcoin to the world.
 
-                And it doesn't need to be original content. If you find something worth amplifying,
-                simply comment with #whybitcoin101 - or better, add the note ID + hashtag. That alone
-                feeds the signal and keeps the pulse alive.
-
-                Together, these small contributions form an open resource of Bitcoin education. From this
+                If you want to amplify something, simply tag your note with #whybitcoin101 or comment on an existing
+                note with its note ID + #whybitcoin101.
+                
+                Together, all contributions form an open resource of Bitcoin education. From this
                 pulse, we amplify the best sparks on the WhyBitcoin101 profile and beyond, shaping them into
                 the clearest orange pill possible.
 
