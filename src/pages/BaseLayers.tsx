@@ -824,7 +824,7 @@ const BaseLayers = () => {
       <div className="min-h-screen bg-background flex items-center justify-center">
         <div className="text-center">
           <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary mx-auto mb-4"></div>
-          <p className="text-muted-foreground">Loading Bitcoin consciousness...</p>
+          <p className="text-muted-foreground">Loading Live Pulse Feed...</p>
         </div>
       </div>
     );
@@ -836,7 +836,7 @@ const BaseLayers = () => {
       <div className="border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 sticky top-0 z-50">
         <div className="container mx-auto px-4 py-4">
           <div className="flex items-center gap-4 mb-4">
-            <h1 className="text-2xl font-bold">Bitcoin Base Layer</h1>
+            <h1 className="text-2xl font-bold">Live Pulse Feed</h1>
             <Badge variant="secondary">#whybitcoin101</Badge>
           </div>
           
