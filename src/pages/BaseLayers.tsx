@@ -342,8 +342,8 @@ const BaseLayers = () => {
     // These were created during testing phase and need to be excluded
     const hiddenTestingNotes = [
       "You can even use a bitcoin prepaid credit card that seamlessly converts your bitcoin to fiat currency at stores that don't directly accept bitcoin. This allows you to shop freely in a fiat economy while still HODLing onto your bitcoin.",
-      "Hey, I'm new to all this 🙂 Just curious... is it really possible to buy something as simple as a coffee with Bitcoin. #asknostr",
-      "Hey, I'm new to all this 🙂 Just curious... is it really possible to buy something as simple as a coffee with Bitcoin? #asknostr"
+      "Hey, I'm new to all this 🙂 Just curious... is it really possible to buy something as simple as a coffee with Bitcoin. #asknostr #whybitcoin101",
+      "Hey, I'm new to all this 🙂 Just curious... is it really possible to buy something as simple as a coffee with Bitcoin? #asknostr #whybitcoin101"
     ];
     
     filtered = filtered.filter(event => {
