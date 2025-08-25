@@ -109,19 +109,20 @@ const Support = () => {
             <CardHeader>
               <CardTitle className="flex items-center gap-2 text-foreground">
                 <MessageCircle className="h-5 w-5" />
-                Turning Hashtags Into Signal
+                Our Signal Layer on Nostr
               </CardTitle>
             </CardHeader>
             <CardContent className="flex flex-col flex-grow">
               <p className="text-muted-foreground leading-relaxed mb-4">
-                The <strong>WhyBitcoin101</strong> Nostr profile serves as a signal layer of
-                our mission. As conversations and resources about Bitcoin flow into Nostr, this 
-                profile curates and amplifies the strongest insights and explanations surfaced
-                through our hashtags. Beyond that, it helps coordinate community efforts, enabling
-                us to achieve more together with greater efficiency - it also provides a space where we
-                can publish deeper reflections on our common plans, visions, and the ideas that
-                can guide us forward. In doing so, scattered voices become a unified signal, one 
-                that emphasizes why Bitcoin matters, not just how to buy it.
+               This space exists to bring us all together around our shared mission. Here, scattered
+                voices become a unified signal: we curate and amplify the strongest insights surfaced
+                through our hashtags, while also publishing deeper reflections on visions, plans, and
+                strategies that move us forward.
+
+                And soon, alongside this hub, we'll open structured community spaces on Nostr - places
+                designed for ongoing collaboration, deeper discussion, and organized teamwork. Together, the
+                hub and spaces form the signal layer of WhyBitcoin101: our shared foundation for
+                collective action.”
               </p>
               <div className="mt-auto">
                 <Button
@@ -134,7 +135,7 @@ const Support = () => {
                   }
                   className="w-full"
                 >
-                  Connect on Nostr
+                  Join The Signal
                 </Button>
               </div>
             </CardContent>
