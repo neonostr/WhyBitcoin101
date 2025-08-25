@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { AudioLines, ArrowLeft, Hash, Heart, RadioTower, Share2, MessageCircle, Waves, Copy, Users } from "lucide-react";
+import { AudioLines, ArrowLeft, Globe, Hash, Heart, RadioTower, Share2, Unlock, MessageCircle, Waves, Copy, Users } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import DonationModal from "@/components/DonationModal";
@@ -42,6 +42,7 @@ const Support = () => {
             <div className="bg-white rounded-lg p-8 shadow-md border border-border flex flex-col h-full">
               <div>
                 <p className="text-2xl font-semibold text-foreground mb-4">
+                  <Globe className="h-5 w-5" />
                   We're on a mission to orange pill the world - not with hype, but with truth,
                   connection, and action.
                 </p>
@@ -72,6 +73,7 @@ const Support = () => {
             <div className="bg-white rounded-lg p-8 shadow-md border border-border flex flex-col h-full">
               <div className="flex-grow">
                 <p className="text-2xl font-semibold text-foreground mb-4">
+                  <Unlock className="h-5 w-5" />
                   Why Bitcoiners Are Moving To Nostr
                 </p>
                 <p className="text-muted-foreground leading-relaxed mb-4">
