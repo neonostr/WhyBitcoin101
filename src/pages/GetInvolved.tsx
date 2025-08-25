@@ -160,7 +160,7 @@ const Support = () => {
                   onClick={() => window.open("https://whybitcoin101.com/base-layer", "_blank")}
                   className="w-full"
                 >
-                  Watch Pulse Feed
+                  Live Pulse Feed
                 </Button>
               </div>
             </CardContent>
