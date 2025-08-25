@@ -398,10 +398,16 @@ const BaseLayers = () => {
       const cleanContent = removeNostrReferences(removeHashtags(event.content));
       const { textContent } = renderMedia(cleanContent);
       const mediaUrls = extractMediaUrls(event.content);
-      const author = getUserDisplayName(event.pubkey);
-      const date = new Date(event.created_at * 1000).toLocaleDateString();
       
-      let fullContent = `[${date}] ${author}: ${textContent}`;
+      let fullContent = '';
+      
+      if (showAuthors) {
+        const author = getUserDisplayName(event.pubkey);
+        const date = new Date(event.created_at * 1000).toLocaleDateString();
+        fullContent = `[${date}] ${author}: ${textContent}`;
+      } else {
+        fullContent = textContent;
+      }
       
       // Add media URLs if they exist
       if (mediaUrls.length > 0) {
@@ -414,11 +420,15 @@ const BaseLayers = () => {
           const quotedCleanContent = removeNostrReferences(removeHashtags(quotedEvent.content));
           const { textContent: quotedTextContent } = renderMedia(quotedCleanContent);
           const quotedMediaUrls = extractMediaUrls(quotedEvent.content);
-          const quotedAuthor = getUserDisplayName(quotedEvent.pubkey);
-          const quotedDate = new Date(quotedEvent.created_at * 1000).toLocaleDateString();
           
           if (quotedTextContent.trim() || quotedMediaUrls.length > 0) {
-            fullContent += `\n\n> Quoted from [${quotedDate}] ${quotedAuthor}: ${quotedTextContent}`;
+            if (showAuthors) {
+              const quotedAuthor = getUserDisplayName(quotedEvent.pubkey);
+              const quotedDate = new Date(quotedEvent.created_at * 1000).toLocaleDateString();
+              fullContent += `\n\n> Quoted from [${quotedDate}] ${quotedAuthor}: ${quotedTextContent}`;
+            } else {
+              fullContent += `\n\n> ${quotedTextContent}`;
+            }
             if (quotedMediaUrls.length > 0) {
               fullContent += '\n> Media:\n> ' + quotedMediaUrls.join('\n> ');
             }
@@ -428,8 +438,10 @@ const BaseLayers = () => {
       
       return fullContent;
     }).filter(content => {
-      // Only include posts that have actual content (not just author and date)
-      const hasContent = content.split(': ')[1]?.trim().length > 0;
+      // Only include posts that have actual content
+      const hasContent = showAuthors ? 
+        content.split(': ')[1]?.trim().length > 0 : 
+        content.trim().length > 0;
       return hasContent;
     }).join('\n\n');
 
