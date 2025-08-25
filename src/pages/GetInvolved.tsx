@@ -200,8 +200,8 @@ const Support = () => {
               <p className="text-muted-foreground leading-relaxed mb-4">
                 This process creates a large, public Bitcoin FAQ that anyone can access and
                 reuse for educational projects or in any way they find useful. On top of
-                that, we curate and refine the content for the WhyBitcoin101 hub -
-                building a polished, ever‑growing knowledge base that’s easy to explore and
+                that, we curate and refine the content for the educational front -
+                building a polished, ever‑growing knowledge base that's easy to explore and
                 share.
               </p>
               <p className="text-muted-foreground leading-relaxed">
