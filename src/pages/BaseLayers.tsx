@@ -338,18 +338,37 @@ const BaseLayers = () => {
   const filterEvents = () => {
     let filtered = events;
 
-    // Hide specific testing notes that shouldn't have used the hashtag
-    // These were created during testing phase and need to be excluded
-    const hiddenTestingNotes = [
+    // Hide specific testing notes by their npubs (more precise than text matching)
+    // These were created during testing phase and shouldn't have used the hashtag
+    // Identified from the 3 specific notes that appeared in testing phase
+    const hiddenTestingNpubs = [
+      // We'll populate these npubs by first identifying them from the text patterns
+      // Then filter by these specific pubkeys for precise exclusion
+    ];
+
+    // First, identify the npubs of the testing notes (for debugging/setup)
+    const testingNoteTexts = [
       "You can even use a bitcoin prepaid credit card that seamlessly converts your bitcoin to fiat currency at stores that don't directly accept bitcoin. This allows you to shop freely in a fiat economy while still HODLing onto your bitcoin.",
       "Hey, I'm new to all this 🙂 Just curious... is it really possible to buy something as simple as a coffee with Bitcoin. #asknostr #whybitcoin101",
       "Hey, I'm new to all this 🙂 Just curious... is it really possible to buy something as simple as a coffee with Bitcoin? #asknostr #whybitcoin101"
     ];
-    
+
+    // Log npubs for these testing notes to identify them (temporary debugging)
+    filtered.forEach(event => {
+      const cleanContent = removeHashtags(event.content).trim();
+      testingNoteTexts.forEach(testText => {
+        if (cleanContent.includes(testText.replace(" #asknostr", ""))) {
+          console.log(`Testing note npub: ${nip19.npubEncode(event.pubkey)} - Content: ${cleanContent.substring(0, 100)}...`);
+        }
+      });
+    });
+
+    // For now, still filter by text until we can get the exact npubs
+    // Replace this with npub filtering once we identify the specific pubkeys
     filtered = filtered.filter(event => {
       const cleanContent = removeHashtags(event.content).trim();
-      return !hiddenTestingNotes.some(hiddenNote => 
-        cleanContent.includes(hiddenNote.replace(" #asknostr", ""))
+      return !testingNoteTexts.some(testText => 
+        cleanContent.includes(testText.replace(" #asknostr", ""))
       );
     });
 
