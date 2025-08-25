@@ -41,7 +41,7 @@ const Support = () => {
             {/* Mission Statement */}
             <div className="bg-white rounded-lg p-8 shadow-md border border-border flex flex-col h-full">
               <div>
-                <p className="text-2xl font-semibold text-foreground mb-4">
+                <p className="text-2xl font-semibold text-foreground mb-4 flex items-center gap-2">
                   <Globe className="h-5 w-5" />
                   We're on a mission to orange pill the world - not with hype, but with truth,
                   connection, and action.
@@ -72,7 +72,7 @@ const Support = () => {
             {/* Join Nostr Statement */}
             <div className="bg-white rounded-lg p-8 shadow-md border border-border flex flex-col h-full">
               <div className="flex-grow">
-                <p className="text-2xl font-semibold text-foreground mb-4">
+                <p className="text-2xl font-semibold text-foreground mb-4 flex items-center gap-2">
                   <Unlock className="h-5 w-5" />
                   Why Bitcoiners Are Moving To Nostr
                 </p>
