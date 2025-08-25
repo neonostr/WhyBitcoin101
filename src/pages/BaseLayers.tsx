@@ -338,6 +338,21 @@ const BaseLayers = () => {
   const filterEvents = () => {
     let filtered = events;
 
+    // Hide specific testing notes that shouldn't have used the hashtag
+    // These were created during testing phase and need to be excluded
+    const hiddenTestingNotes = [
+      "You can even use a bitcoin prepaid credit card that seamlessly converts your bitcoin to fiat currency at stores that don't directly accept bitcoin. This allows you to shop freely in a fiat economy while still HODLing onto your bitcoin.",
+      "Hey, I'm new to all this 🙂 Just curious... is it really possible to buy something as simple as a coffee with Bitcoin. #asknostr",
+      "Hey, I'm new to all this 🙂 Just curious... is it really possible to buy something as simple as a coffee with Bitcoin? #asknostr"
+    ];
+    
+    filtered = filtered.filter(event => {
+      const cleanContent = removeHashtags(event.content).trim();
+      return !hiddenTestingNotes.some(hiddenNote => 
+        cleanContent.includes(hiddenNote.replace(" #asknostr", ""))
+      );
+    });
+
     // Apply search filter
     if (searchTerm.trim()) {
       const searchLower = searchTerm.toLowerCase();
