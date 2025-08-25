@@ -144,24 +144,18 @@ const Support = () => {
             <CardHeader>
               <CardTitle className="flex items-center gap-2 text-foreground">
                 <Hash className="h-5 w-5" />
-                The Pulse Layer
+                The Live Pulse
               </CardTitle>
             </CardHeader>
             <CardContent className="flex flex-col flex-grow">
               <p className="text-muted-foreground leading-relaxed mb-4">
-                The hashtag #whybitcoin101 is the pulse of our shared signal on Nostr. Every note, meme, quote, or
-                comment tagged here adds to a living stream of ideas that show why Bitcoin matters.
-                Even the smallest spark counts - on its own or combined with others, it can inspire clearer,
-                stronger ways to explain Bitcoin to the world.
+                The hashtag #whybitcoin101 is the pulse of our shared signal on Nostr. Each note, meme, quote, or
+                comment tagged adds to a real‑time stream of ideas that show why Bitcoin matters. Even the smallest
+                spark counts, alone or combined with others, it can inspire clearer, stronger ways to explain Bitcoin.
 
-                If you want to amplify something, simply tag your note with #whybitcoin101 or comment on an existing
-                note with its note ID + #whybitcoin101.
-                
-                Together, all contributions form an open resource of Bitcoin education. From this
-                pulse, we amplify the best sparks on the WhyBitcoin101 profile and beyond, shaping them into
-                the clearest orange pill possible.
-
-                
+                To amplify something, tag your own note with #whybitcoin101 or comment on an existing one with its
+                note ID + #whybitcoin101. Together, these sparks form an open resource for Bitcoin education. From this pulse,
+                we amplify the best on the WhyBitcoin101 profile and beyond, shaping them into the clearest orange pill possible.                
               </p>
               <div className="mt-auto">
                 <Button
