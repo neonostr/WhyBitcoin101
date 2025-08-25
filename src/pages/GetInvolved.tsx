@@ -109,20 +109,18 @@ const Support = () => {
             <CardHeader>
               <CardTitle className="flex items-center gap-2 text-foreground">
                 <MessageCircle className="h-5 w-5" />
-                Our Signal Layer on Nostr
+                The Signal Layer on Nostr
               </CardTitle>
             </CardHeader>
             <CardContent className="flex flex-col flex-grow">
               <p className="text-muted-foreground leading-relaxed mb-4">
-               This space exists to bring us all together around our shared mission. Here, scattered
-                voices become a unified signal: we curate and amplify the strongest insights surfaced
-                through our hashtags, while also publishing deeper reflections on visions, plans, and
-                strategies that move us forward.
-
-                And soon, alongside this hub, we'll open structured community spaces on Nostr - places
-                designed for ongoing collaboration, deeper discussion, and organized teamwork. Together, the
-                hub and spaces form the signal layer of WhyBitcoin101: our shared foundation for
-                collective action.”
+               
+                Our WhyBitcoin101 profile exists to bring us all together around our shared mission.
+                Here, scattered voices become a unified signal: We curate and amplify the strongest
+                insights surfaced through our hashtags, while also publishing deeper reflections on visions,
+                plans, and strategies that move us forward. Soon, we'll also have a structured community
+                space on Nostr - a place designed for ongoing collaboration, deeper discussion, and organized teamwork. 
+                Together, they form the signal layer of <strong>WhyBitcoin101</strong> - our shared base for vision, action, and impact.
               </p>
               <div className="mt-auto">
                 <Button
