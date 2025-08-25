@@ -12,8 +12,8 @@ import QuestionFollow from "./pages/QuestionFollow";
 import GetInvolved from "./pages/GetInvolved";
 import VideoPage from "./pages/VideoPage";
 
-// Only lazy-load BaseLayers since it's rarely visited
-const BaseLayers = lazy(() => import("./pages/BaseLayers"));
+// Only lazy-load PulseLayers since it's rarely visited
+const PulseLayers = lazy(() => import("./pages/PulseLayers"));
 
 const queryClient = new QueryClient();
 
@@ -35,9 +35,9 @@ const App = () => (
           <Route path="/mission" element={<Mission />} />
           <Route path="/question/:key" element={<QuestionFollow />} />
           <Route path="/get-involved" element={<GetInvolved />} />
-          <Route path="/base-layer" element={
+          <Route path="/pulse-layer" element={
             <Suspense fallback={null}>
-              <BaseLayers />
+              <PulseLayers />
             </Suspense>
           } />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
