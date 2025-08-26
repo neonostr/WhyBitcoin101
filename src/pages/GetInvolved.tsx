@@ -157,7 +157,7 @@ const Support = () => {
               <div className="mt-auto">
                 <Button
                   variant="outline"
-                  onClick={() => window.open("https://whybitcoin101.com/base-layer", "_blank")}
+                  onClick={() => window.open("https://whybitcoin101.com/pulse-layer", "_blank")}
                   className="w-full"
                 >
                   Live Pulse Feed
