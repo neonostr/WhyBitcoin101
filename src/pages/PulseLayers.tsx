@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from "react";
+import { Link } from "react-router-dom";
 import { SimplePool } from "nostr-tools/pool";
 import { nip19 } from "nostr-tools";
 import { Card, CardContent } from "@/components/ui/card";
@@ -6,8 +7,8 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
-import { Search, Copy, ExternalLink, Quote, Eye, EyeOff, Shield, Users } from "lucide-react";
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger, DialogDescription } from "@/components/ui/dialog";
+import { Search, Copy, ExternalLink, Quote, Eye, EyeOff, Shield, Users, ArrowLeft, Info } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 
 interface NostrEvent {
@@ -39,6 +40,7 @@ const BaseLayers = () => {
   const [webOfTrustLevel, setWebOfTrustLevel] = useState<1 | 2>(1);
   const [trustedPubkeys, setTrustedPubkeys] = useState<Set<string>>(new Set());
   const [webOfTrustLoading, setWebOfTrustLoading] = useState(false);
+  const [infoDialogOpen, setInfoDialogOpen] = useState(false);
   const { toast } = useToast();
   
   const poolRef = useRef<SimplePool | null>(null);
@@ -856,6 +858,51 @@ const BaseLayers = () => {
       {/* Header */}
       <div className="border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 sticky top-0 z-50">
         <div className="container mx-auto px-4 py-4">
+          <div className="flex items-center justify-between mb-4">
+            <div className="flex items-center gap-4">
+              <Link 
+                to="/get-involved" 
+                className="flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors"
+              >
+                <ArrowLeft className="h-4 w-4" />
+                <span>Back to Get Involved</span>
+              </Link>
+            </div>
+            
+            <Dialog open={infoDialogOpen} onOpenChange={setInfoDialogOpen}>
+              <DialogTrigger asChild>
+                <Button variant="ghost" size="sm" className="text-muted-foreground hover:text-foreground">
+                  <Info className="h-4 w-4" />
+                </Button>
+              </DialogTrigger>
+              <DialogContent className="sm:max-w-[500px]">
+                <DialogHeader>
+                  <DialogTitle>About Live Pulse Feed</DialogTitle>
+                  <DialogDescription>
+                    The Live Pulse Feed displays real-time Bitcoin educational content from the Nostr network using the #whybitcoin101 hashtag.
+                  </DialogDescription>
+                </DialogHeader>
+                <div className="space-y-4 text-sm">
+                  <div>
+                    <h4 className="font-medium mb-2">What is this?</h4>
+                    <p className="text-muted-foreground">
+                      This feed aggregates Bitcoin knowledge, insights, and educational content shared by the community on Nostr, 
+                      a decentralized social protocol. Content is filtered and curated to focus on high-quality Bitcoin education.
+                    </p>
+                  </div>
+                  <div>
+                    <h4 className="font-medium mb-2">How to contribute</h4>
+                    <p className="text-muted-foreground">
+                      Share your Bitcoin insights on any Nostr client (like Primal, Damus, or Amethyst) using the hashtag 
+                      <code className="bg-muted px-1 py-0.5 rounded text-xs mx-1">#whybitcoin101</code>
+                      and your content may appear here to help educate others about Bitcoin.
+                    </p>
+                  </div>
+                </div>
+              </DialogContent>
+            </Dialog>
+          </div>
+          
           <div className="flex items-center gap-4 mb-4">
             <h1 className="text-2xl font-bold">Live Pulse Feed</h1>
             <Badge variant="secondary">#whybitcoin101</Badge>
