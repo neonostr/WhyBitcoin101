@@ -84,9 +84,6 @@ const Navigation = () => {
               <button onClick={() => scrollToSection('faq')} className="text-foreground hover:text-primary transition-colors duration-200">
                 FAQ
               </button>
-              <a href="/base-layer" className="text-foreground hover:text-primary transition-colors duration-200">
-                Base Layer
-              </a>
               {isEditMode && (
                 <Button onClick={exitEditMode} variant="destructive" size="sm">
                   Exit Edit Mode
