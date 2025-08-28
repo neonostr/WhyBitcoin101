@@ -877,13 +877,19 @@ const BaseLayers = () => {
               </DialogTrigger>
               <DialogContent className="sm:max-w-[500px]">
                 <DialogHeader>
-                  <DialogTitle>The Pulse</DialogTitle>
                   <DialogDescription>
                     The Pulse is a living, real‑time hive‑mind around Bitcoin. Every spark tagged with <strong>#whybitcoin101</strong> - from insights and stories to memes and quotes - flows here
                     through the decentralized Nostr network. Together, they form a collective stream of Bitcoin culture and education.
                   </DialogDescription>
                 </DialogHeader>
                 <div className="space-y-4 text-sm">
+                  <div>
+                    <h4 className="font-medium mb-2">The Pulse</h4>
+                    <p className="text-muted-foreground">
+                      The Pulse is a living, real‑time hive‑mind around Bitcoin. Every spark tagged with <strong>#whybitcoin101</strong> - from insights and stories to memes and quotes - flows here
+                      through the decentralized Nostr network. Together, they form a collective stream of Bitcoin culture and education.
+                    </p>
+                  </div>
                   <div>
                     <h4 className="font-medium mb-2">How It Can Be Used</h4>
                     <p className="text-muted-foreground">
