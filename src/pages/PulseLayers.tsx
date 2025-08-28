@@ -815,7 +815,7 @@ const BaseLayers = () => {
             href={url} 
             target="_blank" 
             rel="noopener noreferrer" 
-            className="text-primary hover:underline break-all inline-flex items-center gap-1"
+            className="text-foreground hover:underline break-all inline-flex items-center gap-1"
           >
             {url}
             <ExternalLink className="h-3 w-3 flex-shrink-0" />
