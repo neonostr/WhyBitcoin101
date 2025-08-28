@@ -880,7 +880,7 @@ const BaseLayers = () => {
                   <div>
                     <h4 className="font-medium mb-2">The Pulse</h4>
                     <p className="text-muted-foreground">
-                      The Pulse is a living, real‑time hive‑mind around Bitcoin. Every spark tagged with <strong>#whybitcoin101</strong> - from insights and stories to memes and quotes - flows here
+                      The Pulse is a living, real time hive mind around Bitcoin. Every note tagged with <strong>#whybitcoin101</strong>, flows here
                       through the decentralized Nostr network. Together, they form a collective stream of Bitcoin culture and education.
                     </p>
                   </div>
