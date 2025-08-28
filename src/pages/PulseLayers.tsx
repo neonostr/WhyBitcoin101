@@ -916,7 +916,7 @@ const BaseLayers = () => {
           </div>
           
           <div className="flex items-center gap-4 mb-4">
-            <h1 className="text-2xl font-bold">Live Pulse Feed</h1>
+            <h1 className="text-2xl font-bold">Live Pulse</h1>
             <Badge variant="secondary">#whybitcoin101</Badge>
           </div>
           
