@@ -885,14 +885,14 @@ const BaseLayers = () => {
                 </DialogHeader>
                 <div className="space-y-4 text-sm">
                   <div>
-                    <h4 className="font-medium mb-2">How It Can Be Used</h4>
+                    <h4 className="text-lg font-semibold mb-2">How It Can Be Used</h4>
                     <p className="text-muted-foreground">
                       The Pulse is more than a feed - it's inspiration. Browse through it to discover new angles, remix sparks, or paste parts (or even the whole stream) into AI
                       and explore what new creations emerge. Each piece adds to a shared pool of imagination with endless possibilities.
                     </p>
                   </div>
                   <div>
-                    <h4 className="font-medium mb-2">How To Contribute</h4>
+                    <h4 className="text-lg font-semibold mb-2">How To Contribute</h4>
                     <p className="text-muted-foreground">
                       Post from any Nostr client (like Primal, Damus, or Amethyst), include the hashtag <strong>#whybitcoin101</strong>, and your spark becomes part of the Pulse. Every spark can help someone, somewhere, explain why Bitcoin matters - and together we sharpen our collective orange pill. All of these sparks add up to the bigger picture: The ultimate explanations that will wake up the world to why Bitcoin matters.
                     </p>
