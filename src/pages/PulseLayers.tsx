@@ -877,25 +877,23 @@ const BaseLayers = () => {
               </DialogTrigger>
               <DialogContent className="sm:max-w-[500px]">
                 <DialogHeader>
-                  <DialogTitle>About Live Pulse Feed</DialogTitle>
+                  <DialogTitle>About Pulse Feed</DialogTitle>
                   <DialogDescription>
-                    The Live Pulse Feed displays real-time Bitcoin educational content from the Nostr network using the #whybitcoin101 hashtag.
+                    The Pulse is a living, real‑time hive‑mind of Bitcoin education. Every spark tagged with <strong>#whybitcoin101</strong> flows here - insights, stories, and knowledge shared across the decentralized Nostr network. Together, these voices form a collective signal about why Bitcoin matters.
                   </DialogDescription>
                 </DialogHeader>
                 <div className="space-y-4 text-sm">
                   <div>
                     <h4 className="font-medium mb-2">What is this?</h4>
                     <p className="text-muted-foreground">
-                      This feed aggregates Bitcoin knowledge, insights, and educational content shared by the community on Nostr, 
-                      a decentralized social protocol. Content is filtered and curated to focus on high-quality Bitcoin education.
+                      Think of the Pulse as a universal classroom without walls. It's the community's shared heartbeat, where Bitcoiners everywhere contribute and refine the clearest "orange pill" possible.
+                      This isn't just a feed - it's a living archive of understanding, built in open public space.
                     </p>
                   </div>
                   <div>
                     <h4 className="font-medium mb-2">How to contribute</h4>
                     <p className="text-muted-foreground">
-                      Share your Bitcoin insights on any Nostr client (like Primal, Damus, or Amethyst) using the hashtag 
-                      <code className="bg-muted px-1 py-0.5 rounded text-xs mx-1">#whybitcoin101</code>
-                      and your content may appear here to help educate others about Bitcoin.
+                      Add your insights, or resources in any Nostr client (Primal, Damus, Amethyst, etc.) and tag them with #whybitcoin101. Your notes will join the stream here, amplifying and expanding the network of Bitcoin education for everyone.
                     </p>
                   </div>
                 </div>
