@@ -797,7 +797,7 @@ const BaseLayers = () => {
       processedContent = processedContent.replace(match[0], '');
     }
 
-    // Remove any remaining URLs that might not be media
+    // Convert remaining URLs to clickable links
     const remainingUrls = [];
     while ((match = genericUrlRegex.exec(processedContent)) !== null) {
       // Check if this URL wasn't already processed as media
@@ -808,6 +808,19 @@ const BaseLayers = () => {
       
       if (!isAlreadyProcessed) {
         remainingUrls.push(url);
+        // Replace URL with a clickable link element
+        mediaElements.push(
+          <a 
+            key={url} 
+            href={url} 
+            target="_blank" 
+            rel="noopener noreferrer" 
+            className="text-primary hover:underline break-all inline-flex items-center gap-1"
+          >
+            {url}
+            <ExternalLink className="h-3 w-3 flex-shrink-0" />
+          </a>
+        );
         processedContent = processedContent.replace(url, '');
       }
     }
