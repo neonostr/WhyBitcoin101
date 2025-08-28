@@ -877,23 +877,24 @@ const BaseLayers = () => {
               </DialogTrigger>
               <DialogContent className="sm:max-w-[500px]">
                 <DialogHeader>
-                  <DialogTitle>About Pulse Feed</DialogTitle>
+                  <DialogTitle>The Pulse</DialogTitle>
                   <DialogDescription>
-                    The Pulse is a living, real‑time hive‑mind of Bitcoin education. Every spark tagged with <strong>#whybitcoin101</strong> flows here - insights, stories, and knowledge shared across the decentralized Nostr network. Together, these voices form a collective signal about why Bitcoin matters.
+                    The Pulse is a living, real‑time hive‑mind around Bitcoin. Every spark tagged with <strong>#whybitcoin101</strong> - from insights and stories to memes and quotes - flows here
+                    through the decentralized Nostr network. Together, they form a collective stream of Bitcoin culture and education.
                   </DialogDescription>
                 </DialogHeader>
                 <div className="space-y-4 text-sm">
                   <div>
-                    <h4 className="font-medium mb-2">What is this?</h4>
+                    <h4 className="font-medium mb-2">How It Can Be Used</h4>
                     <p className="text-muted-foreground">
-                      Think of the Pulse as a universal classroom without walls. It's the community's shared heartbeat, where Bitcoiners everywhere contribute and refine the clearest "orange pill" possible.
-                      This isn't just a feed - it's a living archive of understanding, built in open public space.
+                      The Pulse is more than a feed - it's inspiration. Browse through it to discover new angles, remix sparks, or paste parts (or even the whole stream) into AI
+                      and explore what new creations emerge. Each piece adds to a shared pool of imagination with endless possibilities.
                     </p>
                   </div>
                   <div>
-                    <h4 className="font-medium mb-2">How to contribute</h4>
+                    <h4 className="font-medium mb-2">How To Contribute</h4>
                     <p className="text-muted-foreground">
-                      Add your insights, or resources in any Nostr client (Primal, Damus, Amethyst, etc.) and tag them with #whybitcoin101. Your notes will join the stream here, amplifying and expanding the network of Bitcoin education for everyone.
+                      Post from any Nostr client (like Primal, Damus, or Amethyst), include the hashtag <strong>#whybitcoin101</strong>, and your spark becomes part of the Pulse. Every spark can help someone, somewhere, explain why Bitcoin matters - and together we sharpen our collective orange pill. All of these sparks add up to the bigger picture: The ultimate explanations that will wake up the world to why Bitcoin matters.
                     </p>
                   </div>
                 </div>
