@@ -880,8 +880,8 @@ const BaseLayers = () => {
                   <div>
                     <h4 className="font-medium mb-2">The Pulse</h4>
                     <p className="text-muted-foreground">
-                      The Pulse is a living, real time hive mind around Bitcoin. Every note tagged with <strong>#whybitcoin101</strong>, flows here
-                      through the decentralized Nostr network. Together, they form a collective stream of Bitcoin culture and education.
+                      The Pulse is a living, real time hive mind around Bitcoin. Every note tagged with <strong>#whybitcoin101</strong> that shows why Bitcoin matters or offers broader insight into Bitcoin flows here through the decentralized Nostr network.
+                      Together, they form a collective stream of Bitcoin culture, knowledge, and education.
                     </p>
                   </div>
                   <div>
@@ -894,7 +894,7 @@ const BaseLayers = () => {
                   <div>
                     <h4 className="font-medium mb-2">How To Contribute</h4>
                     <p className="text-muted-foreground">
-                      Post from any Nostr client (like Primal, Damus, or Amethyst), include the hashtag <strong>#whybitcoin101</strong>, and your spark becomes part of the Pulse. Every spark can help someone, somewhere, explain why Bitcoin matters - and together we sharpen our collective orange pill. All of these sparks add up to the bigger picture: The ultimate explanations that will wake up the world to why Bitcoin matters.
+                    Post from any Nostr client (like Primal, Damus, or Amethyst), include the hashtag <strong>#whybitcoin101</strong>, and your spark becomes part of the Pulse. Each spark is fuel - it might inspire someone, somewhere, to explain why Bitcoin matters in a clearer way, sharpening our collective orange pill. That's how we wake up the world to Bitcoin's importance.
                     </p>
                   </div>
                 </div>
