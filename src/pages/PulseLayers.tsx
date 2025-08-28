@@ -698,6 +698,17 @@ const BaseLayers = () => {
     );
   };
 
+  const cleanUrlFromTrackers = (url: string): string => {
+    try {
+      const urlObj = new URL(url);
+      // Remove all query parameters to strip tracking
+      return `${urlObj.protocol}//${urlObj.host}${urlObj.pathname}`;
+    } catch (error) {
+      // If URL parsing fails, return original
+      return url;
+    }
+  };
+
   const renderMedia = (content: string) => {
     // Image URLs
     const imageRegex = /(https?:\/\/[^\s]+\.(?:jpg|jpeg|png|gif|webp))/gi;
@@ -808,16 +819,17 @@ const BaseLayers = () => {
       
       if (!isAlreadyProcessed) {
         remainingUrls.push(url);
+        const cleanedUrl = cleanUrlFromTrackers(url);
         // Replace URL with a clickable link element
         mediaElements.push(
           <a 
             key={url} 
-            href={url} 
+            href={cleanedUrl} 
             target="_blank" 
             rel="noopener noreferrer" 
             className="text-foreground hover:underline break-all inline-flex items-center gap-1"
           >
-            {url}
+            {cleanedUrl}
             <ExternalLink className="h-3 w-3 flex-shrink-0" />
           </a>
         );
