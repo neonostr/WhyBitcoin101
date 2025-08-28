@@ -10,7 +10,6 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger, DialogDescription } from "@/components/ui/dialog";
 import { Search, Copy, ExternalLink, Quote, Eye, EyeOff, Shield, Users, ArrowLeft, Info } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
-import { PulseLoader } from "@/components/PulseLoader";
 
 interface NostrEvent {
   id: string;
@@ -859,7 +858,10 @@ const BaseLayers = () => {
   if (loading) {
     return (
       <div className="min-h-screen bg-background flex items-center justify-center">
-        <PulseLoader />
+        <div className="text-center">
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary mx-auto mb-4"></div>
+          <p className="text-muted-foreground">Loading Pulse Feed...</p>
+        </div>
       </div>
     );
   }
