@@ -900,7 +900,7 @@ const BaseLayers = () => {
                   <div>
                     <h4 className="font-medium mb-2">How It Can Be Used</h4>
                     <p className="text-muted-foreground">
-                      The Pulse is more than a feed - it's inspiration. Browse through it to discover new angles, remix sparks, or paste parts (or even the whole stream) into AI
+                      The Pulse is more than a feed - it's our inspiration layer. Browse through it to discover new angles, remix sparks, or paste parts (or even the whole stream) into AI
                       and explore what new creations emerge. Each piece adds to a shared pool of imagination with endless possibilities.
                     </p>
                   </div>
