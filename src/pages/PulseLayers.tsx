@@ -560,7 +560,7 @@ const BaseLayers = () => {
 
   const getDisplayNameForMention = (pubkey: string): string => {
     const profile = userProfiles[pubkey];
-    // Return profile name if available, otherwise return shortened pubkey
+    // Always return a display name - prefer profile name, fallback to shortened pubkey
     return profile?.name || profile?.display_name || `${pubkey.slice(0, 8)}...`;
   };
 
@@ -587,10 +587,10 @@ const BaseLayers = () => {
         const decoded = nip19.decode(mentionString);
         if (decoded.type === 'npub') {
           const displayName = getDisplayNameForMention(decoded.data);
-          return displayName ? `@${displayName}` : mentionString;
+          return `@${displayName}`;
         } else if (decoded.type === 'nprofile') {
           const displayName = getDisplayNameForMention((decoded.data as any).pubkey);
-          return displayName ? `@${displayName}` : mentionString;
+          return `@${displayName}`;
         }
       } catch (error) {
         console.warn('Failed to decode nostr mention:', mentionString);
