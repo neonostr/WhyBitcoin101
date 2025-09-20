@@ -192,17 +192,25 @@ const BaseLayers = () => {
     const quotedEventIds = new Set<string>();
     let quotedEventsMap: Record<string, NostrEvent> = {};
 
-    // First pass: collect all quoted event IDs
+    // For naddr address pointers
+    type AddrKey = string;
+    const addressPointerKeys = new Set<AddrKey>();
+    const addressEventsMap: Record<AddrKey, NostrEvent> = {};
+
+    // First pass: collect all quoted references (ids and address pointers)
     for (const event of events) {
       const quotes = extractNostrReferences(event.content);
-      quotes.forEach(quote => {
+      quotes.forEach((quote: any) => {
         if ((quote.type === 'nevent' || quote.type === 'note') && quote.eventId) {
           quotedEventIds.add(quote.eventId);
+        } else if (quote.type === 'naddr') {
+          const key: AddrKey = `${quote.kind}:${quote.pubkey}:${quote.identifier}`;
+          addressPointerKeys.add(key);
         }
       });
     }
 
-    // Fetch all quoted events in batch
+    // Fetch all quoted events in batch (nevent/note by ID)
     if (quotedEventIds.size > 0) {
       try {
         const quotedEventsData = await poolRef.current.querySync(relays, {
@@ -241,19 +249,77 @@ const BaseLayers = () => {
       }
     }
 
-    // Second pass: attach quoted events to main events
+    // Fetch all quoted events via address pointers (naddr)
+    if (addressPointerKeys.size > 0) {
+      try {
+        const kindsSet = new Set<number>();
+        const authorsSet = new Set<string>();
+        const identifiersSet = new Set<string>();
+        addressPointerKeys.forEach((k) => {
+          const [knd, pub, ident] = k.split(':');
+          kindsSet.add(parseInt(knd, 10));
+          authorsSet.add(pub);
+          identifiersSet.add(ident);
+        });
+
+        const addrEventsData = await poolRef.current.querySync(relays, {
+          kinds: Array.from(kindsSet),
+          authors: Array.from(authorsSet),
+          "#d": Array.from(identifiersSet),
+          limit: 1000,
+        });
+
+        addrEventsData.forEach((event) => {
+          const dTag = event.tags.find((t) => t[0] === 'd')?.[1];
+          if (dTag) {
+            const key = `${event.kind}:${event.pubkey}:${dTag}`;
+            addressEventsMap[key] = event;
+          }
+        });
+
+        // Fetch profiles for address-quoted event authors
+        const addrAuthors = addrEventsData.map((e) => e.pubkey);
+        if (addrAuthors.length > 0) {
+          await fetchUserProfiles(addrAuthors);
+        }
+
+        // Fetch profiles for mentions within these address events
+        const addrMentioned = new Set<string>();
+        addrEventsData.forEach((event) => {
+          const mentions = extractNostrReferences(event.content);
+          mentions.forEach((mention) => {
+            if (mention.type === 'npub' || mention.type === 'nprofile') {
+              addrMentioned.add(mention.pubkey);
+            }
+          });
+        });
+        if (addrMentioned.size > 0) {
+          await fetchUserProfiles(Array.from(addrMentioned));
+        }
+      } catch (error) {
+        console.error('Error fetching naddr quoted events:', error);
+      }
+    }
+
+    // Second pass: attach quoted events (by id and naddr) to main events
     for (const event of events) {
       const quotes = extractNostrReferences(event.content);
-      const eventQuotedEvents = quotes
-        .filter((quote): quote is { type: 'nevent' | 'note'; raw: string; eventId: string } =>
-          (quote.type === 'nevent' || quote.type === 'note') && (quote as any).eventId
-        )
-        .map((quote) => quotedEventsMap[quote.eventId])
-        .filter(Boolean);
+      const eventQuotedEvents: NostrEvent[] = [];
+
+      quotes.forEach((quote: any) => {
+        if ((quote.type === 'nevent' || quote.type === 'note') && quote.eventId) {
+          const ev = quotedEventsMap[quote.eventId];
+          if (ev) eventQuotedEvents.push(ev);
+        } else if (quote.type === 'naddr') {
+          const key = `${quote.kind}:${quote.pubkey}:${quote.identifier}`;
+          const ev = addressEventsMap[key];
+          if (ev) eventQuotedEvents.push(ev);
+        }
+      });
 
       eventsWithQuotes.push({
         ...event,
-        quotedEvents: eventQuotedEvents.length > 0 ? eventQuotedEvents : undefined
+        quotedEvents: eventQuotedEvents.length > 0 ? eventQuotedEvents : undefined,
       });
     }
 
@@ -262,12 +328,13 @@ const BaseLayers = () => {
 
   const extractNostrReferences = (content: string) => {
     // Support both with and without the `nostr:` prefix
-    const referenceRegex = /(?:nostr:)?(nevent1[a-zA-Z0-9]+|note1[a-zA-Z0-9]+|npub1[a-zA-Z0-9]+|nprofile1[a-zA-Z0-9]+)/g;
+    const referenceRegex = /(?:nostr:)?(nevent1[a-zA-Z0-9]+|note1[a-zA-Z0-9]+|npub1[a-zA-Z0-9]+|nprofile1[a-zA-Z0-9]+|naddr1[a-zA-Z0-9]+)/g;
     const references = [] as Array<
       | { type: 'nevent'; raw: string; eventId: string; relays?: string[] }
       | { type: 'note'; raw: string; eventId: string }
       | { type: 'npub'; raw: string; pubkey: string }
       | { type: 'nprofile'; raw: string; pubkey: string; relays?: string[] }
+      | { type: 'naddr'; raw: string; kind: number; pubkey: string; identifier: string; relays?: string[] }
     >;
     let match: RegExpExecArray | null;
 
@@ -301,6 +368,16 @@ const BaseLayers = () => {
             raw: match[0],
             pubkey: (decoded.data as any).pubkey,
             relays: (decoded.data as any).relays
+          });
+        } else if (decoded.type === 'naddr') {
+          const d = decoded.data as any;
+          references.push({
+            type: 'naddr' as const,
+            raw: match[0],
+            kind: d.kind,
+            pubkey: d.pubkey,
+            identifier: d.identifier,
+            relays: d.relays,
           });
         }
       } catch (error) {
@@ -614,8 +691,8 @@ const BaseLayers = () => {
       return processed.startsWith('@') ? processed : match;
     });
     
-    // Then remove note and nevent references
-    processedContent = processedContent.replace(/nostr:(nevent1[a-zA-Z0-9]+|note1[a-zA-Z0-9]+)/g, '');
+    // Then remove note, nevent, and naddr references
+    processedContent = processedContent.replace(/(?:nostr:)?(nevent1[a-zA-Z0-9]+|note1[a-zA-Z0-9]+|naddr1[a-zA-Z0-9]+)/g, '');
     
     return processedContent.trim();
   };
