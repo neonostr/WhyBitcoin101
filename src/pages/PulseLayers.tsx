@@ -560,8 +560,8 @@ const BaseLayers = () => {
 
   const getDisplayNameForMention = (pubkey: string): string => {
     const profile = userProfiles[pubkey];
-    // Only return a username if we have a real name/display_name, otherwise return empty to keep original mention
-    return profile?.name || profile?.display_name || '';
+    // Return profile name if available, otherwise return shortened pubkey
+    return profile?.name || profile?.display_name || `${pubkey.slice(0, 8)}...`;
   };
 
   const formatDate = (timestamp: number): string => {
