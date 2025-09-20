@@ -245,8 +245,10 @@ const BaseLayers = () => {
     for (const event of events) {
       const quotes = extractNostrReferences(event.content);
       const eventQuotedEvents = quotes
-        .filter(quote => (quote.type === 'nevent' || quote.type === 'note') && quote.eventId)
-        .map(quote => quotedEventsMap[quote.eventId!])
+        .filter((quote): quote is { type: 'nevent' | 'note'; raw: string; eventId: string } =>
+          (quote.type === 'nevent' || quote.type === 'note') && (quote as any).eventId
+        )
+        .map((quote) => quotedEventsMap[quote.eventId])
         .filter(Boolean);
 
       eventsWithQuotes.push({
@@ -259,11 +261,17 @@ const BaseLayers = () => {
   };
 
   const extractNostrReferences = (content: string) => {
-    const nostrRegex = /nostr:(nevent1[a-zA-Z0-9]+|note1[a-zA-Z0-9]+|npub1[a-zA-Z0-9]+|nprofile1[a-zA-Z0-9]+)/g;
-    const references = [];
-    let match;
+    // Support both with and without the `nostr:` prefix
+    const referenceRegex = /(?:nostr:)?(nevent1[a-zA-Z0-9]+|note1[a-zA-Z0-9]+|npub1[a-zA-Z0-9]+|nprofile1[a-zA-Z0-9]+)/g;
+    const references = [] as Array<
+      | { type: 'nevent'; raw: string; eventId: string; relays?: string[] }
+      | { type: 'note'; raw: string; eventId: string }
+      | { type: 'npub'; raw: string; pubkey: string }
+      | { type: 'nprofile'; raw: string; pubkey: string; relays?: string[] }
+    >;
+    let match: RegExpExecArray | null;
 
-    while ((match = nostrRegex.exec(content)) !== null) {
+    while ((match = referenceRegex.exec(content)) !== null) {
       const reference = match[1];
       try {
         const decoded = nip19.decode(reference);
