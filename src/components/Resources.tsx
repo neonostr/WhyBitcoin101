@@ -239,9 +239,9 @@ Ready to learn more? These carefully curated resources will guide you towards a 
     type: "Documentary Series",
     url: "https://www.youtube.com/watch?v=OE98XhB1uM4&list=PLpoMYLIrh9fO8xnIXBsRPk6H83G5rI5W6"
   }, {
-    title: "The Exit Manual - Learn Bitcoin",
-    description: "Comprehensive Bitcoin education channel covering everything from basic concepts to advanced privacy techniques. Clear tutorials on wallets, Lightning Network, mining, and practical Bitcoin usage for beginners and experienced users alike.",
-    type: "YouTube Channel",
+    title: "The Exit Manual - Unmasking The System",
+    description: "Discover how the modern financial system really works - and why it doesn't. Exit Manual breaks down big ideas like inflation, money printing, and Bitcoin in clear, concise videos that show the path to financial independence.",
+    type: "Educational Series",
     url: "https://www.youtube.com/@exitmanual"
   }, {
     title: "Joey Nakamoto - Bitcoin Adventures",
