@@ -239,10 +239,10 @@ Ready to learn more? These carefully curated resources will guide you towards a 
     type: "Documentary Series",
     url: "https://www.youtube.com/watch?v=OE98XhB1uM4&list=PLpoMYLIrh9fO8xnIXBsRPk6H83G5rI5W6"
   }, {
-    title: "BTC Isla - Living Bitcoin Stories",
+    title: "The Exit Manual - Learn Bitcoin",
     description: "Inspiring content about living on Bitcoin in real-world scenarios. Educational adventures that show how Bitcoin works in practice across different cultures and environments.",
     type: "YouTube Channel",
-    url: "https://www.youtube.com/@btcisla"
+    url: "https://www.youtube.com/@exitmanual"
   }, {
     title: "Joey Nakamoto - Bitcoin Adventures",
     description: "Entertaining and educational Bitcoin content that makes learning about sound money fun and engaging. Perfect blend of entertainment and Bitcoin education.",
