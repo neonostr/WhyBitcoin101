@@ -240,7 +240,7 @@ Ready to learn more? These carefully curated resources will guide you towards a 
     url: "https://www.youtube.com/watch?v=OE98XhB1uM4&list=PLpoMYLIrh9fO8xnIXBsRPk6H83G5rI5W6"
   }, {
     title: "The Exit Manual - Learn Bitcoin",
-    description: "Inspiring content about living on Bitcoin in real-world scenarios. Educational adventures that show how Bitcoin works in practice across different cultures and environments.",
+    description: "Comprehensive Bitcoin education channel covering everything from basic concepts to advanced privacy techniques. Clear tutorials on wallets, Lightning Network, mining, and practical Bitcoin usage for beginners and experienced users alike.",
     type: "YouTube Channel",
     url: "https://www.youtube.com/@exitmanual"
   }, {
