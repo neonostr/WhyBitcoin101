@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import VideoModal from "./VideoModal";
 import CopyButton from "./CopyButton";
 import ResourceCopyButton from "./ResourceCopyButton";
+import { format } from "date-fns";
 const Resources = () => {
   const [videoModal, setVideoModal] = useState<{
     isOpen: boolean;
@@ -18,6 +19,20 @@ const Resources = () => {
   const resourcesText = `Dive Deeper
 
 Ready to learn more? These carefully curated resources will guide you towards a deeper understanding.`;
+
+  // Last updated dates for each category
+  const lastUpdatedDates = {
+    videos: new Date(2025, 0, 15),
+    articles: new Date(2024, 11, 10),
+    books: new Date(2024, 10, 5),
+    podcasts: new Date(2025, 0, 20),
+    mobileWallets: new Date(2024, 11, 15),
+    hardwareWallets: new Date(2024, 11, 8),
+    exchanges: new Date(2025, 0, 10),
+    livingOnBitcoin: new Date(2024, 11, 12),
+    educationalEntertainment: new Date(2025, 0, 25),
+    funStuff: new Date(2024, 10, 30)
+  };
 
   // Video resources
   const videos = [{
@@ -277,8 +292,15 @@ Ready to learn more? These carefully curated resources will guide you towards a 
   const handleLinkClick = (url: string) => {
     window.open(url, '_blank');
   };
-  const renderSection = (title: string, emoji: string, items: any[], isVideo = false, categoryName = "") => <div className="mb-16">
-      <h3 className="text-3xl font-bold text-center mb-10 text-foreground">{emoji} {title}</h3>
+  const renderSection = (title: string, emoji: string, items: any[], isVideo = false, categoryName = "", lastUpdated?: Date) => <div className="mb-16">
+      <div className="text-center mb-10">
+        <h3 className="text-3xl font-bold text-foreground">{emoji} {title}</h3>
+        {lastUpdated && (
+          <p className="text-sm text-muted-foreground mt-2">
+            Last updated: {format(lastUpdated, 'MMMM d, yyyy')}
+          </p>
+        )}
+      </div>
       <div className="grid md:grid-cols-3 gap-6">
         {items.map((item, index) => {
           const hashtag = `#whybitcoin101resource${categoryName}${index + 1}`;
@@ -324,16 +346,16 @@ Ready to learn more? These carefully curated resources will guide you towards a 
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto">Ready to learn more? These carefully curated resources will guide you towards a deeper understanding.</p>
           </div>
 
-          {renderSection("Videos", "🎥", videos, true, "videos")}
-          {renderSection("Articles & Essays", "📄", articles, false, "articles")}
-          {renderSection("Books", "📚", books, false, "books")}
-          {renderSection("Podcasts", "🎧", podcasts, false, "podcasts")}
-          {renderSection("Mobile Wallets", "📱", mobileWallets, false, "mobile-wallets")}
-          {renderSection("Hardware Wallets", "🔒", hardwareWallets, false, "hardware-wallets")}
-          {renderSection("Exchanges", "💱", exchanges, false, "exchanges")}
-          {renderSection("Living On Bitcoin", "🌍", livingOnBitcoin, false, "living-on-bitcoin")}
-          {renderSection("Educational Entertainment", "🍿", educationalEntertainment, false, "educational-entertainment")}
-          {renderSection("Fun Stuff", "🎉", funStuff, false, "fun-stuff")}
+          {renderSection("Videos", "🎥", videos, true, "videos", lastUpdatedDates.videos)}
+          {renderSection("Articles & Essays", "📄", articles, false, "articles", lastUpdatedDates.articles)}
+          {renderSection("Books", "📚", books, false, "books", lastUpdatedDates.books)}
+          {renderSection("Podcasts", "🎧", podcasts, false, "podcasts", lastUpdatedDates.podcasts)}
+          {renderSection("Mobile Wallets", "📱", mobileWallets, false, "mobile-wallets", lastUpdatedDates.mobileWallets)}
+          {renderSection("Hardware Wallets", "🔒", hardwareWallets, false, "hardware-wallets", lastUpdatedDates.hardwareWallets)}
+          {renderSection("Exchanges", "💱", exchanges, false, "exchanges", lastUpdatedDates.exchanges)}
+          {renderSection("Living On Bitcoin", "🌍", livingOnBitcoin, false, "living-on-bitcoin", lastUpdatedDates.livingOnBitcoin)}
+          {renderSection("Educational Entertainment", "🍿", educationalEntertainment, false, "educational-entertainment", lastUpdatedDates.educationalEntertainment)}
+          {renderSection("Fun Stuff", "🎉", funStuff, false, "fun-stuff", lastUpdatedDates.funStuff)}
 
           <div className="text-center">
             <div className="inline-block p-8 rounded-2xl bg-gradient-to-r from-primary/5 to-bitcoin-orange/5 border border-primary/10">
